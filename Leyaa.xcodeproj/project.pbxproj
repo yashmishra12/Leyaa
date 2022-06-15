@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */; };
+		CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15502859A00300C29C45 /* FirebaseAuth */; };
+		CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15522859A00300C29C45 /* FirebaseFirestore */; };
+		CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */; };
+		CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15562859A00300C29C45 /* FirebaseStorage */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -16,9 +21,19 @@
 		CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3B82859804C00105C5C /* RoundedShape.swift */; };
 		CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BA285988E600105C5C /* CustomInputField.swift */; };
 		CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */; };
+		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
+		CCFA96AC285A5B5D0083D925 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96AB285A5B5D0083D925 /* MainTabView.swift */; };
+		CCFA96AE285A5B930083D925 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96AD285A5B930083D925 /* FeedView.swift */; };
+		CCFA96B0285A5BB30083D925 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96AF285A5BB30083D925 /* FeedViewModel.swift */; };
+		CCFA96B2285A61130083D925 /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListView.swift */; };
+		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
+		CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */; };
+		CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */; };
+		CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BF285A85CA0083D925 /* ImageUploader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +44,15 @@
 		CCB4C3B82859804C00105C5C /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		CCB4C3BA285988E600105C5C /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
+		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		CCFA96AB285A5B5D0083D925 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		CCFA96AD285A5B930083D925 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		CCFA96AF285A5BB30083D925 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		CCFA96B1285A61130083D925 /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
+		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
+		CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CCFA96BF285A85CA0083D925 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,12 +60,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */,
+				CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */,
+				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
+				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC6E15592859A03F00C29C45 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
+				CCB4C3A328597A3200105C5C /* ContentView.swift */,
+				CCFA96B1285A61130083D925 /* RoomListView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		CCB4C39528597A3200105C5C = {
 			isa = PBXGroup;
 			children = (
@@ -61,9 +99,13 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA96BE285A85BD0083D925 /* Service */,
+				CCFA96BB285A7E160083D925 /* Utils */,
+				CCFA96B6285A6B6E0083D925 /* Model */,
 				CCB4C3B028597B6300105C5C /* Components */,
 				CCB4C3AF28597B5800105C5C /* Views */,
 				CCB4C3A528597A3400105C5C /* Assets.xcassets */,
+				CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */,
 				CCB4C3A728597A3400105C5C /* Preview Content */,
 			);
 			path = Leyaa;
@@ -80,9 +122,8 @@
 		CCB4C3AF28597B5800105C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CC6E15592859A03F00C29C45 /* App */,
 				CCB4C3B128597B7500105C5C /* Authentication */,
-				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
-				CCB4C3A328597A3200105C5C /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -91,6 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
+				CCFA96AB285A5B5D0083D925 /* MainTabView.swift */,
+				CCFA96AD285A5B930083D925 /* FeedView.swift */,
+				CCFA96AF285A5BB30083D925 /* FeedViewModel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -100,6 +144,7 @@
 			children = (
 				CCB4C3B228597B8100105C5C /* LoginView.swift */,
 				CCB4C3B428597B8C00105C5C /* RegistrationView.swift */,
+				CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -107,11 +152,44 @@
 		CCB4C3BC28598BF600105C5C /* Authentitcation */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA96B5285A68C70083D925 /* InputField */,
 				CCB4C3B82859804C00105C5C /* RoundedShape.swift */,
-				CCB4C3BA285988E600105C5C /* CustomInputField.swift */,
 				CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */,
+				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
 			);
 			path = Authentitcation;
+			sourceTree = "<group>";
+		};
+		CCFA96B5285A68C70083D925 /* InputField */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3BA285988E600105C5C /* CustomInputField.swift */,
+			);
+			path = InputField;
+			sourceTree = "<group>";
+		};
+		CCFA96B6285A6B6E0083D925 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA96B7285A6B790083D925 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCFA96BB285A7E160083D925 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CCFA96BE285A85BD0083D925 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA96BF285A85CA0083D925 /* ImageUploader.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +208,12 @@
 			dependencies = (
 			);
 			name = Leyaa;
+			packageProductDependencies = (
+				CC6E15502859A00300C29C45 /* FirebaseAuth */,
+				CC6E15522859A00300C29C45 /* FirebaseFirestore */,
+				CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */,
+				CC6E15562859A00300C29C45 /* FirebaseStorage */,
+			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +242,9 @@
 				Base,
 			);
 			mainGroup = CCB4C39528597A3200105C5C;
+			packageReferences = (
+				CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,6 +261,7 @@
 			files = (
 				CCB4C3A928597A3400105C5C /* Preview Assets.xcassets in Resources */,
 				CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */,
+				CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,13 +272,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFA96AE285A5B930083D925 /* FeedView.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
+				CCFA96AC285A5B5D0083D925 /* MainTabView.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
+				CCFA96B0285A5BB30083D925 /* FeedViewModel.swift in Sources */,
+				CCFA96B8285A6B790083D925 /* User.swift in Sources */,
 				CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */,
+				CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
+				CCFA96B2285A61130083D925 /* RoomListView.swift in Sources */,
 				CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */,
+				CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */,
+				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
+				CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +422,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -354,6 +452,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,6 +490,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC6E15502859A00300C29C45 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CC6E15522859A00300C29C45 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		CC6E15562859A00300C29C45 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CCB4C39628597A3200105C5C /* Project object */;
 }

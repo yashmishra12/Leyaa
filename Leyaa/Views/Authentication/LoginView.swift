@@ -10,14 +10,14 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
-
+    @EnvironmentObject var viewModel: AuthViewModel
     
     
     var body: some View {
         
         NavigationView {
+            
             ZStack {
-                Color("DarkBlue").ignoresSafeArea()
                 
                 VStack{
                     
@@ -36,7 +36,12 @@ struct LoginView: View {
 
                         CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                         
-                        CustomInputField(imageName: "key", placeholderText: "Password", text: $password)
+
+                        CustomInputField(imageName: "key",
+                                         placeholderText: "Password",
+                                         isSecureField: true,
+                                         text: $password)
+
                     }
                     .padding(.horizontal, 32)
                     .padding(.top, 40)
@@ -44,7 +49,7 @@ struct LoginView: View {
                     
                     //MARK: - FORGOT PASSWORD
                     HStack{
-                        Spacer()
+                        Spacer().background(Color("DarkBlue"))
                         
                         NavigationLink {
                             Text("Reset Password View")
@@ -54,15 +59,16 @@ struct LoginView: View {
                                 .foregroundColor(Color.white)
                                 .multilineTextAlignment(.trailing)
                                 .padding(25)
-                             
+//                                .background(Color("DarkBlue"))
                         }
                     }
+//                    .background(Color("DarkBlue"))
                     
                     
                     //MARK: - SIGN IN BUTTON
                     VStack{
                         Button {
-                            print("Sign in here..")
+                            viewModel.login(withEmail: email, password: password)
                         } label: {
                             Text ("Sign In")
                                 .font (.headline)
@@ -72,7 +78,7 @@ struct LoginView: View {
                                 .clipShape(Capsule())
                                 .padding ()
                         }
-                        .shadow(color: .black, radius: 15, x: 0, y: 0)
+                        .shadow(color: .black, radius: 10, x: 0, y: 0)
                         .padding(.top, 25)
                     }
                     
@@ -92,15 +98,18 @@ struct LoginView: View {
                                     .font (.callout)
                                     .fontWeight (.semibold)
                                     .foregroundColor(Color("LightBlue"))
-                            }.padding(.bottom, 30)
+                            }
+                            
                         }
-                    }
+
+                    }.padding(.bottom, 30)
                     
                 }
                 
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)
+            .background(Color("DarkBlue"))
         }
         
             
@@ -113,6 +122,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
-            .preferredColorScheme(.dark)
+            
     }
 }

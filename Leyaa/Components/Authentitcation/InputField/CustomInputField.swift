@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomInputField: View {
     let imageName: String
     let placeholderText: String
+    var isSecureField: Bool? = false
+    
     @Binding var text: String
     
     var body: some View {
@@ -22,9 +24,16 @@ struct CustomInputField: View {
                     .foregroundColor (Color("LightBlue"))
                     .padding(.trailing, 15)
                 
-                TextField(placeholderText, text: $text)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
+                if isSecureField ?? false {
+                    SecureField(placeholderText, text: $text)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                } else {
+                    TextField(placeholderText, text: $text)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
+                    
                 
                 
             }
@@ -36,6 +45,11 @@ struct CustomInputField: View {
 
 struct CustomInputField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomInputField(imageName: "envelope", placeholderText: "Email", text: .constant(""))
+        
+        CustomInputField (imageName: "envelope",
+                         placeholderText: "Email",
+                         isSecureField: false,
+                         text: .constant(""))
+            .preferredColorScheme(.dark)
     }
 }

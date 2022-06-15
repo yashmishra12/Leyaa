@@ -13,14 +13,17 @@ struct RegistrationView: View {
     @State private var fullname = ""
     @State private var password = ""
     @Environment (\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         
         ZStack {
-            Color("DarkBlue").ignoresSafeArea()
-            
             
             VStack {
+                
+                NavigationLink(destination: ProfilePhotoSelectorView(),
+                               isActive: $viewModel.didAuthenticateUser,
+                               label: { })
                 
                 //MARK: - HEADER
                 VStack {
@@ -32,17 +35,22 @@ struct RegistrationView: View {
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     CustomInputField(imageName: "person.wave.2", placeholderText: "Full Name", text: $fullname)
                     CustomInputField(imageName: "person", placeholderText: "Username", text: $username)
-                    CustomInputField(imageName: "key", placeholderText: "Password", text: $password)
+                    
+                    CustomInputField(imageName: "key", placeholderText: "Password", isSecureField: true, text: $password)
+                    
                     
                 }
                 .padding(.horizontal, 32)
                 .padding(.top, 40)
                 .foregroundColor(.white)
                 
-                //MARK: - SIGN IN BUTTON
+                //MARK: - SIGN UP BUTTON
                 VStack{
                     Button {
-                        print("Sign in here..")
+                        viewModel.register(withEmail: email,
+                                           password: password,
+                                           fullname: fullname,
+                                           username: username)
                     } label: {
                         Text ("Sign Up")
                             .font (.headline)
@@ -58,29 +66,31 @@ struct RegistrationView: View {
                 
                 Spacer()
                 
-                
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    HStack{
-                        Text("Have an account?")
-                            .font (.footnote)
-                            .foregroundColor(Color.white)
-                        
-                        
-                        Text("Sign In")
-                            .font (.callout)
-                            .fontWeight (.semibold)
-                            .foregroundColor(Color("LightBlue"))
-                        }.padding(.bottom, 30)
-                }
+                //MARK: - SIGN IN MESSAGE
+                VStack {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        HStack{
+                            Text("Have an account?")
+                                .font (.footnote)
+                                .foregroundColor(Color.white)
+                            
+                            Text("Sign In")
+                                .font (.callout)
+                                .fontWeight (.semibold)
+                                .foregroundColor(Color("LightBlue"))
+                            }
+                    }
+                }.padding(.bottom, 30)
 
                 
                 
                 
             }
             .ignoresSafeArea()
-        }
+            .navigationBarHidden(true)
+        }.background(Color("DarkBlue"))
     }
 }
 
