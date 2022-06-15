@@ -11,6 +11,11 @@
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
 		CCB4C3A928597A3400105C5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A828597A3400105C5C /* Preview Assets.xcassets */; };
+		CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3B228597B8100105C5C /* LoginView.swift */; };
+		CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3B428597B8C00105C5C /* RegistrationView.swift */; };
+		CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3B82859804C00105C5C /* RoundedShape.swift */; };
+		CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BA285988E600105C5C /* CustomInputField.swift */; };
+		CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CCB4C3A528597A3400105C5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCB4C3A828597A3400105C5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CCB4C3B228597B8100105C5C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CCB4C3B428597B8C00105C5C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		CCB4C3B82859804C00105C5C /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		CCB4C3BA285988E600105C5C /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
+		CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,8 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
-				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
-				CCB4C3A328597A3200105C5C /* ContentView.swift */,
+				CCB4C3B028597B6300105C5C /* Components */,
+				CCB4C3AF28597B5800105C5C /* Views */,
 				CCB4C3A528597A3400105C5C /* Assets.xcassets */,
 				CCB4C3A728597A3400105C5C /* Preview Content */,
 			);
@@ -65,6 +75,43 @@
 				CCB4C3A828597A3400105C5C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CCB4C3AF28597B5800105C5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3B128597B7500105C5C /* Authentication */,
+				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
+				CCB4C3A328597A3200105C5C /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CCB4C3B028597B6300105C5C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3BC28598BF600105C5C /* Authentitcation */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CCB4C3B128597B7500105C5C /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3B228597B8100105C5C /* LoginView.swift */,
+				CCB4C3B428597B8C00105C5C /* RegistrationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		CCB4C3BC28598BF600105C5C /* Authentitcation */ = {
+			isa = PBXGroup;
+			children = (
+				CCB4C3B82859804C00105C5C /* RoundedShape.swift */,
+				CCB4C3BA285988E600105C5C /* CustomInputField.swift */,
+				CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */,
+			);
+			path = Authentitcation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
+				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
+				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
 				CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
+				CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */,
+				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
