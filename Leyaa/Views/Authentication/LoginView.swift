@@ -11,6 +11,7 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
+
     
     
     var body: some View {
@@ -59,11 +60,23 @@ struct LoginView: View {
                                 .foregroundColor(Color.white)
                                 .multilineTextAlignment(.trailing)
                                 .padding(25)
-//                                .background(Color("DarkBlue"))
+
                         }
                     }
-//                    .background(Color("DarkBlue"))
-                    
+
+//                    HStack {
+//                        Image("milk")
+//                            .resizable()
+//                            .modifier(ItemPhotoModifier())
+//
+//                        Image("apple")
+//                            .resizable()
+//                            .modifier(ItemPhotoModifier())
+//
+//                        Image("cheese")
+//                            .resizable()
+//                            .modifier(ItemPhotoModifier())
+//                    }
                     
                     //MARK: - SIGN IN BUTTON
                     VStack{
@@ -113,6 +126,14 @@ struct LoginView: View {
         }
         
             
+    }
+    
+    struct ItemPhotoModifier: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .frame(width: 100, height: 100)
+                .padding(1)
+        }
     }
     
 }
