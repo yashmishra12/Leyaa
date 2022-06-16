@@ -35,7 +35,6 @@ struct RegistrationView: View {
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     CustomInputField(imageName: "person.wave.2", placeholderText: "Full Name", text: $fullname)
                     CustomInputField(imageName: "person", placeholderText: "Username", text: $username)
-                    
                     CustomInputField(imageName: "key", placeholderText: "Password", isSecureField: true, text: $password)
                     
                     

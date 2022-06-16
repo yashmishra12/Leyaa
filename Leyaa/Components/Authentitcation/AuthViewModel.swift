@@ -62,9 +62,12 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         // sets user session to nil so we show login view
         userSession = nil
+        tempUserSession = nil
+        didAuthenticateUser = false
         
         // signs user out on server
         try? Auth.auth().signOut()
+        
     }
 
     
