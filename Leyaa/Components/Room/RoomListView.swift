@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-
-var room2 = Room(id: "id", title: "title", newIetms: [""], oldItems: [""], members: [""])
-
-
-
 struct RoomListView: View {
+    
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var myRoom: [Room]
     
@@ -21,12 +17,30 @@ struct RoomListView: View {
         ScrollView{
             VStack{
                 ForEach($myRoom) { room in
-                    NavigationLink(destination: RoomView()) {
+                    NavigationLink(destination: RoomView(roomData: room)) {
                         RoomListComponent(title: room.title, newItems: room.newIetms)
                     }
                 }
                 
+                
+                
                 Spacer()
+                
+                VStack {
+                    NavigationLink {
+                        RoomCreateView()
+                    } label: {
+                        Text("Create Room")
+                    }.padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .foregroundColor(.white)
+                        .background(Color("MediumBlue"))
+                        .clipShape(Capsule())
+                }
+                .padding(.vertical, 40)
+                
+                
+
             }
         }
         .toolbar {
@@ -44,5 +58,6 @@ struct RoomListView: View {
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
         RoomListView(myRoom: .constant([Room(id: "", title: "", newIetms: [""], oldItems: [""], members: [""])]))
+            .preferredColorScheme(.dark)
     }
 }

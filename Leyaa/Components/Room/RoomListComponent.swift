@@ -32,7 +32,8 @@ struct RoomListComponent: View {
                 
                 HStack{
                     if(newItems.count>5) {
-                            Image(newItems[0]).resizable()
+                            
+                        Image(newItems[0]).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
                         
@@ -41,6 +42,14 @@ struct RoomListComponent: View {
                             .frame(width: 60, height: 60, alignment: .leading)
                         
                         Image(newItems[2]).resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60, alignment: .leading)
+                        
+                        Image(newItems[3]).resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60, alignment: .leading)
+                        
+                        Image(newItems[4]).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
 
