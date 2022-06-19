@@ -15,11 +15,12 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser: Bool = false
     @Published var rooms = [Room]()
-    
+
     private var tempUserSession: FirebaseAuth.User?
     
     init(){
         self.userSession = Auth.auth().currentUser
+        populateRoomList()
     }
     
     //MARK: - LOGIN

@@ -1,50 +1,48 @@
 //
-//  RoomListView.swift
+//  RoomView.swift
 //  Leyaa
 //
-//  Created by Yash Mishra on 6/15/22.
+//  Created by Yash Mishra on 6/18/22.
 //
 
 import SwiftUI
-import Firebase
+
+
+var room2 = Room(id: "id", title: "title", newIetms: [""], oldItems: [""], members: [""])
+
+
 
 struct RoomListView: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    @Binding var title: String
-    
+    @Binding var myRoom: [Room]
     
     var body: some View {
-        ZStack {
-            Color("MediumBlue").ignoresSafeArea()
-            
-            VStack(alignment: .leading) {
-               
-                HStack {
-                    Text(title).font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.leading)
-                        .padding()
-                    
-                    Spacer()
+
+        ScrollView{
+            VStack{
+                ForEach($myRoom) { room in
+                    NavigationLink(destination: RoomView()) {
+                        RoomListComponent(title: room.title, newItems: room.newIetms)
+                    }
                 }
-                
                 
                 Spacer()
             }
-            
-            
         }
-        .frame(height: 150)
-        .padding(.horizontal, 5)
-        .padding(.vertical, 5)
-        
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    viewModel.signOut()
+                } label: {
+                    Text("Logout")
+                }
+            }
+        }
     }
 }
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView( title: .constant("Title"))
-            .previewLayout(.sizeThatFits)
+        RoomListView(myRoom: .constant([Room(id: "", title: "", newIetms: [""], oldItems: [""], members: [""])]))
     }
 }

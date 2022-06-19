@@ -17,7 +17,7 @@ struct ContentView: View {
                 if viewModel.userSession == nil {
                     LoginView()
                 } else {
-                    RoomView()
+                    RoomListView(myRoom: $viewModel.rooms)
                 }
             }
         }
