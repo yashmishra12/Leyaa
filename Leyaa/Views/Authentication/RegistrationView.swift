@@ -21,14 +21,21 @@ struct RegistrationView: View {
             
             VStack {
                 
+    
+                
                 NavigationLink(destination: ProfilePhotoSelectorView(),
                                isActive: $viewModel.didAuthenticateUser,
                                label: { })
                 
+                
+                
                 //MARK: - HEADER
                 VStack {
+                    
                     AuthHeaderView(title1: "Get Started.", title2: "Create an account")
                 }
+                
+                
                 
                 //MARK: - SIGNUP
                 VStack(spacing: 40){

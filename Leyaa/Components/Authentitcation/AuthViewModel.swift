@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser: Bool = false
+    @Published var rooms = [Room]()
     
     private var tempUserSession: FirebaseAuth.User?
     
@@ -90,5 +91,36 @@ class AuthViewModel: ObservableObject {
     }
 
     
+
+ 
+    func populateRoomList () {
+        
+        Firestore.firestore().collection("rooms")
+            .whereField("members", arrayContains: userSession!.uid)
+            .addSnapshotListener { snapshot, error in
+                
+                guard let doc = snapshot?.documents else {
+                    print("No Doc Found")
+                    return
+                }
+               
+                
+                self.rooms = doc.map({docSnapshot -> Room in
+                    let data = docSnapshot.data()
+                    let docId = docSnapshot.documentID
+                    let title = data["title"] as? String ?? ""
+                    let mem = data["members"] as? [String] ?? []
+                    let newIt = data["newItems"] as? [String] ?? []
+                    let oldIt = data["oldItems"] as? [String] ?? []
+
+                    
+
+                    return Room(id: docId, title: title, newIetms: newIt, oldItems: oldIt, members: mem)
+                })
+
+        }
+    }
     
 }
+
+

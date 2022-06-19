@@ -64,19 +64,6 @@ struct LoginView: View {
                         }
                     }
 
-//                    HStack {
-//                        Image("milk")
-//                            .resizable()
-//                            .modifier(ItemPhotoModifier())
-//
-//                        Image("apple")
-//                            .resizable()
-//                            .modifier(ItemPhotoModifier())
-//
-//                        Image("cheese")
-//                            .resizable()
-//                            .modifier(ItemPhotoModifier())
-//                    }
                     
                     //MARK: - SIGN IN BUTTON
                     VStack{
