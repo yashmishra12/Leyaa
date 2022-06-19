@@ -17,7 +17,7 @@ struct ContentView: View {
                 if viewModel.userSession == nil {
                     LoginView()
                 } else {
-                    RoomListView()
+                    RoomView()
                 }
             }
         }
@@ -37,8 +37,6 @@ extension ContentView {
         ZStack(alignment: .topLeading) {
            
             
-            MainTabView()
-                .navigationBarHidden(showMenu)
             
             if showMenu {
                 ZStack {
