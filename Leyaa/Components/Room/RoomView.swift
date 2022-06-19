@@ -8,34 +8,8 @@
 import SwiftUI
 
 struct RoomView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
-    @EnvironmentObject var prv: PopulateRoomView
-    @State var myRoom: [Room] = []
-    
     var body: some View {
-
-        VStack{
-            Button {
-                viewModel.signOut()
-            } label: {
-                Text("Logout")
-            }.foregroundColor(.green)
-            
-            Button {
-                viewModel.populateRoomList()
-                myRoom = viewModel.rooms
-                
-            } label: {
-                Text("Populate")
-            }.foregroundColor(.red)
-            
-            ForEach($myRoom) { room in
-                RoomListView(title: room.title)
-            }
-        }.onAppear {
-            viewModel.populateRoomList()
-            myRoom = viewModel.rooms
-        }
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
