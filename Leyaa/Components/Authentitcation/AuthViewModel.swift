@@ -15,7 +15,10 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser: Bool = false
     @Published var rooms = [Room]()
+    @Published var publishedItems = [Item]()
 //    @Published var userPhoto
+    
+    var tempNewItem = Item(name: "milk", desc: "", qty: "", assignedTo: "")
 
     private var tempUserSession: FirebaseAuth.User?
     
@@ -98,37 +101,50 @@ class AuthViewModel: ObservableObject {
 
  
     func populateRoomList () {
-        
+
         DispatchQueue.main.async {
             Firestore.firestore().collection("rooms")
                 .whereField("members", arrayContains: self.userSession!.uid)
                 .addSnapshotListener { snapshot, error in
-                    
+
                     guard let doc = snapshot?.documents else {
                         print("No Doc Found")
                         return
                     }
-                   
                     
-                    self.rooms = doc.map({docSnapshot -> Room in
+                
+
+                    self.rooms = doc.map({ docSnapshot -> Room in
                         let data = docSnapshot.data()
                         let docId = docSnapshot.documentID
                         let title = data["title"] as? String ?? ""
                         let mem = data["members"] as? [String] ?? []
-                        let newIt = data["newItems"] as? [String] ?? []
-                        let oldIt = data["oldItems"] as? [String] ?? []
-
+                        let itemDict = data["newItems"] as! [[String:String]]
+                        
+                        
+                        var arr = [Item]()
+                        
+                        for dict in itemDict {
+                            // Condition required to check for type safety :)
+                            guard let name = dict["name"],
+                                  let desc = dict["desc"],
+                                  let assignedTo = dict["assignedTo"],
+                                  let qty = dict["qty"]
+                            else {
+                                    print("Problem while converting Dict to Struct")
+                                   continue
+                               }
+                              let object = Item(name: name, desc: desc, qty: qty, assignedTo: assignedTo)
+                               arr.append(object)
+                          }
                         
 
-                        return Room(id: docId, title: title, newIetms: newIt, oldItems: oldIt, members: mem)
+                        return Room(id: docId, title: title, newItems: arr, members: mem)
                     })
 
             }
         }
-        
-      
     }
     
 }
-
 
