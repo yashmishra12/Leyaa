@@ -7,11 +7,11 @@
 
 import SwiftUI
 import Firebase
-
+ 
 struct RoomListComponent: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var title: String
-    @Binding var newItems: [String]
+    @Binding var newItems: [Item]
     
     var body: some View {
         ZStack {
@@ -19,6 +19,7 @@ struct RoomListComponent: View {
             
             VStack(alignment: .leading) {
                
+                Spacer()
                 HStack {
                     Text(title).font(.largeTitle)
                         .fontWeight(.bold)
@@ -28,28 +29,27 @@ struct RoomListComponent: View {
                     
                     Spacer()
                 }
-                Spacer()
                 
                 HStack{
                     if(newItems.count>5) {
                             
-                        Image(newItems[0]).resizable()
+                        Image(newItems[0].name).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[1]).resizable()
+                        Image(newItems[1].name).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[2]).resizable()
+                        Image(newItems[2].name).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[3]).resizable()
+                        Image(newItems[3].name).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[4]).resizable()
+                        Image(newItems[4].name).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
 
@@ -59,7 +59,7 @@ struct RoomListComponent: View {
                         
                     } else {
                         ForEach(newItems, id: \.self) { item in
-                            Image(item).resizable()
+                            Image(item.name).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
                         }

@@ -18,7 +18,7 @@ struct RoomListView: View {
             VStack{
                 ForEach($myRoom) { room in
                     NavigationLink(destination: RoomView(roomData: room)) {
-                        RoomListComponent(title: room.title, newItems: room.newIetms)
+                        RoomListComponent(title: room.title, newItems: room.newItems)
                     }
                 }
                 
@@ -40,7 +40,7 @@ struct RoomListView: View {
                 .padding(.vertical, 40)
                 
                 
-
+            
             }
         }
         .toolbar {
@@ -57,7 +57,7 @@ struct RoomListView: View {
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView(myRoom: .constant([Room(id: "", title: "", newIetms: [""], oldItems: [""], members: [""])]))
+        RoomListView(myRoom: .constant([Room(id: "", title: "", newItems: [Item(name: "", desc: "", qty: "", assignedTo: "")], members: [""])]))
             .preferredColorScheme(.dark)
     }
 }

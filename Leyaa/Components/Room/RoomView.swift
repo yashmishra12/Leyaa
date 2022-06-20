@@ -21,33 +21,34 @@ struct RoomView: View {
                     Spacer()
                     }
                 
-                ForEach(roomData.newIetms, id: \.self) { item in
+                ForEach(roomData.newItems, id: \.self) { item in
                     VStack{
                         HStack{
-                            Image(item).resizable().frame(width: 100, height: 100, alignment: .leading).padding(.horizontal, 50)
+                            Image(item.name).resizable().frame(width: 100, height: 100, alignment: .leading)
+                                .shadow(color: .black, radius: 2, x: 0, y: 0)
                             
-                            Text(item).font(.title)
+                            Text(item.name).font(.title)
+                            Spacer()
+                            VStack{
+                                Text("Qty: \(item.qty)").font(.title3)
+                            }.padding(.horizontal, 15)
                         }
                         
+                        Spacer()
+                        
+                        HStack {
+                            Text(item.desc)
+                                .font(.callout)
+                                .multilineTextAlignment(.leading)
+                                .padding()
+                            Spacer()
+                        }
+                        
+                        
                     }
+                    .background(Color("MediumBlue"))
                 }
-                    
-                Spacer()
-                
-    //
-    //            AsyncImage(
-    //                url: URL(string: viewModel.userData.profileImageUrl),
-    //              content: { image in
-    //              image
-    //                .resizable()
-    //                .aspectRatio(contentMode: .fit)
-    //            }, placeholder: {
-    //              Color.gray
-    //            })
-    //              .frame(width: 100, height: 100)
-    //              .mask(RoundedRectangle(cornerRadius: 16))
-
-            }.padding(.horizontal, 2)
+            }
         }
     }
 }
@@ -55,7 +56,7 @@ struct RoomView: View {
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(
-            roomData: .constant(Room(id: "", title: "", newIetms: [""], oldItems: [""], members: [""]))
+            roomData: .constant(Room(id: "", title: "", newItems: [Item(name: "", desc: "", qty: "", assignedTo: "")], members: [""]))
         )
     }
 }

@@ -50,10 +50,6 @@ extension ContentView {
                 .ignoresSafeArea()
             }
             
-//            SideMenuView()
-//                .frame(width: 300)
-//                .offset(x: showMenu ? 0 : -300, y: 0)
-//                .background(showMenu ? Color.white : Color.clear)
         }
         .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
@@ -65,11 +61,11 @@ extension ContentView {
 //                            showMenu.toggle()
 //                        }
 //                    } label: {
-////                        KFImage(URL(string: user.profileImageUrl))
-////                            .resizable()
-////                            .scaledToFill()
-////                            .frame(width: 32, height: 32)
-////                            .clipShape(Circle())
+//                        KFImage(URL(string: user.profileImageUrl))
+//                            .resizable()
+//                            .scaledToFill()
+//                            .frame(width: 32, height: 32)
+//                            .clipShape(Circle())
 //                    }
 //                }
 //

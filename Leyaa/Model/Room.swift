@@ -10,7 +10,7 @@ import Foundation
 struct Room: Codable, Identifiable {
     var id: String
     var title: String
-    var newIetms: [String]
-    var oldItems: [String]
+    var newItems: [Item]
     var members: [String]
 }
+

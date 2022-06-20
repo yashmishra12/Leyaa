@@ -26,6 +26,9 @@
 		CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3B82859804C00105C5C /* RoundedShape.swift */; };
 		CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BA285988E600105C5C /* CustomInputField.swift */; };
 		CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */; };
+		CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416B285FC1F6000B3FE7 /* ItemView.swift */; };
+		CCBA417028601E53000B3FE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416F28601E53000B3FE7 /* Item.swift */; };
+		CCBA417228602B8B000B3FE7 /* Camelizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA417128602B8B000B3FE7 /* Camelizer.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
@@ -51,6 +54,9 @@
 		CCB4C3B82859804C00105C5C /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		CCB4C3BA285988E600105C5C /* CustomInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputField.swift; sourceTree = "<group>"; };
 		CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
+		CCBA416B285FC1F6000B3FE7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		CCBA416F28601E53000B3FE7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CCBA417128602B8B000B3FE7 /* Camelizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camelizer.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -121,7 +127,6 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
-				CCFA96BE285A85BD0083D925 /* Service */,
 				CCFA96BB285A7E160083D925 /* Utils */,
 				CCFA96B6285A6B6E0083D925 /* Model */,
 				CCB4C3B028597B6300105C5C /* Components */,
@@ -153,6 +158,7 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CCBA416A285FC1E0000B3FE7 /* Items */,
 				CC9FA7B0285ED38900EF896D /* UI */,
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
 				CC14C73B285AFE5B0077510E /* Room */,
@@ -181,6 +187,14 @@
 			path = Authentitcation;
 			sourceTree = "<group>";
 		};
+		CCBA416A285FC1E0000B3FE7 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				CCBA416B285FC1F6000B3FE7 /* ItemView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
 		CCFA96B5285A68C70083D925 /* InputField */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +208,7 @@
 			children = (
 				CCFA96B7285A6B790083D925 /* User.swift */,
 				CC9FA7AA285E9E9A00EF896D /* Room.swift */,
+				CCBA416F28601E53000B3FE7 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,17 +216,11 @@
 		CCFA96BB285A7E160083D925 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA96BF285A85CA0083D925 /* ImageUploader.swift */,
 				CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */,
+				CCBA417128602B8B000B3FE7 /* Camelizer.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		CCFA96BE285A85BD0083D925 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				CCFA96BF285A85CA0083D925 /* ImageUploader.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,9 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
+				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
 				CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
 				CCFA96B8285A6B790083D925 /* User.swift in Sources */,
@@ -312,6 +323,7 @@
 				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 				CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */,
+				CCBA417228602B8B000B3FE7 /* Camelizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
