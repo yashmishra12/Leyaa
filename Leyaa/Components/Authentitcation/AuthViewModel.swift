@@ -15,11 +15,8 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser: Bool = false
     @Published var rooms = [Room]()
-    @Published var publishedItems = [Item]()
-//    @Published var userPhoto
     
-    var tempNewItem = Item(name: "milk", desc: "", qty: "", assignedTo: "")
-
+    private var db = Firestore.firestore()
     private var tempUserSession: FirebaseAuth.User?
     
     init(){
@@ -37,7 +34,7 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
-
+            
         }
     }
     
@@ -57,7 +54,7 @@ class AuthViewModel: ObservableObject {
                         "fullname": fullname,
                         "uid": user.uid]
             
-//            userData = data
+            //            userData = data
             
             Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                 self.didAuthenticateUser = true
@@ -77,7 +74,7 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
         
     }
-
+    
     
     //MARK: - FETCH USER
     
@@ -88,63 +85,49 @@ class AuthViewModel: ObservableObject {
         guard let uid = tempUserSession?.uid else { return }
         
         ImageUploader.uploadImage(image: image) { profileImageUrl in
-            Firestore.firestore().collection("users")
+            self.db.collection("users")
                 .document(uid)
                 .updateData(["profileImageUrl": profileImageUrl]) { _ in
                     self.userSession = self.tempUserSession
-//                    self.fetchUser()
+                    //                    self.fetchUser()
                 }
         }
     }
-
     
-
- 
+    
+    
+    
     func populateRoomList () {
-
-        DispatchQueue.main.async {
-            Firestore.firestore().collection("rooms")
-                .whereField("members", arrayContains: self.userSession!.uid)
-                .addSnapshotListener { snapshot, error in
-
+        
+        self.db.collection("rooms")
+            .whereField("members", arrayContains: self.userSession!.uid)
+            .addSnapshotListener { snapshot, error in
+                DispatchQueue.main.async {
+                    
                     guard let doc = snapshot?.documents else {
                         print("No Doc Found")
                         return
                     }
                     
-                
-
-                    self.rooms = doc.map({ docSnapshot -> Room in
-                        let data = docSnapshot.data()
-                        let docId = docSnapshot.documentID
-                        let title = data["title"] as? String ?? ""
-                        let mem = data["members"] as? [String] ?? []
-                        let itemDict = data["newItems"] as! [[String:String]]
+                    self.rooms = doc.compactMap { queryDocumentSnapshot in
+                        let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
                         
                         
-                        var arr = [Item]()
+                        switch result {
+                        case .success(let room):
+                            return room
+                            
+                        case .failure( _):
+                            print("Failure")
+                            return nil
+                        }
                         
-                        for dict in itemDict {
-                            // Condition required to check for type safety :)
-                            guard let name = dict["name"],
-                                  let desc = dict["desc"],
-                                  let assignedTo = dict["assignedTo"],
-                                  let qty = dict["qty"]
-                            else {
-                                    print("Problem while converting Dict to Struct")
-                                   continue
-                               }
-                              let object = Item(name: name, desc: desc, qty: qty, assignedTo: assignedTo)
-                               arr.append(object)
-                          }
-                        
-
-                        return Room(id: docId, title: title, newItems: arr, members: mem)
-                    })
-
-            }
-        }
+                    }
+                    
+                }
+                            }
     }
+    
     
 }
 

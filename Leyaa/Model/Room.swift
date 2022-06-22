@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import Firebase
 
 struct Room: Codable, Identifiable {
-    var id: String
+    @DocumentID var id: String?
     var title: String
     var newItems: [Item]
     var members: [String]

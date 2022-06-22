@@ -48,6 +48,12 @@ struct RoomView: View {
                     }
                     .background(Color("MediumBlue"))
                 }
+                
+                NavigationLink {
+                    ItemSearchView()
+                } label: {
+                    Text("Search Item").foregroundColor(.white)
+                }
             }
         }
     }
