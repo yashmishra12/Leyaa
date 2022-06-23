@@ -28,7 +28,7 @@ struct RoomListView: View {
                 
                 VStack {
                     NavigationLink {
-                        RoomCreateView()
+                        RoomCreateView(roomName: "")
                     } label: {
                         Text("Create Room")
                     }.padding(.horizontal, 16)
@@ -48,7 +48,7 @@ struct RoomListView: View {
                 Button {
                     viewModel.signOut()
                 } label: {
-                    Text("Logout")
+                    Text("Logout").foregroundColor(.white)
                 }
             }
         }
