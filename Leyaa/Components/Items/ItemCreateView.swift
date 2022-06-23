@@ -18,13 +18,15 @@ struct ItemCreateView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item", isSecureField: false, text: $name)
-        
-        CustomInputField(imageName: "circle.hexagonpath", placeholderText: "qty", isSecureField: false, text: $qty)
-        
-        CustomInputField(imageName: "circle.hexagonpath", placeholderText: "desc", isSecureField: false, text: $desc)
-        
-        CustomInputField(imageName: "circle.hexagonpath", placeholderText: "assignedTo", isSecureField: false, text: $assignedTo)
+        VStack {
+            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item", isSecureField: false, text: $name)
+            
+            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "qty", isSecureField: false, text: $qty)
+            
+            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "desc", isSecureField: false, text: $desc)
+            
+            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "assignedTo", isSecureField: false, text: $assignedTo)
+        }
         
         
         Button {

@@ -2,13 +2,8 @@
   "colors" : [
     {
       "color" : {
-        "color-space" : "display-p3",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "0.253",
-          "green" : "0.138",
-          "red" : "0.073"
-        }
+        "platform" : "ios",
+        "reference" : "tertiarySystemBackgroundColor"
       },
       "idiom" : "universal"
     },
@@ -20,13 +15,8 @@
         }
       ],
       "color" : {
-        "color-space" : "display-p3",
-        "components" : {
-          "alpha" : "1.000",
-          "blue" : "0.253",
-          "green" : "0.138",
-          "red" : "0.073"
-        }
+        "platform" : "ios",
+        "reference" : "labelColor"
       },
       "idiom" : "universal"
     }

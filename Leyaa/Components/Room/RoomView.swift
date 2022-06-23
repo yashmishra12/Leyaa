@@ -12,17 +12,13 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
+
     
     var body: some View {
        
         ScrollView {
             VStack {
                   
-                HStack{
-                    Text(roomData.title).font(.largeTitle).foregroundColor(.white).multilineTextAlignment(.leading)
-                    
-                    Spacer()
-                    }
                 
                 ForEach($roomData.newItems, id: \.self) { item in
                     VStack{
@@ -54,7 +50,8 @@ struct RoomView: View {
                 }
 
             }
-        }
+        }.navigationTitle(Text(roomData.title)).foregroundColor(.white).multilineTextAlignment(.leading)
+           
     }
 }
 

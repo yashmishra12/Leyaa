@@ -10,7 +10,7 @@ import Firebase
 
 struct User: Identifiable, Decodable {
     @DocumentID var id: String?
-    let username: String
+    let pendingRequests: [String]
     let fullname: String
     let profileImageUrl: String
     let email: String
