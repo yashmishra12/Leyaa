@@ -20,7 +20,6 @@ class AuthViewModel: ObservableObject {
     
     init(){
         self.userSession = Auth.auth().currentUser
-        populateRoomList()
     }
     
     //MARK: - LOGIN
@@ -39,7 +38,7 @@ class AuthViewModel: ObservableObject {
     
   
     //MARK: - Registration
-    func register(withEmail email: String, password: String, fullname: String, username: String) {
+    func register(withEmail email: String, password: String, fullname: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG: Failed to register with error \(error.localizedDescription)")
@@ -50,9 +49,9 @@ class AuthViewModel: ObservableObject {
             self.tempUserSession = user
             
             let data = ["email": email,
-                        "username": username.lowercased(),
+                        "pendingRequests": [],
                         "fullname": fullname,
-                        "uid": user.uid]
+                        "uid": user.uid] as [String : Any]
             
             //            userData = data
             
@@ -71,6 +70,7 @@ class AuthViewModel: ObservableObject {
         userSession = nil
         tempUserSession = nil
         didAuthenticateUser = false
+        rooms = []
         
         // signs user out on server
         try? Auth.auth().signOut()
@@ -97,7 +97,7 @@ class AuthViewModel: ObservableObject {
     func populateRoomList () {
         
         self.db.collection("rooms")
-            .whereField("members", arrayContains: self.userSession!.uid)
+            .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
                 DispatchQueue.main.async {
                     
@@ -139,7 +139,6 @@ class AuthViewModel: ObservableObject {
     func addItem(item: [String : String], roomID: String ){
         do {
             let itemRef =  try db.collection("rooms").document(roomID)
-
 
             itemRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([item])])
 

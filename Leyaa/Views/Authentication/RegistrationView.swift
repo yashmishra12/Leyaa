@@ -40,8 +40,7 @@ struct RegistrationView: View {
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                    CustomInputField(imageName: "person.wave.2", placeholderText: "Full Name", text: $fullname)
-                    CustomInputField(imageName: "person", placeholderText: "Username", text: $username)
+                    CustomInputField(imageName: "person", placeholderText: "Full Name", text: $fullname)
                     CustomInputField(imageName: "key", placeholderText: "Password", isSecureField: true, text: $password)
                     
                     
@@ -55,8 +54,7 @@ struct RegistrationView: View {
                     Button {
                         viewModel.register(withEmail: email,
                                            password: password,
-                                           fullname: fullname,
-                                           username: username)
+                                           fullname: fullname)
                     } label: {
                         Text ("Sign Up")
                             .font (.headline)

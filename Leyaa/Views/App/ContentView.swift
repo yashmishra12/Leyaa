@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var showMenu = false
     @EnvironmentObject var viewModel: AuthViewModel
+
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -17,7 +18,10 @@ struct ContentView: View {
                 if viewModel.userSession == nil {
                     LoginView()
                 } else {
-                    RoomListView(myRoom: $viewModel.rooms)
+                    
+                    RoomListView(myRoom: $viewModel.rooms).onAppear {
+                        viewModel.populateRoomList()
+                    }
                 }
             }
         }
