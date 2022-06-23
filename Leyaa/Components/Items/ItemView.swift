@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct ItemView: View {
+    @Binding var item: Item
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            HStack{
+                Image(item.name).resizable().frame(width: 100, height: 100, alignment: .leading)
+                    .shadow(color: .black, radius: 2, x: 0, y: 0)
+                
+                Text(item.name).font(.title)
+                Spacer()
+                VStack{
+                    Text("Qty: \(item.qty)").font(.title3)
+                }.padding(.horizontal, 15)
+            }
+            
+            Spacer()
+            
+            HStack {
+                Text(item.desc)
+                    .font(.callout)
+                    .multilineTextAlignment(.leading)
+                    .padding()
+                Spacer()
+            }
+        }
     }
 }
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView()
+        ItemView(item: .constant(Item(name: "", desc: "", qty: "", assignedTo: "")))
     }
 }

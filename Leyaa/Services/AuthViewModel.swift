@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//import Firebase
 import Firebase
 
 
@@ -38,6 +37,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+  
     //MARK: - Registration
     func register(withEmail email: String, password: String, fullname: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -63,6 +63,8 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+   
+    
     //MARK: - LOGOUT
     func signOut() {
         // sets user session to nil so we show login view
@@ -76,11 +78,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    //MARK: - FETCH USER
-    
-    
     //MARK: - UPLOAD Profile Image
-    
     func uploadProfileImage(_ image: UIImage) {
         guard let uid = tempUserSession?.uid else { return }
         
@@ -94,9 +92,8 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    
-    
-    
+
+    //MARK: - Poppulate Room List
     func populateRoomList () {
         
         self.db.collection("rooms")
@@ -112,7 +109,6 @@ class AuthViewModel: ObservableObject {
                     self.rooms = doc.compactMap { queryDocumentSnapshot in
                         let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
                         
-                        
                         switch result {
                         case .success(let room):
                             return room
@@ -121,13 +117,36 @@ class AuthViewModel: ObservableObject {
                             print("Failure")
                             return nil
                         }
-                        
                     }
-                    
                 }
-                            }
+            }
+        }
+    
+    
+    //MARK: - Add Room
+    
+    func addRoom(room: Room) {
+      do {
+        let _ = try db.collection("rooms").addDocument(from: room)
+      }
+      catch {
+        print(error)
+      }
     }
     
+    //MARK: - Add Item
+    
+    func addItem(item: [String : String], roomID: String ){
+        do {
+            let itemRef =  try db.collection("rooms").document(roomID)
+
+
+            itemRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([item])])
+
+        } catch {
+            print(error)
+        }
+    }
     
 }
 

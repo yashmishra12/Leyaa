@@ -19,7 +19,7 @@ struct RoomListComponent: View {
             
             VStack(alignment: .leading) {
                
-                Spacer()
+               
                 HStack {
                     Text(title).font(.largeTitle)
                         .fontWeight(.bold)
@@ -29,6 +29,7 @@ struct RoomListComponent: View {
                     
                     Spacer()
                 }
+                Spacer()
                 
                 HStack{
                     if(newItems.count>5) {
