@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07DB882865644B0000265C /* SanitizeItemName.swift */; };
+		CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */; };
+		CC54100A286589060026CA76 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC541009286589060026CA76 /* RoomRequest.swift */; };
 		CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */; };
 		CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15502859A00300C29C45 /* FirebaseAuth */; };
 		CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15522859A00300C29C45 /* FirebaseFirestore */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
+		CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomJoinRequestView.swift; sourceTree = "<group>"; };
+		CC541009286589060026CA76 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
 		CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateView.swift; sourceTree = "<group>"; };
 		CC9FA7A8285E9D7C00EF896D /* RoomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListView.swift; sourceTree = "<group>"; };
@@ -89,10 +93,17 @@
 			children = (
 				CCFA96B1285A61130083D925 /* RoomListComponent.swift */,
 				CC9FA7A8285E9D7C00EF896D /* RoomListView.swift */,
-				CC9FA7AC285EB90800EF896D /* RoomView.swift */,
-				CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */,
 			);
 			path = Room;
+			sourceTree = "<group>";
+		};
+		CC54100628657CDF0026CA76 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */,
+				CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */,
+			);
+			path = Create;
 			sourceTree = "<group>";
 		};
 		CC6013142863199200535994 /* Services */ = {
@@ -109,6 +120,9 @@
 			children = (
 				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
 				CCB4C3A328597A3200105C5C /* ContentView.swift */,
+				CC9FA7AC285EB90800EF896D /* RoomView.swift */,
+				CC54100628657CDF0026CA76 /* Create */,
+				CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -205,7 +219,6 @@
 			children = (
 				CCBA416B285FC1F6000B3FE7 /* ItemView.swift */,
 				CCC655ED28605B24005D7D93 /* ItemSearchView.swift */,
-				CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -224,6 +237,7 @@
 				CCFA96B7285A6B790083D925 /* User.swift */,
 				CC9FA7AA285E9E9A00EF896D /* Room.swift */,
 				CCBA416F28601E53000B3FE7 /* Item.swift */,
+				CC541009286589060026CA76 /* RoomRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +344,7 @@
 				CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */,
 				CC9FA7BA285ED44F00EF896D /* CreateButtonView.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
+				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
 				CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */,
 				CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */,
 				CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */,
@@ -338,6 +353,7 @@
 				CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */,
 				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
+				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 				CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */,
 			);
