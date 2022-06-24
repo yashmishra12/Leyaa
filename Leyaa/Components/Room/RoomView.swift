@@ -12,7 +12,6 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
-
     
     var body: some View {
        
@@ -28,33 +27,39 @@ struct RoomView: View {
                     .onTapGesture {
                         viewModel.deleteItem(del: item.wrappedValue, roomID: roomData.id ?? "")
                     }
-                   
                 }
                 
               
                 
-                VStack{
-                    Spacer()
+                HStack{
+           
                     NavigationLink {
                         ItemSearchView()
                     } label: {
-                        Text("Search Item")
-                            .foregroundColor(.white)
-                            
-                    }.background()
+                        Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                    }.padding()
+                    
+                    Spacer()
                     
                     NavigationLink {
-                        
-                        ItemCreateView(name: "", qty: "", desc: "", assignedTo: "",
-                                       roomData: $roomData)
-                        
+                        ItemCreateView(name: "", qty: "", desc: "", assignedTo: "", roomData: $roomData)
                     } label: {
-                        Text("Add Item").foregroundColor(.white)
-                    }
+                        Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                    }.padding()
                 }
 
             }
-        }.navigationTitle(Text(roomData.title)).foregroundColor(.white).multilineTextAlignment(.leading)
+        }.navigationTitle(Text(roomData.title)).foregroundColor(.white)
+            .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                print("Envelope")
+                            } label: {
+                                Image(systemName: "envelope.arrow.triangle.branch.fill").resizable().foregroundColor(.white)
+                            }
+
+                        }
+                    }
            
     }
 }
