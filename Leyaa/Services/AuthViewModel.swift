@@ -173,23 +173,6 @@ class AuthViewModel: ObservableObject {
     }
         
         
-//
-//        let newItem = [String:String].self
-//        let newItemArray = [newItem]
-//
-//        ForEach(allItems, id: \.self){ item in
-//            if item.id != idToDelete {
-//                newItem["assignedTo"] = item["assignedTo"]
-//                newItem["desc"] = item["desc"]
-//                newItem["id"] = item["id"]
-//                newItem["name"] = item["name"]
-//                newItem["qty"] = item["qty"]
-//
-//                newItemArray.append(newItem)
-//            }
-        
-        
-        
     }
     
 
