@@ -19,9 +19,24 @@ struct ContentView: View {
                     LoginView()
                 } else {
                     
-                    RoomListView(myRoom: $viewModel.rooms).onAppear {
-                        viewModel.populateRoomList()
+                    TabView{
+                        RoomListView(myRoom: $viewModel.rooms).onAppear {
+                            viewModel.populateRoomList()
+                            viewModel.roomJoinRequestUpdate()
+                        }.tabItem {Label("Rooms", systemImage: "house.fill")}
+
+                       ProfilePhotoSelectorView()
+                           .tabItem {
+                               Label("Settings", systemImage: "gear")
+                           }
+                        
+                        RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {
+                            Label("Room Join Requset", systemImage: "bell.square.fill")
+                        }
+                        .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
+//                        .badge(viewModel.userSession. > 0 ? "\(count) stars" : nil)
                     }
+                
                 }
             }
         }

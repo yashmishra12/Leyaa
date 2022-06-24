@@ -20,7 +20,6 @@ var body: some Scene {
         WindowGroup {
             NavigationView {
                 ContentView()
-//                ProfilePhotoSelectorView()
             }
             .environmentObject(viewModel)
         }

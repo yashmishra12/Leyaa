@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser: Bool = false
     @Published var rooms = [Room]()
+    @Published var pendingReqest = [RoomRequest]()
     
     private var db = Firestore.firestore()
     private var tempUserSession: FirebaseAuth.User?
@@ -53,7 +54,6 @@ class AuthViewModel: ObservableObject {
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
             
-            //            userData = data
             
             Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                 self.didAuthenticateUser = true
@@ -93,35 +93,6 @@ class AuthViewModel: ObservableObject {
     }
     
 
-    //MARK: - Poppulate Room List
-    func populateRoomList () {
-        
-        self.db.collection("rooms")
-            .whereField("members", arrayContains: self.userSession?.uid as Any)
-            .addSnapshotListener { snapshot, error in
-                DispatchQueue.main.async {
-                    
-                    guard let doc = snapshot?.documents else {
-                        print("No Doc Found")
-                        return
-                    }
-                    
-                    self.rooms = doc.compactMap { queryDocumentSnapshot in
-                        let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
-                        
-                        switch result {
-                        case .success(let room):
-                            return room
-                            
-                        case .failure( _):
-                            print("Failure")
-                            return nil
-                        }
-                    }
-                }
-            }
-        }
-    
     
     //MARK: - Add Room
     
@@ -171,7 +142,75 @@ class AuthViewModel: ObservableObject {
             
         }
     }
+    
+    
+    //MARK: - Poppulate Room List
+    func populateRoomList () {
+ 
+        self.db.collection("rooms")
+            .whereField("members", arrayContains: self.userSession?.uid as Any)
+            .addSnapshotListener { snapshot, error in
+                DispatchQueue.main.async {
+                    
+                    guard let doc = snapshot?.documents else {
+                        print("No Doc Found")
+                        return
+                    }
+                    
+                    self.rooms = doc.compactMap { queryDocumentSnapshot in
+                        let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
+                        
+                        switch result {
+                        case .success(let room):
+                            return room
+                            
+                        case .failure( _):
+                            print("Failure")
+                            return nil
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+    //MARK: - Room Join Request
+    
+    func roomJoinRequestUpdate() {
+        print(self.userSession?.email ?? "default")
+        self.db.collection("roomRequest")
+            .whereField("receiverEmail", isEqualTo: self.userSession?.email as Any)
+            .addSnapshotListener { snapshot, error in
+                DispatchQueue.main.async {
+                    
+                    guard let doc = snapshot?.documents else {
+                        print("No Doc Found")
+                        return
+                    }
+                    
+                    self.pendingReqest = doc.compactMap { queryDocumentSnapshot in
+                        let result = Result { try queryDocumentSnapshot.data(as: RoomRequest.self) }
+                        
+                        switch result {
+                        case .success(let room):
+                            return room
+                            
+                        case .failure( _):
+                            print("Failure")
+                            return nil
+                        }
+                    }
+                }
+            }
         
+        
+
+    }
+  
+    func criticalFunc() {
+        populateRoomList()
+        roomJoinRequestUpdate()
+        }
         
     }
     
