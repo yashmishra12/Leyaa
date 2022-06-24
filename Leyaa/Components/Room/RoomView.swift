@@ -18,7 +18,7 @@ struct RoomView: View {
         ScrollView {
             VStack {
                   
-                
+              
                 ForEach($roomData.newItems, id: \.self) { item in
                     VStack{
                         ItemView(item: item)

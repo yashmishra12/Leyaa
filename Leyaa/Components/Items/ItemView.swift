@@ -12,10 +12,10 @@ struct ItemView: View {
     var body: some View {
         VStack{
             HStack{
-                Image(item.name).resizable().frame(width: 100, height: 100, alignment: .leading)
+                Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
                     .shadow(color: .black, radius: 2, x: 0, y: 0)
                 
-                Text(item.name).font(.title)
+                Text(item.name.capitalized).font(.title)
                 Spacer()
                 VStack{
                     Text("Qty: \(item.qty)").font(.title3)

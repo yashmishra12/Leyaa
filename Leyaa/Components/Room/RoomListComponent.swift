@@ -21,7 +21,7 @@ struct RoomListComponent: View {
                
                
                 HStack {
-                    Text(title).font(.largeTitle)
+                    Text(title.capitalized).font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
@@ -34,23 +34,23 @@ struct RoomListComponent: View {
                 HStack{
                     if(newItems.count>5) {
                             
-                        Image(newItems[0].name).resizable()
+                        Image(newItems[0].name.sanitiseItemName()).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[1].name).resizable()
+                        Image(newItems[1].name.sanitiseItemName()).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[2].name).resizable()
+                        Image(newItems[2].name.sanitiseItemName()).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[3].name).resizable()
+                        Image(newItems[3].name.sanitiseItemName()).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
                         
-                        Image(newItems[4].name).resizable()
+                        Image(newItems[4].name.sanitiseItemName()).resizable()
                             .scaledToFit()
                             .frame(width: 60, height: 60, alignment: .leading)
 
@@ -60,7 +60,7 @@ struct RoomListComponent: View {
                         
                     } else {
                         ForEach(newItems, id: \.self) { item in
-                            Image(item.name).resizable()
+                            Image(item.name.sanitiseItemName()).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
                         }
