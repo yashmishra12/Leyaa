@@ -147,5 +147,50 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-}
+    //MARK: - Delete Item
+    
+    func deleteItem(del: Item, roomID: String) {
+       
+        do {
+            let itemDel: [String: Any] = [
+                "id": del.id,
+                "name": del.name,
+                "desc": del.desc,
+                "qty": del.qty,
+                "assignedTo": del.assignedTo
+            ]
+
+            let docRef = db.collection("rooms").document(roomID)
+
+            docRef.updateData([
+                "newItems" : FieldValue.arrayRemove([itemDel])
+            ])
+        }
+        catch {
+            print(error)
+            
+        }
+    }
+        
+        
+//
+//        let newItem = [String:String].self
+//        let newItemArray = [newItem]
+//
+//        ForEach(allItems, id: \.self){ item in
+//            if item.id != idToDelete {
+//                newItem["assignedTo"] = item["assignedTo"]
+//                newItem["desc"] = item["desc"]
+//                newItem["id"] = item["id"]
+//                newItem["name"] = item["name"]
+//                newItem["qty"] = item["qty"]
+//
+//                newItemArray.append(newItem)
+//            }
+        
+        
+        
+    }
+    
+
 

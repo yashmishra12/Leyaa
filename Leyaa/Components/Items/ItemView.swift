@@ -37,6 +37,6 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(item: .constant(Item(name: "", desc: "", qty: "", assignedTo: "")))
+        ItemView(item: .constant(Item(id: "", name: "", desc: "", qty: "", assignedTo: "")))
     }
 }

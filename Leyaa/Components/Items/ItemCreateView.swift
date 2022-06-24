@@ -30,7 +30,7 @@ struct ItemCreateView: View {
         
         
         Button {
-            let item = ["name": name, "desc": desc, "qty": qty, "assignedTo": assignedTo]
+            let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty, "assignedTo": assignedTo]
             viewModel.addItem(item: item, roomID: roomData.id ?? "")
             
             presentationMode.wrappedValue.dismiss()
@@ -44,6 +44,6 @@ struct ItemCreateView: View {
 struct ItemCreateView_Previews: PreviewProvider {
     static var previews: some View {
         ItemCreateView(name: "", qty: "", desc: "", assignedTo: "",
-                       roomData: .constant(Room(id: "", title: "", newItems: [Item(name: "", desc: "", qty: "", assignedTo: "")], members: [""])))
+                       roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "", assignedTo: "")], members: [""])))
     }
 }
