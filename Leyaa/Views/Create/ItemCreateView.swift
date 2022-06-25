@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ItemCreateView: View {
     @State var name: String
-    @State var qty: String = "1"
+    @State var qty: String 
     @State var desc: String
     @State var assignedTo: String
     @Binding var roomData: Room

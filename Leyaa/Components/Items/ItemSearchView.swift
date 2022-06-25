@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ItemSearchView: View {
-    let names = ["milk", "bread", "apple", "carrot", "egg", "cheese"].sorted()
+    let names = ["Milk", "Bread", "Apple", "Carrot", "Egg", "Cheese", "Pineapple", "Condom", "Coffee"].sorted()
     @State private var searchText = ""
 
     var body: some View {
         ZStack{
-            NavigationView {
                 List {
                     ForEach(searchResults, id: \.self) { name in
                         NavigationLink(destination: Text(name)) {
@@ -27,7 +26,7 @@ struct ItemSearchView: View {
                     }
                 }
                 .navigationTitle("Items")
-            }
+            
         }
     }
 

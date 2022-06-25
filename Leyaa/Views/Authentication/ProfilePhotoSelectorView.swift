@@ -16,7 +16,8 @@ struct ProfilePhotoSelectorView: View {
     var body: some View {
         VStack{
             AuthHeaderView(title1: "Photo.", title2: "Add a Profile Photo.")
-            
+           
+ 
             //MARK: - PROFILE IMAGE BUTTON
             VStack{
                 Button {
@@ -59,7 +60,7 @@ struct ProfilePhotoSelectorView: View {
             
         }
         .ignoresSafeArea()
-        .navigationBarHidden(true)
+
     }
     
     func loadImage() {

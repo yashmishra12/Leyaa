@@ -18,9 +18,7 @@ struct LeyaaApp: App {
     
 var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ContentView()
-            }
+            ContentView()
             .environmentObject(viewModel)
         }
     }

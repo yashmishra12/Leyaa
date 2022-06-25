@@ -13,40 +13,48 @@ struct RoomListView: View {
     @Binding var myRoom: [Room]
     
     var body: some View {
-
-        ScrollView{
-            VStack{
-                ForEach($myRoom) { room in
-                    NavigationLink(destination: RoomView(roomData: room)) {
-                        RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
+        
+        NavigationView {
+            ScrollView {
+                VStack{
+                    VStack{
+                        ForEach($myRoom) { room in
+                            NavigationLink(destination: RoomView(roomData: room)) {
+                                RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
+                            }
+                        }
+                        
+                        
+                        Spacer()
+                        
+                        
+                        NavigationLink {
+                            RoomCreateView(roomName: "")
+                        } label: {
+                            Text("Create Room")
+                        }.padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .foregroundColor(.white)
+                            .background(Color("MediumBlue"))
+                            .clipShape(Capsule())
+                        
                     }
                 }
                 
                 
-                Spacer()
-                
-    
-                    NavigationLink {
-                        RoomCreateView(roomName: "")
-                    } label: {
-                        Text("Create Room")
-                    }.padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .foregroundColor(.white)
-                        .background(Color("MediumBlue"))
-                        .clipShape(Capsule())
-
             }
-        }
-        .toolbar {
-            ToolbarItem(placement: .automatic) {
-                Button {
-                    viewModel.signOut()
-                } label: {
-                    Text("Logout").foregroundColor(.white)
+            .navigationTitle("Rooms")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button { viewModel.signOut() }
+                label: { Text("Logout").foregroundColor(.white) }
                 }
             }
+            
         }
+        
+        
+        
     }
 }
 

@@ -12,6 +12,7 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
+ 
     
     var body: some View {
        
@@ -21,15 +22,17 @@ struct RoomView: View {
               
                 ForEach($roomData.newItems, id: \.self) { item in
                     VStack{
-                        ItemView(item: item)
+                        ItemView(item: item, roomData: $roomData)
+                        
                     }
-                    .background(Color("MediumBlue"))
-                    .onTapGesture {
-                        viewModel.deleteItem(del: item.wrappedValue, roomID: roomData.id ?? "")
-                    }
+                   
+                  
+//                    
+//                    .onTapGesture {
+//                        viewModel.deleteItem(del: item.wrappedValue, roomID: roomData.id ?? "")
+//                    }
                 }
-                
-              
+ 
                 
                 HStack{
            
