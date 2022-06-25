@@ -12,17 +12,19 @@ struct RoomJoinRequestView: View {
     @Binding var roomRequest: [RoomRequest]
     
     var body: some View {
-        VStack{
-            VStack{
-                ForEach(roomRequest, id: \.self) { req in
-                    Text(req.roomName).foregroundColor(.white)
+        NavigationView{
+            ScrollView {
+                VStack{
+                    VStack{
+                        ForEach($roomRequest, id: \.self) { req in
+                            RoomRequestComponentView(reqData: req)
+                        }
+                    }
+                    
+                    Spacer()
+
                 }
-            }
-            
-            Spacer()
-            
-
-
+            }.navigationTitle("Room Request")
         }
     }
 }

@@ -23,7 +23,7 @@ extension String {
 
 
     func sanitiseItemName() -> String {
-        let assetList = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread"]
+        let assetList = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado"]
    
         let itName = self.lowercased()
         if assetList.contains(itName) {

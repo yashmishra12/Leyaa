@@ -124,7 +124,7 @@ class AuthViewModel: ObservableObject {
        
         do {
             let itemDel: [String: Any] = [
-                "id": del.id,
+                "id": del.id ?? "",
                 "name": del.name,
                 "desc": del.desc,
                 "qty": del.qty,
@@ -165,7 +165,7 @@ class AuthViewModel: ObservableObject {
                             return room
                             
                         case .failure( _):
-                            print("Failure")
+                            print("Failure Room Populate")
                             return nil
                         }
                     }
@@ -177,7 +177,6 @@ class AuthViewModel: ObservableObject {
     //MARK: - Room Join Request
     
     func roomJoinRequestUpdate() {
-        print(self.userSession?.email ?? "default")
         self.db.collection("roomRequest")
             .whereField("receiverEmail", isEqualTo: self.userSession?.email as Any)
             .addSnapshotListener { snapshot, error in
@@ -196,7 +195,7 @@ class AuthViewModel: ObservableObject {
                             return room
                             
                         case .failure( _):
-                            print("Failure")
+                            print("Failure Room Join Request")
                             return nil
                         }
                     }

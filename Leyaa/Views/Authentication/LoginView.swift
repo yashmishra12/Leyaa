@@ -11,12 +11,9 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
-
-    
     
     var body: some View {
         
-        NavigationView {
             
             ZStack {
                 
@@ -110,7 +107,7 @@ struct LoginView: View {
             .ignoresSafeArea()
             .navigationBarHidden(true)
             .background(Color("DarkBlue"))
-        }
+        
         
             
     }

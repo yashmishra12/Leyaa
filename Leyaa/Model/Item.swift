@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import Firebase
 
-struct Item: Codable, Hashable {
+struct Item: Codable, Hashable, Identifiable {
+    
     var id: String
     var name: String
     var desc: String

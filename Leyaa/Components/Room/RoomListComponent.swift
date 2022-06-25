@@ -58,7 +58,8 @@ struct RoomListComponent: View {
                             .scaledToFit()
                             .frame(width: 30, height: 30, alignment: .leading)
                         
-                    } else {
+                    }
+                    else {
                         ForEach(newItems, id: \.self) { item in
                             Image(item.name.sanitiseItemName()).resizable()
                                 .scaledToFit()

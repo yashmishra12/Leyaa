@@ -9,7 +9,6 @@ import Foundation
 
 struct RoomRequest: Codable, Hashable {
     var message: String?
-//    var receiverID: String
     var roomID: String
     var roomName: String
     var senderID: String
