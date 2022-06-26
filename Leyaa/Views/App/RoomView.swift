@@ -39,7 +39,7 @@ struct RoomView: View {
                     Spacer()
                     
                     NavigationLink {
-                        ItemCreateView(name: "", qty: "", desc: "", assignedTo: "", roomData: $roomData)
+                        ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
                     } label: {
                         Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
                     }.padding()
@@ -92,7 +92,7 @@ struct RoomView: View {
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(
-            roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "", assignedTo: "")], members: [""]))
+            roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""]))
         )
     }
 }

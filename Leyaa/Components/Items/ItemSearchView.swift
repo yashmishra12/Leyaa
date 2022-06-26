@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemSearchView: View {
-    let names = ["Milk", "Bread", "Apple", "Carrot", "Egg", "Cheese", "Pineapple", "Condom", "Coffee"].sorted()
+    let names = assetName.sorted()
     @State private var searchText = ""
 
     var body: some View {

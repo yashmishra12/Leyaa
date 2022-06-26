@@ -8,6 +8,11 @@
 import Foundation
 
 extension String {
+    
+    var stripped: String {
+        let okayChars = Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+        return self.filter {okayChars.contains($0) }
+    }
 
     subscript(_ range: CountableRange<Int>) -> String {
            let start = index(startIndex, offsetBy: max(0, range.lowerBound))
@@ -23,10 +28,10 @@ extension String {
 
 
     func sanitiseItemName() -> String {
-        let assetList = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado"]
+        let assetList = assetName
    
-        let itName = self.lowercased()
-        let trimmedStr = itName.trimmingCharacters(in: .whitespaces)
+        let itName = self.lowercased().stripped
+        let trimmedStr = itName.filter {!$0.isWhitespace}
         
         if assetList.contains(trimmedStr) {
             return trimmedStr

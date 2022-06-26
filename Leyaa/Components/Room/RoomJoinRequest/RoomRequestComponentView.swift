@@ -9,6 +9,9 @@ import SwiftUI
 
 struct RoomRequestComponentView: View {
     @Binding var reqData: RoomRequest
+    @State private var rejectingRequest: Bool = false
+    @State private var acceptingRequest: Bool = false
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -37,21 +40,42 @@ struct RoomRequestComponentView: View {
   
             
             HStack{
-                Button {
-                    print("rejected")
-                } label: {
-                    Image(systemName: "minus.rectangle.fill").resizable().frame(width: 40, height: 40).tint(.red)
-                }.padding(.horizontal, 50)
-                    .padding(.vertical, 10)
+                 
+                // REJECT ROOM JOIN REQUEST
+                Button(action: {
+                    rejectingRequest = true
+                }, label: {
+                    Image(systemName:"minus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.red)
+                })
+                .confirmationDialog("Are you sure?",
+                  isPresented: $rejectingRequest) {
+                  Button("Leave Room", role: .destructive) {
+                      viewModel.rejectRoomRequest(reqData: reqData)
+                      
+                  }
+                } message: {
+                  Text("One of the group members will have to add you back")
+                }
+                
                 
                 Spacer()
-                Button {
-                    print("accepted")
-                } label: {
-                    Image(systemName: "plus.rectangle.fill").resizable().frame(width: 40, height: 40).tint(.green)
-                }.padding(.horizontal, 50)
-                    .padding(.vertical, 10)
-
+                
+                
+                Button(action: {
+                    acceptingRequest = true
+                }, label: {
+                    Image(systemName:"plus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.green)
+                })
+                .confirmationDialog("Are you sure?",
+                  isPresented: $acceptingRequest) {
+                    Button("Accept", role: .none) {
+                      viewModel.acceptRoomRequest(reqData: reqData)
+                  }
+                } message: {
+                  Text("Make sure not to accept strange request")
+                }
+                
+                
             }
         }.background(Color("MediumBlue"))
             

@@ -15,5 +15,4 @@ struct Item: Codable, Hashable, Identifiable {
     var name: String
     var desc: String
     var qty: String
-    var assignedTo: String
 }

@@ -11,7 +11,7 @@ struct ItemCreateView: View {
     @State var name: String
     @State var qty: String 
     @State var desc: String
-    @State var assignedTo: String
+
     @Binding var roomData: Room
     
     @EnvironmentObject var viewModel: AuthViewModel
@@ -25,12 +25,11 @@ struct ItemCreateView: View {
             
             CustomInputField(imageName: "circle.hexagonpath", placeholderText: "desc", isSecureField: false, text: $desc)
             
-            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "assignedTo", isSecureField: false, text: $assignedTo)
         }
         
         
         Button {
-            let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty, "assignedTo": assignedTo]
+            let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
             viewModel.addItem(item: item, roomID: roomData.id ?? "")
             
             presentationMode.wrappedValue.dismiss()
@@ -43,7 +42,7 @@ struct ItemCreateView: View {
 
 struct ItemCreateView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemCreateView(name: "", qty: "", desc: "", assignedTo: "",
-                       roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "", assignedTo: "")], members: [""])))
+        ItemCreateView(name: "", qty: "", desc: "",
+                       roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""])))
     }
 }
