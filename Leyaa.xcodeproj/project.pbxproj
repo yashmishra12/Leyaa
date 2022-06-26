@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07DB882865644B0000265C /* SanitizeItemName.swift */; };
+		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */; };
 		CC54100A286589060026CA76 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC541009286589060026CA76 /* RoomRequest.swift */; };
 		CC6B512E2867B94C00531303 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC6B512D2867B94C00531303 /* Launch Screen.storyboard */; };
@@ -92,6 +93,7 @@
 			files = (
 				CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */,
 				CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */,
+				CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */,
 				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
 				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -298,6 +300,7 @@
 				CC6E15522859A00300C29C45 /* FirebaseFirestore */,
 				CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */,
 				CC6E15562859A00300C29C45 /* FirebaseStorage */,
+				CC20BAA12869114B0071B7A6 /* Focuser */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -329,6 +332,7 @@
 			mainGroup = CCB4C39528597A3200105C5C;
 			packageReferences = (
 				CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -594,6 +598,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:art-technologies/swift-focuser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -605,6 +617,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CC20BAA12869114B0071B7A6 /* Focuser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */;
+			productName = Focuser;
+		};
 		CC6E15502859A00300C29C45 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
