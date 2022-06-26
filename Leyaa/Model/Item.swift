@@ -11,7 +11,7 @@ import Firebase
 
 struct Item: Codable, Hashable, Identifiable {
     
-    var id: String
+    var id: String = UUID().uuidString
     var name: String
     var desc: String
     var qty: String

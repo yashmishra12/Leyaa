@@ -12,7 +12,7 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
- 
+    @State private var leavingRoom: Bool = false
     
     var body: some View {
        
@@ -20,17 +20,12 @@ struct RoomView: View {
             VStack {
                   
               
-                ForEach($roomData.newItems, id: \.self) { item in
+                ForEach($roomData.newItems) { item in
                     VStack{
                         ItemView(item: item, roomData: $roomData)
                         
                     }
                    
-                  
-//                    
-//                    .onTapGesture {
-//                        viewModel.deleteItem(del: item.wrappedValue, roomID: roomData.id ?? "")
-//                    }
                 }
  
                 
@@ -54,11 +49,29 @@ struct RoomView: View {
             }
         }.navigationTitle(Text(roomData.title)).foregroundColor(.white)
             .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        print("Envelope")
+                    } label: {
+                        Image(systemName: "envelope.arrow.triangle.branch.fill").resizable().foregroundColor(.white)
+                    }
+
+                }
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                print("Envelope")
-                            } label: {
-                                Image(systemName: "envelope.arrow.triangle.branch.fill").resizable().foregroundColor(.white)
+
+                            Button(action: {
+                                leavingRoom = true
+                            }, label: {
+                                Image(systemName: "x.square.fill").resizable().foregroundColor(.white)
+                            })
+                            .confirmationDialog("Are you sure?",
+                              isPresented: $leavingRoom) {
+                              Button("Leave Room", role: .destructive) {
+                                  viewModel.leaveRoom(roomData: roomData)
+                                  
+                              }
+                            } message: {
+                              Text("One of the group members will have to add you back")
                             }
 
                         }

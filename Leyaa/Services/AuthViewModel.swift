@@ -108,39 +108,36 @@ class AuthViewModel: ObservableObject {
     //MARK: - Add Item
     
     func addItem(item: [String : String], roomID: String ){
-        do {
-            let itemRef =  try db.collection("rooms").document(roomID)
 
-            itemRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([item])])
+            db.collection("rooms").document(roomID).updateData(
+                ["newItems" : Firebase.FieldValue.arrayUnion([item])]
+            ){ err in
+                if let err = err {
+                    print("Error in adding item: \(err)")
+                }
+            }
 
-        } catch {
-            print(error)
-        }
     }
     
     //MARK: - Delete Item
     
     func deleteItem(del: Item, roomID: String) {
        
-        do {
             let itemDel: [String: Any] = [
-                "id": del.id ?? "",
+                "id": del.id,
                 "name": del.name,
                 "desc": del.desc,
                 "qty": del.qty,
                 "assignedTo": del.assignedTo
             ]
 
-            let docRef = db.collection("rooms").document(roomID)
-
-            docRef.updateData([
-                "newItems" : FieldValue.arrayRemove([itemDel])
-            ])
-        }
-        catch {
-            print(error)
-            
-        }
+//        print("ITEM DELETED: \(itemDel)")
+     db.collection("rooms").document(roomID).updateData([
+                "newItems" : FieldValue.arrayRemove([itemDel]) ]){ err in
+                    if let err = err {
+                        print("Error in delete item: \(err)")
+                    }
+                }
     }
     
     
@@ -173,6 +170,37 @@ class AuthViewModel: ObservableObject {
             }
         }
     
+    //MARK: - Leave Room
+    
+    func leaveRoom(roomData: Room) {
+        let docRef =  db.collection("rooms").document(roomData.id ?? "")
+       
+        docRef.updateData([
+            "members" : FieldValue.arrayRemove([userSession?.uid ?? ""])
+        ]){ err in
+            if let err = err {
+                print("Error in delete item: \(err)")
+            }
+        }
+        
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let property = document.get("members") as! [String]
+                if property.count == 0 {
+                    self.db.collection("rooms").document(roomData.id ?? "").delete()
+                }
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+            
+        
+        
+    }
+  
+    
     
     //MARK: - Room Join Request
     
@@ -201,11 +229,12 @@ class AuthViewModel: ObservableObject {
                     }
                 }
             }
-        
-        
-
     }
-  
+    
+    
+
+    //MARK: - CRITICAL FUNCTION
+    
     func criticalFunc() {
         populateRoomList()
         roomJoinRequestUpdate()
