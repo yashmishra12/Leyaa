@@ -21,15 +21,15 @@ struct RoomListComponent: View {
                
                
                 HStack {
-                    Text(title.capitalized).font(.largeTitle)
+                    Text(title.capitalized).font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.leading)
-                        .padding()
+                        .padding(.horizontal, 5)
                     
                     Spacer()
                 }
-                Spacer()
+
                 
                 HStack{
                     if(newItems.count>5) {
@@ -74,16 +74,16 @@ struct RoomListComponent: View {
             
             
         }
-        .frame(height: 150)
-        .padding(.horizontal, 2)
-        .padding(.vertical, 2)
+        .frame(height: 100)
+        .padding(.horizontal, 1)
+        .padding(.vertical, 1)
         
     }
 }
 
 struct RoomListComponent_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListComponent( title: .constant("Title"), newItems: .constant([]))
+        RoomListComponent( title: .constant("Avent Ferry"), newItems: .constant([Item(id: "213123asd", name: "Coffee", desc: "Coffee is nice", qty: "200gm")]))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -13,18 +13,23 @@ struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var leavingRoom: Bool = false
+
+    
+    var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-       
+
         ScrollView {
-            VStack {
+            VStack  {
                   
               
-                ForEach($roomData.newItems) { item in
-                    VStack{
-                        ItemView(item: item, roomData: $roomData)
+                LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
+                    ForEach($roomData.newItems) { item in
+                        VStack{
+                            ItemView(item: item, roomData: $roomData)
+                        }
+                       
                     }
-                   
                 }
  
                 
@@ -92,7 +97,7 @@ struct RoomView: View {
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(
-            roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""]))
+            roomData: .constant(Room(id: "2dsasdasd", title: "Avent Ferry", newItems: [Item(id: "22020", name: "Coffee", desc: "Coffee is nice", qty: "200gm")], members: ["asdas", "bbasdasd"]))
         )
     }
 }
