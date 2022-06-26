@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct ItemView: View {
+    
+    @State var offset: CGSize = .zero
+    @State var triggerOffset = UIScreen.main.bounds.width / 4
+    
     @Binding var item: Item
-//    @State var offset: CGSize = .zero
-//    @State var triggerOffset = UIScreen.main.bounds.width / 2
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var isShowing: Bool = true
+    
+
     
     var body: some View {
   
         if isShowing {
             ZStack {
-    //            HStack{
-    //                if offset.width>0 {
-    //                    Color(uiColor: UIColor(red: 0.42, green: 0.70, blue: 0.42, alpha: 1.00))
-    //                }
-    //                if offset.width<0 {
-    //                    Color(uiColor: UIColor(red: 1.00, green: 0.37, blue: 0.31, alpha: 1.00))
-    //                }
-    //            }
+                HStack{
+                  
+                    NavigationLink{
+                        
+                        ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "" )
+                    } label: {
+                        ZStack {
+                            Color(uiColor: UIColor(red: 0.42, green: 0.70, blue: 0.42, alpha: 1.00))
+                        }
+                    }
+
+                }
                 
                 VStack{
                     HStack{
@@ -56,36 +64,37 @@ struct ItemView: View {
                 .padding(.vertical, 1)
                 .background(Color("MediumBlue"))
                 .onTapGesture {
-                    withAnimation (.easeOut(duration: 0.3)) {
-                        isShowing.toggle()
+                    if (offset.width != 0 ) {
+                        withAnimation(.easeIn) {
+                            offset.width = 0
+                        }
                     }
-                    DispatchQueue.main.async {
-                        viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
+                    else {
+                        withAnimation (.easeOut(duration: 0.3)) {
+                            isShowing.toggle()
+                        }
+                        DispatchQueue.main.async {
+                            viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
+                        }
                     }
                 }
-                .onLongPressGesture(minimumDuration: 1) {
-                    print("YAYAYAYAYYA")
-                }
-    //            .offset(CGSize(width: offset.width, height: 0))
-    //                .gesture(DragGesture()
-    //                    .onChanged{ value in
-    //                        withAnimation(.linear) {
-    //                            offset = value.translation
-    //
-    //                            if offset.width<0 && abs(offset.width)>triggerOffset {
-    //                                DispatchQueue.main.async {
-    //                                    viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
-    //                                }
-    //                                offset = .zero
-    //                            }
-    //                        }
-    //                    }
-    //                    .onEnded{ value in
-    //                        withAnimation(.linear) {
-    //                            offset = .zero
-    //                        }
-    //                    }
-    //                )
+
+                .offset(CGSize(width: offset.width, height: 0))
+                    .gesture(DragGesture()
+                        .onChanged{ value in
+                            withAnimation(.linear) {
+                                offset = value.translation
+    
+                                if offset.width<0 {
+                                    offset = .zero
+                                }
+                                if offset.width>triggerOffset {
+                                    offset.width = triggerOffset
+                                }
+                            }
+                        }
+
+                    )
                 
                 
             }
@@ -98,6 +107,6 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(item: .constant(Item(id: "", name: "", desc: "", qty: "", assignedTo: "")), roomData: .constant(Room(title: "", newItems: [], members: [])))
+        ItemView(item: .constant(Item(id: "", name: "", desc: "", qty: "")), roomData: .constant(Room(title: "", newItems: [], members: [])))
     }
 }

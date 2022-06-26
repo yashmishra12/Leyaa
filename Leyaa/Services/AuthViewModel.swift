@@ -126,8 +126,6 @@ class AuthViewModel: ObservableObject {
                     print("Error in adding item: \(err)")
                 }
             }
-//        populateRoomList()
-
     }
     
     //MARK: - Delete Item
@@ -137,13 +135,9 @@ class AuthViewModel: ObservableObject {
             "id": del.id,
             "name": del.name,
             "desc": del.desc,
-            "qty": del.qty,
-            "assignedTo": del.assignedTo
+            "qty": del.qty
         ]
-//
-//        DispatchQueue.main.async {
-//            self.populateRoomList()
-//        }
+
         
 
      let docRef = db.collection("rooms").document(roomID)
@@ -274,7 +268,64 @@ class AuthViewModel: ObservableObject {
     }
     
         
-    }
+    //MARK: - Reject Room Request
     
+    func rejectRoomRequest(reqData: RoomRequest) {
+        
+        self.db.collection("roomRequest").document(reqData.id ?? "").delete() { err in
+            if let err = err {
+                print("Error in adding item: \(err)")
+            }
+          }
+        }
+    
+    //MARK: - Accept Room Request
+    func acceptRoomRequest(reqData: RoomRequest) {
+        let userToAdd: [String] = [currentUser?.id ?? ""]
+        self.db.collection("rooms").document(reqData.roomID)
+            .updateData(["members" : Firebase.FieldValue.arrayUnion(userToAdd)]){ err in
+            if let err = err {
+                print("Error in adding item: \(err)")
+            }
+        }
+        
+        rejectRoomRequest(reqData: reqData)
+    }
 
-
+    //MARK: - Edit Item
+    
+    func editItem(item: Item, name: String, qty: String, desc: String, roomID: String) {
+        
+        let itemDel: [String: String] = [
+            "id": item.id,
+            "name": item.name,
+            "desc": item.desc,
+            "qty": item.qty
+        ]
+        
+        let itemUpdate: [String: String] = [
+            "id": UUID().uuidString,
+            "name": name,
+            "desc": desc,
+            "qty": qty
+        ]
+        
+        let docRef = db.collection("rooms").document(roomID)
+        
+        docRef.updateData(["newItems" : Firebase.FieldValue.arrayRemove([itemDel])]){ err in
+            if let err = err {
+                print("Error in delete item with EDIT: \(err)")
+            }
+        }
+        
+        docRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([itemUpdate])]){ err in
+            if let err = err {
+                print("Error in ADDING item with EDIT: \(err)")
+            }
+        }
+        
+        
+        
+        }
+    
+    }
