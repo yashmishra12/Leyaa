@@ -11,6 +11,8 @@
 		CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */; };
 		CC54100A286589060026CA76 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC541009286589060026CA76 /* RoomRequest.swift */; };
 		CC6B512E2867B94C00531303 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC6B512D2867B94C00531303 /* Launch Screen.storyboard */; };
+		CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B512F2867E84700531303 /* RoomInviteView.swift */; };
+		CC6B51322867F5D800531303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B51312867F5D800531303 /* UserService.swift */; };
 		CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */; };
 		CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15502859A00300C29C45 /* FirebaseAuth */; };
 		CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15522859A00300C29C45 /* FirebaseFirestore */; };
@@ -48,6 +50,8 @@
 		CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomJoinRequestView.swift; sourceTree = "<group>"; };
 		CC541009286589060026CA76 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
 		CC6B512D2867B94C00531303 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CC6B512F2867E84700531303 /* RoomInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInviteView.swift; sourceTree = "<group>"; };
+		CC6B51312867F5D800531303 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequestComponentView.swift; sourceTree = "<group>"; };
 		CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
+				CC6B51312867F5D800531303 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */,
+				CC6B512F2867E84700531303 /* RoomInviteView.swift */,
 			);
 			path = RoomJoinRequest;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
@@ -369,6 +376,7 @@
 				CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */,
 				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
+				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 				CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */,

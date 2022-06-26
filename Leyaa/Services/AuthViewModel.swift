@@ -15,12 +15,16 @@ class AuthViewModel: ObservableObject {
     @Published var didAuthenticateUser: Bool = false
     @Published var rooms = [Room]()
     @Published var pendingReqest = [RoomRequest]()
+    @Published var currentUser: User?
     
     private var db = Firestore.firestore()
     private var tempUserSession: FirebaseAuth.User?
     
+    private let service = UserService()
+
     init(){
         self.userSession = Auth.auth().currentUser
+        self.fetchUser()
     }
     
     //MARK: - LOGIN
@@ -50,12 +54,11 @@ class AuthViewModel: ObservableObject {
             self.tempUserSession = user
             
             let data = ["email": email,
-                        "pendingRequests": [],
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
             
             
-            Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
+            self.db.collection("users").document(user.uid).setData(data) { _ in
                 self.didAuthenticateUser = true
             }
             
@@ -87,11 +90,18 @@ class AuthViewModel: ObservableObject {
                 .document(uid)
                 .updateData(["profileImageUrl": profileImageUrl]) { _ in
                     self.userSession = self.tempUserSession
-                    //                    self.fetchUser()
+                                        self.fetchUser()
                 }
         }
     }
-    
+    //MARK: - Fetch User
+    func fetchUser() {
+        guard let uid = self.userSession?.uid else { return }
+        
+        service.fetchUser(withUid: uid) { user in
+            self.currentUser = user
+        }
+    }
 
     
     //MARK: - Add Room
@@ -116,28 +126,36 @@ class AuthViewModel: ObservableObject {
                     print("Error in adding item: \(err)")
                 }
             }
+//        populateRoomList()
 
     }
     
     //MARK: - Delete Item
     
     func deleteItem(del: Item, roomID: String) {
-       
-            let itemDel: [String: Any] = [
-                "id": del.id,
-                "name": del.name,
-                "desc": del.desc,
-                "qty": del.qty,
-                "assignedTo": del.assignedTo
-            ]
+        let itemDel: [String: String] = [
+            "id": del.id,
+            "name": del.name,
+            "desc": del.desc,
+            "qty": del.qty,
+            "assignedTo": del.assignedTo
+        ]
+//
+//        DispatchQueue.main.async {
+//            self.populateRoomList()
+//        }
+        
 
-//        print("ITEM DELETED: \(itemDel)")
-     db.collection("rooms").document(roomID).updateData([
-                "newItems" : FieldValue.arrayRemove([itemDel]) ]){ err in
-                    if let err = err {
-                        print("Error in delete item: \(err)")
+     let docRef = db.collection("rooms").document(roomID)
+        
+        DispatchQueue.main.async {
+            docRef.updateData([
+                    "newItems" : FieldValue.arrayRemove([itemDel]) ]){ err in
+                        if let err = err {
+                            print("Error in delete item: \(err)")
+                        }
                     }
-                }
+        }
     }
     
     
@@ -179,7 +197,7 @@ class AuthViewModel: ObservableObject {
             "members" : FieldValue.arrayRemove([userSession?.uid ?? ""])
         ]){ err in
             if let err = err {
-                print("Error in delete item: \(err)")
+                print("Error in leaving room: \(err)")
             }
         }
         
@@ -203,7 +221,6 @@ class AuthViewModel: ObservableObject {
     
     
     //MARK: - Room Join Request
-    
     func roomJoinRequestUpdate() {
         self.db.collection("roomRequest")
             .whereField("receiverEmail", isEqualTo: self.userSession?.email as Any)
@@ -232,13 +249,30 @@ class AuthViewModel: ObservableObject {
     }
     
     
-
     //MARK: - CRITICAL FUNCTION
     
     func criticalFunc() {
         populateRoomList()
         roomJoinRequestUpdate()
         }
+    
+    //MARK: - Room Invite
+    
+    func roomInvite(recieverEmail: String, message: String, roomData: Room) {
+        
+        let req = RoomRequest(message: message, roomID: roomData.id ?? "", roomName: roomData.title , senderName: currentUser?.fullname ?? "", receiverEmail: recieverEmail)
+        
+        
+        do {
+          let _ = try db.collection("roomRequest").addDocument(from: req)
+        }
+        catch {
+          print(error)
+        }
+        
+        
+    }
+    
         
     }
     

@@ -23,7 +23,6 @@ struct RoomView: View {
                 ForEach($roomData.newItems) { item in
                     VStack{
                         ItemView(item: item, roomData: $roomData)
-                        
                     }
                    
                 }
@@ -49,6 +48,16 @@ struct RoomView: View {
             }
         }.navigationTitle(Text(roomData.title)).foregroundColor(.white)
             .toolbar {
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        RoomInviteView(roomData: $roomData)
+                    } label: {
+                        Image(systemName: "square.and.arrow.up.fill").resizable().foregroundColor(.white)
+                    }
+
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         print("Envelope")

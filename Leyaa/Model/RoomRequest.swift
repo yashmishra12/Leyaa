@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import Firebase
 
-struct RoomRequest: Codable, Hashable {
+struct RoomRequest: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
     var message: String?
     var roomID: String
     var roomName: String
-    var senderID: String
-    var senderName: String?
+    var senderName: String
     var receiverEmail: String
 }

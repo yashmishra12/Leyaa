@@ -9,7 +9,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import Firebase
 
-struct Room: Codable, Identifiable {
+struct Room: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     var title: String
     var newItems: [Item]
