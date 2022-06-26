@@ -54,7 +54,6 @@ struct ItemView: View {
             .padding(.vertical, 1)
             .background(Color("MediumBlue"))
             .offset(CGSize(width: offset.width, height: 0))
-            .scaleEffect(1.0)
                 .gesture(DragGesture()
                     .onChanged{ value in
                         withAnimation(.interactiveSpring()) {
@@ -62,6 +61,7 @@ struct ItemView: View {
                             
                             if offset.width<0 && abs(offset.width)>triggerOffset {
                                 viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
+                                offset = .zero
                             }
                         }
                     }
