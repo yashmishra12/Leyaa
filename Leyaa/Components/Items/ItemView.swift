@@ -10,13 +10,13 @@ import SwiftUI
 struct ItemView: View {
     
     @State var offset: CGSize = .zero
-    @State var triggerOffset = UIScreen.main.bounds.width / 4
+    @State var triggerOffset = UIScreen.main.bounds.width / 6
     
     @Binding var item: Item
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var isShowing: Bool = true
-    
+    @State var isEditing: Bool = false
 
     
     var body: some View {
@@ -24,49 +24,43 @@ struct ItemView: View {
         if isShowing {
             ZStack {
                 HStack{
-                  
+                   
                     NavigationLink{
-                        
                         ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "" )
                     } label: {
-                        ZStack {
-                            Color(uiColor: UIColor(red: 0.42, green: 0.70, blue: 0.42, alpha: 1.00))
-                        }
+                        Image("editItemBack").resizable().frame(width: 180, height: 210)
                     }
+                    
+     
+                   
+                    Spacer()
+
 
                 }
                 
                 VStack{
-                    HStack{
-                        Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
-                        
-                        Text(item.name.capitalized).font(.title)
-                        Spacer()
-                        if(item.qty.isEmpty == false){
-                            VStack{
-                                Text("\(item.qty)").font(.title3)
-                            }.padding(.horizontal, 15)
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    if(item.desc.isEmpty == false) {
-                        HStack {
+
+                        VStack{
+                            Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
+                            Text(item.name.capitalized).font(.headline).fontWeight(.bold).padding()
+
+                            Text("\(item.qty)").font(.subheadline).fontWeight(.light).padding(.horizontal, 5)
+
                             Text(item.desc)
-                                .font(.callout)
+                                .font(.footnote)
                                 .multilineTextAlignment(.leading)
-                                .padding()
-                            Spacer()
+
                         }
-                    }
+
+ 
                 }
-                .padding(.vertical, 1)
+                .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 210, idealHeight: 210, maxHeight: 210 )
                 .background(Color("MediumBlue"))
                 .onTapGesture {
                     if (offset.width != 0 ) {
                         withAnimation(.easeIn) {
                             offset.width = 0
+
                         }
                     }
                     else {
@@ -82,7 +76,7 @@ struct ItemView: View {
                 .offset(CGSize(width: offset.width, height: 0))
                     .gesture(DragGesture()
                         .onChanged{ value in
-                            withAnimation(.linear) {
+                            withAnimation(.interactiveSpring()) {
                                 offset = value.translation
     
                                 if offset.width<0 {
@@ -91,13 +85,23 @@ struct ItemView: View {
                                 if offset.width>triggerOffset {
                                     offset.width = triggerOffset
                                 }
+                  
+                                
                             }
                         }
-
+                        .onEnded({ value in
+                            withAnimation(.interactiveSpring()) {
+                                if (offset.width < triggerOffset) {
+                                    offset.width = 0
+                                }
+                            }
+                        })
                     )
                 
                 
             }
+            .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 210, idealHeight: 210, maxHeight: 210 )
+
         }
       
 
@@ -107,6 +111,8 @@ struct ItemView: View {
 
 struct ItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemView(item: .constant(Item(id: "", name: "", desc: "", qty: "")), roomData: .constant(Room(title: "", newItems: [], members: [])))
+        ItemView(item: .constant(Item(id: "2sda", name: "Coffee", desc: "Coffee is hot", qty: "200 gm")),
+                 roomData: .constant(Room(title: "Avent Ferry", newItems: [], members: ["a","b"]))
+                ).previewLayout(.sizeThatFits)
     }
 }
