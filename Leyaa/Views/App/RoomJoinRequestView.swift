@@ -31,6 +31,6 @@ struct RoomJoinRequestView: View {
 
 struct RoomJoinRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomJoinRequestView(roomRequest: .constant([RoomRequest(message: "", roomID: "", roomName: "", senderID: "", senderName: "", receiverEmail: "")]))
+        RoomJoinRequestView(roomRequest: .constant([RoomRequest(roomID: "", roomName: "", senderName: "", receiverEmail: "")]))
     }
 }

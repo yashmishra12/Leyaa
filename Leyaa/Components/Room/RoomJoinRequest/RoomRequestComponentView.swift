@@ -18,13 +18,15 @@ struct RoomRequestComponentView: View {
             }.padding(.horizontal, 10)
             
             HStack{
-                let senderNameText = "By: \(reqData.senderName ?? "")"
-                Text(senderNameText).font(.title3).foregroundColor(.white).padding(.vertical, 1)
-                Spacer()
+                if (reqData.senderName.isEmpty == false) {
+                    let senderNameText = "By: \(reqData.senderName )"
+                    Text(senderNameText).font(.title3).foregroundColor(.white).padding(.vertical, 1)
+                    Spacer()
+                }
             }.padding(.horizontal, 10)
             
             
-            if (reqData.message != nil) {
+            if (reqData.message?.isEmpty == false) {
                 HStack{
                     let messageText = "Message: \(reqData.message ?? "" )"
                     Text(messageText).font(.body).foregroundColor(.white).padding(.vertical, 2)
@@ -58,6 +60,7 @@ struct RoomRequestComponentView: View {
 
 struct RoomRequestComponentView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomRequestComponentView(reqData: .constant(RoomRequest(roomID: "", roomName: "", senderID: "", receiverEmail: ""))).previewLayout(.sizeThatFits)
+
+        RoomRequestComponentView(reqData: .constant(RoomRequest(roomID: "", roomName: "", senderName: "", receiverEmail: ""))).previewLayout(.sizeThatFits)
     }
 }

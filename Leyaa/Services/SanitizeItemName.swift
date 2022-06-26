@@ -26,10 +26,12 @@ extension String {
         let assetList = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado"]
    
         let itName = self.lowercased()
-        if assetList.contains(itName) {
-            return itName
+        let trimmedStr = itName.trimmingCharacters(in: .whitespaces)
+        
+        if assetList.contains(trimmedStr) {
+            return trimmedStr
         }else {
-            let firstLetter = itName[0..<1]
+            let firstLetter = trimmedStr[0..<1]
             return firstLetter
         }
         
