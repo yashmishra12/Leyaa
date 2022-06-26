@@ -28,49 +28,57 @@ struct ItemView: View {
                     NavigationLink{
                         ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "" )
                     } label: {
-                        Image("editItemBack").resizable().frame(width: 180, height: 210)
+                        Image("editItemBack").resizable().frame(width: 195, height: 195)
                     }
                     
-     
-                   
-                    Spacer()
-
-
-                }
+                }.onTapGesture {
+                    withAnimation(.easeIn) {
+                        offset.width = 0
+                    }
+            }
                 
                 VStack{
 
                         VStack{
                             Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
-                            Text(item.name.capitalized).font(.headline).fontWeight(.bold).padding()
+                           
+                            HStack{
+                                Text(item.name.capitalized).font(.headline).fontWeight(.bold)
 
-                            Text("\(item.qty)").font(.subheadline).fontWeight(.light).padding(.horizontal, 5)
+                                Text("\(item.qty)").font(.subheadline).fontWeight(.light)
+                            }.padding(.vertical, 2)
 
                             Text(item.desc)
                                 .font(.footnote)
                                 .multilineTextAlignment(.leading)
+                                .padding(.horizontal, 10)
+                                
 
                         }
+                        .onTapGesture {
+                            withAnimation(.easeIn) {
+                                offset.width = 0
+                            }
+                    }
 
  
                 }
-                .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 210, idealHeight: 210, maxHeight: 210 )
+                .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 195, idealHeight: 195, maxHeight: 195 )
                 .background(Color("MediumBlue"))
+                .onLongPressGesture(perform: {
+                    
+                    withAnimation (.easeOut(duration: 0.3)) {
+                        isShowing.toggle()
+                    }
+                    DispatchQueue.main.async {
+                        viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
+                    }
+   
+                })
                 .onTapGesture {
-                    if (offset.width != 0 ) {
                         withAnimation(.easeIn) {
                             offset.width = 0
-
                         }
-                    }
-                    else {
-                        withAnimation (.easeOut(duration: 0.3)) {
-                            isShowing.toggle()
-                        }
-                        DispatchQueue.main.async {
-                            viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
-                        }
-                    }
                 }
 
                 .offset(CGSize(width: offset.width, height: 0))
@@ -100,7 +108,7 @@ struct ItemView: View {
                 
                 
             }
-            .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 210, idealHeight: 210, maxHeight: 210 )
+            .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 195, idealHeight: 195, maxHeight: 195 )
 
         }
       

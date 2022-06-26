@@ -19,23 +19,22 @@ struct ItemEditView: View {
 
     @Environment(\.presentationMode) var presentationMode
     
+    
     var body: some View {
         
         VStack{
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Name", isSecureField: false, text: $name)
+//                .focused(T##condition: FocusState<Bool>.Binding##FocusState<Bool>.Binding)
             
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Quantity", isSecureField: false, text: $qty)
+        
             
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Description", isSecureField: false, text: $desc)
-            
-
             
             VStack{
                 Button {
                     viewModel.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
                     presentationMode.wrappedValue.dismiss()
-
-                    
                 } label: {
                     Text("Save")
                 }
