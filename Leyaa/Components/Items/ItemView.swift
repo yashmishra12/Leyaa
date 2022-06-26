@@ -56,12 +56,15 @@ struct ItemView: View {
                 .padding(.vertical, 1)
                 .background(Color("MediumBlue"))
                 .onTapGesture {
-                    withAnimation {
+                    withAnimation (.easeOut(duration: 0.3)) {
                         isShowing.toggle()
                     }
                     DispatchQueue.main.async {
                         viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
                     }
+                }
+                .onLongPressGesture(minimumDuration: 1) {
+                    print("YAYAYAYAYYA")
                 }
     //            .offset(CGSize(width: offset.width, height: 0))
     //                .gesture(DragGesture()
