@@ -7,4 +7,4 @@
 
 import Foundation
 
-let assetName = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado"]
+let assetName = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado", "lemon", "runningshoe", "shoe", "formalshoe", "converse", "highheel", "boot", "lemon", "croc", "slipper", "ketchup"]

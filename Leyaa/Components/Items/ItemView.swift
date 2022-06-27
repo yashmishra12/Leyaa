@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct ItemView: View {
     
     @State var offset: CGSize = .zero
@@ -17,7 +19,7 @@ struct ItemView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var isShowing: Bool = true
     @State var isEditing: Bool = false
-
+    let hapticFeedback = UINotificationFeedbackGenerator()
     
     var body: some View {
   
@@ -27,8 +29,11 @@ struct ItemView: View {
                    
                     NavigationLink{
                         ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "" )
+                        
                     } label: {
-                        Image("editItemBack").resizable().frame(width: 195, height: 195)
+                        if offset.width != 0 {
+                            Image("editItemBack").resizable().frame(width: 195, height: 195)
+                        }
                     }
                     
                 }.onTapGesture {
@@ -70,6 +75,7 @@ struct ItemView: View {
                     withAnimation (.easeOut(duration: 0.3)) {
                         isShowing.toggle()
                     }
+                    hapticFeedback.notificationOccurred(.success)
                     DispatchQueue.main.async {
                         viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
                     }

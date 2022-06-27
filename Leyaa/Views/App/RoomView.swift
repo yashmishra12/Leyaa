@@ -40,6 +40,7 @@ struct RoomView: View {
                     } label: {
                         Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
                     }.padding()
+                        .buttonStyle(.plain)
                     
                     Spacer()
                     
@@ -48,6 +49,7 @@ struct RoomView: View {
                     } label: {
                         Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
                     }.padding()
+                        .buttonStyle(.plain)
                 }
 
             }
@@ -59,7 +61,7 @@ struct RoomView: View {
                         RoomInviteView(roomData: $roomData)
                     } label: {
                         Image(systemName: "square.and.arrow.up.fill").resizable().foregroundColor(.white)
-                    }
+                    }.buttonStyle(.plain)
 
                 }
                 
@@ -68,27 +70,30 @@ struct RoomView: View {
                         print("Envelope")
                     } label: {
                         Image(systemName: "envelope.arrow.triangle.branch.fill").resizable().foregroundColor(.white)
+                    }.buttonStyle(.plain)
+
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+
+                    Button(action: {
+                        leavingRoom = true
+                    }, label: {
+                        Image(systemName: "x.square.fill").resizable().foregroundColor(.white)
+                    }).buttonStyle(.plain)
+                    .confirmationDialog("Are you sure?",
+                      isPresented: $leavingRoom) {
+                      Button("Leave Room", role: .destructive) {
+                          viewModel.leaveRoom(roomData: roomData)
+                          
+                      }
+                    } message: {
+                      Text("One of the group members will have to add you back")
                     }
 
                 }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-
-                            Button(action: {
-                                leavingRoom = true
-                            }, label: {
-                                Image(systemName: "x.square.fill").resizable().foregroundColor(.white)
-                            })
-                            .confirmationDialog("Are you sure?",
-                              isPresented: $leavingRoom) {
-                              Button("Leave Room", role: .destructive) {
-                                  viewModel.leaveRoom(roomData: roomData)
-                                  
-                              }
-                            } message: {
-                              Text("One of the group members will have to add you back")
-                            }
-
-                        }
+                
+                
                     }
            
     }

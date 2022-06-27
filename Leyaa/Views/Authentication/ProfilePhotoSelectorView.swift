@@ -53,6 +53,7 @@ struct ProfilePhotoSelectorView: View {
                     }
                     .shadow(color: .black, radius: 15, x: 0, y: 0)
                     .padding(.top, 25)
+                    .buttonStyle(.plain)
                 
             }
         

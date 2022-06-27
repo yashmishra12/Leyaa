@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 
 struct RoomCreateView: View {
-    @State var roomName: String
+    @State var roomName: String = ""
     var db = Firestore.firestore()
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
@@ -25,7 +25,7 @@ struct RoomCreateView: View {
             presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Create Room")
-        }
+        }.buttonStyle(.plain)
 
         
         

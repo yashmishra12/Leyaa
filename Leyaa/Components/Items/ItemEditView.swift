@@ -6,11 +6,36 @@
 //
 
 import SwiftUI
+import Focuser
+
+enum FormFields {
+    case name, quantity, description
+}
+
+
+extension FormFields: FocusStateCompliant {
+
+    static var last: FormFields {
+        .description
+    }
+
+    var next: FormFields? {
+        switch self {
+        case .name:
+            return .quantity
+        case .quantity:
+            return .description
+        default: return nil
+        }
+    }
+}
+
 
 struct ItemEditView: View {
     @State var item: Item
     
     @EnvironmentObject var viewModel: AuthViewModel
+    @FocusStateLegacy var focusedField: FormFields?
     
     @State var name: String
     @State var desc: String
@@ -19,17 +44,19 @@ struct ItemEditView: View {
 
     @Environment(\.presentationMode) var presentationMode
     
-    
+
     var body: some View {
         
         VStack{
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Name", isSecureField: false, text: $name)
-//                .focused(T##condition: FocusState<Bool>.Binding##FocusState<Bool>.Binding)
+                .focusedLegacy($focusedField, equals: .name)
             
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Quantity", isSecureField: false, text: $qty)
+                .focusedLegacy($focusedField, equals: .quantity)
         
             
             CustomInputField(imageName: "bookmark.fill", placeholderText: "Description", isSecureField: false, text: $desc)
+                .focusedLegacy($focusedField, equals: .description)
             
             VStack{
                 Button {
@@ -46,9 +73,3 @@ struct ItemEditView: View {
 
     }
 }
-
-//struct ItemEditView_Previews: PreviewProvider {
-//    static var previews: some View {
-//       ItemEditView(
-//    }
-//}
