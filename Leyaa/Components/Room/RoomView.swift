@@ -15,9 +15,6 @@ struct RoomView: View {
     
     
     @State private var isShowingSideMenu: Bool = false
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
-
     
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
