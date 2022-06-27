@@ -107,7 +107,7 @@ struct LoginView: View {
                     }.ignoresSafeArea()
                 .navigationBarHidden(true)
             .background(Color("DarkBlue"))
-        }
+        }.navigationBarBackButtonHidden(true)
         
                 
             }
@@ -116,13 +116,6 @@ struct LoginView: View {
             
     }
 
-    struct ItemPhotoModifier: ViewModifier {
-        func body(content: Content) -> some View {
-            content
-                .frame(width: 100, height: 100)
-                .padding(1)
-        }
-    }
 
 
 

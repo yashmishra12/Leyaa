@@ -18,7 +18,6 @@ class AuthViewModel: ObservableObject {
     @Published var currentUser: User?
     
     private var db = Firestore.firestore()
-    private var tempUserSession: FirebaseAuth.User?
     
     private let service = UserService()
 
@@ -51,9 +50,10 @@ class AuthViewModel: ObservableObject {
             }
             
             guard let user = result?.user else { return }
-            self.tempUserSession = user
+            self.userSession = user
             
             let data = ["email": email,
+                        "avatar": assetName.randomElement() ?? "egg",
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
             
@@ -71,29 +71,15 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         // sets user session to nil so we show login view
         userSession = nil
-        tempUserSession = nil
         didAuthenticateUser = false
         rooms = []
         
         // signs user out on server
         try? Auth.auth().signOut()
-        
     }
     
+
     
-    //MARK: - UPLOAD Profile Image
-    func uploadProfileImage(_ image: UIImage) {
-        guard let uid = tempUserSession?.uid else { return }
-        
-        ImageUploader.uploadImage(image: image) { profileImageUrl in
-            self.db.collection("users")
-                .document(uid)
-                .updateData(["profileImageUrl": profileImageUrl]) { _ in
-                    self.userSession = self.tempUserSession
-                                        self.fetchUser()
-                }
-        }
-    }
     //MARK: - Fetch User
     func fetchUser() {
         guard let uid = self.userSession?.uid else { return }
@@ -328,15 +314,16 @@ class AuthViewModel: ObservableObject {
         
         }
     
-    //MARK: - Get Profile Picture Link
     
-    func getProfilePicLink(userID: String, completion: @escaping (String) -> Void) {
+    //MARK: - Get Profile Avatar
+    
+    func getProfileAvatar(userID: String, completion: @escaping (String) -> Void) {
         var profilePic: String = ""
         let docRef = db.collection("users").document(userID)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                profilePic = document.get("profileImageUrl") as! String
+                profilePic = document.get("avatar") as! String
                 completion(profilePic)
             } else {
                 print("Document does not exist")

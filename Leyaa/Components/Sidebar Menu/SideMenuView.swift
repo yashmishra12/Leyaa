@@ -92,10 +92,10 @@ struct SideMenuView: View {
                     }
                 }.padding()
                 
-                let memberID = roomData.members
+
                 
                 ScrollView{
-                    ForEach(memberID, id: \.self) { userID in
+                    ForEach(roomData.members, id: \.self) { userID in
                         GroupMemberInfoView(userID: userID)
                     }
                 }

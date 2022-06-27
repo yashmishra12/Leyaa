@@ -50,7 +50,6 @@
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
-		CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */; };
 		CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */; };
 		CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BF285A85CA0083D925 /* ImageUploader.swift */; };
 /* End PBXBuildFile section */
@@ -95,7 +94,6 @@
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
 		CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CCFA96BF285A85CA0083D925 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,7 +268,6 @@
 			children = (
 				CCB4C3B228597B8100105C5C /* LoginView.swift */,
 				CCB4C3B428597B8C00105C5C /* RegistrationView.swift */,
-				CCFA96B9285A776A0083D925 /* ProfilePhotoSelectorView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -443,7 +440,6 @@
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
-				CCFA96BA285A776A0083D925 /* ProfilePhotoSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
