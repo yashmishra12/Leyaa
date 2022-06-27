@@ -74,9 +74,9 @@ struct RoomView: View {
                         } label: {
                             Image(systemName: "line.3.horizontal.circle.fill").resizable()
                         }.buttonStyle(.plain)
-                        
+
                     }
-            }
+                }
             }
             .cornerRadius(isShowingSideMenu ? 20 : 10)
             .offset(x: isShowingSideMenu ? screenWidth*0.8 : 0, y: isShowingSideMenu ? screenHeight*0.05 : 0)

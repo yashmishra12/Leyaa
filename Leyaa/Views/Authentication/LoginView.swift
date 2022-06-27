@@ -77,41 +77,43 @@ struct LoginView: View {
                         }
                         .shadow(color: .black, radius: 10, x: 0, y: 0)
                         .padding(.top, 25)
+                        .buttonStyle(.plain)
                     }
                     
                     Spacer()
                     
                     
                     //MARK: - SIGN UP
-                    VStack{
-                        NavigationLink(destination: RegistrationView() ) {
+        
+
+                        NavigationLink(destination: SignUpView() ) {
                             HStack{
                                 Text("Don't have an account?")
                                     .font (.footnote)
                                     .foregroundColor(Color.white)
                                 
-                            
                                     Text("Sign Up")
                                     .font (.callout)
                                     .fontWeight (.semibold)
                                     .foregroundColor(Color("LightBlue"))
                             }
                             
-                        }
+                        }.buttonStyle(.plain)
+                        
 
-                    }.padding(.bottom, 30)
+                    }.padding(.bottom, 50)
                     
-                }
-                
-            }
-            .ignoresSafeArea()
+                }.ignoresSafeArea()
             .navigationBarHidden(true)
             .background(Color("DarkBlue"))
         
+                
+            }
+            
         
             
     }
-    
+
     struct ItemPhotoModifier: ViewModifier {
         func body(content: Content) -> some View {
             content
@@ -119,8 +121,8 @@ struct LoginView: View {
                 .padding(1)
         }
     }
-    
-}
+
+
 
 
 

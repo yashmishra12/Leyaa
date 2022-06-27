@@ -1,13 +1,13 @@
 //
-//  RegistrationView.swift
+//  SignUpView.swift
 //  Leyaa
 //
-//  Created by Yash Mishra on 6/14/22.
+//  Created by Yash Mishra on 6/27/22.
 //
 
 import SwiftUI
 
-struct RegistrationView: View {
+struct SignUpView: View {
     @State private var email = ""
     @State private var fullname = ""
     @State private var password = ""
@@ -15,14 +15,14 @@ struct RegistrationView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        
         ZStack {
             
             VStack {
+//
+//                NavigationLink(destination: ProfilePhotoSelectorView(),
+//                               isActive: $viewModel.didAuthenticateUser,
+//                               label: { })
                 
-                NavigationLink(destination: ProfilePhotoSelectorView(),
-                               isActive: $viewModel.didAuthenticateUser,
-                               label: { })
                 
                 
                 
@@ -95,10 +95,8 @@ struct RegistrationView: View {
     }
 }
 
-struct RegistrationView_Previews: PreviewProvider {
+struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        SignUpView()
     }
 }
-
-
