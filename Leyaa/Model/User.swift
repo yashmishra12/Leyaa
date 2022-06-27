@@ -7,6 +7,7 @@
 
 import FirebaseFirestoreSwift
 import Firebase
+import UIKit
 
 struct User: Identifiable, Codable {
     @DocumentID var id: String?
