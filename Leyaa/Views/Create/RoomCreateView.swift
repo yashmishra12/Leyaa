@@ -19,6 +19,7 @@ struct RoomCreateView: View {
         CustomInputField(imageName: "house.fill", placeholderText: "Room Name", isSecureField: false, text: $roomName)
 
         let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "")+""])
+    
         
         Button {
             viewModel.addRoom(room: newRoom)

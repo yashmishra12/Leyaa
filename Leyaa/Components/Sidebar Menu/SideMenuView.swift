@@ -94,14 +94,12 @@ struct SideMenuView: View {
                 
                 let memberID = roomData.members
                 
-//                ForEach(memberID, id: \.self) { userID in
-//                    SideMenuMemberPicView(userID: userID)
-//                }
-                SideMenuMemberPicView(userID: viewModel.currentUser?.id ?? "")
-                
-//                // HEADER
-//                SideMenuHeaderView(isShowing: $isShowing).foregroundColor(.white)
-//                    .frame(height: screenHeight/10)
+                ScrollView{
+                    ForEach(memberID, id: \.self) { userID in
+                        GroupMemberInfoView(userID: userID)
+                    }
+                }
+
                 
                 Spacer()
                 

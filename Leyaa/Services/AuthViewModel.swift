@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Firebase
-
+import FirebaseFirestoreSwift
 
 class AuthViewModel: ObservableObject {
     
@@ -330,34 +330,53 @@ class AuthViewModel: ObservableObject {
     
     //MARK: - Get Profile Picture Link
     
-    func getProfilePicLink(userID: String) -> String {
-        var res = ""
+    func getProfilePicLink(userID: String, completion: @escaping (String) -> Void) {
+        var profilePic: String = ""
         let docRef = db.collection("users").document(userID)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                res = document.get("profileImageUrl") as! String
-                
+                profilePic = document.get("profileImageUrl") as! String
+                completion(profilePic)
             } else {
                 print("Document does not exist")
             }
         }
-        return res
     }
     
-    func getProfileName(userID: String) -> String {
-        var res = ""
+
+    
+    //MARK: - Get Profile Name
+    
+    func getProfileName(userID: String, completion: @escaping (String) -> Void) {
+        var profileName: String = ""
         let docRef = db.collection("users").document(userID)
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                res = document.get("profileImageUrl") as! String
-                
+                profileName = document.get("fullname") as! String
+                completion(profileName)
             } else {
                 print("Document does not exist")
             }
         }
-        return res
     }
+    
+    //MARK: - Email
+    
+    func getProfileEmail(userID: String, completion: @escaping (String) -> Void) {
+        var profileEmail: String = ""
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                profileEmail = document.get("email") as! String
+                completion(profileEmail)
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+
     
     }
