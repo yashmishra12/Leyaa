@@ -21,22 +21,25 @@ struct RoomListView: View {
                         ForEach($myRoom) { room in
                             NavigationLink(destination: RoomView(roomData: room)) {
                                 RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
-                            }
+                            }.buttonStyle(.plain)
                         }
                         
                         
                         Spacer()
                         
                         
-                        NavigationLink {
-                            RoomCreateView(roomName: "")
-                        } label: {
-                            Text("Create Room")
-                        }.padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .foregroundColor(.white)
-                            .background(Color("MediumBlue"))
-                            .clipShape(Capsule())
+                        VStack {
+                            NavigationLink {
+                                RoomCreateView()
+                            } label: {
+                                Text("Create Room")
+                            }.padding(.horizontal, 16)
+                                .padding(.vertical, 10)
+                                .foregroundColor(.white)
+                                .background(Color("MediumBlue"))
+                                .clipShape(Capsule())
+                                .buttonStyle(.plain)
+                        }.padding(.vertical, 35)
                         
                     }
                 }
@@ -47,19 +50,17 @@ struct RoomListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button { viewModel.signOut() }
-                label: { Text("Logout").foregroundColor(.white) }
+                label: { Text("Logout").foregroundColor(.white) }.buttonStyle(.plain)
                 }
             }
             
         }
-        
-        
         
     }
 }
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView(myRoom: .constant([Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""])]))
+        RoomListView(myRoom: .constant([Room(id: "21312", title: "Avent Ferry", newItems: [Item(id: "asdasd", name: "Coffee", desc: "Bru and Nesface", qty: "200gm")], members: [""])]))
     }
 }

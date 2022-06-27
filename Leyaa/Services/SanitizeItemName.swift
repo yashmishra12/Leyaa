@@ -31,7 +31,12 @@ extension String {
         let assetList = assetName
    
         let itName = self.lowercased().stripped
-        let trimmedStr = itName.filter {!$0.isWhitespace}
+        var trimmedStr = itName.filter {!$0.isWhitespace}
+        let lastLetter = trimmedStr.last
+        
+        if(lastLetter == "s") {
+            trimmedStr.removeLast()
+        }
         
         if assetList.contains(trimmedStr) {
             return trimmedStr
