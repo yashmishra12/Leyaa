@@ -23,20 +23,19 @@ struct RoomInviteView: View {
         
 
         Button {
-        
             viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
             
             presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Send Invite").foregroundColor(.white)
-        }
+        }.buttonStyle(.plain)
 
         
     }
 }
-
-struct RoomInviteView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomInviteView(roomData: .constant(Room(title: "", newItems: [], members: [])))
-    }
-}
+//
+//struct RoomInviteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RoomInviteView(roomData: .constant(Room(title: "", newItems: [], members: [])))
+//    }
+//}

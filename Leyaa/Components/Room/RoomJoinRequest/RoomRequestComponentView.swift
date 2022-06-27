@@ -46,7 +46,7 @@ struct RoomRequestComponentView: View {
                     rejectingRequest = true
                 }, label: {
                     Image(systemName:"minus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.red)
-                })
+                }).buttonStyle(.plain)
                 .confirmationDialog("Are you sure?",
                   isPresented: $rejectingRequest) {
                   Button("Leave Room", role: .destructive) {
@@ -65,7 +65,7 @@ struct RoomRequestComponentView: View {
                     acceptingRequest = true
                 }, label: {
                     Image(systemName:"plus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.green)
-                })
+                }).buttonStyle(.plain)
                 .confirmationDialog("Are you sure?",
                   isPresented: $acceptingRequest) {
                     Button("Accept", role: .none) {

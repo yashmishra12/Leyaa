@@ -34,7 +34,7 @@ struct ItemView: View {
                         if offset.width != 0 {
                             Image("editItemBack").resizable().frame(width: 195, height: 195)
                         }
-                    }
+                    }.buttonStyle(.plain)
                     
                 }.onTapGesture {
                     withAnimation(.easeIn) {
