@@ -13,7 +13,7 @@ struct SideMenuView: View {
     @Binding var roomData: Room
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
-    let screenHeight = UIScreen.main.bounds.height
+
     
     var body: some View {
             

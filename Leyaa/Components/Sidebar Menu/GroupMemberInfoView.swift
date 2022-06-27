@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GroupMemberInfoView: View {
     @State var userID: String
-    @State var profilePictureLink = backupPhoto
     @State var avatar = "ketchup"
     @State var name = "Default Name"
     @State var email = "Default Mail"
