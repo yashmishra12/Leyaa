@@ -14,55 +14,57 @@ struct ProfilePhotoSelectorView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
-        VStack{
-            AuthHeaderView(title1: "Photo.", title2: "Add a Profile Photo.")
-           
- 
-            //MARK: - PROFILE IMAGE BUTTON
+        NavigationView {
             VStack{
-                Button {
-                    showImagePicker.toggle()
-                } label: {
-                    if let profileImage = profileImage {
-                        profileImage
-                            .resizable()
-                            .modifier(ProfileImageModifier())
-                    } else {
-                        Image(systemName: "photo.circle")
-                            .resizable()
-                            .renderingMode(.template)
-                            .modifier(ProfileImageModifier())
-                    }
-                }
-//                .buttonStyle(.plain)
-                .padding(.top, 100)
-                .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
-                        ImagePicker(selectedImage: $selectedImage)
-                    }
-            }
-
-            if let selectedImage = selectedImage {
+                AuthHeaderView(title1: "Photo.", title2: "Add a Profile Photo.")
+               
+     
+                //MARK: - PROFILE IMAGE BUTTON
+                VStack{
                     Button {
-                        viewModel.uploadProfileImage(selectedImage)
+                        showImagePicker.toggle()
                     } label: {
-                        Text ("Continue")
-                            .font (.headline)
-                            .foregroundColor (.white)
-                            .frame (width: 340, height: 50)
-                            .background(Color("MediumBlue"))
-                            .clipShape(Capsule())
-                            .padding ()
+                        if let profileImage = profileImage {
+                            profileImage
+                                .resizable()
+                                .modifier(ProfileImageModifier())
+                        } else {
+                            Image(systemName: "photo.circle")
+                                .resizable()
+                                .renderingMode(.template)
+                                .modifier(ProfileImageModifier())
+                        }
                     }
-                    .shadow(color: .black, radius: 15, x: 0, y: 0)
-                    .padding(.top, 25)
-//                    .buttonStyle(.plain)
+    //                .buttonStyle(.plain)
+                    .padding(.top, 100)
+                    .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                            ImagePicker(selectedImage: $selectedImage)
+                        }
+                }
+
+                if let selectedImage = selectedImage {
+                        Button {
+                            viewModel.uploadProfileImage(selectedImage)
+                        } label: {
+                            Text ("Save")
+                                .font (.headline)
+                                .foregroundColor (.white)
+                                .frame (width: 340, height: 50)
+                                .background(Color("MediumBlue"))
+                                .clipShape(Capsule())
+                                .padding ()
+                        }
+                        .shadow(color: .black, radius: 15, x: 0, y: 0)
+                        .padding(.top, 25)
+    //                    .buttonStyle(.plain)
+                    
+                }
+            
+                Spacer()
                 
             }
-        
-            Spacer()
-            
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
 
     }
     
