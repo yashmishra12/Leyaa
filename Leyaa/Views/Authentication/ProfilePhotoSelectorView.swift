@@ -33,8 +33,10 @@ struct ProfilePhotoSelectorView: View {
                             .renderingMode(.template)
                             .modifier(ProfileImageModifier())
                     }
-                }    .padding(.top, 100)
-                    .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                }
+                .buttonStyle(.plain)
+                .padding(.top, 100)
+                .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
                         ImagePicker(selectedImage: $selectedImage)
                     }
             }
@@ -77,6 +79,7 @@ private struct ProfileImageModifier: ViewModifier {
             .scaledToFill()
             .frame(width: 180, height: 180)
             .clipShape(Circle())
+            .buttonStyle(.plain)
     }
 }
 
