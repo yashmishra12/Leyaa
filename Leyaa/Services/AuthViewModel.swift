@@ -328,4 +328,36 @@ class AuthViewModel: ObservableObject {
         
         }
     
+    //MARK: - Get Profile Picture Link
+    
+    func getProfilePicLink(userID: String) -> String {
+        var res = ""
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                res = document.get("profileImageUrl") as! String
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+        return res
+    }
+    
+    func getProfileName(userID: String) -> String {
+        var res = ""
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                res = document.get("profileImageUrl") as! String
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+        return res
+    }
+    
     }
