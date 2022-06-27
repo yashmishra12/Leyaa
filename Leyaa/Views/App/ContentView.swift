@@ -31,10 +31,7 @@ struct ContentView: View {
                             }
                             .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
                             
-                            ProfilePhotoSelectorView()
-                                .tabItem {
-                                    Label("Settings", systemImage: "gear")
-                                }
+
                         }
                         
                         

@@ -20,15 +20,11 @@ struct SideMenuHeaderView: View {
                
                 HStack {
                     VStack{
-                        AsyncImage(url: URL(string: viewModel.currentUser?.profileImageUrl ?? "")!) {
-                            Image(systemName: "person")
-                        } image: { image in
-                            Image(uiImage: image).resizable()
-                            
-                        }.aspectRatio(contentMode: .fill)
-                            .clipped()
-                            .frame(width: 64, height: 64).clipShape(Circle())
-                            .padding(.bottom, 16)
+                        Image(viewModel.currentUser?.avatar ?? "egg").resizable()
+                            .aspectRatio(contentMode: .fill)
+                                .clipped()
+                                .frame(width: 64, height: 64).clipShape(Circle())
+                                .padding(.bottom, 16)
                     }
                     VStack{
                         HStack {

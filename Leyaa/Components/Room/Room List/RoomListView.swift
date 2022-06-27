@@ -54,7 +54,7 @@ struct RoomListView: View {
                 }
             }
             
-        }
+        }.navigationBarBackButtonHidden(true)
         
     }
 }

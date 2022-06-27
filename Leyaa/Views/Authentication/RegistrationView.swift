@@ -20,11 +20,11 @@ struct RegistrationView: View {
             
             VStack {
                 
-                NavigationLink(destination: ProfilePhotoSelectorView(),
+                NavigationLink(destination: ContentView(),
                                isActive: $viewModel.didAuthenticateUser,
                                label: { })
-                
-                
+
+
                 
                 //MARK: - HEADER
                 VStack {
