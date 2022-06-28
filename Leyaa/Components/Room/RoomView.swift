@@ -63,13 +63,41 @@ struct RoomView: View {
                 }
                 .navigationTitle(Text(roomData.title)).foregroundColor(.white)
                 .toolbar {
+                    
+                    //QuickSearch
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                                ItemSearchView()
+                        } label: {
+                            Image(systemName: "sparkle.magnifyingglass").resizable().foregroundColor(.white)
+                                .padding(.horizontal, 10)
+                        }.buttonStyle(.plain)
+
+                    }
+                    
+                    
+                    //Add
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink {
+                            ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
+                        } label: {
+                            Image(systemName: "plus.app.fill").resizable().foregroundColor(.white)
+                        }.padding(.horizontal, 10)
+                            .buttonStyle(.plain)
+
+                    }
+                    
+                   
+                    
+                    
+                    //Hamburger
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             withAnimation(.spring()) {
                                 isShowingSideMenu.toggle()
                             }
                         } label: {
-                            Image(systemName: "line.3.horizontal.circle.fill").resizable()
+                            Image(systemName: "line.3.horizontal").resizable()
                         }.buttonStyle(.plain)
 
                     }
