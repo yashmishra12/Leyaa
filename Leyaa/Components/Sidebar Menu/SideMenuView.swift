@@ -13,7 +13,7 @@ struct SideMenuView: View {
     @Binding var roomData: Room
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
-
+    @State var wantToSignOut: Bool = false
     
     var body: some View {
             
@@ -32,7 +32,7 @@ struct SideMenuView: View {
                             HStack {
                                 Image(systemName: "square.and.arrow.up.fill")
                                     .resizable()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 20, height: 20)
                                 .foregroundColor(.white)
                                 
                                 Text("Add Friend").padding()
@@ -50,7 +50,7 @@ struct SideMenuView: View {
                                 HStack {
                                     Image(systemName: "envelope.arrow.triangle.branch.fill")
                                         .resizable()
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 20, height: 20)
                                     .foregroundColor(.white)
                                     
                                     Text("Going Shopping: Notify").padding()
@@ -65,8 +65,8 @@ struct SideMenuView: View {
                             leavingRoom = true
                         }, label: {
                             HStack {
-                                Image(systemName: "x.square.fill").resizable()
-                                    .frame(width: 30, height: 30)
+                                Image(systemName: "rectangle.portrait.and.arrow.right.fill").resizable()
+                                    .frame(width: 20, height: 20)
                                     .foregroundColor(.white)
                                 
                                 Text("Leave Room").padding()
@@ -80,6 +80,27 @@ struct SideMenuView: View {
                         } message: {
                             Text("One of the group members will have to add you back")
                         }
+                        Spacer()
+                    }
+                    
+                    HStack{
+                    Button(action: {
+                        wantToSignOut.toggle()
+                    }, label: {
+                        Image(systemName: "x.square.fill").resizable().resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.white)
+                        
+                        Text("Sign Out").padding()
+                    }).buttonStyle(.plain)
+                    .confirmationDialog("Are you sure?",
+                      isPresented: $wantToSignOut) {
+                      Button("Sign Out", role: .destructive) {
+                          viewModel.signOut()
+                      }
+                    } message: {
+                      Text("Sad to see you leave.")
+                    }
                         Spacer()
                     }.padding(.bottom, 25)
                     

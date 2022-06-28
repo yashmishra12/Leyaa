@@ -27,10 +27,13 @@ struct ContentView: View {
                             
                             
                             RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {
-                                Label("Room Requset", systemImage: "bell.square.fill")
+                                Label("Invitation", systemImage: "bell.square.fill")
                             }
                             .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
                             
+                            ProfilePageView(selectedAvatar: defaultAvatar).tabItem {
+                                Label("Profile", systemImage: "person.crop.square.fill")
+                            }
 
                         }
                         

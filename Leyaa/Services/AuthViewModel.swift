@@ -20,7 +20,7 @@ class AuthViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     private let service = UserService()
-
+    
     init(){
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
@@ -40,7 +40,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-  
+    
     //MARK: - Registration
     func register(withEmail email: String, password: String, fullname: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -65,7 +65,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-   
+    
     
     //MARK: - LOGOUT
     func signOut() {
@@ -78,7 +78,7 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
-
+    
     
     //MARK: - Fetch User
     func fetchUser() {
@@ -88,30 +88,30 @@ class AuthViewModel: ObservableObject {
             self.currentUser = user
         }
     }
-
+    
     
     //MARK: - Add Room
     
     func addRoom(room: Room) {
-      do {
-        let _ = try db.collection("rooms").addDocument(from: room)
-      }
-      catch {
-        print(error)
-      }
+        do {
+            let _ = try db.collection("rooms").addDocument(from: room)
+        }
+        catch {
+            print(error)
+        }
     }
     
     //MARK: - Add Item
     
     func addItem(item: [String : String], roomID: String ){
-
-            db.collection("rooms").document(roomID).updateData(
-                ["newItems" : Firebase.FieldValue.arrayUnion([item])]
-            ){ err in
-                if let err = err {
-                    print("Error in adding item: \(err)")
-                }
+        
+        db.collection("rooms").document(roomID).updateData(
+            ["newItems" : Firebase.FieldValue.arrayUnion([item])]
+        ){ err in
+            if let err = err {
+                print("Error in adding item: \(err)")
             }
+        }
     }
     
     //MARK: - Delete Item
@@ -123,25 +123,25 @@ class AuthViewModel: ObservableObject {
             "desc": del.desc,
             "qty": del.qty
         ]
-
         
-
-     let docRef = db.collection("rooms").document(roomID)
+        
+        
+        let docRef = db.collection("rooms").document(roomID)
         
         DispatchQueue.main.async {
             docRef.updateData([
-                    "newItems" : FieldValue.arrayRemove([itemDel]) ]){ err in
-                        if let err = err {
-                            print("Error in delete item: \(err)")
-                        }
+                "newItems" : FieldValue.arrayRemove([itemDel]) ]){ err in
+                    if let err = err {
+                        print("Error in delete item: \(err)")
                     }
+                }
         }
     }
     
     
     //MARK: - Poppulate Room List
     func populateRoomList () {
- 
+        
         self.db.collection("rooms")
             .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
@@ -166,13 +166,13 @@ class AuthViewModel: ObservableObject {
                     }
                 }
             }
-        }
+    }
     
     //MARK: - Leave Room
     
     func leaveRoom(roomData: Room) {
         let docRef =  db.collection("rooms").document(roomData.id ?? "")
-       
+        
         docRef.updateData([
             "members" : FieldValue.arrayRemove([userSession?.uid ?? ""])
         ]){ err in
@@ -181,7 +181,7 @@ class AuthViewModel: ObservableObject {
             }
         }
         
-
+        
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let property = document.get("members") as! [String]
@@ -193,11 +193,11 @@ class AuthViewModel: ObservableObject {
                 print("Document does not exist")
             }
         }
-            
+        
         
         
     }
-  
+    
     
     
     //MARK: - Room Join Request
@@ -234,7 +234,7 @@ class AuthViewModel: ObservableObject {
     func criticalFunc() {
         populateRoomList()
         roomJoinRequestUpdate()
-        }
+    }
     
     //MARK: - Room Invite
     
@@ -244,16 +244,16 @@ class AuthViewModel: ObservableObject {
         
         
         do {
-          let _ = try db.collection("roomRequest").addDocument(from: req)
+            let _ = try db.collection("roomRequest").addDocument(from: req)
         }
         catch {
-          print(error)
+            print(error)
         }
         
         
     }
     
-        
+    
     //MARK: - Reject Room Request
     
     func rejectRoomRequest(reqData: RoomRequest) {
@@ -262,22 +262,22 @@ class AuthViewModel: ObservableObject {
             if let err = err {
                 print("Error in adding item: \(err)")
             }
-          }
         }
+    }
     
     //MARK: - Accept Room Request
     func acceptRoomRequest(reqData: RoomRequest) {
         let userToAdd: [String] = [currentUser?.id ?? ""]
         self.db.collection("rooms").document(reqData.roomID)
             .updateData(["members" : Firebase.FieldValue.arrayUnion(userToAdd)]){ err in
-            if let err = err {
-                print("Error in adding item: \(err)")
+                if let err = err {
+                    print("Error in adding item: \(err)")
+                }
             }
-        }
         
         rejectRoomRequest(reqData: reqData)
     }
-
+    
     //MARK: - Edit Item
     
     func editItem(item: Item, name: String, qty: String, desc: String, roomID: String) {
@@ -312,11 +312,10 @@ class AuthViewModel: ObservableObject {
         
         
         
-        }
+    }
     
     
     //MARK: - Get Profile Avatar
-    
     func getProfileAvatar(userID: String, completion: @escaping (String) -> Void) {
         var profilePic: String = ""
         let docRef = db.collection("users").document(userID)
@@ -331,10 +330,9 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-
+    
     
     //MARK: - Get Profile Name
-    
     func getProfileName(userID: String, completion: @escaping (String) -> Void) {
         var profileName: String = ""
         let docRef = db.collection("users").document(userID)
@@ -350,7 +348,6 @@ class AuthViewModel: ObservableObject {
     }
     
     //MARK: - Email
-    
     func getProfileEmail(userID: String, completion: @escaping (String) -> Void) {
         var profileEmail: String = ""
         let docRef = db.collection("users").document(userID)
@@ -364,6 +361,38 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
-
     
+    //MARK: - AVATAR
+    func getAvatar(userID: String, completion: @escaping (String) -> Void) {
+        var profileAvatar: String = ""
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                profileAvatar = document.get("email") as! String
+                completion(profileAvatar)
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
+    
+    //MARK: - Update Avatar
+    func updateAvatar(userID: String, newAvatar: String) {
+        db.collection("users").document(userID).setData([
+            "avatar" :  newAvatar,
+            "email": currentUser?.email ?? "",
+            "fullname": currentUser?.fullname  ?? "",
+            "uid": currentUser?.id  ?? ""]) { err in
+            if let err = err {
+                print("Error in adding item: \(err)")
+            }
+        }
+        
+        fetchUser()
+        
+        
+    }
+    
+    
+}

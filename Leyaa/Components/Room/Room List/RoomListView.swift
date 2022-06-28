@@ -12,13 +12,9 @@ struct RoomListView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var isShowingMenuBar: Bool = false
     @Binding var myRoom: [Room]
+    @State var wantToSignOut: Bool = false
     
     var body: some View {
-        
-        ZStack{
-            if isShowingMenuBar {
-                SideMenuRoomListView(isShowing: $isShowingMenuBar)
-            }
         
         
         ZStack {
@@ -51,34 +47,33 @@ struct RoomListView: View {
                             
                         }
                     }
-                    
-                    
                 }
                 .navigationTitle("Rooms")
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        withAnimation(.spring()) {
-                            isShowingMenuBar.toggle()
+                    ToolbarItem {
+                        Button(action: {
+                            wantToSignOut.toggle()
+                        }, label: {
+                            Image(systemName: "clear").resizable().foregroundColor(.white)
+                        }).buttonStyle(.plain)
+                        .confirmationDialog("Are you sure?",
+                          isPresented: $wantToSignOut) {
+                          Button("Sign Out", role: .destructive) {
+                              viewModel.signOut()
+                          }
+                        } message: {
+                          Text("Sad to see you leave.")
                         }
-                        
                     }
-                    label: { Image(systemName: "line.3.horizontal.circle.fill").resizable() }.buttonStyle(.plain)
-                    }
-
                 }
                 
-            }.navigationBarBackButtonHidden(isShowingMenuBar ? false : true)
+            }.navigationBarBackButtonHidden(true)
         }
-            .cornerRadius(isShowingMenuBar ? 20 : 0)
-            .offset(x: isShowingMenuBar ? screenWidth*0.5 : 0, y: isShowingMenuBar ? screenHeight*0.05 : 0)
-            .scaleEffect(isShowingMenuBar ? 0.8 : 1)
-        }
-        .onAppear {
-            isShowingMenuBar = false
-        }
+        
     }
+    
 }
+
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {

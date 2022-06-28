@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-let assetName = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado", "lemon", "runningshoe", "shoe", "formalshoe", "converse", "highheel", "boot", "lemon", "croc", "slipper", "ketchup"]
+let assetName = ["apple", "banana", "cheese", "capsicum", "milk", "egg", "carrot", "tomato", "bread", "condom", "pineapple", "coffee", "pad", "chocolate", "fish", "shampoo", "conditioner", "sunscreen", "avacado", "lemon", "runningshoe", "shoe", "formalshoe", "converse", "highheel", "boot", "croc", "slipper", "ketchup"]
 
 let screenHeight = UIScreen.main.bounds.height
 let screenWidth = UIScreen.main.bounds.width
