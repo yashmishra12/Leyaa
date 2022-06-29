@@ -8,45 +8,71 @@
 import SwiftUI
 
 struct ItemSearchView: View {
-    let names = assetName.sorted()
+    let names = assetName.map{$0.capitalized}.sorted()
     @State private var searchText = ""
-    @Binding var recentlyDeleted: [String]
-
+    @Binding var recentlyDeleted: [Item]
+    @EnvironmentObject var viewModel: AuthViewModel
+    @Binding var room: Room
+    
     var body: some View {
-        VStack {
-          
-            if recentlyDeleted.count>0 {
-                VStack{
-                    Text("Quick Undo").font(.title2).foregroundColor(.blue)
-                    HStack {
-                        ForEach(recentlyDeleted, id: \.self) { item in
-                            Image(item.sanitiseItemName()).resizable().frame(width: 50, height: 50)
+        ZStack {
+            
+        
+            //MARK: - SEARCH LIST
+            
+            VStack {
+                
+                List {
+                    ForEach(searchResults, id:\.self) { item in
+                        Button {
+                            viewModel.addItem(item: ["id":UUID().uuidString, "name": item, "desc":"", "qty": ""],
+                                              roomID: room.id ?? "")
+                        } label: {
+                            Text(item)
                         }
+                        
+                        
                     }
                 }
-            }
-            
-            ZStack{
-                 
-
-                    List {
-                        ForEach(searchResults, id: \.self) { name in
-                            NavigationLink(destination: Text(name)) {
-                                Text(name)
+                .searchable(text:  $searchText)
+                
+                
+                
+                Spacer()
+                
+                VStack {
+                    if recentlyDeleted.count>0 {
+                        VStack{
+                            Text("Quick Undo").font(.title2).foregroundColor(.blue)
+                            HStack {
+                                ForEach(recentlyDeleted.suffix(7), id: \.self) { item in
+                                    Image(item.name.sanitiseItemName()).resizable().frame(width: 50, height: 50).padding()
+                                        .onTapGesture {
+                                            let newItem: [String: String] = [
+                                                "id": item.id,
+                                                "name": item.name,
+                                                "desc": item.desc,
+                                                "qty": item.qty
+                                            ]
+                                            
+                                            viewModel.addItem(item: newItem, roomID: room.id ?? "")
+                                            recentlyDeleted = recentlyDeleted.filter { $0 != item }
+                                        }
+                                }
                             }
                         }
                     }
-                    .searchable(text: $searchText) {
-                        ForEach(searchResults, id: \.self) { result in
-                            Text(result).searchCompletion(result)
-                        }
-                    }
-                    .navigationTitle("Items")
+                }
                 
             }
+            
+            
+            
+            
         }
+        .navigationTitle("Items")
     }
-
+    
     var searchResults: [String] {
         if searchText.isEmpty {
             return names
@@ -55,10 +81,10 @@ struct ItemSearchView: View {
         }
     }
 }
-
-struct ItemSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemSearchView(recentlyDeleted: .constant(["coffee", "apple", "tomato"]))
-            .preferredColorScheme(.light)
-    }
-}
+//
+//struct ItemSearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemSearchView(recentlyDeleted: .constant(["coffee", "apple", "tomato"]), room: "")
+//            .preferredColorScheme(.light)
+//    }
+//}

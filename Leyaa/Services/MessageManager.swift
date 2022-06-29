@@ -30,6 +30,7 @@ class MessageManager: ObservableObject {
         roomID = name
     }
 
+    //MARK: - Get Message
     func getMessages (roomID rid: String? ) {
         
         self.db.collection(rid ?? roomID)
@@ -64,6 +65,7 @@ class MessageManager: ObservableObject {
             }
     }
     
+    //MARK: - Send Message
     func sendMessage (text: String, senderID: String) {
         do {
             let newMessage = Message(id: UUID().uuidString, text: text, senderID: senderID, timestamp: Date())
