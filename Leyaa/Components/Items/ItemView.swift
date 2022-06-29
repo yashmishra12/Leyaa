@@ -14,7 +14,7 @@ struct ItemView: View {
     @State var offset: CGSize = .zero
     @State var triggerOffset = UIScreen.main.bounds.width / 6
     
-    @Binding var lastDeleted: [String]
+    @Binding var lastDeleted: [Item]
     
     @Binding var item: Item
     @Binding var roomData: Room
@@ -73,7 +73,7 @@ struct ItemView: View {
                 .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 195, idealHeight: 195, maxHeight: 195 )
                 .background(Color("MediumBlue"))
                 .onLongPressGesture(perform: {
-                    lastDeleted.append(item.name)
+                    lastDeleted.append(item)
                     withAnimation (.easeOut(duration: 0.3)) {
                         isShowing.toggle()
                     }

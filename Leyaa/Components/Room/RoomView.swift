@@ -12,14 +12,15 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
-    @State var recentDeletedItems: [String]
+    @State var recentDeletedItems: [Item]
     
     @State private var isShowingSideMenu: Bool = false
+   
     
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-
+        
         ZStack {
             if isShowingSideMenu {
                 SideMenuView(isShowing: $isShowingSideMenu, roomData: $roomData)
@@ -27,38 +28,46 @@ struct RoomView: View {
             ZStack {
                 ScrollView {
                     VStack  {
-                          
-                      
+                        
+                        
                         LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                             ForEach($roomData.newItems) { item in
                                 VStack{
                                     ItemView(lastDeleted: $recentDeletedItems, item: item, roomData: $roomData)
                                 }
-                               
+                                
                             }
                         }
-         
+                        
                         
                         HStack{
-                   if (isShowingSideMenu == false) {
-                                   NavigationLink {
-                                       ItemSearchView(recentlyDeleted: $recentDeletedItems)
-                                   } label: {
-                                       Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
-                                   }.padding()
-                                       .buttonStyle(.plain)
+                            if (isShowingSideMenu == false) {
+                                NavigationLink {
+                                    ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
+                                } label: {
+                                    Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                                }.padding()
+                                    .buttonStyle(.plain)
+                                
+                                Spacer()
+                                
+                                NavigationLink {
+                                    ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
+                                } label: {
+                                    Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                                }.padding()
+                                    .buttonStyle(.plain)
+                                
+                                
+                    
+                                
                             }
                             
-                            Spacer()
-                            
-                            NavigationLink {
-                                ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
-                            } label: {
-                                Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
-                            }.padding()
-                                .buttonStyle(.plain)
                         }
-
+                        
+                        
+                        
+                        
                     }
                 }
                 .navigationTitle(Text(roomData.title)).foregroundColor(.white)
@@ -67,12 +76,12 @@ struct RoomView: View {
                     //QuickSearch
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
-                            ItemSearchView(recentlyDeleted: $recentDeletedItems)
+                            ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                         } label: {
                             Image(systemName: "sparkle.magnifyingglass").resizable().foregroundColor(.white)
                                 .padding(.horizontal, 10)
                         }.buttonStyle(.plain)
-
+                        
                     }
                     
                     
@@ -84,10 +93,10 @@ struct RoomView: View {
                             Image(systemName: "plus.app.fill").resizable().foregroundColor(.white)
                         }.padding(.horizontal, 10)
                             .buttonStyle(.plain)
-
+                        
                     }
                     
-                   
+                    
                     
                     
                     //Hamburger
@@ -99,7 +108,7 @@ struct RoomView: View {
                         } label: {
                             Image(systemName: "line.3.horizontal").resizable()
                         }.buttonStyle(.plain)
-
+                        
                     }
                 }
             }
@@ -110,14 +119,14 @@ struct RoomView: View {
         .onAppear {
             isShowingSideMenu = false
         }
-           
+        
     }
 }
 
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(
-            roomData: .constant(Room(id: "2dsasdasd", title: "Avent Ferry", newItems: [Item(id: "22020", name: "Coffee", desc: "Coffee is nice", qty: "200gm")], members: ["asdas", "bbasdasd"])), recentDeletedItems: ["coffee"]
+            roomData: .constant(Room(id: "2dsasdasd", title: "Avent Ferry", newItems: [Item(id: "22020", name: "Coffee", desc: "Coffee is nice", qty: "200gm")], members: ["asdas", "bbasdasd"])), recentDeletedItems: []
         )
     }
 }
