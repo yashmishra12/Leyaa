@@ -50,46 +50,6 @@ struct RoomChatView: View {
 }
 
 
-//
-//struct RoomChatView: View {
-//    @EnvironmentObject var viewModel: AuthViewModel
-//
-//    @Binding var roomData: Room
-//    @StateObject var messageManager = MessageManager()
-//
-//    var body: some View {
-//        VStack {
-//            VStack {
-//
-//                ScrollViewReader { proxy in
-//                    ScrollView {
-//                        ForEach(messageManager.messages, id: \.id) { message in
-//                            MessageBubbleView(message: message)
-//                        }
-//                    }
-////                    .padding(.top, 10)
-////                    .background(.white)
-//                    .onChange(of: messageManager.lastMessageID) { id in
-//                        // When the lastMessageId changes, scroll to the bottom of the conversation
-//                        withAnimation {
-//                            proxy.scrollTo(id, anchor: .bottom)
-//                        }
-//                    }
-//                }
-//            }
-//
-//
-//            MessageField(senderID: viewModel.currentUser?.id ?? "", roomData: $roomData)
-//                .environmentObject(messageManager)
-//        }
-//        .navigationTitle(roomData.title)
-//        .frame(width: screenWidth)
-//        .onAppear {
-//                messageManager.updateRoomID(name: roomData.id ?? "")
-//                messageManager.getMessages(roomID: roomData.id ?? "")
-//            }
-//    }
-//}
 
 //struct RoomChatView_Previews: PreviewProvider {
 //    static var previews: some View {

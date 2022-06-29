@@ -30,7 +30,7 @@ struct RoomListComponent: View {
                     Spacer()
                 }
 
-                
+                Spacer() 
                 HStack{
                     if(newItems.count>5) {
                             
