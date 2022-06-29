@@ -100,26 +100,7 @@ struct SideMenuView: View {
                         Spacer()
                     }
                     
-                    HStack{
-                    Button(action: {
-                        wantToSignOut.toggle()
-                    }, label: {
-                        Image(systemName: "x.square.fill").resizable().resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.white)
-                        
-                        Text("Sign Out").padding()
-                    }).buttonStyle(.plain)
-                    .confirmationDialog("Are you sure?",
-                      isPresented: $wantToSignOut) {
-                      Button("Sign Out", role: .destructive) {
-                          viewModel.signOut()
-                      }
-                    } message: {
-                      Text("Sad to see you leave.")
-                    }
-                        Spacer()
-                    }.padding(.bottom, 25)
+                    
                     
                     HStack {
                         Text("Room Members").font(.body).fontWeight(.bold)

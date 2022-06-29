@@ -23,7 +23,7 @@ struct RoomListView: View {
                     VStack{
                         VStack{
                             ForEach($myRoom) { room in
-                                NavigationLink(destination: RoomView(roomData: room)) {
+                                NavigationLink(destination: RoomView(roomData: room, recentDeletedItems: [])) {
                                     RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
                                 }.buttonStyle(.plain)
                             }
@@ -49,23 +49,6 @@ struct RoomListView: View {
                     }
                 }
                 .navigationTitle("Rooms")
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: {
-                            wantToSignOut.toggle()
-                        }, label: {
-                            Image(systemName: "clear").resizable().foregroundColor(.white)
-                        }).buttonStyle(.plain)
-                        .confirmationDialog("Are you sure?",
-                          isPresented: $wantToSignOut) {
-                          Button("Sign Out", role: .destructive) {
-                              viewModel.signOut()
-                          }
-                        } message: {
-                          Text("Sad to see you leave.")
-                        }
-                    }
-                }
                 
             }.navigationBarBackButtonHidden(true)
         }

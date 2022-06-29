@@ -12,7 +12,7 @@ import Firebase
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
-    
+    @State var recentDeletedItems: [String]
     
     @State private var isShowingSideMenu: Bool = false
     
@@ -32,7 +32,7 @@ struct RoomView: View {
                         LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                             ForEach($roomData.newItems) { item in
                                 VStack{
-                                    ItemView(item: item, roomData: $roomData)
+                                    ItemView(lastDeleted: $recentDeletedItems, item: item, roomData: $roomData)
                                 }
                                
                             }
@@ -42,7 +42,7 @@ struct RoomView: View {
                         HStack{
                    if (isShowingSideMenu == false) {
                                    NavigationLink {
-                                       ItemSearchView()
+                                       ItemSearchView(recentlyDeleted: $recentDeletedItems)
                                    } label: {
                                        Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
                                    }.padding()
@@ -67,7 +67,7 @@ struct RoomView: View {
                     //QuickSearch
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink {
-                                ItemSearchView()
+                            ItemSearchView(recentlyDeleted: $recentDeletedItems)
                         } label: {
                             Image(systemName: "sparkle.magnifyingglass").resizable().foregroundColor(.white)
                                 .padding(.horizontal, 10)
@@ -117,7 +117,7 @@ struct RoomView: View {
 struct RoomView_Previews: PreviewProvider {
     static var previews: some View {
         RoomView(
-            roomData: .constant(Room(id: "2dsasdasd", title: "Avent Ferry", newItems: [Item(id: "22020", name: "Coffee", desc: "Coffee is nice", qty: "200gm")], members: ["asdas", "bbasdasd"]))
+            roomData: .constant(Room(id: "2dsasdasd", title: "Avent Ferry", newItems: [Item(id: "22020", name: "Coffee", desc: "Coffee is nice", qty: "200gm")], members: ["asdas", "bbasdasd"])), recentDeletedItems: ["coffee"]
         )
     }
 }
