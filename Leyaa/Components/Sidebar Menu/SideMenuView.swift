@@ -16,7 +16,7 @@ struct SideMenuView: View {
     @State var wantToSignOut: Bool = false
     
     var body: some View {
-            
+        
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
@@ -30,7 +30,7 @@ struct SideMenuView: View {
                             RoomInviteView(roomData: $roomData)
                         } label: {
                             HStack {
-                                Image(systemName: "square.and.arrow.up.fill")
+                                Image(systemName: "square.and.arrow.down.fill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
                                 .foregroundColor(.white)
@@ -53,13 +53,30 @@ struct SideMenuView: View {
                                         .frame(width: 20, height: 20)
                                     .foregroundColor(.white)
                                     
-                                    Text("Going Shopping: Notify").padding()
+                                    Text("I'm going shopping").padding()
                                 }
                         }.buttonStyle(.plain)
                         Spacer()
                     }
 
 
+                    HStack {
+                        NavigationLink {
+                            RoomChatView(roomData: $roomData)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "message.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                    .foregroundColor(.white)
+                                    
+                                    Text("Group Chat").padding()
+                                }
+                        }.buttonStyle(.plain)
+                        Spacer()
+                    }
+                    
+                    
                     HStack{
                         Button(action: {
                             leavingRoom = true

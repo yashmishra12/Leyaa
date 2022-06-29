@@ -12,6 +12,11 @@
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */; };
 		CC54100A286589060026CA76 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC541009286589060026CA76 /* RoomRequest.swift */; };
+		CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D2656286BBEA40068800E /* RoomChatView.swift */; };
+		CC5D265A286BC11F0068800E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D2659286BC11F0068800E /* Message.swift */; };
+		CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D265B286BC1E80068800E /* MessageBubbleView.swift */; };
+		CC5D265E286BD4780068800E /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D265D286BD4780068800E /* MessageField.swift */; };
+		CC5D2660286BDDBB0068800E /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D265F286BDDBB0068800E /* MessageManager.swift */; };
 		CC6B512E2867B94C00531303 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC6B512D2867B94C00531303 /* Launch Screen.storyboard */; };
 		CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B512F2867E84700531303 /* RoomInviteView.swift */; };
 		CC6B51322867F5D800531303 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B51312867F5D800531303 /* UserService.swift */; };
@@ -23,7 +28,6 @@
 		CC6C0D8B2869F0C600F2011A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D872869F0C600F2011A /* ImageLoader.swift */; };
 		CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */; };
 		CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D9E286A688900F2011A /* ProfilePageView.swift */; };
-		CC6C0DA3286A7CBC00F2011A /* EditProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0DA2286A7CBC00F2011A /* EditProfilePage.swift */; };
 		CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */; };
 		CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15502859A00300C29C45 /* FirebaseAuth */; };
 		CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CC6E15522859A00300C29C45 /* FirebaseFirestore */; };
@@ -60,6 +64,11 @@
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomJoinRequestView.swift; sourceTree = "<group>"; };
 		CC541009286589060026CA76 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
+		CC5D2656286BBEA40068800E /* RoomChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChatView.swift; sourceTree = "<group>"; };
+		CC5D2659286BC11F0068800E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		CC5D265B286BC1E80068800E /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
+		CC5D265D286BD4780068800E /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
+		CC5D265F286BDDBB0068800E /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		CC6B512D2867B94C00531303 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CC6B512F2867E84700531303 /* RoomInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomInviteView.swift; sourceTree = "<group>"; };
 		CC6B51312867F5D800531303 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -71,7 +80,6 @@
 		CC6C0D872869F0C600F2011A /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberInfoView.swift; sourceTree = "<group>"; };
 		CC6C0D9E286A688900F2011A /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
-		CC6C0DA2286A7CBC00F2011A /* EditProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePage.swift; sourceTree = "<group>"; };
 		CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequestComponentView.swift; sourceTree = "<group>"; };
 		CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateView.swift; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 				CC9FA7AC285EB90800EF896D /* RoomView.swift */,
 				CC71D7232865AE6200E62F5B /* RoomJoinRequest */,
 				CC6C0D822869E53F00F2011A /* Room List */,
+				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -144,6 +153,15 @@
 			path = Create;
 			sourceTree = "<group>";
 		};
+		CC5D2658286BC0BF0068800E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D265B286BC1E80068800E /* MessageBubbleView.swift */,
+				CC5D265D286BD4780068800E /* MessageField.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		CC6013142863199200535994 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +169,7 @@
 				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
 				CC6B51312867F5D800531303 /* UserService.swift */,
+				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -256,7 +275,6 @@
 				CC54100628657CDF0026CA76 /* Create */,
 				CC6E15592859A03F00C29C45 /* App */,
 				CCB4C3B128597B7500105C5C /* Authentication */,
-				CC6C0DA2286A7CBC00F2011A /* EditProfilePage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +282,7 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CC5D2658286BC0BF0068800E /* Chat */,
 				CC6C0D9D286A685E00F2011A /* SideMenu RoomListView */,
 				CC20BAA328692C230071B7A6 /* Sidebar Menu */,
 				CC9FA7B0285ED38900EF896D /* UI */,
@@ -319,6 +338,7 @@
 				CCBA416F28601E53000B3FE7 /* Item.swift */,
 				CC541009286589060026CA76 /* RoomRequest.swift */,
 				CC6B5133286811ED00531303 /* AssetName.swift */,
+				CC5D2659286BC11F0068800E /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,17 +437,19 @@
 			files = (
 				CC6C0D882869F0C600F2011A /* ImageCache.swift in Sources */,
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
+				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
+				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
+				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
 				CC6C0D8A2869F0C600F2011A /* EnvironmentValues+ImageCache.swift in Sources */,
 				CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */,
-				CC6C0DA3286A7CBC00F2011A /* EditProfilePage.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
 				CCFA96B8285A6B790083D925 /* User.swift in Sources */,
 				CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */,
@@ -435,8 +457,10 @@
 				CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */,
 				CC9FA7BA285ED44F00EF896D /* CreateButtonView.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
+				CC5D265E286BD4780068800E /* MessageField.swift in Sources */,
 				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
 				CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */,
+				CC5D2660286BDDBB0068800E /* MessageManager.swift in Sources */,
 				CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */,
 				CC6C0D892869F0C600F2011A /* AsyncImage.swift in Sources */,
 				CC6B513628681C0100531303 /* ItemEditView.swift in Sources */,
