@@ -63,6 +63,9 @@ struct RegistrationView: View {
                     .shadow(color: .black, radius: 15, x: 0, y: 0)
                     .padding(.top, 25)
                     .buttonStyle(.plain)
+                    .alert(isPresented: self.$viewModel.errorOccurred) {
+                        Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
+                    }
                 }
                 
                 Spacer()
@@ -97,7 +100,7 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
+        RegistrationView().environmentObject(AuthViewModel())
     }
 }
 

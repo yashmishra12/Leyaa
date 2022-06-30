@@ -37,6 +37,7 @@
 		CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */; };
 		CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */; };
 		CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA54286D0DD50052F6B3 /* FirebaseService */; };
+		CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateView.swift; sourceTree = "<group>"; };
 		CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 		CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Leyaa.entitlements; sourceTree = "<group>"; };
+		CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				CC6B51312867F5D800531303 /* UserService.swift */,
 				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
 				CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */,
+				CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */,
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
+				CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
