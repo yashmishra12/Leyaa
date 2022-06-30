@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
             ZStack(alignment: .topLeading) {
                 Group {
-                    if !viewModel.didAuthenticateUser {
+                    if viewModel.userSession == nil {
                         LoginView()
                     } else {
                         TabView{

@@ -32,7 +32,6 @@ struct RegistrationView: View {
                         .frame(height: screenHeight * 0.25)
                 }
                 
-                Spacer()
                 
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
@@ -44,6 +43,7 @@ struct RegistrationView: View {
                 }
                 .padding(.horizontal, 32)
                 .foregroundColor(.white)
+                .padding(.top, screenHeight*0.2)
                 
                 //MARK: - SIGN UP BUTTON
                 VStack{

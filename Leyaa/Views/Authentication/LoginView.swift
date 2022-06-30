@@ -74,9 +74,9 @@ struct LoginView: View {
     
     var body: some View {
         
+        NavigationView {
         
             ZStack {
-                NavigationView {
                 
                 
                 VStack {
@@ -100,7 +100,7 @@ struct LoginView: View {
                         
                     }
                     .padding(.horizontal, 32)
-
+                    .padding(.top, screenHeight*0.1)
                     .foregroundColor(.white)
                     
                     //MARK: - FORGOT PASSWORD
