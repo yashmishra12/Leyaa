@@ -17,10 +17,14 @@ class AuthViewModel: ObservableObject {
     @Published var pendingReqest = [RoomRequest]()
     @Published var currentUser: User?
     
+    @Published var errorOccurred: Bool = false
+    @Published var errorMessage: String = ""
+    
     private var db = Firestore.firestore()
     
     private let service = UserService()
     
+    let hapticFeedback = UINotificationFeedbackGenerator()
     init(){
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
@@ -41,6 +45,11 @@ class AuthViewModel: ObservableObject {
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) {result, error in
             if let error = error {
+                self.hapticFeedback.notificationOccurred(.error)
+                
+                self.errorMessage = "\(error.localizedDescription)"
+                self.errorOccurred.toggle()
+                
                 print("DEBUG: Failed to Signin with error \(error.localizedDescription)")
                 return
             }
@@ -56,6 +65,10 @@ class AuthViewModel: ObservableObject {
     func register(withEmail email: String, password: String, fullname: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
+                self.hapticFeedback.notificationOccurred(.error)
+                self.errorMessage = "\(error.localizedDescription)"
+                self.errorOccurred.toggle()
+                
                 print("DEBUG: Failed to register with error \(error.localizedDescription)")
                 return
             }

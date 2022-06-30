@@ -76,8 +76,9 @@ struct LoginView: View {
     var body: some View {
         
         
-        NavigationView {
             ZStack {
+                NavigationView {
+                
                 
                 VStack{
                     
@@ -140,6 +141,9 @@ struct LoginView: View {
                         .shadow(color: .black, radius: 10, x: 0, y: 0)
                         .padding(.top, 25)
                         .buttonStyle(.plain)
+                        .alert(isPresented: self.$viewModel.errorOccurred) {
+                            Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
+                        }
                     }
                     
  
