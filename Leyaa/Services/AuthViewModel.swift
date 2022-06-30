@@ -56,11 +56,9 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
-            
+            self.fetchUser()
         }
         
-        didAuthenticateUser = true
-        fetchUser()
     
     }
     
@@ -98,7 +96,6 @@ class AuthViewModel: ObservableObject {
         // sets user session to nil so we show login view
         userSession = nil
         didAuthenticateUser = false
-        rooms = []
         
         // signs user out on server
         try? Auth.auth().signOut()
