@@ -7,9 +7,7 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseFirestoreSwift
+import FirebaseService
 
 class AuthViewModel: ObservableObject {
     
@@ -28,6 +26,17 @@ class AuthViewModel: ObservableObject {
         self.fetchUser()
     }
     
+    //MARK: - Authenticate with Apple
+    
+    func appleLogin() {
+        self.didAuthenticateUser = true
+        self.userSession = Auth.auth().currentUser
+        self.fetchUser()
+        
+    }
+    
+
+    
     //MARK: - Authentication
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) {result, error in
@@ -40,6 +49,7 @@ class AuthViewModel: ObservableObject {
             self.userSession = user
             
         }
+    
     }
     
     
@@ -65,7 +75,7 @@ class AuthViewModel: ObservableObject {
             
         }
     }
- 
+    
     
     func signOut() {
         // sets user session to nil so we show login view
@@ -86,7 +96,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-
+    
     //MARK: - ITEMS
     
     func addItem(item: [String : String], roomID: String ){
@@ -255,7 +265,7 @@ class AuthViewModel: ObservableObject {
                 }
             }
     }
-
+    
     
     func roomInvite(recieverEmail: String, message: String, roomData: Room) {
         
@@ -351,10 +361,10 @@ class AuthViewModel: ObservableObject {
             "email": currentUser?.email ?? "",
             "fullname": currentUser?.fullname  ?? "",
             "uid": currentUser?.id  ?? ""]) { err in
-            if let err = err {
-                print("Error in adding item: \(err)")
+                if let err = err {
+                    print("Error in adding item: \(err)")
+                }
             }
-        }
         
         fetchUser()
         

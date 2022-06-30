@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "bettercodable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marksands/BetterCodable.git",
+      "state" : {
+        "revision" : "61153170668db7a46a20a87e35e70f80b24d4eb5",
+        "version" : "0.4.0"
+      }
+    },
+    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -25,6 +34,15 @@
       "state" : {
         "revision" : "2eb177effe7baf1f13ad0c5f4eb8c71a98429fb5",
         "version" : "9.1.0"
+      }
+    },
+    {
+      "identity" : "firebaseservice",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rebeloper/FirebaseService.git",
+      "state" : {
+        "revision" : "4ed789ba165c5656521acaf145a0373b76d332f7",
+        "version" : "2.0.0"
       }
     },
     {

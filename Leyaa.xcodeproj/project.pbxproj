@@ -35,6 +35,8 @@
 		CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AA285E9E9A00EF896D /* Room.swift */; };
 		CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AC285EB90800EF896D /* RoomView.swift */; };
 		CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */; };
+		CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */; };
+		CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA54286D0DD50052F6B3 /* FirebaseService */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		CC9FA7AA285E9E9A00EF896D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CC9FA7AC285EB90800EF896D /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateView.swift; sourceTree = "<group>"; };
+		CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
+		CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Leyaa.entitlements; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */,
 				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
 				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
+				CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +164,7 @@
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
 				CC6B51312867F5D800531303 /* UserService.swift */,
 				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
+				CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */,
 				CC6013142863199200535994 /* Services */,
 				CCFA96BB285A7E160083D925 /* Utils */,
 				CCFA96B6285A6B6E0083D925 /* Model */,
@@ -335,6 +342,7 @@
 				CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */,
 				CC6E15562859A00300C29C45 /* FirebaseStorage */,
 				CC20BAA12869114B0071B7A6 /* Focuser */,
+				CCA3FA54286D0DD50052F6B3 /* FirebaseService */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -367,6 +375,7 @@
 			packageReferences = (
 				CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */,
+				CCA3FA53286D0DD50052F6B3 /* XCRemoteSwiftPackageReference "FirebaseService" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -405,6 +414,7 @@
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
+				CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
@@ -488,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -542,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -557,6 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
@@ -588,6 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
@@ -654,6 +666,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CCA3FA53286D0DD50052F6B3 /* XCRemoteSwiftPackageReference "FirebaseService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/FirebaseService.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -681,6 +701,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		CCA3FA54286D0DD50052F6B3 /* FirebaseService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCA3FA53286D0DD50052F6B3 /* XCRemoteSwiftPackageReference "FirebaseService" */;
+			productName = FirebaseService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
