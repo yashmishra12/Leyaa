@@ -23,12 +23,7 @@ struct RoomJoinRequestView: View {
                     }
                     
                     Spacer()
-                   
-                    Button {
-                        print(UserDefaults.standard.string(forKey: "kDeviceToken") )
-                    } label: {
-                        Text("Print Me")
-                    }
+
 
 
 

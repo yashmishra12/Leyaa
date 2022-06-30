@@ -30,12 +30,12 @@ struct GroupMemberInfoView: View {
                         
                         VStack{
                             HStack {
-                                Text(name).font(.system(size: 24, weight: .semibold))
+                                Text(name).font(.system(size: 24, weight: .semibold) )
                                 Spacer()
                             }
                             
                             HStack {
-                                Text(email ).font(.system(size: 14))
+                                Text(email).font(.caption)
                                 Spacer()
                             }
                         }.onAppear(perform: {

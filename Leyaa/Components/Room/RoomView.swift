@@ -23,7 +23,7 @@ struct RoomView: View {
         
         ZStack {
             if isShowingSideMenu {
-                SideMenuView(isShowing: $isShowingSideMenu, roomData: $roomData)
+                SideMenuView(isShowing: $isShowingSideMenu, roomData: $roomData, show: $isShowingSideMenu)
             }
             ZStack {
                 ScrollView {
@@ -57,17 +57,10 @@ struct RoomView: View {
                                     Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
                                 }.padding()
                                     .buttonStyle(.plain)
-                                
-                                
-                    
-                                
                             }
                             
                         }
-                        
-                        
-                        
-                        
+    
                     }
                 }
                 .navigationTitle(Text(roomData.title)).foregroundColor(.white)

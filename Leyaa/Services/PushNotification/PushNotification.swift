@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct PushNotification {
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
     
     func sendPushNotification(payloadDict: [String: Any]) {
@@ -32,6 +35,20 @@ struct PushNotification {
        }
        task.resume()
     }
+    
+    func goingForShopping(members: [String], roomName: String) {
+        let userName = viewModel.currentUser?.fullname
+        
+        
+        for val in members where val != UserDefaults.standard.string(forKey: "kDevice") {
+            let notifPayload: [String: Any] = ["to": val,"notification": ["title":"\(roomName)",
+                                                                          "body":"\(userName ?? "") is going shopping.",
+                                                                          "sound":"default"]]
+            self.sendPushNotification(payloadDict: notifPayload)
+        }
+    }
+    
+    
     
 }
 
