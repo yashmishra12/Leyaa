@@ -38,6 +38,9 @@
 		CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */; };
 		CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA54286D0DD50052F6B3 /* FirebaseService */; };
 		CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */; };
+		CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */; };
+		CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */; };
+		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -84,6 +87,9 @@
 		CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 		CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Leyaa.entitlements; sourceTree = "<group>"; };
 		CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
+		CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -201,6 +207,40 @@
 			path = RoomJoinRequest;
 			sourceTree = "<group>";
 		};
+		CCA3FA59286D6FA60052F6B3 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3FA60286D71E20052F6B3 /* ViewModel */,
+				CCA3FA5C286D71660052F6B3 /* Service */,
+				CCA3FA5F286D718E0052F6B3 /* View */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		CCA3FA5C286D71660052F6B3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CCA3FA5F286D718E0052F6B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCA3FA60286D71E20052F6B3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CCB4C39528597A3200105C5C = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +285,7 @@
 		CCB4C3AF28597B5800105C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3FA59286D6FA60052F6B3 /* ForgotPassword */,
 				CC54100628657CDF0026CA76 /* Create */,
 				CC6E15592859A03F00C29C45 /* App */,
 				CCB4C3B128597B7500105C5C /* Authentication */,
@@ -416,6 +457,7 @@
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
+				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
@@ -442,6 +484,8 @@
 				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
 				CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */,
+				CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */,
+				CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */,
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
 				CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */,
