@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+import FirebaseService
 
 struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -65,7 +67,7 @@ struct ProfilePageView: View {
                     HStack{
                         if (isExpanded && selectedAvatar != viewModel.currentUser?.avatar) {
                             Button {
-                                    viewModel.updateAvatar(userID: (viewModel.currentUser?.id)!, newAvatar: selectedAvatar)
+                                viewModel.updateAvatar(userID: (viewModel.userSession?.uid)!, newAvatar: selectedAvatar)
                             } label: {
                                 Text("Save")
                             }
@@ -84,7 +86,7 @@ struct ProfilePageView: View {
                         Button(action: {
                             wantToSignOut.toggle()
                         }, label: {
-                            Text("Sign Out")
+                            Text("Sign Out").font(.caption2)
                         }).buttonStyle(.plain)
                         .confirmationDialog("Are you sure?",
                           isPresented: $wantToSignOut) {

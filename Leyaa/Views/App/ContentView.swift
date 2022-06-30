@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
             ZStack(alignment: .topLeading) {
                 Group {
-                    if viewModel.userSession == nil {
+                    if !viewModel.didAuthenticateUser {
                         LoginView()
                     } else {
                         TabView{
@@ -51,35 +51,3 @@ struct ContentView: View {
         }
     }
     
-//    extension ContentView {
-//
-//
-//        var mainInterfaceView: some View {
-//            ZStack(alignment: .topLeading) {
-//
-//
-//
-//                if showMenu {
-//                    ZStack {
-//                        Color(.black)
-//                            .opacity(showMenu ? 0.25 : 0.0)
-//                    }.onTapGesture {
-//                        withAnimation(.easeInOut) {
-//                            showMenu = false
-//                        }
-//                    }
-//                    .ignoresSafeArea()
-//                }
-//
-//            }
-//            .navigationTitle("Home")
-//            .navigationBarTitleDisplayMode(.inline)
-//
-//            .onAppear {
-//                showMenu = false
-//            }
-//
-//
-//
-//        }
-//    }
