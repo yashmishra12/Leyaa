@@ -10,6 +10,7 @@ import SwiftUI
 struct RoomJoinRequestView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var roomRequest: [RoomRequest]
+
     
     var body: some View {
         NavigationView{
@@ -22,6 +23,14 @@ struct RoomJoinRequestView: View {
                     }
                     
                     Spacer()
+                   
+                    Button {
+                        print(UserDefaults.standard.string(forKey: "kDeviceToken") )
+                    } label: {
+                        Text("Print Me")
+                    }
+
+
 
                 }
             }.navigationTitle("Room Request")

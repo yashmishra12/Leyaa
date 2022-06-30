@@ -14,6 +14,7 @@ struct User: Identifiable, Codable {
     let fullname: String
     let email: String
     let avatar: String
+    let deviceToken: String
     
     var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == id }
 }

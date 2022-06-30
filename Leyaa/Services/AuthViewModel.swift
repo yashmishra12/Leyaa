@@ -8,6 +8,9 @@
 import SwiftUI
 import Firebase
 import FirebaseService
+import FirebaseAuth
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class AuthViewModel: ObservableObject {
     
@@ -76,8 +79,10 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
+          
             
             let data = ["email": email,
+                        "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
                         "avatar": assetName.randomElement() ?? "egg",
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
@@ -200,7 +205,7 @@ class AuthViewModel: ObservableObject {
         self.db.collection("rooms")
             .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     
                     guard let doc = snapshot?.documents else {
                         print("No Doc Found")
@@ -219,7 +224,7 @@ class AuthViewModel: ObservableObject {
                             return nil
                         }
                     }
-                }
+                
             }
     }
     
@@ -283,7 +288,11 @@ class AuthViewModel: ObservableObject {
     
     func roomInvite(recieverEmail: String, message: String, roomData: Room) {
         
-        let req = RoomRequest(message: message, roomID: roomData.id ?? "", roomName: roomData.title , senderName: currentUser?.fullname ?? "", receiverEmail: recieverEmail)
+        let req = RoomRequest(message: message,
+                              roomID: roomData.id ?? "",
+                              roomName: roomData.title ,
+                              senderName: currentUser?.fullname ?? "",
+                              receiverEmail: recieverEmail)
         
         
         do {
@@ -368,9 +377,26 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    func getDeviceToken(userID: String, completion: @escaping (String) -> Void) {
+        var deviceToken: String = ""
+        let docRef = db.collection("users").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                deviceToken = document.get("deviceToken") as! String
+                completion(deviceToken)
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
     
     func updateAvatar(userID: String, newAvatar: String) {
+
+        
         db.collection("users").document(userID).setData([
+            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
             "avatar" :  newAvatar,
             "email": currentUser?.email ?? "",
             "fullname": currentUser?.fullname  ?? "",
@@ -382,8 +408,9 @@ class AuthViewModel: ObservableObject {
         
         fetchUser()
         
-        
     }
+    
+    
     
     //MARK: - END
     
