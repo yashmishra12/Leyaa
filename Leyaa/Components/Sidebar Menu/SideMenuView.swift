@@ -129,5 +129,5 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avnt Ferry", newItems: [], members: [])))    }
+        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avnt Ferry", newItems: [], members: [], deviceTokens: [""])))    }
 }

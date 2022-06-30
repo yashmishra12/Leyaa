@@ -240,6 +240,14 @@ class AuthViewModel: ObservableObject {
             }
         }
         
+        docRef.updateData([
+            "deviceTokens" : FieldValue.arrayRemove([UserDefaults.standard.string(forKey: "kDeviceToken") ?? ""])
+        ]){ err in
+            if let err = err {
+                print("Error in leaving room: \(err)")
+            }
+        }
+        
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
@@ -318,8 +326,17 @@ class AuthViewModel: ObservableObject {
     
     func acceptRoomRequest(reqData: RoomRequest) {
         let userToAdd: [String] = [currentUser?.id ?? ""]
+        let tokenToAdd: [String] = [UserDefaults.standard.string(forKey: "kDeviceToken") ?? ""]
+        
         self.db.collection("rooms").document(reqData.roomID)
             .updateData(["members" : Firebase.FieldValue.arrayUnion(userToAdd)]){ err in
+                if let err = err {
+                    print("Error in adding item: \(err)")
+                }
+            }
+        
+        self.db.collection("rooms").document(reqData.roomID)
+            .updateData(["deviceTokens" : Firebase.FieldValue.arrayUnion(tokenToAdd)]){ err in
                 if let err = err {
                     print("Error in adding item: \(err)")
                 }

@@ -43,6 +43,6 @@ struct ItemCreateView: View {
 struct ItemCreateView_Previews: PreviewProvider {
     static var previews: some View {
         ItemCreateView(name: "", qty: "", desc: "",
-                       roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""])))
+                       roomData: .constant(Room(id: "", title: "", newItems: [Item(id: "", name: "", desc: "", qty: "")], members: [""], deviceTokens: [""])))
     }
 }

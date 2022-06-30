@@ -60,6 +60,6 @@ struct RoomListView: View {
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView(myRoom: .constant([Room(id: "21312", title: "Avent Ferry", newItems: [Item(id: "asdasd", name: "Coffee", desc: "Bru and Nesface", qty: "200gm")], members: [""])]))
+        RoomListView(myRoom: .constant([Room(id: "21312", title: "Avent Ferry", newItems: [Item(id: "asdasd", name: "Coffee", desc: "Bru and Nesface", qty: "200gm")], members: [""], deviceTokens: [""])]))
     }
 }
