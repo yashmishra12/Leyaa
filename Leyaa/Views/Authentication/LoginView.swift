@@ -207,6 +207,7 @@ struct LoginView: View {
                                                                 let data = ["email": user.email ?? "",
                                                                             "avatar": assetName.randomElement() ?? "egg",
                                                                             "fullname": Auth.auth().currentUser?.displayName ?? "",
+                                                                            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
                                                                             "uid": user.uid] as [String : Any]
                                                                 
                                                                 Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in

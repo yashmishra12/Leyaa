@@ -35,12 +35,14 @@
 		CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AA285E9E9A00EF896D /* Room.swift */; };
 		CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AC285EB90800EF896D /* RoomView.swift */; };
 		CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */; };
-		CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */; };
 		CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA54286D0DD50052F6B3 /* FirebaseService */; };
-		CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */; };
 		CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */; };
 		CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */; };
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
+		CCA3FA65286DA1B40052F6B3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */; };
+		CCA3FA67286DA1B40052F6B3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */; };
+		CCA3FA6A286DC4950052F6B3 /* PushNotificationCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA69286DC4950052F6B3 /* PushNotificationCredentials.swift */; };
+		CCA3FA6D286DC6120052F6B3 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -84,12 +86,13 @@
 		CC9FA7AA285E9E9A00EF896D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CC9FA7AC285EB90800EF896D /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateView.swift; sourceTree = "<group>"; };
-		CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateAdapter.swift; sourceTree = "<group>"; };
 		CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Leyaa.entitlements; sourceTree = "<group>"; };
-		CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		CCA3FA68286DA2DA0052F6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CCA3FA69286DC4950052F6B3 /* PushNotificationCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationCredentials.swift; sourceTree = "<group>"; };
+		CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA3FA67286DA1B40052F6B3 /* FirebaseMessaging in Frameworks */,
+				CCA3FA65286DA1B40052F6B3 /* FirebaseAnalytics in Frameworks */,
 				CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */,
 				CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */,
 				CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */,
@@ -168,12 +173,11 @@
 		CC6013142863199200535994 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3FA6B286DC6000052F6B3 /* PushNotification */,
 				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
 				CC6B51312867F5D800531303 /* UserService.swift */,
 				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
-				CCA3FA51286D0A820052F6B3 /* AppDelegateAdapter.swift */,
-				CCA3FA57286D5FD50052F6B3 /* ErrorMessage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -241,6 +245,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CCA3FA6B286DC6000052F6B3 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3FA69286DC4950052F6B3 /* PushNotificationCredentials.swift */,
+				CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */,
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
 		CCB4C39528597A3200105C5C = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +273,7 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3FA68286DA2DA0052F6B3 /* Info.plist */,
 				CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */,
 				CC6013142863199200535994 /* Services */,
 				CCFA96BB285A7E160083D925 /* Utils */,
@@ -387,6 +401,8 @@
 				CC6E15562859A00300C29C45 /* FirebaseStorage */,
 				CC20BAA12869114B0071B7A6 /* Focuser */,
 				CCA3FA54286D0DD50052F6B3 /* FirebaseService */,
+				CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */,
+				CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -420,6 +436,7 @@
 				CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */,
 				CCA3FA53286D0DD50052F6B3 /* XCRemoteSwiftPackageReference "FirebaseService" */,
+				CCA3FA63286DA1B40052F6B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -449,17 +466,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCA3FA6D286DC6120052F6B3 /* PushNotification.swift in Sources */,
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
+				CCA3FA6A286DC4950052F6B3 /* PushNotificationCredentials.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
-				CCA3FA52286D0A820052F6B3 /* AppDelegateAdapter.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
@@ -488,7 +506,6 @@
 				CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */,
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
-				CCA3FA58286D5FD50052F6B3 /* ErrorMessage.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,6 +639,7 @@
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Leyaa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -654,6 +672,7 @@
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Leyaa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -722,6 +741,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		CCA3FA63286DA1B40052F6B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -754,6 +781,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCA3FA53286D0DD50052F6B3 /* XCRemoteSwiftPackageReference "FirebaseService" */;
 			productName = FirebaseService;
+		};
+		CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
