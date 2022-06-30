@@ -58,6 +58,9 @@ class AuthViewModel: ObservableObject {
             self.userSession = user
             
         }
+        
+        didAuthenticateUser = true
+        fetchUser()
     
     }
     
@@ -84,6 +87,7 @@ class AuthViewModel: ObservableObject {
             
             self.db.collection("users").document(user.uid).setData(data) { _ in
                 self.didAuthenticateUser = true
+                self.fetchUser()
             }
             
         }

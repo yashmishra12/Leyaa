@@ -29,9 +29,10 @@ struct RegistrationView: View {
                 //MARK: - HEADER
                 VStack {
                     AuthHeaderView(title1: "Get Started.", title2: "Create an account")
+                        .frame(height: screenHeight * 0.25)
                 }
                 
-                
+                Spacer()
                 
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
@@ -42,7 +43,6 @@ struct RegistrationView: View {
                     
                 }
                 .padding(.horizontal, 32)
-                .padding(.top, 40)
                 .foregroundColor(.white)
                 
                 //MARK: - SIGN UP BUTTON
@@ -55,13 +55,12 @@ struct RegistrationView: View {
                         Text ("Sign Up")
                             .font (.headline)
                             .foregroundColor (.white)
-                            .frame (width: 340, height: 50)
+                            .frame (width: screenWidth * 0.8, height: 40)
                             .background(Color("MediumBlue"))
                             .clipShape(Capsule())
                             .padding ()
                     }
-                    .shadow(color: .black, radius: 15, x: 0, y: 0)
-                    .padding(.top, 25)
+                    .padding(.top, 10)
                     .buttonStyle(.plain)
                     .alert(isPresented: self.$viewModel.errorOccurred) {
                         Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
@@ -88,9 +87,7 @@ struct RegistrationView: View {
                     }
                 }.padding(.bottom, 30)
                     .buttonStyle(.plain)
-                
-                
-                
+
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)

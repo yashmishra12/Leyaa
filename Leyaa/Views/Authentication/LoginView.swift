@@ -19,11 +19,10 @@ struct LoginView: View {
     
     @State private var email = ""
     @State private var password = ""
+    @State private var showForgotPassword: Bool = false
     
     @EnvironmentObject var viewModel: AuthViewModel
     @State var currentNonce: String?
-    
-    @StateObject private var appleService = FirebaseSignInWithAppleService()
     
     
      func randomNonceString(length: Int = 32) -> String {
@@ -80,16 +79,12 @@ struct LoginView: View {
                 NavigationView {
                 
                 
-                VStack{
+                VStack {
                     
                     //MARK: - HEADER
                     VStack{
                         AuthHeaderView(title1: "Hello.", title2: "Welcome Back")
-                            .frame(height: 260)
-                            .padding(.leading)
-                            .background(Color("MediumBlue"))
-                            .clipShape(RoundedShape(corners: [.bottomRight]))
-                            .ignoresSafeArea()
+                            .frame(height: screenHeight * 0.25)
                     }
                     
                     //MARK: - FORM
@@ -105,23 +100,30 @@ struct LoginView: View {
                         
                     }
                     .padding(.horizontal, 32)
-                    .padding(.top, 40)
+
                     .foregroundColor(.white)
                     
                     //MARK: - FORGOT PASSWORD
                     HStack{
-                        Spacer().background(Color("DarkBlue"))
+                        Spacer()
                         
-                        NavigationLink {
-                            Text("Reset Password View")
+                        Button {
+                            showForgotPassword.toggle()
                         } label: {
-                            Text("Forgot Password?")
+                            Text("Forgot Password?").font(.caption)
                                 .fontWeight(.light)
                                 .foregroundColor(Color.white)
                                 .multilineTextAlignment(.trailing)
-                                .padding(25)
+                                .padding(.horizontal, 32)
+                                .padding(.top, 15)
+                                .padding(.bottom, 25)
                             
                         }.buttonStyle(.plain)
+                            .sheet(isPresented: $showForgotPassword) {
+                                    ForgotPasswordView()
+                            }
+
+                        
                     }
                     
                     
@@ -138,8 +140,8 @@ struct LoginView: View {
                                 .clipShape(Capsule())
                                 .padding ()
                         }
-                        .shadow(color: .black, radius: 10, x: 0, y: 0)
-                        .padding(.top, 25)
+//                        .shadow(color: .black, radius: 10, x: 0, y: 0)
+                        .padding(.top, 10)
                         .buttonStyle(.plain)
                         .alert(isPresented: self.$viewModel.errorOccurred) {
                             Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
@@ -237,7 +239,7 @@ struct LoginView: View {
                         }.frame(width:  screenWidth * 0.8, height: 40)
                             .clipShape(Capsule())
                             .padding(.horizontal, 32)
-                            .padding(.top, 50)
+                            .padding(.top, 15)
 
                     }
                     
@@ -265,13 +267,13 @@ struct LoginView: View {
                         
                     }.buttonStyle(.plain)
                     
-                }.padding(.bottom, 50)
+                }.background(Color("DarkBlue"))
                 
-            }.ignoresSafeArea()
+            }
                 .navigationBarHidden(true)
-                .background(Color("DarkBlue"))
+                
         }.navigationBarBackButtonHidden(true)
-        
+           
     }
  
 
@@ -284,7 +286,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView().environmentObject(AuthViewModel())
         
     }
 }
