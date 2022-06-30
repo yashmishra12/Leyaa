@@ -8,6 +8,7 @@
 import Foundation
 
 struct PushNotification {
+    let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
     
     func sendPushNotification(payloadDict: [String: Any]) {
        let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
