@@ -35,6 +35,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
 
         Messaging.messaging().delegate = self
+        UIApplication.shared.applicationIconBadgeNumber = 0
 
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
@@ -75,7 +76,7 @@ extension AppDelegate: MessagingDelegate {
         print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
         print("------------------------------------------------------------------------------------------")
 
-        UserDefaults.standard.set(deviceToken["token"], forKey: "kDeviceToken")
+        UserDefaults.standard.set(deviceToken["token"], forKey: "com.yashmisra12.Leyaa.kDeviceToken")
        
     }
 }

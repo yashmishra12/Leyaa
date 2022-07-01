@@ -19,15 +19,14 @@ class AuthViewModel: ObservableObject {
     @Published var rooms = [Room]()
     @Published var pendingReqest = [RoomRequest]()
     @Published var currentUser: User?
-    
     @Published var errorOccurred: Bool = false
     @Published var errorMessage: String = ""
     
     private var db = Firestore.firestore()
-    
     private let service = UserService()
     
     let hapticFeedback = UINotificationFeedbackGenerator()
+    
     init(){
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
@@ -40,9 +39,20 @@ class AuthViewModel: ObservableObject {
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
         
+        writeUserData()
     }
     
-
+    //MARK: - Maintains a fresh copy of Device Token
+    func writeUserData(){
+        db.collection("users").document(currentUser?.id ?? "").updateData(["uid" : currentUser?.id ?? "",
+                                                                           "fullname": currentUser?.fullname  ?? "",
+                                                                           "email": currentUser?.email  ?? "",
+                                                                           "avatar": currentUser?.avatar  ?? "",
+                                                                           "deviceToken": UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? "" ]){ error in
+            print("Error in writeUserData")
+            
+        }
+    }
     
     //MARK: - Authentication
     func login(withEmail email: String, password: String) {
@@ -61,8 +71,9 @@ class AuthViewModel: ObservableObject {
             self.userSession = user
             self.fetchUser()
         }
+        writeUserData()
         
-    
+        
     }
     
     
@@ -79,10 +90,10 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
-          
+            
             
             let data = ["email": email,
-                        "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
+                        "deviceToken": UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? "",
                         "avatar": assetName.randomElement() ?? "egg",
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
@@ -94,6 +105,8 @@ class AuthViewModel: ObservableObject {
             }
             
         }
+        
+        writeUserData()
     }
     
     
@@ -205,25 +218,24 @@ class AuthViewModel: ObservableObject {
         self.db.collection("rooms")
             .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
-//                DispatchQueue.main.async {
+                
+                guard let doc = snapshot?.documents else {
+                    print("No Doc Found")
+                    return
+                }
+                
+                self.rooms = doc.compactMap { queryDocumentSnapshot in
+                    let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
                     
-                    guard let doc = snapshot?.documents else {
-                        print("No Doc Found")
-                        return
-                    }
-                    
-                    self.rooms = doc.compactMap { queryDocumentSnapshot in
-                        let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
+                    switch result {
+                    case .success(let room):
+                        return room
                         
-                        switch result {
-                        case .success(let room):
-                            return room
-                            
-                        case .failure( _):
-                            print("Failure Room Populate")
-                            return nil
-                        }
+                    case .failure( _):
+                        print("Failure Room Populate")
+                        return nil
                     }
+                }
                 
             }
     }
@@ -239,14 +251,14 @@ class AuthViewModel: ObservableObject {
                 print("Error in leaving room: \(err)")
             }
         }
-        
-        docRef.updateData([
-            "deviceTokens" : FieldValue.arrayRemove([UserDefaults.standard.string(forKey: "kDeviceToken") ?? ""])
-        ]){ err in
-            if let err = err {
-                print("Error in leaving room: \(err)")
-            }
-        }
+//
+//        docRef.updateData([
+//            "deviceTokens" : FieldValue.arrayRemove([UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? ""])
+//        ]){ err in
+//            if let err = err {
+//                print("Error in leaving room: \(err)")
+//            }
+//        }
         
         
         docRef.getDocument { (document, error) in
@@ -326,7 +338,7 @@ class AuthViewModel: ObservableObject {
     
     func acceptRoomRequest(reqData: RoomRequest) {
         let userToAdd: [String] = [currentUser?.id ?? ""]
-        let tokenToAdd: [String] = [UserDefaults.standard.string(forKey: "kDeviceToken") ?? ""]
+//        let tokenToAdd: [String] = [UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? ""]
         
         self.db.collection("rooms").document(reqData.roomID)
             .updateData(["members" : Firebase.FieldValue.arrayUnion(userToAdd)]){ err in
@@ -335,12 +347,12 @@ class AuthViewModel: ObservableObject {
                 }
             }
         
-        self.db.collection("rooms").document(reqData.roomID)
-            .updateData(["deviceTokens" : Firebase.FieldValue.arrayUnion(tokenToAdd)]){ err in
-                if let err = err {
-                    print("Error in adding item: \(err)")
-                }
-            }
+//        self.db.collection("rooms").document(reqData.roomID)
+//            .updateData(["deviceTokens" : Firebase.FieldValue.arrayUnion(tokenToAdd)]){ err in
+//                if let err = err {
+//                    print("Error in adding item: \(err)")
+//                }
+//            }
         
         rejectRoomRequest(reqData: reqData)
     }
@@ -410,10 +422,10 @@ class AuthViewModel: ObservableObject {
     
     
     func updateAvatar(userID: String, newAvatar: String) {
-
+        
         
         db.collection("users").document(userID).setData([
-            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
+            "deviceToken": UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? "",
             "avatar" :  newAvatar,
             "email": currentUser?.email ?? "",
             "fullname": currentUser?.fullname  ?? "",

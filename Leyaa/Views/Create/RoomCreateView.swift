@@ -18,7 +18,7 @@ struct RoomCreateView: View {
         
         CustomInputField(imageName: "house.fill", placeholderText: "Room Name", isSecureField: false, text: $roomName)
 
-        let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "") + ""], deviceTokens: [UserDefaults.standard.string(forKey: "kDeviceToken") ?? ""])
+        let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "") + ""], deviceTokens: [UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? ""])
     
         
         Button {
