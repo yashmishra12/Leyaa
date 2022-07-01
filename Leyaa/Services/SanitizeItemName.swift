@@ -26,7 +26,6 @@ extension String {
             return String(self[start...])
        }
 
-
     func sanitiseItemName() -> String {
         let assetList = assetName
    
@@ -38,11 +37,15 @@ extension String {
             trimmedStr.removeLast()
         }
         
+        
+        
         if assetList.contains(trimmedStr) {
             return trimmedStr
         }else {
             let firstLetter = trimmedStr[0..<1]
-            return firstLetter
+            if assetList.contains(firstLetter) { return firstLetter}
+            else
+                {return "imageNotFound"}
         }
         
         

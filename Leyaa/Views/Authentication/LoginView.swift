@@ -188,7 +188,7 @@ struct LoginView: View {
                                                     return
                                                 }
                                                 guard let user = authResult?.user else {return}
-                                                self.viewModel.userSession = user
+                                                viewModel.userSession = user
 
                                                 
                                                 let docRef = self.db.collection("users").document(user.uid)
@@ -220,11 +220,6 @@ struct LoginView: View {
                                                     }
                                                 }
                                                 
-                                          
-                                                
-                                             
-
-
                                             }
 
                                             print("\(String(describing: Auth.auth().currentUser?.uid))")

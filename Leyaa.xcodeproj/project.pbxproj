@@ -53,6 +53,7 @@
 		CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416B285FC1F6000B3FE7 /* ItemView.swift */; };
 		CCBA417028601E53000B3FE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416F28601E53000B3FE7 /* Item.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
+		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
@@ -100,6 +101,7 @@
 		CCBA416B285FC1F6000B3FE7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CCBA416F28601E53000B3FE7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
+		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 		CC6013142863199200535994 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CCA3FA6B286DC6000052F6B3 /* PushNotification */,
 				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
 				CC6B51312867F5D800531303 /* UserService.swift */,
@@ -237,13 +238,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		CCA3FA6B286DC6000052F6B3 /* PushNotification */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PushNotification;
-			sourceTree = "<group>";
-		};
 		CCB4C39528597A3200105C5C = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +298,7 @@
 				CCBA416A285FC1E0000B3FE7 /* Items */,
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
 				CC14C73B285AFE5B0077510E /* Room */,
+				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -477,6 +472,7 @@
 				CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */,
 				CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
+				CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */,
 				CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */,
 				CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */,
 				CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */,
