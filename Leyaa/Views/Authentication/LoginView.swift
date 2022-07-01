@@ -188,7 +188,7 @@ struct LoginView: View {
                                                     return
                                                 }
                                                 guard let user = authResult?.user else {return}
-                                                viewModel.userSession = user
+                                                self.viewModel.userSession = user
 
                                                 
                                                 let docRef = self.db.collection("users").document(user.uid)
@@ -207,7 +207,7 @@ struct LoginView: View {
                                                                 let data = ["email": user.email ?? "",
                                                                             "avatar": assetName.randomElement() ?? "egg",
                                                                             "fullname": Auth.auth().currentUser?.displayName ?? "",
-                                                                            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
+                                                                            "deviceToken": UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? "",
                                                                             "uid": user.uid] as [String : Any]
                                                                 
                                                                 Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
