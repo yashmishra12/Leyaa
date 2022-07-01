@@ -8,12 +8,16 @@
 import SwiftUI
 
 
+
 struct SideMenuView: View {
     @Binding var isShowing: Bool
     @Binding var roomData: Room
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
     @State var wantToSignOut: Bool = false
+
+    
+   
    
     @Binding var show: Bool
     
@@ -41,19 +45,60 @@ struct SideMenuView: View {
        task.resume()
     }
     
-    func goingForShopping(deviceTokens: [String], roomName: String) {
+    func goingForShopping() {
         let userName = viewModel.currentUser?.fullname
-        
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
         
         for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"\(roomName)",
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
                                                                           "body":"\(userName ?? "") is going shopping.",
                                                                           "sound":"default"]]
             sendPushNotification(payloadDict: notifPayload)
-            
-            print(token)
         }
     }
+    
+    func goingForLaundry() {
+        let userName = viewModel.currentUser?.fullname
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
+        
+        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
+                                                                          "body":"\(userName ?? "") is going for laundry.",
+                                                                          "sound":"default"]]
+            sendPushNotification(payloadDict: notifPayload)
+            
+        }
+    }
+    
+    func fridgeIsFull() {
+//        let userName = viewModel.currentUser?.fullname
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
+        
+        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
+                                                                          "body":"Fridge is full. Please look into it.",
+                                                                          "sound":"default"]]
+            sendPushNotification(payloadDict: notifPayload)
+        }
+    }
+    
+    func cleanHouse(){
+        let userName = viewModel.currentUser?.fullname
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
+        
+        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
+                                                                          "body":"\(userName ?? "") feels it's time to clean the house.",
+                                                                          "sound":"default"]]
+            sendPushNotification(payloadDict: notifPayload)
+            
+        }
+    }
+
     
     
     var body: some View {
@@ -61,117 +106,187 @@ struct SideMenuView: View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
+       
+        
             
-            VStack {
-                // CELL ITEMS
-                VStack(spacing: 4) {
-                    
-                    HStack {
-                        NavigationLink {
-                            RoomInviteView(roomData: $roomData)
-                        } label: {
-                            HStack {
-                                Image(systemName: "square.and.arrow.down.fill")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                .foregroundColor(.white)
-                                
-                                Text("Add Friend").padding()
-                            }
-                        }.buttonStyle(.plain)
+                VStack {
+                    // CELL ITEMS
+                    VStack(spacing: 3) {
                         
-                        Spacer()
-                    }
+                        //Shopping
+                        HStack {
+                            Button {
+                                goingForShopping()
+                                withAnimation(.easeIn) {
+                                    show.toggle()
+                                }
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "cart.fill")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                        
+                                        Text("Going shopping").padding()
+                                    }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
 
-                    
-                    HStack {
-                        Button {
-                            goingForShopping(deviceTokens: roomData.deviceTokens, roomName: roomData.title)
-                            withAnimation(.easeIn) {
-                                show.toggle()
+                        
+                        // LAUNDRY
+                        HStack {
+                            Button {
+                                goingForLaundry()
+                                withAnimation(.easeIn) {
+                                    show.toggle()
+                                }
+                            } label: {
+                                HStack {
+                                    
+                                    Image(systemName: "tshirt.fill")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Going Laundry").padding()
+                                }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
+                        
+                        // FRIDGE IS FULL
+                        HStack {
+                            Button {
+                                fridgeIsFull()
+                                withAnimation(.easeIn) {
+                                    show.toggle()
+                                }
+                            } label: {
+                                HStack {
+                                    
+                                    Image("fridge")
+                                        .resizable()
+                                        .frame(width: 20, height: 25)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Fridge is Full").padding()
+                                }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
+                        
+                        
+                        // CLEAN HOUSE
+                        HStack {
+                            Button {
+                                cleanHouse()
+                                withAnimation(.easeIn) {
+                                    show.toggle()
+                                }
+                            } label: {
+                                HStack {
+                                    
+                                    Image(systemName: "wand.and.stars")
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Clean House").padding()
+                                }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
+                        
+                        
+                        
+                        // GROUP CHAT
+                        HStack {
+                            NavigationLink {
+                                RoomChatView(roomData: $roomData)
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "message.fill")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                        
+                                        Text("Group Chat").padding()
+                                    }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
+                        
+                        
+                        // LEAVE ROOM
+                        HStack{
+                            Button(action: {
+                                leavingRoom = true
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "rectangle.portrait.and.arrow.right.fill").resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Leave Room").padding()
+                                }
+                            }).buttonStyle(.plain)
+                            .confirmationDialog("Are you sure?",
+                                isPresented: $leavingRoom) {
+                                Button("Leave Room", role: .destructive) {
+                                    viewModel.leaveRoom(roomData: roomData)
+                                }
+                            } message: {
+                                Text("One of the group members will have to add you back")
                             }
-                            } label: {
-                                HStack {
-                                    Image(systemName: "envelope.arrow.triangle.branch.fill")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
-                                    
-                                    Text("I'm going shopping").padding()
-                                }
-                        }.buttonStyle(.plain)
-                        Spacer()
-                    }
-
-
-                    HStack {
-                        NavigationLink {
-                            RoomChatView(roomData: $roomData)
-                            } label: {
-                                HStack {
-                                    Image(systemName: "message.fill")
-                                        .resizable()
-                                        .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
-                                    
-                                    Text("Group Chat").padding()
-                                }
-                        }.buttonStyle(.plain)
-                        Spacer()
-                    }
-                    
-                    
-                    HStack{
-                        Button(action: {
-                            leavingRoom = true
-                        }, label: {
+                            Spacer()
+                        }.padding(.bottom, 25)
+                        
+                        
+                        // ROOM MEMBERS
+                        HStack {
+                            Text("Members").font(.body).fontWeight(.bold)
                             HStack {
-                                Image(systemName: "rectangle.portrait.and.arrow.right.fill").resizable()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
+                                NavigationLink {
+                                    RoomInviteView(roomData: $roomData)
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "plus.square.fill")
+                                            .resizable()
+                                            .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal, 30)
+                                        
+                                    }
+                                }.buttonStyle(.plain)
                                 
-                                Text("Leave Room").padding()
-                            }
-                        }).buttonStyle(.plain)
-                        .confirmationDialog("Are you sure?",
-                            isPresented: $leavingRoom) {
-                            Button("Leave Room", role: .destructive) {
-                                viewModel.leaveRoom(roomData: roomData)
-                            }
-                        } message: {
-                            Text("One of the group members will have to add you back")
-                        }
-                        Spacer()
-                    }
-                    
-                    
-                    
-                    HStack {
-                        Text("Room Members").font(.body).fontWeight(.bold)
-                        VStack {
-                            Divider().background(Color.white)
-                        }
-                        Spacer()
-                    }
-                }.padding()
-                
 
-                
-                ScrollView{
-                    ForEach(roomData.members, id: \.self) { userID in
-                        GroupMemberInfoView(userID: userID)
+                            }
+                            VStack {
+                                Divider().background(Color.white)
+                                    .padding(.horizontal, -20)
+                            }
+
+                        }
+                    }.padding()
+
+                    //Room Members
+                    ScrollView{
+                        ForEach(roomData.members, id: \.self) { userID in
+                            GroupMemberInfoView(userID: userID)
+                        }
                     }
+
                 }
-
                 
-                Spacer()
-                
-            }
+   
         }
     }
 }
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avnt Ferry", newItems: [], members: [], deviceTokens: [""])), show: .constant(true))    }
+        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avent Ferry", newItems: [], members: [], deviceTokens: [""])), show: .constant(true)).environmentObject(AuthViewModel())
+        
+    }
 }

@@ -48,7 +48,7 @@ struct GroupMemberInfoView: View {
                     
                     Spacer()
                 }
-                .padding()
+                .padding(.bottom, 10)
             }
         
     }
