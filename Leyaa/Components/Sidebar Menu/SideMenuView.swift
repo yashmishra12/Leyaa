@@ -111,7 +111,7 @@ struct SideMenuView: View {
             
                 VStack {
                     // CELL ITEMS
-                    VStack(spacing: 3) {
+                    VStack(spacing: 2.5) {
                         
                         //Shopping
                         HStack {
@@ -198,6 +198,24 @@ struct SideMenuView: View {
                             Spacer()
                         }
                         
+                        // Fresh Check
+                        HStack {
+                            NavigationLink {
+                                FreshCheckReminder(roomName: $roomData.title)
+                            } label: {
+                                HStack {
+                                    
+                                    Image(systemName: "leaf.fill")
+
+                                        .resizable()
+                                        .frame(width: 20, height: 20)
+                                        .foregroundColor(.white)
+                                    
+                                    Text("Fresh Check").padding()
+                                }
+                            }.buttonStyle(.plain)
+                            Spacer()
+                        }
                         
                         
                         // GROUP CHAT
