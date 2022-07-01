@@ -41,7 +41,6 @@
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
 		CCA3FA65286DA1B40052F6B3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */; };
 		CCA3FA67286DA1B40052F6B3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */; };
-		CCA3FA6D286DC6120052F6B3 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -57,8 +56,6 @@
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
-		CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */; };
-		CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96BF285A85CA0083D925 /* ImageUploader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,7 +87,6 @@
 		CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CCA3FA68286DA2DA0052F6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,8 +103,6 @@
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		CCFA96BF285A85CA0083D925 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +240,6 @@
 		CCA3FA6B286DC6000052F6B3 /* PushNotification */ = {
 			isa = PBXGroup;
 			children = (
-				CCA3FA6C286DC6120052F6B3 /* PushNotification.swift */,
 			);
 			path = PushNotification;
 			sourceTree = "<group>";
@@ -273,7 +266,6 @@
 				CCA3FA68286DA2DA0052F6B3 /* Info.plist */,
 				CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */,
 				CC6013142863199200535994 /* Services */,
-				CCFA96BB285A7E160083D925 /* Utils */,
 				CCFA96B6285A6B6E0083D925 /* Model */,
 				CCB4C3B028597B6300105C5C /* Components */,
 				CCB4C3AF28597B5800105C5C /* Views */,
@@ -366,15 +358,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CCFA96BB285A7E160083D925 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CCFA96BF285A85CA0083D925 /* ImageUploader.swift */,
-				CCFA96BC285A7E2C0083D925 /* ImagePicker.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,7 +446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCA3FA6D286DC6120052F6B3 /* PushNotification.swift in Sources */,
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
@@ -494,8 +476,6 @@
 				CC9FA7A9285E9D7C00EF896D /* RoomListView.swift in Sources */,
 				CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */,
 				CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */,
-				CCFA96BD285A7E2C0083D925 /* ImagePicker.swift in Sources */,
-				CCFA96C0285A85CA0083D925 /* ImageUploader.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
 				CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */,
 				CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */,

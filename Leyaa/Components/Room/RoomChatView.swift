@@ -85,7 +85,7 @@ struct RoomChatView: View {
                 Button {
                     inviteAllForChat(deviceTokens: roomData.deviceTokens, roomName: roomData.title)
                 } label: {
-                    Image(systemName: "sensor.tag.radiowaves.forward.fill").resizable()
+                    Image(systemName: "hand.wave.fill")
                 }
             }
         })

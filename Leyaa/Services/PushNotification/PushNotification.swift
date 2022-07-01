@@ -11,9 +11,8 @@ import SwiftUI
 struct PushNotification {
     @EnvironmentObject var viewModel: AuthViewModel
     
-    let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
-    
     func sendPushNotification(payloadDict: [String: Any]) {
+        let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
        let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
        var request = URLRequest(url: url)
        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -36,25 +35,43 @@ struct PushNotification {
        task.resume()
     }
     
-    func goingForShopping(members: [String], roomName: String) {
-        let userName = viewModel.currentUser?.fullname
+    func goingForShopping(roomData: Room) {
+        let userName = self.viewModel.currentUser?.fullname
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
         
-        
-        for val in members where val != UserDefaults.standard.string(forKey: "kDevice") {
-            let notifPayload: [String: Any] = ["to": val,"notification": ["title":"\(roomName)",
+        for token in deviceTokens where token != self.viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
                                                                           "body":"\(userName ?? "") is going shopping.",
                                                                           "sound":"default"]]
-            self.sendPushNotification(payloadDict: notifPayload)
+            sendPushNotification(payloadDict: notifPayload)
         }
     }
     
-    
-    
+    func goingForLaundry(roomData: Room) {
+        let userName = self.viewModel.currentUser?.fullname
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
+        
+        for token in deviceTokens where token != self.viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
+                                                                          "body":"\(userName ?? "") is going for laundry.",
+                                                                          "sound":"default"]]
+            sendPushNotification(payloadDict: notifPayload)
+            
+        }
+    }
+        
+    func fridgeIsFull(roomData: Room) {
+        let deviceTokens = roomData.deviceTokens
+        let roomName = roomData.title
+        
+        for token in deviceTokens where token != self.viewModel.currentUser?.deviceToken{
+            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
+                                                                          "body":"Fridge is full. Please look into it.",
+                                                                          "sound":"default"]]
+            sendPushNotification(payloadDict: notifPayload)
+        }
+    }
+
 }
-
-
-
-
-
-//sendPushNotification(payloadDict: notifPayload)
-
