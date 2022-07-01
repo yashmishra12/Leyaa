@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseService
+import FirebaseFirestoreSwift
 
 struct RoomChatView: View {
     @EnvironmentObject var viewModel: AuthViewModel
 
     @Binding var roomData: Room
     @StateObject var messageManager = MessageManager()
+    var db = Firestore.firestore()
     
     func sendPushNotification(payloadDict: [String: Any]) {
         let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
@@ -37,17 +41,28 @@ struct RoomChatView: View {
        task.resume()
     }
     
-    func inviteAllForChat(deviceTokens: [String], roomName: String) {
+    func fetchDeviceToken(withUid uid: String, completion: @escaping(String) -> Void) {
+        Firestore.firestore().collection("users").document(uid)
+            .getDocument { document, error in
+                if let document = document, document.exists {
+                    let property = document.get("deviceToken") as! String
+                    completion(property)
+                }
+            }
+    }
+    
+    func inviteAllForChat() {
+
         let userName = viewModel.currentUser?.fullname
+        let roomName = roomData.title
         
-        
-        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"\(roomName)",
-                                                                          "body":"\(userName ?? "") wants to talk.",
-                                                                          "sound":"default"]]
-            sendPushNotification(payloadDict: notifPayload)
-            
-            print(token)
+        for member in roomData.members where member != viewModel.currentUser?.id {
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
+                                                                                      "body":"\(userName ?? "") wants a quick chat.",
+                                                                                      "sound":"default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
         }
     }
     
@@ -83,7 +98,7 @@ struct RoomChatView: View {
         .toolbar(content: {
             ToolbarItem {
                 Button {
-                    inviteAllForChat(deviceTokens: roomData.deviceTokens, roomName: roomData.title)
+                    inviteAllForChat()
                 } label: {
                     Image(systemName: "hand.wave.fill")
                 }

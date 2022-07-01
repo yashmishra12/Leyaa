@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-
+import Firebase
+import FirebaseService
+import FirebaseFirestoreSwift
 
 
 struct SideMenuView: View {
@@ -15,7 +17,7 @@ struct SideMenuView: View {
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
     @State var wantToSignOut: Bool = false
-
+    var db = Firestore.firestore()
     
    
    
@@ -47,56 +49,74 @@ struct SideMenuView: View {
     
     func goingForShopping() {
         let userName = viewModel.currentUser?.fullname
-        let deviceTokens = roomData.deviceTokens
         let roomName = roomData.title
         
-        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
-                                                                          "body":"\(userName ?? "") is going shopping.",
-                                                                          "sound":"default"]]
-            sendPushNotification(payloadDict: notifPayload)
+        for member in roomData.members where member != viewModel.currentUser?.id {
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
+                                                                                      "body":"\(userName ?? "") is going for shopping.",
+                                                                                      "sound":"default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
         }
     }
     
     func goingForLaundry() {
         let userName = viewModel.currentUser?.fullname
-        let deviceTokens = roomData.deviceTokens
         let roomName = roomData.title
         
-        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
-                                                                          "body":"\(userName ?? "") is going for laundry.",
-                                                                          "sound":"default"]]
-            sendPushNotification(payloadDict: notifPayload)
-            
+        for member in roomData.members where member != viewModel.currentUser?.id {
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
+                                                                                      "body":"\(userName ?? "") is going for laundry.",
+                                                                                      "sound":"default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
         }
     }
     
     func fridgeIsFull() {
-//        let userName = viewModel.currentUser?.fullname
-        let deviceTokens = roomData.deviceTokens
         let roomName = roomData.title
         
-        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
-                                                                          "body":"Fridge is full. Please look into it.",
-                                                                          "sound":"default"]]
-            sendPushNotification(payloadDict: notifPayload)
+        for member in roomData.members where member != viewModel.currentUser?.id {
+            
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
+                                                                                      "body":"Fridge is full. Please look into it.",
+                                                                                      "sound":"default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
         }
+
+ }
+    
+    func fetchDeviceToken(withUid uid: String, completion: @escaping(String) -> Void) {
+        Firestore.firestore().collection("users").document(uid)
+            .getDocument { document, error in
+                if let document = document, document.exists {
+                    let property = document.get("deviceToken") as! String
+                    completion(property)
+                }
+            }
     }
     
-    func cleanHouse(){
+    
+    func cleanHouse() {
         let userName = viewModel.currentUser?.fullname
-        let deviceTokens = roomData.deviceTokens
         let roomName = roomData.title
         
-        for token in deviceTokens where token != viewModel.currentUser?.deviceToken{
-            let notifPayload: [String: Any] = ["to": token,"notification": ["title":"Room: \(roomName)",
-                                                                          "body":"\(userName ?? "") feels it's time to clean the house.",
-                                                                          "sound":"default"]]
-            sendPushNotification(payloadDict: notifPayload)
+        for member in roomData.members where member != viewModel.currentUser?.id {
             
+            
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
+                                                                                      "body":"\(userName ?? "") feels it's time to clean the house.",
+                                                                                      "sound":"default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
         }
+        
+        
     }
 
     
@@ -229,7 +249,7 @@ struct SideMenuView: View {
                                             .frame(width: 20, height: 20)
                                         .foregroundColor(.white)
                                         
-                                        Text("Group Chat").padding()
+                                        Text("Message Wall").padding()
                                     }
                             }.buttonStyle(.plain)
                             Spacer()
@@ -304,7 +324,7 @@ struct SideMenuView: View {
 
 struct SideMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avent Ferry", newItems: [], members: [], deviceTokens: [""])), show: .constant(true)).environmentObject(AuthViewModel())
+        SideMenuView(isShowing: .constant(true), roomData: .constant(Room(id: "asd", title: "Avent Ferry", newItems: [], members: [])), show: .constant(true)).environmentObject(AuthViewModel())
         
     }
 }
