@@ -53,9 +53,17 @@ struct SideMenuView: View {
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                      "body":"\(userName ?? "") is going for shopping.",
-                                                                                      "sound":"default"]]
+                let notifPayload: [String: Any] = ["to": token ,
+                                                   "notification": [
+                                                        "title":"Room: \(roomName)",
+                                                        "body":"\(userName ?? "") is going for shopping.",
+                                                        "mutable-content": 1,
+                                                        "badge": 1,
+                                                        "sound":"default"],
+                                                   "badge": 1,
+                                                   "mutable-content": 1
+        ]
+               
                 sendPushNotification(payloadDict: notifPayload)
             }
         }

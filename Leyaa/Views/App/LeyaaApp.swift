@@ -19,23 +19,28 @@ struct LeyaaApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+
     
 var body: some Scene {
         WindowGroup {
-            ContentView()
-            .environmentObject(viewModel)
+            ContentView().environmentObject(viewModel)
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
     let gcmMessageIDKey = "gcm.message_id"
- 
+
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
 
         Messaging.messaging().delegate = self
-        UIApplication.shared.applicationIconBadgeNumber = 0
+    
+    
 
         if #available(iOS 10.0, *) {
           // For iOS 10 display notification (sent via APNS)
@@ -45,7 +50,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
           UNUserNotificationCenter.current().requestAuthorization(
             options: authOptions,
             completionHandler: {_, _ in })
-        } else {
+        }
+        else {
           let settings: UIUserNotificationSettings =
           UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
           application.registerUserNotificationSettings(settings)
@@ -61,11 +67,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
       }
-
-      print(userInfo)
-
+                            
+      print("Received Notification")
+                            
       completionHandler(UIBackgroundFetchResult.newData)
     }
+    
+
 }
 
 extension AppDelegate: MessagingDelegate {
@@ -116,9 +124,14 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     if let messageID = userInfo[gcmMessageIDKey] {
       print("Message ID from userNotificationCenter didReceive: \(messageID)")
     }
+      
+   
+      
 
     print(userInfo)
 
     completionHandler()
   }
+    
+    
 }

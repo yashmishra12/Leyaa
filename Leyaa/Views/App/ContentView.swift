@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @EnvironmentObject var viewModel: AuthViewModel
-    
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
             ZStack(alignment: .topLeading) {
@@ -40,6 +40,17 @@ struct ContentView: View {
                         
                     }
                 }
+                .onChange(of: scenePhase) { newPhase in
+                                if newPhase == .active {
+                                    print("Active")
+                                } else if newPhase == .inactive {
+                                    UIApplication.shared.applicationIconBadgeNumber = 0
+                                    UserDefaults.standard.set(0, forKey: "com.yashmisra12.Leyaa.badgeCount")
+                                } else if newPhase == .background {
+                                    UIApplication.shared.applicationIconBadgeNumber = 0
+                                    UserDefaults.standard.set(0, forKey: "com.yashmisra12.Leyaa.badgeCount")
+                                }
+                            }
             }
         
     }
