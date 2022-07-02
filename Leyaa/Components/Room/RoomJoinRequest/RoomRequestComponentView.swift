@@ -16,25 +16,31 @@ struct RoomRequestComponentView: View {
     var body: some View {
         VStack {
             HStack{
-                Text(reqData.roomName ).font(.title).foregroundColor(.white)
+                Text(reqData.roomName )
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    
+                    .foregroundColor(.white)
                 Spacer()
-            }.padding(.horizontal, 10)
+            }  .padding(.leading, 20)
+                .padding(.top, 10)
             
             HStack{
                 if (reqData.senderName.isEmpty == false) {
                     let senderNameText = "By: \(reqData.senderName )"
-                    Text(senderNameText).font(.title3).foregroundColor(.white).padding(.vertical, 1)
+                    Text(senderNameText).font(.body).foregroundColor(.white).padding(.vertical, 1)
+                        .padding(.leading, 20)
                     Spacer()
                 }
-            }.padding(.horizontal, 10)
+            }
             
             
             if (reqData.message?.isEmpty == false) {
                 HStack{
                     let messageText = "Message: \(reqData.message ?? "" )"
-                    Text(messageText).font(.body).foregroundColor(.white).padding(.vertical, 2)
+                    Text(messageText).font(.footnote).foregroundColor(.white).padding(.vertical, 2)
                     Spacer()
-                }.padding(.horizontal, 10)
+                }.padding(.horizontal, 20)
             }
 
   
@@ -45,7 +51,12 @@ struct RoomRequestComponentView: View {
                 Button(action: {
                     rejectingRequest = true
                 }, label: {
-                    Image(systemName:"minus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.red)
+                    Image(systemName:"xmark.rectangle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 30)
+                        .padding(.leading, 20)
+                        .padding()
+                        .foregroundColor(Color("reject"))
                 }).buttonStyle(.plain)
                 .confirmationDialog("Are you sure?",
                   isPresented: $rejectingRequest) {
@@ -54,7 +65,7 @@ struct RoomRequestComponentView: View {
                       
                   }
                 } message: {
-                  Text("One of the group members will have to add you back")
+                  Text("One of the group members will have to add you back.")
                 }
                 
                 
@@ -64,7 +75,12 @@ struct RoomRequestComponentView: View {
                 Button(action: {
                     acceptingRequest = true
                 }, label: {
-                    Image(systemName:"plus.rectangle.fill").resizable().frame(width: 40, height: 40).padding().foregroundColor(.green)
+                    Image(systemName:"checkmark.rectangle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 30)
+                        .padding(.trailing, 20)
+                        .padding()
+                        .foregroundColor(Color("accept"))
                 }).buttonStyle(.plain)
                 .confirmationDialog("Are you sure?",
                   isPresented: $acceptingRequest) {
@@ -72,7 +88,7 @@ struct RoomRequestComponentView: View {
                       viewModel.acceptRoomRequest(reqData: reqData)
                   }
                 } message: {
-                  Text("Make sure not to accept strange request")
+                  Text("Make sure not to accept strange requests.")
                 }
                 
                 
@@ -85,6 +101,6 @@ struct RoomRequestComponentView: View {
 struct RoomRequestComponentView_Previews: PreviewProvider {
     static var previews: some View {
 
-        RoomRequestComponentView(reqData: .constant(RoomRequest(roomID: "", roomName: "", senderName: "", receiverEmail: ""))).previewLayout(.sizeThatFits)
+        RoomRequestComponentView(reqData: .constant(RoomRequest(roomID: "12", roomName: "Upside Down", senderName: "Yash Mishra", receiverEmail: "yashmishra@mf.com"))).previewLayout(.sizeThatFits)
     }
 }

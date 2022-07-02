@@ -19,6 +19,8 @@ struct RoomJoinRequestView: View {
                     VStack{
                         ForEach($roomRequest, id: \.self) { req in
                             RoomRequestComponentView(reqData: req)
+                                .padding(.horizontal, 5)
+                                .padding(.vertical, 2.5)
                         }
                     }
                     

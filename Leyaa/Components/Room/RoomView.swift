@@ -45,7 +45,7 @@ struct RoomView: View {
                                 NavigationLink {
                                     ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                                 } label: {
-                                    Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                                    Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
                                 }.padding()
                                     .buttonStyle(.plain)
                                 
@@ -54,7 +54,7 @@ struct RoomView: View {
                                 NavigationLink {
                                     ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
                                 } label: {
-                                    Image(systemName: "plus.app.fill").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+                                    Image(systemName: "plus.app.fill").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
                                 }.padding()
                                     .buttonStyle(.plain)
                             }
@@ -63,7 +63,8 @@ struct RoomView: View {
     
                     }
                 }
-                .navigationTitle(Text(roomData.title)).foregroundColor(.white)
+                .navigationTitle(Text(roomData.title))
+                
                 .toolbar {
                     
                     //QuickSearch
@@ -71,7 +72,7 @@ struct RoomView: View {
                         NavigationLink {
                             ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                         } label: {
-                            Image(systemName: "sparkle.magnifyingglass").resizable().foregroundColor(.white)
+                            Image(systemName: "sparkle.magnifyingglass").imageScale(.large)
                                 .padding(.horizontal, 10)
                         }.buttonStyle(.plain)
                         
@@ -83,7 +84,7 @@ struct RoomView: View {
                         NavigationLink {
                             ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
                         } label: {
-                            Image(systemName: "plus.app.fill").resizable().foregroundColor(.white)
+                            Image(systemName: "plus.app.fill").imageScale(.large)
                         }.padding(.horizontal, 10)
                             .buttonStyle(.plain)
                         
@@ -99,8 +100,9 @@ struct RoomView: View {
                                 isShowingSideMenu.toggle()
                             }
                         } label: {
-                            Image(systemName: "line.3.horizontal").resizable()
+                            Image(systemName: "line.3.horizontal").imageScale(.large)
                         }.buttonStyle(.plain)
+                            .padding(.leading, 30)
                         
                     }
                 }

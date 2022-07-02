@@ -31,7 +31,8 @@ struct RegistrationView: View {
                     AuthHeaderView(title1: "Get Started.", title2: "Create an account")
                         .frame(height: screenHeight * 0.25)
                 }
-                
+
+        
                 
                 //MARK: - SIGNUP
                 VStack(spacing: 40){

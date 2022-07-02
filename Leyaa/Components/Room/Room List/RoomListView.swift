@@ -14,6 +14,7 @@ struct RoomListView: View {
     @Binding var myRoom: [Room]
     @State var wantToSignOut: Bool = false
     
+
     var body: some View {
         
         
@@ -43,12 +44,12 @@ struct RoomListView: View {
                                     .background(Color("MediumBlue"))
                                     .clipShape(Capsule())
                                     .buttonStyle(.plain)
-                            }.padding(.vertical, 35)
+                            }.padding(.vertical, 30)
                             
                         }
                     }
                 }
-                .navigationTitle("Rooms")
+                    .navigationTitle("Rooms")
                 
             }.navigationBarBackButtonHidden(true)
         }
@@ -60,6 +61,7 @@ struct RoomListView: View {
 
 struct RoomListView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomListView(myRoom: .constant([Room(id: "21312", title: "Avent Ferry", newItems: [Item(id: "asdasd", name: "Coffee", desc: "Bru and Nesface", qty: "200gm")], members: [""])]))
+        RoomListView(myRoom: .constant([Room(id: "21312", title: "Avent Ferry", newItems: [Item(id: "asdasd", name: "Coffee", desc: "Bru and Nesface", qty: "200gm")], members: [""])])
+        )
     }
 }

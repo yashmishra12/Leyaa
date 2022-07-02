@@ -19,11 +19,11 @@ struct ItemCreateView: View {
     
     var body: some View {
         VStack {
-            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item", isSecureField: false, text: $name)
+            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
             
-            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "qty", isSecureField: false, text: $qty)
+            CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()
             
-            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "desc", isSecureField: false, text: $desc)
+            CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
             
         }
         
@@ -35,7 +35,13 @@ struct ItemCreateView: View {
             presentationMode.wrappedValue.dismiss()
         } label: {
             Text("Add Item")
-        }
+                .font (.headline)
+                .foregroundColor (.white)
+                .frame (width: screenWidth * 0.3, height: 40)
+                .background(Color("MediumBlue"))
+                .clipShape(Capsule())
+                .padding ()
+        }.buttonStyle(.plain)
         
     }
 }

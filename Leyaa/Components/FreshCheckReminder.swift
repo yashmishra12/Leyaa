@@ -17,7 +17,8 @@ struct FreshCheckReminder: View {
     var body: some View {
         
         VStack{
-            Text("Set a reminder to check on a product.").font(.callout).foregroundColor(.white)
+            Text("Set a reminder to check on a product.").font(.callout)
+                .padding(.top, 30)
                 .padding(.bottom, screenHeight*0.2)
             
            
@@ -52,7 +53,7 @@ struct FreshCheckReminder: View {
                         .padding ()
                         .padding(.top, 15)
                 }.disabled(itemName.isEmpty)
-                .buttonStyle(.automatic)
+                .buttonStyle(.plain)
             }.padding()
             
             Spacer()

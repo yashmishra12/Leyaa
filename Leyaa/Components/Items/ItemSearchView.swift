@@ -43,10 +43,11 @@ struct ItemSearchView: View {
                 VStack {
                     if recentlyDeleted.count>0 {
                         VStack{
-                            Text("Quick Undo").font(.title2).foregroundColor(.blue)
+                            Divider()
+                            Text("Undo Delete an Item").font(.title2).foregroundColor(.blue)
                             HStack {
-                                ForEach(recentlyDeleted.suffix(7), id: \.self) { item in
-                                    Image(item.name.sanitiseItemName()).resizable().frame(width: 50, height: 50).padding()
+                                ForEach(recentlyDeleted.suffix(6), id: \.self) { item in
+                                    Image(item.name.sanitiseItemName()).resizable().frame(width: 50, height: 50).padding(.top, 10)
                                         .onTapGesture {
                                             let newItem: [String: String] = [
                                                 "id": item.id,

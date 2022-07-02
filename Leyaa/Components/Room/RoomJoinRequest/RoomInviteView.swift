@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseService
+import FirebaseFirestoreSwift
 
 struct RoomInviteView: View {
     @Binding var roomData: Room
@@ -18,17 +21,36 @@ struct RoomInviteView: View {
     var body: some View {
         VStack{
             CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-            CustomInputField(imageName: "envelope", placeholderText: "Message", text: $message)
+            CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
         }.padding()
         
 
         Button {
             viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
             
+            fetchDeviceTokenFromEmail(email: email) { token in
+                let notifPayload: [String: Any] = ["to": token ,
+                                                   "notification": [
+                                                    "title":"Room Join Request",
+                                                    "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
+                                                    "sound":"default"]
+                ]
+                
+                sendPushNotification(payloadDict: notifPayload)
+            }
+            
             presentationMode.wrappedValue.dismiss()
         } label: {
-            Text("Send Invite").foregroundColor(.white)
-        }.buttonStyle(.plain)
+            Text("Send Invite")
+                .font (.headline)
+                .foregroundColor (.white)
+                .frame (width: screenWidth * 0.3, height: 40)
+                .background(Color("MediumBlue"))
+                .clipShape(Capsule())
+                .padding ()
+        }
+        .disabled(isValidEmail(email)==false)
+        .buttonStyle(.plain)
 
         
     }

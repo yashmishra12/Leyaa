@@ -251,16 +251,7 @@ class AuthViewModel: ObservableObject {
                 print("Error in leaving room: \(err)")
             }
         }
-//
-//        docRef.updateData([
-//            "deviceTokens" : FieldValue.arrayRemove([UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? ""])
-//        ]){ err in
-//            if let err = err {
-//                print("Error in leaving room: \(err)")
-//            }
-//        }
-        
-        
+
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 let property = document.get("members") as! [String]

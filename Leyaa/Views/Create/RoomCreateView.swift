@@ -17,6 +17,7 @@ struct RoomCreateView: View {
     var body: some View {
         
         CustomInputField(imageName: "house.fill", placeholderText: "Room Name", isSecureField: false, text: $roomName)
+            .padding()
 
         let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "") + ""])
     
@@ -25,7 +26,13 @@ struct RoomCreateView: View {
             viewModel.addRoom(room: newRoom)
             presentationMode.wrappedValue.dismiss()
         } label: {
-            Text("Create Room")
+            Text("Create Room")                .font (.headline)
+                .foregroundColor (.white)
+                .frame (width: screenWidth * 0.35, height: 40)
+                .background(Color("MediumBlue"))
+                .clipShape(Capsule())
+                .padding ()
+                
         }.buttonStyle(.plain)
 
         

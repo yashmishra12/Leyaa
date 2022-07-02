@@ -39,7 +39,7 @@ struct ItemView: View {
                     }.buttonStyle(.plain)
                     
                 }.onTapGesture {
-                    withAnimation(.easeIn) {
+                    withAnimation(.spring()) {
                         offset.width = 0
                     }
             }
@@ -50,12 +50,13 @@ struct ItemView: View {
                             Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
                            
                             HStack{
-                                Text(item.name.capitalized).font(.headline).fontWeight(.bold)
+                                Text(item.name.capitalized).font(.headline).foregroundColor(.white).fontWeight(.bold)
 
-                                Text("\(item.qty)").font(.subheadline).fontWeight(.light)
+                                Text("\(item.qty)").font(.subheadline).foregroundColor(.white).fontWeight(.light)
                             }.padding(.vertical, 2)
 
                             Text(item.desc)
+                                .foregroundColor(.white)
                                 .font(.footnote)
                                 .multilineTextAlignment(.leading)
                                 .padding(.horizontal, 10)
@@ -63,7 +64,7 @@ struct ItemView: View {
 
                         }
                         .onTapGesture {
-                            withAnimation(.easeIn) {
+                            withAnimation(.spring()) {
                                 offset.width = 0
                             }
                     }
@@ -74,7 +75,7 @@ struct ItemView: View {
                 .background(Color("MediumBlue"))
                 .onLongPressGesture(perform: {
                     lastDeleted.append(item)
-                    withAnimation (.easeOut(duration: 0.3)) {
+                    withAnimation (.spring()) {
                         isShowing.toggle()
                     }
                     print("From Item View: \(lastDeleted)")
@@ -88,7 +89,7 @@ struct ItemView: View {
    
                 })
                 .onTapGesture {
-                        withAnimation(.easeIn) {
+                        withAnimation(.spring()) {
                             offset.width = 0
                         }
                 }
