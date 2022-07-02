@@ -57,7 +57,34 @@
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
+		CCFFA49F286F0B3E005332E1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFFA49E286F0B3E005332E1 /* NotificationService.swift */; };
+		CCFFA4A3286F0B3E005332E1 /* ymNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CCFFA49C286F0B3E005332E1 /* ymNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CCFFA4A8286F0B74005332E1 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFFA49E286F0B3E005332E1 /* NotificationService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCFFA4A1286F0B3E005332E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCB4C39628597A3200105C5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCFFA49B286F0B3E005332E1;
+			remoteInfo = ymNotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC5C97FC286F08EA00D635B2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CCFFA4A3286F0B3E005332E1 /* ymNotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
@@ -105,6 +132,10 @@
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CCFFA49C286F0B3E005332E1 /* ymNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ymNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCFFA49E286F0B3E005332E1 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		CCFFA4A0286F0B3E005332E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCFFA4A7286F0B4E005332E1 /* ymNotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ymNotificationService.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +151,13 @@
 				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
 				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
 				CCA3FA55286D0DD50052F6B3 /* FirebaseService in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCFFA499286F0B3E005332E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				CCB4C3A028597A3200105C5C /* Leyaa */,
+				CCFFA49D286F0B3E005332E1 /* ymNotificationService */,
 				CCB4C39F28597A3200105C5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				CCB4C39E28597A3200105C5C /* Leyaa.app */,
+				CCFFA49C286F0B3E005332E1 /* ymNotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,6 +393,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CCFFA49D286F0B3E005332E1 /* ymNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				CCFFA4A7286F0B4E005332E1 /* ymNotificationService.entitlements */,
+				CCFFA49E286F0B3E005332E1 /* NotificationService.swift */,
+				CCFFA4A0286F0B3E005332E1 /* Info.plist */,
+			);
+			path = ymNotificationService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,10 +413,12 @@
 				CCB4C39A28597A3200105C5C /* Sources */,
 				CCB4C39B28597A3200105C5C /* Frameworks */,
 				CCB4C39C28597A3200105C5C /* Resources */,
+				CC5C97FC286F08EA00D635B2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CCFFA4A2286F0B3E005332E1 /* PBXTargetDependency */,
 			);
 			name = Leyaa;
 			packageProductDependencies = (
@@ -383,6 +435,23 @@
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CCFFA49B286F0B3E005332E1 /* ymNotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCFFA4A4286F0B3E005332E1 /* Build configuration list for PBXNativeTarget "ymNotificationService" */;
+			buildPhases = (
+				CCFFA498286F0B3E005332E1 /* Sources */,
+				CCFFA499286F0B3E005332E1 /* Frameworks */,
+				CCFFA49A286F0B3E005332E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ymNotificationService;
+			productName = ymNotificationService;
+			productReference = CCFFA49C286F0B3E005332E1 /* ymNotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -394,6 +463,9 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					CCB4C39D28597A3200105C5C = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					CCFFA49B286F0B3E005332E1 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -418,6 +490,7 @@
 			projectRoot = "";
 			targets = (
 				CCB4C39D28597A3200105C5C /* Leyaa */,
+				CCFFA49B286F0B3E005332E1 /* ymNotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -431,6 +504,13 @@
 				CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */,
 				CC6B512E2867B94C00531303 /* Launch Screen.storyboard in Resources */,
 				CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCFFA49A286F0B3E005332E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +549,7 @@
 				CCB4C3BB285988E600105C5C /* CustomInputField.swift in Sources */,
 				CC6B5134286811ED00531303 /* AssetName.swift in Sources */,
 				CC9FA7A9285E9D7C00EF896D /* RoomListView.swift in Sources */,
+				CCFFA4A8286F0B74005332E1 /* NotificationService.swift in Sources */,
 				CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */,
 				CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
@@ -482,7 +563,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCFFA498286F0B3E005332E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCFFA49F286F0B3E005332E1 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCFFA4A2286F0B3E005332E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCFFA49B286F0B3E005332E1 /* ymNotificationService */;
+			targetProxy = CCFFA4A1286F0B3E005332E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CCB4C3AA28597A3400105C5C /* Debug */ = {
@@ -602,6 +699,7 @@
 		CCB4C3AD28597A3400105C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
@@ -635,6 +733,7 @@
 		CCB4C3AE28597A3400105C5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
@@ -665,6 +764,60 @@
 			};
 			name = Release;
 		};
+		CCFFA4A5286F0B3E005332E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ymNotificationService/ymNotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HVX3RPDRJ7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ymNotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ymNotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa.ymNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCFFA4A6286F0B3E005332E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ymNotificationService/ymNotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HVX3RPDRJ7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ymNotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ymNotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa.ymNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,6 +835,15 @@
 			buildConfigurations = (
 				CCB4C3AD28597A3400105C5C /* Debug */,
 				CCB4C3AE28597A3400105C5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCFFA4A4286F0B3E005332E1 /* Build configuration list for PBXNativeTarget "ymNotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCFFA4A5286F0B3E005332E1 /* Debug */,
+				CCFFA4A6286F0B3E005332E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
