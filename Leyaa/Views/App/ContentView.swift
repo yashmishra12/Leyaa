@@ -45,10 +45,8 @@ struct ContentView: View {
                                     print("Active")
                                 } else if newPhase == .inactive {
                                     UIApplication.shared.applicationIconBadgeNumber = 0
-                                    UserDefaults.standard.set(0, forKey: "com.yashmisra12.Leyaa.badgeCount")
                                 } else if newPhase == .background {
                                     UIApplication.shared.applicationIconBadgeNumber = 0
-                                    UserDefaults.standard.set(0, forKey: "com.yashmisra12.Leyaa.badgeCount")
                                 }
                             }
             }
