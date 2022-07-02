@@ -16,14 +16,11 @@ struct ContentView: View {
             ZStack(alignment: .topLeading) {
                 Group {
                     if viewModel.userSession == nil {
-                        LoginView()
+                        LoginView().environmentObject(viewModel)
                     } else {
                         TabView{
                             RoomListView(myRoom: $viewModel.rooms)
-                                .onAppear {
-                                    viewModel.populateRoomList()
-                                    viewModel.roomJoinRequestUpdate()
-                                }.tabItem {Label("Rooms", systemImage: "house.fill")}
+                               .tabItem {Label("Rooms", systemImage: "house.fill")}
                             
                             
                             RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {

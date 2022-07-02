@@ -31,6 +31,8 @@ struct RoomJoinRequestView: View {
 
                 }
             }.navigationTitle("Room Request")
+        }.onAppear {
+                viewModel.roomJoinRequestUpdate()
         }
     }
 }
