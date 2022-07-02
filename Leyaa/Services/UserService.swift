@@ -22,4 +22,8 @@ struct UserService {
             }
     }
     
+    func assignUsingClosure( x: String, completion: @escaping(String)-> Void) {
+        completion(x)
+    }
+    
 }

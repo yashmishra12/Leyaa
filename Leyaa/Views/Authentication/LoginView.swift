@@ -1,3 +1,4 @@
+
 //
 //  LoginView.swift
 //  Leyaa
@@ -7,7 +8,7 @@
 
 import SwiftUI
 import FirebaseService
-//import CryptoKit
+import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
 import Firebase
@@ -23,8 +24,8 @@ struct LoginView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
     @State var currentNonce: String?
-    
-    
+
+        
     
     var body: some View {
         
@@ -161,7 +162,7 @@ struct LoginView: View {
                                                                 let data = ["email": user.email ?? "",
                                                                             "avatar": assetName.randomElement() ?? "egg",
                                                                             "fullname": Auth.auth().currentUser?.displayName ?? "",
-                                                                            "deviceToken": UserDefaults.standard.string(forKey: "com.yashmisra12.Leyaa.kDeviceToken") ?? "",
+                                                                            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
                                                                             "uid": user.uid] as [String : Any]
                                                                 
                                                                 Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in

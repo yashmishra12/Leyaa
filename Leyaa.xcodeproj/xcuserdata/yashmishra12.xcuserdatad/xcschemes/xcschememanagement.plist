@@ -9,11 +9,6 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>NotificationLeyaa.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>Promises (Playground) 1.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -38,6 +33,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>CC30AD802870139100355C1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CCB4C39D28597A3200105C5C</key>
 		<dict>
 			<key>primary</key>

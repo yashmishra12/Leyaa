@@ -44,13 +44,14 @@ extension String {
             trimmedStr.removeLast()
         }
         
+        let alphanumeric = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "l", "k", "j", "h", "g", "f", "d", "s", "a", "z", "x", "c", "v", "b", "n", "m", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         
         
         if assetList.contains(trimmedStr) {
             return trimmedStr
         }else {
             let firstLetter = trimmedStr[0..<1]
-            if assetList.contains(firstLetter) { return firstLetter}
+            if alphanumeric.contains(firstLetter) { return firstLetter}
             else
                 {return "imageNotFound"}
         }
