@@ -67,8 +67,8 @@ struct RoomChatView: View {
                 Button {
                     inviteAllForChat()
                 } label: {
-                    Image(systemName: "hand.wave.fill")
-                }
+                    Image(systemName: "hand.wave.fill").imageScale(.large)
+                }.buttonStyle(.plain)
             }
         })
         .frame(width: screenWidth)

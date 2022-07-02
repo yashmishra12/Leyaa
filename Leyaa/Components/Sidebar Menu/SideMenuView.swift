@@ -51,7 +51,7 @@ struct SideMenuView: View {
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
                 let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                 "body":"\(userName ?? "") is going for laundry.",
+                                                                                 "body":"\(userName ?? "") is doing laundry.",
                                                                                  "badge": 1,
                                                                                  "sound":"default"]]
                 sendPushNotification(payloadDict: notifPayload)
@@ -99,8 +99,8 @@ struct SideMenuView: View {
     var body: some View {
         
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
+//            LinearGradient(gradient: Gradient(colors: [Color.black, Color.blue]), startPoint: .top, endPoint: .bottom)
+//                .ignoresSafeArea()
             
             
             
@@ -112,7 +112,7 @@ struct SideMenuView: View {
                     HStack {
                         Button {
                             goingForShopping()
-                            withAnimation(.easeIn) {
+                            withAnimation(.spring()) {
                                 show.toggle()
                             }
                         } label: {
@@ -120,7 +120,6 @@ struct SideMenuView: View {
                                 Image(systemName: "cart.fill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
                                 Text("Going shopping").padding()
                             }
@@ -133,7 +132,7 @@ struct SideMenuView: View {
                     HStack {
                         Button {
                             goingForLaundry()
-                            withAnimation(.easeIn) {
+                            withAnimation(.spring()) {
                                 show.toggle()
                             }
                         } label: {
@@ -142,9 +141,8 @@ struct SideMenuView: View {
                                 Image(systemName: "tshirt.fill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
-                                Text("Going Laundry").padding()
+                                Text("Doing Laundry").padding()
                             }
                         }.buttonStyle(.plain)
                         Spacer()
@@ -154,16 +152,14 @@ struct SideMenuView: View {
                     HStack {
                         Button {
                             fridgeIsFull()
-                            withAnimation(.easeIn) {
+                            withAnimation(.spring()) {
                                 show.toggle()
                             }
                         } label: {
                             HStack {
                                 
-                                Image("fridge")
-                                    .resizable()
-                                    .frame(width: 20, height: 25)
-                                    .foregroundColor(.white)
+                                Image(systemName: "takeoutbag.and.cup.and.straw.fill")
+                                    .frame(width: 20, height: 20)
                                 
                                 Text("Fridge is Full").padding()
                             }
@@ -176,7 +172,7 @@ struct SideMenuView: View {
                     HStack {
                         Button {
                             cleanHouse()
-                            withAnimation(.easeIn) {
+                            withAnimation(.spring()) {
                                 show.toggle()
                             }
                         } label: {
@@ -185,7 +181,6 @@ struct SideMenuView: View {
                                 Image(systemName: "wand.and.stars")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
                                 Text("Clean House").padding()
                             }
@@ -204,7 +199,6 @@ struct SideMenuView: View {
                                 
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
                                 Text("Fresh Check").padding()
                             }
@@ -222,7 +216,6 @@ struct SideMenuView: View {
                                 Image(systemName: "message.fill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
                                 Text("Message Wall").padding()
                             }
@@ -239,7 +232,6 @@ struct SideMenuView: View {
                             HStack {
                                 Image(systemName: "rectangle.portrait.and.arrow.right.fill").resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.white)
                                 
                                 Text("Leave Room").padding()
                             }
@@ -264,11 +256,11 @@ struct SideMenuView: View {
                                 RoomInviteView(roomData: $roomData)
                             } label: {
                                 HStack {
-                                    Image(systemName: "plus.square.fill")
+                                    Image(systemName: "person.fill.badge.plus")
                                         .resizable()
-                                        .frame(width: 20, height: 20)
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 30)
+                                        .frame(width: 25, height: 25)
+                                        .padding(.leading, 80)
+                                        .padding(.trailing, 35)
                                     
                                 }
                             }.buttonStyle(.plain)

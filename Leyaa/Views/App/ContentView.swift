@@ -44,9 +44,12 @@ struct ContentView: View {
                                 if newPhase == .active {
                                     print("Active")
                                 } else if newPhase == .inactive {
-                                    UIApplication.shared.applicationIconBadgeNumber = 0
+
+                                      UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
+                                    
                                 } else if newPhase == .background {
-                                    UIApplication.shared.applicationIconBadgeNumber = 0
+
+                                      UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
                                 }
                             }
             }

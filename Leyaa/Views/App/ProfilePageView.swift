@@ -32,10 +32,10 @@ struct ProfilePageView: View {
                     
                         VStack {
                             HStack{
-                                Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold).foregroundColor(.white)
+                                Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold)
                             }
                             HStack {
-                                Text(viewModel.currentUser?.email ?? "").font(.body).fontWeight(.light).foregroundColor(.white)
+                                Text(viewModel.currentUser?.email ?? "").font(.caption).fontWeight(.light)
                             }
                         }.padding(.top, -90)
                         
@@ -43,11 +43,11 @@ struct ProfilePageView: View {
                     }
                 
                     
-                
-                    Spacer()
+
                   
                     ScrollView{
-                        DisclosureGroup("Choose a new Avatar", isExpanded: $isExpanded) {
+ 
+                        DisclosureGroup(isExpanded: $isExpanded) {
                             VStack {
                                 LazyVGrid(columns: fiveColumnGrid) {
                                         ForEach(assetName, id: \.self) { avatar in
@@ -59,18 +59,23 @@ struct ProfilePageView: View {
                                     
                                 }
                             }
-                            
-                        }.font(.headline)
+                        } label: {
+                            Text("Choose a new Avatar").font(.headline)
+                        }.tint(Color.blue)
                             
                     }
       
                     HStack{
                         if (isExpanded && selectedAvatar != viewModel.currentUser?.avatar) {
                             Button {
-                                viewModel.updateAvatar(userID: (viewModel.userSession?.uid)!, newAvatar: selectedAvatar)
+                                viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
                             } label: {
                                 Text("Save")
-                            }
+                                    .foregroundColor (.white)
+                                    .frame (width: screenWidth * 0.25, height: 35)
+                                    .background(Color("MediumBlue"))
+                                    .clipShape(Capsule())
+                            }.buttonStyle(.plain)
                         }
                     
                     }

@@ -42,3 +42,21 @@ func fetchDeviceToken(withUid uid: String, completion: @escaping(String) -> Void
             }
         }
 }
+
+func fetchDeviceTokenFromEmail(email: String, completion: @escaping(String) -> Void) {
+    let docRef = Firestore.firestore().collection("users").whereField("email", isEqualTo: email).limit(to: 1)
+    docRef.getDocuments  { (querySnapshot, err) in
+        if let err = err {
+                    print("Error getting documents -- fetchDeviceTokenFromEmail: \(err)")
+                    return
+                }
+        if let snap = querySnapshot {
+                     for document in snap.documents {
+                         let property = document.get("deviceToken") as! String
+                         completion(property)
+                     }
+             } else {
+                 print("no data returned")
+             }
+    }
+}

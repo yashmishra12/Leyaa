@@ -2,8 +2,21 @@
   "colors" : [
     {
       "color" : {
+        "platform" : "universal",
+        "reference" : "labelColor"
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "color" : {
         "platform" : "ios",
-        "reference" : "tertiarySystemBackgroundColor"
+        "reference" : "darkTextColor"
       },
       "idiom" : "universal"
     },

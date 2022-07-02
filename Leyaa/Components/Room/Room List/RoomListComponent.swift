@@ -15,68 +15,70 @@ struct RoomListComponent: View {
     
     var body: some View {
         ZStack {
-            Color("MediumBlue").ignoresSafeArea()
+
             
             VStack(alignment: .leading) {
                
-               
-                HStack {
-                    Text(title.capitalized).font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.white)
-                        .multilineTextAlignment(.leading)
-                        .padding(.horizontal, 5)
+                VStack{
                     
-                    Spacer()
-                }
-
-                Spacer() 
-                HStack{
-                    if(newItems.count>5) {
+                     HStack {
+                         Text(title.capitalized).font(.title)
+                             .fontWeight(.bold)
+                             .foregroundColor(Color.white)
+                             .multilineTextAlignment(.leading)
+                         Spacer()
+                     }
+                }.padding()
+                
+                Spacer()
+               
+                VStack{
+                    HStack{
+                        if(newItems.count>5) {
+                                
+                            Image(newItems[0].name.sanitiseItemName()).resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60, alignment: .leading)
                             
-                        Image(newItems[0].name.sanitiseItemName()).resizable()
+                            Image(newItems[1].name.sanitiseItemName()).resizable()
                                 .scaledToFit()
                                 .frame(width: 60, height: 60, alignment: .leading)
-                        
-                        Image(newItems[1].name.sanitiseItemName()).resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60, alignment: .leading)
-                        
-                        Image(newItems[2].name.sanitiseItemName()).resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60, alignment: .leading)
-                        
-                        Image(newItems[3].name.sanitiseItemName()).resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60, alignment: .leading)
-                        
-                        Image(newItems[4].name.sanitiseItemName()).resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60, alignment: .leading)
+                            
+                            Image(newItems[2].name.sanitiseItemName()).resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60, alignment: .leading)
+                            
+                            Image(newItems[3].name.sanitiseItemName()).resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60, alignment: .leading)
+                            
+                            Image(newItems[4].name.sanitiseItemName()).resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60, alignment: .leading)
 
-                        Image(systemName: "ellipsis").resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30, alignment: .leading)
-                        
-                    }
-                    else {
-                        ForEach(newItems, id: \.self) { item in
-                            Image(item.name.sanitiseItemName()).resizable()
+                            Image(systemName: "ellipsis").resizable().foregroundColor(.white)
                                 .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .leading)
+                                .frame(width: 30, height: 30, alignment: .leading)
+                            
                         }
+                        else {
+                            ForEach(newItems, id: \.self) { item in
+                                Image(item.name.sanitiseItemName()).resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60, alignment: .leading)
+                            }
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
+                }.padding()
                 
                 
             }
             
             
         }
-        .frame(height: 100)
-        .padding(.horizontal, 1)
-        .padding(.vertical, 1)
+        .padding(.horizontal, 5)
+        .padding(.vertical, 5)
         
     }
 }
