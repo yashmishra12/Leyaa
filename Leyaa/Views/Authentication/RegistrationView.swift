@@ -28,8 +28,8 @@ struct RegistrationView: View {
                 
                 //MARK: - HEADER
                 VStack {
-                    AuthHeaderView(title1: "Get Started.")
-                        .frame(height: screenHeight * 0.15)
+                    AuthHeaderView(title1: "Get Started.").padding(.top)
+//                        .frame(height: screenHeight * 0.15)
                 }
 
         
@@ -43,7 +43,6 @@ struct RegistrationView: View {
                     
                 }
                 .padding(.horizontal, 32)
-                .foregroundColor(.white)
                 .padding(.top, screenHeight*0.2)
                 
                 //MARK: - SIGN UP BUTTON
@@ -60,7 +59,7 @@ struct RegistrationView: View {
                             .background(Color("MediumBlue"))
                             .clipShape(Capsule())
                             .padding ()
-                    }
+                    }.disabled(isValidEmail(email)==false)
                     .padding(.top, 10)
                     .buttonStyle(.plain)
                     .alert(isPresented: self.$viewModel.errorOccurred) {
@@ -83,7 +82,7 @@ struct RegistrationView: View {
                             Text("Sign In")
                                 .font (.callout)
                                 .fontWeight (.semibold)
-                                .foregroundColor(Color("LightBlue"))
+                                .foregroundColor(Color("MediumBlue"))
                             }
                     }
                 }.padding(.bottom, 30)

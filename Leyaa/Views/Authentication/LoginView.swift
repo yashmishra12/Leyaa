@@ -56,7 +56,7 @@ struct LoginView: View {
                     }
                     .padding(.horizontal, 32)
                     .padding(.top, screenHeight*0.1)
-                    .foregroundColor(.white)
+
                     
                     //MARK: - FORGOT PASSWORD
                     HStack{
@@ -94,7 +94,7 @@ struct LoginView: View {
                                 .background(Color("MediumBlue"))
                                 .clipShape(Capsule())
                                 .padding ()
-                        }
+                        }.disabled(isValidEmail(email)==false)
 
                         .padding(.top, 10)
                         .buttonStyle(.plain)
@@ -214,13 +214,13 @@ struct LoginView: View {
                             Text("Sign Up")
                                 .font (.callout)
                                 .fontWeight (.semibold)
-                                .foregroundColor(Color("LightBlue"))
+                                .foregroundColor(Color("MediumBlue"))
                         }
                         
                     }.buttonStyle(.plain)
                     
                 }
-//                .background(Color("DarkBlue"))
+
                 
             }
                 .navigationBarHidden(true)
