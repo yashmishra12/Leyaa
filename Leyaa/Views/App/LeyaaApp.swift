@@ -80,11 +80,11 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         
       let deviceToken:[String: String] = ["token": fcmToken ?? ""]
-        print("------------------------------------------------------------------------------------------")
-        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
-        print("------------------------------------------------------------------------------------------")
+//        print("------------------------------------------------------------------------------------------")
+//        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
+//        print("------------------------------------------------------------------------------------------")
 
-        UserDefaults.standard.set(deviceToken["token"], forKey: "com.yashmisra12.Leyaa.kDeviceToken")
+        UserDefaults.standard.set(deviceToken["token"], forKey: deviceTokenStorage)
        
     }
 }

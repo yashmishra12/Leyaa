@@ -10,35 +10,46 @@ import SwiftUI
 struct RoomJoinRequestView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var roomRequest: [RoomRequest]
-
+    @Environment(\.scenePhase) var scenePhase
+    @State private var relaxedPhoto: String = "relax1"
     
     var body: some View {
         NavigationView{
-            ScrollView {
-                VStack{
+            if viewModel.pendingReqest.count > 0 {
+                ScrollView {
                     VStack{
-                        ForEach($roomRequest, id: \.self) { req in
-                            RoomRequestComponentView(reqData: req)
-                                .padding(.horizontal, 5)
-                                .padding(.vertical, 2.5)
+                        VStack{
+                            ForEach($roomRequest, id: \.self) { req in
+                                RoomRequestComponentView(reqData: req)
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 2.5)
+                            }
                         }
+                        
+                        Spacer()
+
+
+
+
                     }
-                    
-                    Spacer()
-
-
-
-
-                }
-            }.navigationTitle("Room Request")
-        }.onAppear {
-                viewModel.roomJoinRequestUpdate()
+                }.navigationTitle("Room Request")
+            }
+            else {
+                Image(relaxedPhoto).resizable().aspectRatio(contentMode: .fit).padding()
+            }
+           
+        }
+        .onChange(of: scenePhase) { newPhase in
+                        if newPhase == .active {
+                            let imagePicker: [String] = ["relax1", "relax2", "relax3", "relax4"]
+                            relaxedPhoto = imagePicker.randomElement() ?? "relax1"
+                        }
         }
     }
 }
 
 struct RoomJoinRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        RoomJoinRequestView(roomRequest: .constant([RoomRequest(roomID: "", roomName: "", senderName: "", receiverEmail: "")]))
+        RoomJoinRequestView(roomRequest: .constant([RoomRequest(roomID: "", roomName: "", senderName: "", receiverEmail: "")])).environmentObject(AuthViewModel())
     }
 }

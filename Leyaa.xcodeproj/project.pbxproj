@@ -77,9 +77,6 @@
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		CC30AD832870139100355C1A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		CC30AD852870139100355C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC30AD8C287015F800355C1A /* NotificationLeyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationLeyaa.entitlements; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
 		CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomJoinRequestView.swift; sourceTree = "<group>"; };
 		CC541009286589060026CA76 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
@@ -164,16 +161,6 @@
 				CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */,
 			);
 			path = "Sidebar Menu";
-			sourceTree = "<group>";
-		};
-		CC30AD822870139100355C1A /* NotificationLeyaa */ = {
-			isa = PBXGroup;
-			children = (
-				CC30AD8C287015F800355C1A /* NotificationLeyaa.entitlements */,
-				CC30AD832870139100355C1A /* NotificationService.swift */,
-				CC30AD852870139100355C1A /* Info.plist */,
-			);
-			path = NotificationLeyaa;
 			sourceTree = "<group>";
 		};
 		CC54100628657CDF0026CA76 /* Create */ = {
@@ -274,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				CCB4C3A028597A3200105C5C /* Leyaa */,
-				CC30AD822870139100355C1A /* NotificationLeyaa */,
 				CCB4C39F28597A3200105C5C /* Products */,
 			);
 			sourceTree = "<group>";

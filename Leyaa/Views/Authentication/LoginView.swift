@@ -38,8 +38,8 @@ struct LoginView: View {
                     
                     //MARK: - HEADER
                     VStack{
-                        AuthHeaderView(title1: "Hello.", title2: "Welcome Back")
-                            .frame(height: screenHeight * 0.25)
+                        AuthHeaderView(title1: "Hello There")
+                            .frame(height: screenHeight * 0.15)
                     }
                     
                     //MARK: - FORM
@@ -67,7 +67,7 @@ struct LoginView: View {
                         } label: {
                             Text("Forgot Password?").font(.caption)
                                 .fontWeight(.light)
-                                .foregroundColor(Color.white)
+//                                .foregroundColor(Color.white)
                                 .multilineTextAlignment(.trailing)
                                 .padding(.horizontal, 32)
                                 .padding(.top, 15)
@@ -95,7 +95,7 @@ struct LoginView: View {
                                 .clipShape(Capsule())
                                 .padding ()
                         }
-//                        .shadow(color: .black, radius: 10, x: 0, y: 0)
+
                         .padding(.top, 10)
                         .buttonStyle(.plain)
                         .alert(isPresented: self.$viewModel.errorOccurred) {
@@ -143,7 +143,6 @@ struct LoginView: View {
                                                     return
                                                 }
                                                 guard let user = authResult?.user else {return}
-                                                self.viewModel.userSession = user
 
                                                 
                                                 let docRef = self.db.collection("users").document(user.uid)
@@ -160,7 +159,7 @@ struct LoginView: View {
                                                             
                                                             changeRequest?.commitChanges(completion: { (error) in
                                                                 let data = ["email": user.email ?? "",
-                                                                            "avatar": assetName.randomElement() ?? "egg",
+                                                                            "avatar": assetName.randomElement()?.sanitiseItemName() ?? "egg",
                                                                             "fullname": Auth.auth().currentUser?.displayName ?? "",
                                                                             "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
                                                                             "uid": user.uid] as [String : Any]
@@ -186,7 +185,9 @@ struct LoginView: View {
                                         break
                                     }
                                 }
-                            ).buttonStyle(.plain)
+                            )
+                            .signInWithAppleButtonStyle(.whiteOutline)
+//                            .buttonStyle(.plain)
                         }.frame(width:  screenWidth * 0.8, height: 40)
                             .clipShape(Capsule())
                             .padding(.horizontal, 32)
@@ -208,7 +209,7 @@ struct LoginView: View {
                         HStack{
                             Text("Don't have an account?")
                                 .font (.footnote)
-                                .foregroundColor(Color.white)
+        
                             
                             Text("Sign Up")
                                 .font (.callout)
@@ -218,7 +219,8 @@ struct LoginView: View {
                         
                     }.buttonStyle(.plain)
                     
-                }.background(Color("DarkBlue"))
+                }
+//                .background(Color("DarkBlue"))
                 
             }
                 .navigationBarHidden(true)

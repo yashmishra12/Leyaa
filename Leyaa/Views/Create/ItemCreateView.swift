@@ -19,29 +19,32 @@ struct ItemCreateView: View {
     
     var body: some View {
         VStack {
-            CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
+            Image("addItem").resizable().frame(width: 300, height: 300).padding(.top, -100)
+            VStack {
+                CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
+                
+                CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()
+                
+                CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
+                
+            }
             
-            CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()
             
-            CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
-            
+            Button {
+                let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
+                viewModel.addItem(item: item, roomID: roomData.id ?? "")
+                
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Add Item")
+                    .font (.headline)
+                    .foregroundColor (.white)
+                    .frame (width: screenWidth * 0.3, height: 40)
+                    .background(Color("MediumBlue"))
+                    .clipShape(Capsule())
+                    .padding ()
+            }.buttonStyle(.plain)
         }
-        
-        
-        Button {
-            let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
-            viewModel.addItem(item: item, roomID: roomData.id ?? "")
-            
-            presentationMode.wrappedValue.dismiss()
-        } label: {
-            Text("Add Item")
-                .font (.headline)
-                .foregroundColor (.white)
-                .frame (width: screenWidth * 0.3, height: 40)
-                .background(Color("MediumBlue"))
-                .clipShape(Capsule())
-                .padding ()
-        }.buttonStyle(.plain)
         
     }
 }

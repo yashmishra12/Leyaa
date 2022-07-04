@@ -28,8 +28,8 @@ struct RegistrationView: View {
                 
                 //MARK: - HEADER
                 VStack {
-                    AuthHeaderView(title1: "Get Started.", title2: "Create an account")
-                        .frame(height: screenHeight * 0.25)
+                    AuthHeaderView(title1: "Get Started.")
+                        .frame(height: screenHeight * 0.15)
                 }
 
         
@@ -78,7 +78,7 @@ struct RegistrationView: View {
                         HStack{
                             Text("Have an account?")
                                 .font (.footnote)
-                                .foregroundColor(Color.white)
+
                             
                             Text("Sign In")
                                 .font (.callout)
@@ -92,7 +92,8 @@ struct RegistrationView: View {
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)
-        }.background(Color("DarkBlue"))
+        }
+
     }
 }
 

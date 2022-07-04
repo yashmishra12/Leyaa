@@ -50,10 +50,11 @@ struct ProfilePageView: View {
                         DisclosureGroup(isExpanded: $isExpanded) {
                             VStack {
                                 LazyVGrid(columns: fiveColumnGrid) {
-                                        ForEach(assetName, id: \.self) { avatar in
-                                            Image(avatar).resizable().frame(width: 50, height: 50).padding()
+                                    ForEach(assetName, id: \.self) { avatar in
+                                        let toShow = avatar.sanitiseItemName()
+                                        Image(toShow).resizable().frame(width: 50, height: 50).padding()
                                                 .onTapGesture {
-                                                    self.selectedAvatar = avatar
+                                                    self.selectedAvatar = toShow
                                                 }
                                         }
                                     

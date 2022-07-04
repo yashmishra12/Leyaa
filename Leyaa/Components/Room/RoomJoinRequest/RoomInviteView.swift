@@ -19,45 +19,50 @@ struct RoomInviteView: View {
     @Environment (\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack{
-            CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-            CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
-        }.padding()
-        
-
-        Button {
-            viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
+        VStack {
             
-            fetchDeviceTokenFromEmail(email: email) { token in
-                let notifPayload: [String: Any] = ["to": token ,
-                                                   "notification": [
-                                                    "title":"Room Join Request",
-                                                    "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
-                                                    "sound":"default"]
-                ]
+            Image("addMember").resizable().frame(width: 300, height: 300).padding(.top, -100)
+            
+            VStack{
+                CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
+            }.padding()
+            
+
+            Button {
+                viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
                 
-                sendPushNotification(payloadDict: notifPayload)
+                fetchDeviceTokenFromEmail(email: email) { token in
+                    let notifPayload: [String: Any] = ["to": token ,
+                                                       "notification": [
+                                                        "title":"Room Join Request",
+                                                        "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
+                                                        "sound":"default"]
+                    ]
+                    
+                    sendPushNotification(payloadDict: notifPayload)
+                }
+                
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Send Invite")
+                    .font (.headline)
+                    .foregroundColor (.white)
+                    .frame (width: screenWidth * 0.3, height: 40)
+                    .background(Color("MediumBlue"))
+                    .clipShape(Capsule())
+                    .padding ()
             }
-            
-            presentationMode.wrappedValue.dismiss()
-        } label: {
-            Text("Send Invite")
-                .font (.headline)
-                .foregroundColor (.white)
-                .frame (width: screenWidth * 0.3, height: 40)
-                .background(Color("MediumBlue"))
-                .clipShape(Capsule())
-                .padding ()
-        }
-        .disabled(isValidEmail(email)==false)
-        .buttonStyle(.plain)
+            .disabled(isValidEmail(email)==false)
+            .buttonStyle(.plain)
 
+        }
         
     }
 }
 //
 //struct RoomInviteView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        RoomInviteView(roomData: .constant(Room(title: "", newItems: [], members: [])))
+//        RoomInviteView(roomData: .constant(Room(title: "Avent Ferry", newItems: [], members: []))).environmentObject(AuthViewModel())
 //    }
 //}
