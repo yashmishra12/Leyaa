@@ -17,7 +17,11 @@ struct RoomCreateView: View {
     var body: some View {
         
         VStack {
-            Image("createRoom").resizable().frame(width: 300, height: 300).padding(.top, -100)
+            Image("createRoom")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, -100)
+            
             CustomInputField(imageName: "house.fill", placeholderText: "Room Name", isSecureField: false, text: $roomName)
                 .padding()
 

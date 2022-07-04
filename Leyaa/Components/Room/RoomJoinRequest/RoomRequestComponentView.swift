@@ -60,12 +60,12 @@ struct RoomRequestComponentView: View {
                 }).buttonStyle(.plain)
                 .confirmationDialog("Are you sure?",
                   isPresented: $rejectingRequest) {
-                  Button("Leave Room", role: .destructive) {
+                  Button("Reject Request", role: .destructive) {
                       viewModel.rejectRoomRequest(reqData: reqData)
                       
                   }
                 } message: {
-                  Text("One of the group members will have to add you back.")
+                  Text("Are you sure?")
                 }
                 
                 
@@ -87,8 +87,6 @@ struct RoomRequestComponentView: View {
                     Button("Accept", role: .none) {
                       viewModel.acceptRoomRequest(reqData: reqData)
                   }
-                } message: {
-                  Text("Make sure not to accept strange requests.")
                 }
                 
                 

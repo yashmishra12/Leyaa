@@ -187,9 +187,10 @@ struct LoginView: View {
                                 }
                             )
                             .signInWithAppleButtonStyle(.whiteOutline)
-//                            .buttonStyle(.plain)
-                        }.frame(width:  screenWidth * 0.8, height: 40)
                             .clipShape(Capsule())
+        
+                        }.frame(width:  screenWidth * 0.8, height: 40)
+//                            .clipShape(Capsule())
                             .padding(.horizontal, 32)
                             .padding(.top, 15)
 

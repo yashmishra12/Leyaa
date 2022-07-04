@@ -48,15 +48,20 @@ struct ItemEditView: View {
     var body: some View {
         
         VStack{
-            CustomInputField(imageName: "bookmark.fill", placeholderText: "Name", isSecureField: false, text: $name)
-                .focusedLegacy($focusedField, equals: .name)
+            Image("editItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -20)
             
-            CustomInputField(imageName: "bookmark.fill", placeholderText: "Quantity", isSecureField: false, text: $qty)
-                .focusedLegacy($focusedField, equals: .quantity)
-        
+            VStack (spacing: 20) {
+                CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Name", isSecureField: false, text: $name)
+                    .focusedLegacy($focusedField, equals: .name)
+                
+                CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty)
+                    .focusedLegacy($focusedField, equals: .quantity)
             
-            CustomInputField(imageName: "bookmark.fill", placeholderText: "Description", isSecureField: false, text: $desc)
-                .focusedLegacy($focusedField, equals: .description)
+                
+                CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc)
+                    .focusedLegacy($focusedField, equals: .description)
+                
+            }.padding()
             
             VStack{
                 Button {
@@ -64,6 +69,11 @@ struct ItemEditView: View {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save")
+                        .foregroundColor (.white)
+                        .frame (width: screenWidth * 0.60, height: 40)
+                        .background(Color("MediumBlue"))
+                        .clipShape(Capsule())
+                        .padding ()
                 }
             }
             
