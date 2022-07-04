@@ -26,7 +26,7 @@ struct RoomChatView: View {
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
                 let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                      "body":"\(userName ?? "") wants a quick chat.",
+                                                                                      "body":"\(userName ?? "") posted a new message.",
                                                                                       "sound":"default"]]
                 sendPushNotification(payloadDict: notifPayload)
             }

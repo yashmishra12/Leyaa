@@ -32,10 +32,8 @@ extension String {
            let start = index(startIndex, offsetBy: max(0, range.lowerBound))
             return String(self[start...])
        }
-
-    func sanitiseItemName() -> String {
-        let assetList = assetName
-   
+    
+    func prepareItemName() -> String {
         let itName = self.lowercased().stripped
         var trimmedStr = itName.filter {!$0.isWhitespace}
         let lastLetter = trimmedStr.last
@@ -43,14 +41,24 @@ extension String {
         if(lastLetter == "s") {
             trimmedStr.removeLast()
         }
+        return trimmedStr
+    }
+  
+    
+    func sanitiseItemName() -> String {
+        let assetList = assetName.map { item in
+            item.prepareItemName()
+        }
+   
+        let itName = self.prepareItemName()
         
         let alphanumeric = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "l", "k", "j", "h", "g", "f", "d", "s", "a", "z", "x", "c", "v", "b", "n", "m", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
         
         
-        if assetList.contains(trimmedStr) {
-            return trimmedStr
+        if assetList.contains(itName) {
+            return itName
         }else {
-            let firstLetter = trimmedStr[0..<1]
+            let firstLetter = itName[0..<1]
             if alphanumeric.contains(firstLetter) { return firstLetter}
             else
                 {return "imageNotFound"}

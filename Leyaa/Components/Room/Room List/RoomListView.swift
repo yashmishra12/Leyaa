@@ -52,8 +52,6 @@ struct RoomListView: View {
                     .navigationTitle("Rooms")
                 
             }.navigationBarBackButtonHidden(true)
-        }.onAppear {
-            viewModel.populateRoomList()
         }
         
     }

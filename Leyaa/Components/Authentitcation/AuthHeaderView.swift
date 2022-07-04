@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AuthHeaderView: View {
     let title1: String
-    let title2: String
     
     var body: some View {
         //MARK: - HEADER
@@ -19,12 +18,8 @@ struct AuthHeaderView: View {
                 .fontWeight(.semibold)
                 .font(.largeTitle)
                 .foregroundColor(.white)
+                .padding(.top)
             
-            
-            Text(title2)
-                .fontWeight(.semibold)
-                .font(.largeTitle)
-                .foregroundColor(.white)
         }
         .frame(height: 260)
         .padding(.leading)
@@ -36,6 +31,6 @@ struct AuthHeaderView: View {
 
 struct AuthHeader_Previews: PreviewProvider {
     static var previews: some View {
-        AuthHeaderView(title1: "Title1", title2: "Title2")
+        AuthHeaderView(title1: "Title1")
     }
 }
