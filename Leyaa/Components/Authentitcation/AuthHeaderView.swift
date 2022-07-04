@@ -21,7 +21,7 @@ struct AuthHeaderView: View {
                 .padding(.top)
             
         }
-        .frame(height: 260)
+        .frame(height: 200)
         .padding(.leading)
         .background(Color("MediumBlue"))
         .clipShape(RoundedShape(corners: [.bottomRight]))
