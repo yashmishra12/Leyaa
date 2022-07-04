@@ -127,7 +127,7 @@ struct WalkThroughScreen: View {
                             .rotationEffect(.init(degrees: -90))
                             }.padding(-15)
                 )
-        })
+        }).buttonStyle(.plain)
             .padding(.bottom, 20)
                    , alignment: .bottom
         )
@@ -152,13 +152,8 @@ struct ScreenView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                
-                if currentPage == 1 {
-                    Text("Hello Member").font(.title).fontWeight(.semibold)
-                        .kerning(1.4)
-                    
-                }
-                else {
+
+                if currentPage != 1 {
                     Button {
                         withAnimation (.easeInOut){
                             currentPage -= 1;
@@ -168,7 +163,7 @@ struct ScreenView: View {
                             .padding(.horizontal)
                             .background(Color.blue.opacity(0.5))
                             .cornerRadius(10)
-                    }
+                    }.buttonStyle(.plain)
 
                 }
                 Spacer()
@@ -179,7 +174,7 @@ struct ScreenView: View {
                     }
                 } label: {
                     Text("Skip").fontWeight(.semibold)
-                }
+                }.buttonStyle(.plain)
                 
             }
             .padding()
