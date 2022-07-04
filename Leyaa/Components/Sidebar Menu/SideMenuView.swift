@@ -72,6 +72,26 @@ struct SideMenuView: View {
                     }
                     
                     
+                    // Bill Split
+                    HStack {
+                        NavigationLink {
+                            
+                            SplitBillView(roomData: $roomData)
+                        } label: {
+                            HStack {
+                                
+                                Image(systemName: "dollarsign.square.fill")
+                                
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                
+                                Text("Bill Split").padding()
+                            }
+                        }.buttonStyle(.plain)
+                        Spacer()
+                    }
+                    
+                   
                     //Expand
                     HStack {
                         Button {
@@ -186,12 +206,7 @@ struct SideMenuView: View {
                         }.padding(.leading, 20)
                     }
                    
-                    
-                 
-                    
-                
-                    
-                    
+ 
                     // LEAVE ROOM
                     HStack{
                         Button(action: {

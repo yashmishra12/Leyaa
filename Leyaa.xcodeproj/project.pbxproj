@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07DB882865644B0000265C /* SanitizeItemName.swift */; };
+		CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */; };
 		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
+		CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC0CC8792872F8F9009C90C0 /* Split Bill */ = {
+			isa = PBXGroup;
+			children = (
+				CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */,
+			);
+			path = "Split Bill";
+			sourceTree = "<group>";
+		};
 		CC14C73B285AFE5B0077510E /* Room */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 				CC71D7232865AE6200E62F5B /* RoomJoinRequest */,
 				CC6C0D822869E53F00F2011A /* Room List */,
 				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
+				CC0CC8792872F8F9009C90C0 /* Split Bill */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -468,6 +479,7 @@
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
+				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
