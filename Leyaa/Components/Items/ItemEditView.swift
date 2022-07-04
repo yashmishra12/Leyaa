@@ -41,7 +41,8 @@ struct ItemEditView: View {
     @State var desc: String
     @State var qty: String
     @State var roomID: String
-
+    @Binding var offset: CGSize
+    
     @Environment(\.presentationMode) var presentationMode
     
 
@@ -69,14 +70,17 @@ struct ItemEditView: View {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save")
+                        .font (.headline)
                         .foregroundColor (.white)
-                        .frame (width: screenWidth * 0.60, height: 40)
+                        .padding()
                         .background(Color("MediumBlue"))
                         .clipShape(Capsule())
                         .padding ()
-                }
+                }.buttonStyle(.plain)
             }
             
+        }.onAppear {
+            offset.width = 0
         }
         
        

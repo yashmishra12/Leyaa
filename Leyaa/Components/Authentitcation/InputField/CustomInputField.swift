@@ -11,6 +11,7 @@ struct CustomInputField: View {
     let imageName: String
     let placeholderText: String
     var isSecureField: Bool? = false
+    var isDecimal: Bool? = false
     
     @Binding var text: String
     
@@ -24,14 +25,31 @@ struct CustomInputField: View {
                     .foregroundColor (Color("MediumBlue"))
                     .padding(.trailing, 15)
                 
-                if isSecureField ?? false {
-                    SecureField(placeholderText, text: $text)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
-                } else {
-                    TextField(placeholderText, text: $text)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
+                if isDecimal == false {
+                    
+                    if isSecureField ?? false {
+                        SecureField(placeholderText, text: $text)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                    } else {
+                        TextField(placeholderText, text: $text)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                    }
+                }
+                
+                else {
+                    
+                    if isSecureField ?? false {
+                        SecureField(placeholderText, text: $text).keyboardType(.decimalPad)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                    } else {
+                        TextField(placeholderText, text: $text)
+                            .keyboardType(.decimalPad)
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                    }
                 }
                  
                 

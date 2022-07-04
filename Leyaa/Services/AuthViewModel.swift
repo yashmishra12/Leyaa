@@ -8,10 +8,10 @@
 
 import SwiftUI
 import Firebase
-import FirebaseService
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseService
 
 class AuthViewModel: ObservableObject {
     
@@ -433,6 +433,11 @@ class AuthViewModel: ObservableObject {
     }
     
     
+    //MARK: - Populate UserInfo
+    
+    func populateUserInfo (memberID: [String]) -> [[String]] {
+        return [[""]]
+    }
     
     //MARK: - END
     

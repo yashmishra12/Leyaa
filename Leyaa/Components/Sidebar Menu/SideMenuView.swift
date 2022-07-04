@@ -76,7 +76,7 @@ struct SideMenuView: View {
                     HStack {
                         NavigationLink {
                             
-                            SplitBillView(roomData: $roomData)
+                            SplitBillView(roomData: $roomData, userInfo: [[""]])
                         } label: {
                             HStack {
                                 

@@ -48,7 +48,7 @@ struct RoomInviteView: View {
                 Text("Send Invite")
                     .font (.headline)
                     .foregroundColor (.white)
-                    .frame (width: screenWidth * 0.3, height: 40)
+                    .padding()
                     .background(Color("MediumBlue"))
                     .clipShape(Capsule())
                     .padding ()

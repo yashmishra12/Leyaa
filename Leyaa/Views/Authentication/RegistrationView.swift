@@ -55,7 +55,7 @@ struct RegistrationView: View {
                         Text ("Sign Up")
                             .font (.headline)
                             .foregroundColor (.white)
-                            .frame (width: screenWidth * 0.8, height: 40)
+                            .padding()
                             .background(Color("MediumBlue"))
                             .clipShape(Capsule())
                             .padding ()

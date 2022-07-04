@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07DB882865644B0000265C /* SanitizeItemName.swift */; };
 		CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */; };
+		CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */; };
+		CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */; };
 		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
@@ -79,6 +81,8 @@
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
 		CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
+		CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCreateView.swift; sourceTree = "<group>"; };
+		CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPaymentSliderView.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */,
+				CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */,
+				CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */,
 			);
 			path = "Split Bill";
 			sourceTree = "<group>";
@@ -478,6 +484,7 @@
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
+				CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */,
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
@@ -486,6 +493,7 @@
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
+				CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
