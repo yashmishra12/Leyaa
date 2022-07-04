@@ -19,7 +19,7 @@ struct ItemCreateView: View {
     
     var body: some View {
         VStack {
-            Image("addItem").resizable().frame(width: 300, height: 300).padding(.top, -100)
+            Image("addItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             VStack {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
                 

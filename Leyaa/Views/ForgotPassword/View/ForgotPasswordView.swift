@@ -16,7 +16,7 @@ struct ForgotPasswordView: View {
     
     var body: some View {
         VStack {
-            Image("forgotPassword").resizable().frame(width: 300, height: 300).padding(.top, -100).padding(.bottom, 50)
+            Image("forgotPassword").resizable().aspectRatio(contentMode: .fit).padding(.top, -100).padding(.bottom, 50)
             VStack(spacing: 16) {
                 
                     CustomInputField(imageName: "envelope", placeholderText: "Reset link will be sent here.", isSecureField: false, text: $viewModel.email).padding()

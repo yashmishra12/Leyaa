@@ -21,7 +21,7 @@ struct RoomInviteView: View {
     var body: some View {
         VStack {
             
-            Image("addMember").resizable().frame(width: 300, height: 300).padding(.top, -100)
+            Image("addMember").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             
             VStack{
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)

@@ -35,7 +35,19 @@ struct RoomJoinRequestView: View {
                 }.navigationTitle("Room Request")
             }
             else {
-                Image(relaxedPhoto).resizable().aspectRatio(contentMode: .fit).padding()
+              
+                VStack {
+                    Text("Relax.\nNo New Request")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .kerning(1.2)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    Spacer()
+                    Image(relaxedPhoto).resizable().aspectRatio(contentMode: .fit).padding()
+                    Spacer()
+                }
+              
             }
            
         }
