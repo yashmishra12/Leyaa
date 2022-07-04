@@ -90,7 +90,7 @@ struct LoginView: View {
                             Text ("Sign In")
                                 .font (.headline)
                                 .foregroundColor (.white)
-                                .frame (width: screenWidth * 0.8, height: 40)
+                                .padding()
                                 .background(Color("MediumBlue"))
                                 .clipShape(Capsule())
                                 .padding ()
@@ -186,11 +186,9 @@ struct LoginView: View {
                                     }
                                 }
                             )
-                            .signInWithAppleButtonStyle(.whiteOutline)
-                            .clipShape(Capsule())
+                            .cornerRadius(25)
         
                         }.frame(width:  screenWidth * 0.8, height: 40)
-//                            .clipShape(Capsule())
                             .padding(.horizontal, 32)
                             .padding(.top, 15)
 

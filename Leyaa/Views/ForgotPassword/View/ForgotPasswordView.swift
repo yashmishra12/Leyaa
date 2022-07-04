@@ -27,11 +27,11 @@ struct ForgotPasswordView: View {
                     } label: {
                         Text("Send Reset Request")
                             .font (.headline)
-                                .foregroundColor (.white)
-                                .frame (width: screenWidth * 0.60, height: 40)
-                                .background(Color("MediumBlue"))
-                                .clipShape(Capsule())
-                                .padding ()
+                            .foregroundColor (.white)
+                            .padding()
+                            .background(Color("MediumBlue"))
+                            .clipShape(Capsule())
+                            .padding ()
                     }.disabled(isValidEmail($viewModel.email.wrappedValue)==false)
                     .buttonStyle(.plain)
         

@@ -30,7 +30,7 @@ struct ItemView: View {
                 HStack{
                    
                     NavigationLink{
-                        ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "" )
+                        ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "", offset: $offset  )
                         
                     } label: {
                         if offset.width != 0 {
