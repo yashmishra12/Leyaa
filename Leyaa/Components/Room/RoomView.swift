@@ -45,7 +45,7 @@ struct RoomView: View {
                                 NavigationLink {
                                     ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                                 } label: {
-                                    Image(systemName: "sparkle.magnifyingglass").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
+                                    Image(systemName: "text.magnifyingglass").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
                                 }.padding()
                                     .buttonStyle(.plain)
                                 
@@ -72,7 +72,7 @@ struct RoomView: View {
                         NavigationLink {
                             ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                         } label: {
-                            Image(systemName: "sparkle.magnifyingglass").imageScale(.large)
+                            Image(systemName: "text.magnifyingglass").imageScale(.large)
                                 .padding(.horizontal, 10)
                         }.buttonStyle(.plain)
                         
