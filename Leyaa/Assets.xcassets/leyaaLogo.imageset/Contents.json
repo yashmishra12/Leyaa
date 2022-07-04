@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "leyaaLogo.png",
+      "filename" : "LeyaaLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "leyaaLogo@2x.png",
+      "filename" : "LeyaaLogo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "leyaaLogo@3x.png",
+      "filename" : "LeyaaLogo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
