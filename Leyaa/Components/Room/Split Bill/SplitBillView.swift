@@ -21,13 +21,7 @@ struct SplitBillView: View {
                 BillCreateView(roomData: $roomData, memberAmount: Array(repeating: 0.0, count: roomData.members.count)
 )
             } label: {
-                Text("Add Item")
-                    .font (.headline)
-                    .foregroundColor (.white)
-                    .padding()
-                    .background(Color("MediumBlue"))
-                    .clipShape(Capsule())
-                    .padding ()
+                Text("Add Item").buttonStyle()
             }.buttonStyle(.plain)
 
         }.onAppear {
