@@ -265,9 +265,6 @@ class AuthViewModel: ObservableObject {
                 print("Document does not exist")
             }
         }
-        
-        
-        
     }
     
     
@@ -399,6 +396,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    
     func getDeviceToken(userID: String, completion: @escaping (String) -> Void) {
         var deviceToken: String = ""
         let docRef = db.collection("users").document(userID)
@@ -415,8 +413,6 @@ class AuthViewModel: ObservableObject {
     
     
     func updateAvatar(userID: String, newAvatar: String) {
-
-        
         db.collection("users").document(userID).setData([
             "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
             "avatar" :  newAvatar,
@@ -438,6 +434,14 @@ class AuthViewModel: ObservableObject {
     func populateUserInfo (memberID: [String]) -> [[String]] {
         return [[""]]
     }
+    
+    
+    //MARK: - Bill
+    
+    func saveNewBill() {
+        
+    }
+    
     
     //MARK: - END
     

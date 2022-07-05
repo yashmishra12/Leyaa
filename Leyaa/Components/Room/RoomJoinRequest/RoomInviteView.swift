@@ -33,25 +33,19 @@ struct RoomInviteView: View {
                 viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
                 
                 fetchDeviceTokenFromEmail(email: email) { token in
-                    let notifPayload: [String: Any] = ["to": token ,
-                                                       "notification": [
-                                                        "title":"Room Join Request",
-                                                        "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
-                                                        "sound":"default"]
-                    ]
+                    let notifPayload: [String: Any] = [ "to": token ,
+                                                        "notification": [
+                                                            "title":"Room Join Request",
+                                                            "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
+                                                            "sound":"default" ]
+                                                      ]
                     
                     sendPushNotification(payloadDict: notifPayload)
                 }
                 
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Send Invite")
-                    .font (.headline)
-                    .foregroundColor (.white)
-                    .padding()
-                    .background(Color("MediumBlue"))
-                    .clipShape(Capsule())
-                    .padding ()
+                Text("Send Invite").buttonStyle()
             }
             .disabled(isValidEmail(email)==false)
             .buttonStyle(.plain)
@@ -60,6 +54,7 @@ struct RoomInviteView: View {
         
     }
 }
+
 //
 //struct RoomInviteView_Previews: PreviewProvider {
 //    static var previews: some View {

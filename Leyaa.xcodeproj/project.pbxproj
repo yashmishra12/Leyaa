@@ -12,6 +12,7 @@
 		CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */; };
 		CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */; };
 		CC0CC87F28735677009C90C0 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87E28735677009C90C0 /* Bill.swift */; };
+		CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */; };
 		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
@@ -85,6 +86,7 @@
 		CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCreateView.swift; sourceTree = "<group>"; };
 		CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPaymentSliderView.swift; sourceTree = "<group>"; };
 		CC0CC87E28735677009C90C0 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
@@ -170,13 +172,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC0CC8812874ACC1009C90C0 /* FreshnessCheck */ = {
+			isa = PBXGroup;
+			children = (
+				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
+			);
+			path = FreshnessCheck;
+			sourceTree = "<group>";
+		};
+		CC0CC8822874ACD3009C90C0 /* Room Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
+			);
+			path = "Room Chat";
+			sourceTree = "<group>";
+		};
+		CC0CC8832874ACF5009C90C0 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		CC14C73B285AFE5B0077510E /* Room */ = {
 			isa = PBXGroup;
 			children = (
 				CC9FA7AC285EB90800EF896D /* RoomView.swift */,
 				CC71D7232865AE6200E62F5B /* RoomJoinRequest */,
 				CC6C0D822869E53F00F2011A /* Room List */,
-				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
+				CC0CC8822874ACD3009C90C0 /* Room Chat */,
 				CC0CC8792872F8F9009C90C0 /* Split Bill */,
 			);
 			path = Room;
@@ -342,12 +368,13 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CC0CC8832874ACF5009C90C0 /* Style */,
 				CC5D2658286BC0BF0068800E /* Chat */,
 				CC20BAA328692C230071B7A6 /* Sidebar Menu */,
 				CCBA416A285FC1E0000B3FE7 /* Items */,
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
 				CC14C73B285AFE5B0077510E /* Room */,
-				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
+				CC0CC8812874ACC1009C90C0 /* FreshnessCheck */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -519,6 +546,7 @@
 				CCFFA4CD286FE31A005332E1 /* PushNotificationService.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
 				CC5D265E286BD4780068800E /* MessageField.swift in Sources */,
+				CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */,
 				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
 				CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */,
 				CC5D2660286BDDBB0068800E /* MessageManager.swift in Sources */,

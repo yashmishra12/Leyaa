@@ -65,7 +65,7 @@ struct MemberPaymentSliderView: View {
                                 }
                             }
                             
-                            TextField("Amount", value: $currentAmount, formatter: formatterAmount)
+                            TextField("Amt.", value: $currentAmount, formatter: formatterAmount)
                                 .focused(isEditing)
                                 .multilineTextAlignment(.trailing)
                                 .keyboardType(.decimalPad)
@@ -118,9 +118,10 @@ struct MemberPaymentSliderView: View {
         })
     }
 }
-//
+
+
 //struct MemberPaymentSliderView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2, isEditing: false).environmentObject(AuthViewModel())
+//        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2, isEditing: .constant(false)).environmentObject(AuthViewModel())
 //    }
 //}

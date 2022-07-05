@@ -42,13 +42,7 @@ struct FreshCheckReminder: View {
                     presentationMode.wrappedValue.dismiss()
                     
                 } label: {
-                    Text("Save")
-                        .font (.headline)
-                        .foregroundColor (.white)
-                        .padding()
-                        .background(Color("MediumBlue"))
-                        .clipShape(Capsule())
-                        .padding ()
+                    Text("Save").buttonStyle()
                 }.disabled(itemName.isEmpty)
                 .buttonStyle(.plain)
             }.padding()
@@ -60,9 +54,9 @@ struct FreshCheckReminder: View {
     }
 }
 
+
 struct FreshCheckReminder_Previews: PreviewProvider {
     static var previews: some View {
         FreshCheckReminder(roomName: .constant("Avent Ferry"))
     }
 }
-

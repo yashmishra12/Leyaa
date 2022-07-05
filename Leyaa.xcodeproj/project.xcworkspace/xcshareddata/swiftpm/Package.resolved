@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "2eb177effe7baf1f13ad0c5f4eb8c71a98429fb5",
-        "version" : "9.1.0"
+        "revision" : "e8828e8efc813817b3c2cbfde8e965f7a7a26641",
+        "version" : "9.2.0"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rebeloper/FirebaseService.git",
       "state" : {
-        "revision" : "4ed789ba165c5656521acaf145a0373b76d332f7",
-        "version" : "2.0.0"
+        "revision" : "a302aafba957909a49008bc275cdbd127034e983",
+        "version" : "2.0.5"
       }
     },
     {
@@ -113,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
-        "revision" : "46c1e6b5ac09d8f82c991061c659f67e573d425d",
-        "version" : "2.1.0"
+        "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
+        "version" : "2.1.1"
       }
     },
     {
