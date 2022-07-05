@@ -28,6 +28,7 @@ struct BillCreateView: View {
     @FocusState private var nameIsFocused: Bool
     
     @FocusState private var isEditing: Bool
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack  {
@@ -145,26 +146,29 @@ struct BillCreateView: View {
                 HStack {
                     
                     Button {
-                        let itemName: String = itemName
-                        let itemPrice: Double = billAmount
-                        let payer: String = viewModel.currentUser?.id ?? ""
-                        
+
                         var contributors: [String : Double] = [:]
                         
                         for index in 0..<roomData.members.count {
                             contributors[roomData.members[index]] = memberAmount[index]
                         }
                         
-                        print("Item Name: \(itemName)")
-                        print("Item Price: \(itemPrice)")
-                        print("Payer: \(payer)")
-                        print("contributors: \(contributors)")
+                        
+                        for (contributorID, contributionAmount) in contributors {
+                            if contributorID != viewModel.currentUser?.id && contributionAmount != 0 {
+                                let newBill = Bill(itemName: itemName, itemPrice: contributionAmount, payer: viewModel.currentUser?.id ?? "", contributor: contributorID, timestamp: Date())
+                                
+                                viewModel.addNewBill(bill: newBill, roomID: roomData.id ?? "")
+                            }
+                        }
+                        
+                        presentationMode.wrappedValue.dismiss()
                         
                     } label: {
                         Text("Save").buttonStyle()
                     }
                     .disabled(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty)
-                    .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty ? 0.3 : 1.0)
+                    .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty ? 0.5 : 1.0)
         
                     .padding(.bottom, 15)
                     .buttonStyle(.plain)

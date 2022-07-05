@@ -438,11 +438,17 @@ class AuthViewModel: ObservableObject {
     
     //MARK: - Bill
     
-    func saveNewBill() {
-        
+    func addNewBill(bill: Bill, roomID: String) {
+        do {
+            let collectionName = "\(roomID)_BILLS"
+            let _ = try db.collection(collectionName).addDocument(from: bill)
+        }
+        catch {
+            print(error)
+        }
     }
     
-    
+
     //MARK: - END
     
 }

@@ -21,7 +21,7 @@ struct SplitBillView: View {
                 BillCreateView(roomData: $roomData, memberAmount: Array(repeating: 0.0, count: roomData.members.count)
 )
             } label: {
-                Text("Add Item").buttonStyle()
+                Text("Add Bill").buttonStyle()
             }.buttonStyle(.plain)
 
         }.onAppear {

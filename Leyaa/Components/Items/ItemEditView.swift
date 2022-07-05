@@ -69,13 +69,7 @@ struct ItemEditView: View {
                     viewModel.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
                     presentationMode.wrappedValue.dismiss()
                 } label: {
-                    Text("Save")
-                        .font (.headline)
-                        .foregroundColor (.white)
-                        .padding()
-                        .background(Color("MediumBlue"))
-                        .clipShape(Capsule())
-                        .padding ()
+                    Text("Save").buttonStyle()
                 }.buttonStyle(.plain)
             }
             
