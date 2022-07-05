@@ -10,10 +10,11 @@ import FirebaseFirestoreSwift
 import Firebase
 import UIKit
 
-struct Bill: Identifiable, Codable {
+struct Bill: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     let itemName: String
     let itemPrice: Double
     let payer: String
-    let members: [String : String]
+    let contributor: String
+    let timestamp: Date
 }
