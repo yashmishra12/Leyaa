@@ -17,10 +17,11 @@ struct MemberPaymentSliderView: View {
     @Binding var maxAmount: Double
     @Binding var memberAmount: [Double]
     
-    @State private var isEditing = false
     @Binding var currentAmount: Double
     @State var index: Int
     @State private var isShowingTextField: Bool = false
+    
+    var isEditing: FocusState<Bool>.Binding
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -75,7 +76,7 @@ struct MemberPaymentSliderView: View {
                             { Text("") }
                             minimumValueLabel: { Text("") }
                             maximumValueLabel: {
-                            Text("Invalid Amount")
+                            Text("X")
                         }
                             onEditingChanged: { data in
                                 print(data)
@@ -95,7 +96,7 @@ struct MemberPaymentSliderView: View {
                     print(memberAmount)
                 } label: {
                     Image(systemName: "pencil.circle").resizable().frame(width: 20, height: 20)
-                }
+                }.buttonStyle(.plain)
                 
                 
             }
@@ -106,31 +107,19 @@ struct MemberPaymentSliderView: View {
                     Spacer()
                     
                     if isShowingTextField {
-
-                        
-                        TextField("Amount", value: $currentAmount, formatter: NumberFormatter())
+ 
+                        TextField("Amount", value: $currentAmount, formatter: formatterAmount)
+                            .focused(isEditing)
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.decimalPad)
                             .autocapitalization(.none)
                             .foregroundColor(.blue)
                             .disableAutocorrection(true)
-                            .tint(.blue)
-                        
-                        Button {
-                            withAnimation(.easeInOut) {
-                                isShowingTextField.toggle()
-                            }
-                        } label: {
-                            Image(systemName: "arrow.up.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame (width: 20, height: 20)
-                        }.padding(.leading, 10)
-
+                            .padding(.trailing, 40)
                         
                     }
                     
-                }
+            }.padding(.top, -20)
             
         }
         .padding(.horizontal, 10)
@@ -143,8 +132,8 @@ struct MemberPaymentSliderView: View {
     }
 }
 
-struct MemberPaymentSliderView_Previews: PreviewProvider {
-    static var previews: some View {
-        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2).environmentObject(AuthViewModel())
-    }
-}
+//struct MemberPaymentSliderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2, isEditing: <#FocusState<Bool>.Binding#>).environmentObject(AuthViewModel())
+//    }
+//}
