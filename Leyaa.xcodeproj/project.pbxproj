@@ -11,6 +11,7 @@
 		CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */; };
 		CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */; };
 		CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */; };
+		CC0CC87F28735677009C90C0 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87E28735677009C90C0 /* Bill.swift */; };
 		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
@@ -83,6 +84,7 @@
 		CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
 		CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCreateView.swift; sourceTree = "<group>"; };
 		CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPaymentSliderView.swift; sourceTree = "<group>"; };
+		CC0CC87E28735677009C90C0 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				CC541009286589060026CA76 /* RoomRequest.swift */,
 				CC6B5133286811ED00531303 /* AssetName.swift */,
 				CC5D2659286BC11F0068800E /* Message.swift */,
+				CC0CC87E28735677009C90C0 /* Bill.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
+				CC0CC87F28735677009C90C0 /* Bill.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
 				CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,

@@ -12,6 +12,8 @@ struct SplitBillView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var userInfo: [[String]]
     
+
+    
     var body: some View {
         VStack {
             
@@ -26,7 +28,7 @@ struct SplitBillView: View {
                     .background(Color("MediumBlue"))
                     .clipShape(Capsule())
                     .padding ()
-            }
+            }.buttonStyle(.plain)
 
         }.onAppear {
             userInfo = viewModel.populateUserInfo(memberID: roomData.members)
