@@ -49,78 +49,65 @@ struct MemberPaymentSliderView: View {
                 VStack (alignment: .trailing) {
                     if maxAmount>0 {
                         
-                        Slider(
-                            value: $currentAmount,
-                            in: 0...maxAmount,
-                            step: 1
-                        ) { Text("") }
-                    minimumValueLabel: { Text("") }
-                    maximumValueLabel: { Text(String(currentAmount.magnitude)) }
-                    onEditingChanged: { data in
-                        if data == false {
-                            memberAmount[index] = currentAmount
+                        HStack {
+                            Spacer()
+                            
+                            Slider(
+                                value: $currentAmount,
+                                in: 0...maxAmount,
+                                step: 1
+                            ) { Text("") }
+                        minimumValueLabel: { Text("") }
+                        maximumValueLabel: { Text("") }
+                        onEditingChanged: { data in
+                            if data == false {
+                                memberAmount[index] = currentAmount
+                                }
+                            }
+                            
+                            TextField("Amount", value: $currentAmount, formatter: formatterAmount)
+                                .focused(isEditing)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.decimalPad)
+                                .autocapitalization(.none)
+                                .foregroundColor(.blue)
+                                .frame(minWidth: 25, idealWidth: 25, maxWidth: 50)
+                                .padding(.trailing, 10)
+                            
                         }
-                    }
-
-                        
-                        
-                    }
+                        }
                     
                     else {
                         
-                        Slider(
-                            value: $currentAmount,
-                            in: 0...0.01,
-                            step: 0.001
-                        )
-                            { Text("") }
-                            minimumValueLabel: { Text("") }
-                            maximumValueLabel: {
-                            Text("X")
-                        }
-                            onEditingChanged: { data in
-                                print(data)
-                                // execute more code here
-                              }
+                        HStack {
+                            Spacer()
+                            
+                            Slider(
+                                value: $currentAmount,
+                                in: 0...0.01,
+                                step: 0.001
+                            )
+                                { Text("") }
+                                minimumValueLabel: { Text("") }
+                                maximumValueLabel: {
+                                    Text("X")
+                            }
+                                onEditingChanged: { data in
+                                    print(data)
+                                    // execute more code here
+                                  }
+                            
+                        }.padding(.trailing, 10)
+                        
                         
                     }
                 }
-                .frame(width: screenWidth*0.65)
-                
-                
-                //Chevron button
-                Button {
-                    withAnimation(.easeInOut) {
-                        isShowingTextField.toggle()
-                    }
-                    print(memberAmount)
-                } label: {
-                    Image(systemName: "pencil.circle").resizable().frame(width: 20, height: 20)
-                }.buttonStyle(.plain)
-                
-                
+                .frame(width: screenWidth*0.80)
+
+
+
             }
-            
-            //Bottom Layer With Manual Control
-            HStack {
-                    
-                    Spacer()
-                    
-                    if isShowingTextField {
- 
-                        TextField("Amount", value: $currentAmount, formatter: formatterAmount)
-                            .focused(isEditing)
-                            .multilineTextAlignment(.trailing)
-                            .keyboardType(.decimalPad)
-                            .autocapitalization(.none)
-                            .foregroundColor(.blue)
-                            .disableAutocorrection(true)
-                            .padding(.trailing, 40)
-                        
-                    }
-                    
-            }.padding(.top, -20)
-            
+               
         }
         .padding(.horizontal, 10)
         
@@ -131,9 +118,9 @@ struct MemberPaymentSliderView: View {
         })
     }
 }
-
+//
 //struct MemberPaymentSliderView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2, isEditing: <#FocusState<Bool>.Binding#>).environmentObject(AuthViewModel())
+//        MemberPaymentSliderView(userID: "1234", maxAmount: .constant(200), memberAmount: .constant([1.2, 1.5, 2.4]), currentAmount: .constant(40.0), index: 2, isEditing: false).environmentObject(AuthViewModel())
 //    }
 //}
