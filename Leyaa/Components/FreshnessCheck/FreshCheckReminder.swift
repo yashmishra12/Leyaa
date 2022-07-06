@@ -50,6 +50,7 @@ struct FreshCheckReminder: View {
             Spacer()
 
         }
+        .navigationBarTitleDisplayMode(.inline)
         
     }
 }

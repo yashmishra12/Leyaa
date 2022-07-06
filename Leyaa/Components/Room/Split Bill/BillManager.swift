@@ -35,6 +35,7 @@ class BillManager: ObservableObject {
     
     func updateRoomID(name: String) {
         roomID = name
+        self.totalAmount = 0
     }
     
     
@@ -73,7 +74,7 @@ class BillManager: ObservableObject {
                         
                     }
                 }
-                self.toGetbills.sort { $0.timestamp < $1.timestamp }
+                self.toGetbills.sort { $0.timestamp > $1.timestamp }
             }
 
         
@@ -112,7 +113,7 @@ class BillManager: ObservableObject {
                     }
                 }
                 
-                self.toPaybills.sort { $0.timestamp < $1.timestamp }
+                self.toPaybills.sort { $0.timestamp > $1.timestamp }
             }
         
     }
