@@ -53,6 +53,8 @@ struct BillCreateView: View {
                                 .disableAutocorrection(true)
                             
                         }
+                      
+                        
                         Divider()
                             .background(Color("LightBlue"))
                         
@@ -129,7 +131,14 @@ struct BillCreateView: View {
                     
                 }
                
+            //MARK: - Remaining Balance Info
+            Text("Remaining Balance: \(String(format: "%.2f", billAmount-memberAmount.reduce(0, +)))")
+                .font(.caption)
+                .padding(.top, 15)
+            
+            
                 Divider().padding()
+                .padding(.top, -5)
 
                 
                 ScrollView{
@@ -142,6 +151,9 @@ struct BillCreateView: View {
                     }
                 }
                 
+            if (memberAmount.reduce(0, +)==billAmount && itemName.isEmpty) {
+                Text("Item Name not set.").font(.caption2)
+            }
                 // Save Button
                 HStack {
                     

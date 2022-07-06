@@ -84,8 +84,8 @@ struct MemberPaymentSliderView: View {
                             
                             Slider(
                                 value: $currentAmount,
-                                in: 0...0.01,
-                                step: 0.001
+                                in: 0.01...0.01,
+                                step: 0.00001
                             )
                                 { Text("") }
                                 minimumValueLabel: { Text("") }
@@ -109,7 +109,12 @@ struct MemberPaymentSliderView: View {
         
         .onAppear(perform: {
             viewModel.getProfileAvatar(userID: userID) { res in self.avatar = res }
-            viewModel.getProfileName(userID: userID) { res in self.name = res }
+           
+            if userID == viewModel.currentUser?.id {
+                self.name = "You"
+            } else {
+                viewModel.getProfileName(userID: userID) { res in self.name = res }
+            }
           
         })
     }

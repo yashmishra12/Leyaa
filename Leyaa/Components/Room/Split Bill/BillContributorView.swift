@@ -48,6 +48,7 @@ struct BillContributorView: View {
         }
         .onAppear(perform: {
             viewModel.getProfileAvatar(userID: memberID) { res in self.avatar = res }
+            
             viewModel.getProfileName(userID: memberID) { res in self.name = res }
             
             
