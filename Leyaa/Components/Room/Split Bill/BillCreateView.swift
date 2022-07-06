@@ -19,7 +19,7 @@ struct BillCreateView: View {
 
     
     @Binding var roomData: Room
-    @State var billAmount: Double?
+    @State var billAmount: Double
 
     @State var itemName: String = ""
     @EnvironmentObject var viewModel: AuthViewModel
@@ -108,7 +108,7 @@ struct BillCreateView: View {
                 HStack {
                     Button {
                         for index in 0..<roomData.members.count {
-                            memberAmount[index] = Double(billAmount ?? 0) / Double(roomData.members.count)
+                            memberAmount[index] = Double(billAmount ) / Double(roomData.members.count)
                         }
                     } label: {
                         Text("Equal Split").buttonStyle()
@@ -132,7 +132,7 @@ struct BillCreateView: View {
                 }
                
             //MARK: - Remaining Balance Info
-            Text("Remaining Balance: \(String(format: "%.2f", (billAmount ?? 0)-memberAmount.reduce(0, +)))")
+            Text("Remaining Balance: \(String(format: "%.2f", (billAmount )-memberAmount.reduce(0, +)))")
                 .font(.caption)
                 .padding(.top, 15)
             
