@@ -63,6 +63,7 @@ class BillManager: ObservableObject {
                         switch result {
                         case .success(let bill):
                             self.toGetAmount += bill.itemPrice
+                            self.totalAmount += bill.itemPrice
                             return bill
                             
                         case .failure( _):
@@ -101,6 +102,7 @@ class BillManager: ObservableObject {
                         switch result {
                         case .success(let bill):
                             self.toPayAmount += bill.itemPrice
+                            self.totalAmount -= bill.itemPrice
                             return bill
                             
                         case .failure( _):
@@ -114,6 +116,9 @@ class BillManager: ObservableObject {
             }
         
     }
+    
+    
+
     
 
     
