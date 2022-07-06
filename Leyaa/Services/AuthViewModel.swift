@@ -28,6 +28,12 @@ class AuthViewModel: ObservableObject {
     
     private let service = UserService()
     
+    
+     @Published var toGetbills = [Bill]()
+     @Published var toGetAmount: Double = 0
+     @Published var toPaybills =  [Bill]()
+     @Published var toPayAmount: Double = 0
+    
     let hapticFeedback = UINotificationFeedbackGenerator()
     init(){
         self.userSession = Auth.auth().currentUser
@@ -448,7 +454,90 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-
+    
+    
+    func updateToGet(roomID: String, contributorID: String) {
+        let collectionName = "\(roomID)_BILLS"
+        
+        db.collection(collectionName)
+            .whereField("payer", isEqualTo: Auth.auth().currentUser?.uid ?? "")
+            .whereField("contributor", isEqualTo: contributorID)
+            .addSnapshotListener { snapshot, error in
+               
+                DispatchQueue.main.async {
+                    
+                    guard let doc = snapshot?.documents else {
+                        print("No Doc Found")
+                        return
+                    }
+                    
+                    self.toGetbills = doc.compactMap { queryDocumentSnapshot -> Bill? in
+                        let result = Result { try queryDocumentSnapshot.data(as: Bill.self) }
+                        
+                        switch result {
+                        case .success(let bill):
+                            return bill
+                            
+                        case .failure( _):
+                            print("Failure To Get Bill Request")
+                            return nil
+                        }
+                    }
+                }
+            }
+        
+        updateToGetAmount()
+        
+    }
+    
+    
+    func updateToPay(roomID: String, contributorID: String) {
+        let collectionName = "\(roomID)_BILLS"
+        db.collection(collectionName).whereField("payer", isEqualTo: contributorID)
+            .whereField("contributor", isEqualTo: Auth.auth().currentUser?.uid ?? "")
+            .addSnapshotListener { snapshot, error in
+               
+                DispatchQueue.main.async {
+                    
+                    guard let doc = snapshot?.documents else {
+                        print("No Doc Found")
+                        return
+                    }
+                    
+                    self.toPaybills = doc.compactMap { queryDocumentSnapshot in
+                        let result = Result { try queryDocumentSnapshot.data(as: Bill.self) }
+                        
+                        switch result {
+                        case .success(let bill):
+                            return bill
+                            
+                        case .failure( _):
+                            print("Failure To Pay Bill Request")
+                            return nil
+                        }
+                    }
+                }
+            }
+        
+        updateToPayAmount()
+    }
+    
+    
+    func updateToPayAmount() {
+        for bill in toPaybills {
+            toPayAmount += bill.itemPrice
+        }
+    }
+    
+    func updateToGetAmount() {
+        for bill in toGetbills {
+            toPayAmount += bill.itemPrice
+        }
+    }
+    
+    
+    
+    
     //MARK: - END
     
 }

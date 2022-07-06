@@ -10,7 +10,7 @@ import SwiftUI
 
 let formatterAmount: NumberFormatter = {
        let formatter = NumberFormatter()
-       formatter.numberStyle = .decimal
+        formatter.numberStyle = .currency
        return formatter
    }()
 
@@ -19,7 +19,7 @@ struct BillCreateView: View {
 
     
     @Binding var roomData: Room
-    @State var billAmount: Double = 0
+    @State var billAmount: Double = 100
 
     @State var itemName: String = ""
     @EnvironmentObject var viewModel: AuthViewModel
@@ -138,7 +138,7 @@ struct BillCreateView: View {
                                                 maxAmount: $billAmount,
                                                 memberAmount: $memberAmount,
                                                 currentAmount: $memberAmount[i],
-                                                index: i, isEditing: $isEditing)
+                                                index: i, isEditing: $isEditing).padding(.bottom, 15)
                     }
                 }
                 

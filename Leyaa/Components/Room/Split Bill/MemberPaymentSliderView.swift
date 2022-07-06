@@ -66,15 +66,15 @@ struct MemberPaymentSliderView: View {
                             }
                             
                             TextField("Amt.", value: $currentAmount, formatter: formatterAmount)
+                                .font(.footnote)
                                 .focused(isEditing)
                                 .multilineTextAlignment(.trailing)
                                 .keyboardType(.decimalPad)
                                 .autocapitalization(.none)
                                 .foregroundColor(.blue)
-                                .frame(minWidth: 25, idealWidth: 25, maxWidth: 50)
-                                .padding(.trailing, 10)
-                            
-                        }
+                                .frame(minWidth: 35, idealWidth: 35, maxWidth: 80)
+                                .padding(.trailing, 5)
+                            }
                         }
                     
                     else {
@@ -92,10 +92,6 @@ struct MemberPaymentSliderView: View {
                                 maximumValueLabel: {
                                     Text("X")
                             }
-                                onEditingChanged: { data in
-                                    print(data)
-                                    // execute more code here
-                                  }
                             
                         }.padding(.trailing, 10)
                         
