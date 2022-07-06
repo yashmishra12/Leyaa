@@ -18,5 +18,14 @@ extension View {
             .background(Color("MediumBlue"))
             .clipShape(Capsule())
     }
+    
+    func payTabStyle() -> some View {
+        self.padding(.horizontal, 20)
+            .padding(.vertical, 8)
+            .foregroundColor(.white)
+            .background(Color("MediumBlue"))
+            .clipShape(Capsule())
+            .padding(.horizontal, 10)
+    }
 
 }

@@ -38,7 +38,7 @@ struct ItemCreateView: View {
             } label: {
                 Text("Add Item").buttonStyle()
             }.buttonStyle(.plain)
-        }
+        }.navigationBarTitleDisplayMode(.inline)
         
     }
 }

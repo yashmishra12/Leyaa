@@ -75,6 +75,7 @@ struct ItemSearchView: View {
             
         }
         .navigationTitle("Items")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     var searchResults: [String] {

@@ -51,7 +51,7 @@ struct SplitBillView: View {
             }.onAppear {
                 userInfo = viewModel.populateUserInfo(memberID: roomData.members)
         }
-        }
+        }.navigationBarTitleDisplayMode(.inline)
     }
 }
 

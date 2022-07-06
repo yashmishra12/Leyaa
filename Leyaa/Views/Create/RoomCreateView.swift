@@ -35,9 +35,11 @@ struct RoomCreateView: View {
                 Text("Create Room").buttonStyle()
                     
             }.buttonStyle(.plain)
+                .disabled(roomName.isEmpty)
+
 
             
-        }
+        }.navigationBarTitleDisplayMode(.inline)
         
     }
 }

@@ -50,7 +50,7 @@ struct RoomInviteView: View {
             .disabled(isValidEmail(email)==false)
             .buttonStyle(.plain)
 
-        }
+        }.navigationBarTitleDisplayMode(.inline)
         
     }
 }
