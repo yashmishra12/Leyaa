@@ -154,6 +154,10 @@ struct BillCreateView: View {
             if (memberAmount.reduce(0, +)==billAmount && itemName.isEmpty) {
                 Text("Item Name not set.").font(.caption2)
             }
+            
+            if (memberAmount.reduce(0, +) == 0 && billAmount == 0) {
+                Text("Zero Dollar Bill").font(.caption2)
+            }
                 // Save Button
                 HStack {
                     
@@ -179,7 +183,7 @@ struct BillCreateView: View {
                     } label: {
                         Text("Save").buttonStyle()
                     }
-                    .disabled(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty)
+                    .disabled(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty || memberAmount.reduce(0, +) == 0)
                     .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty ? 0.5 : 1.0)
         
                     .padding(.bottom, 15)
