@@ -6,26 +6,51 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
+
 
 struct SplitBillView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var userInfo: [[String]]
-    
-
+    var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        VStack {
-            
-            NavigationLink {
-                BillCreateView(roomData: $roomData, memberAmount: Array(repeating: 0.0, count: roomData.members.count)
-)
-            } label: {
-                Text("Add Bill").buttonStyle()
-            }.buttonStyle(.plain)
+        ZStack {
+            VStack {
+                
+                ScrollView {
+                    VStack {
+                        LazyVGrid(columns: twoColumnGrid, alignment: .center) {
+                            ForEach(roomData.members, id:\.self) { memberID in
+                                if memberID != viewModel.currentUser?.id {
+                                    NavigationLink {
+                                        DetailedBillView(toPaybillArray: [], toGetbillArray: [], memberID: memberID, roomID: roomData.id ?? "")
+                                    } label: {
+                                        BillContributorView(memberID: memberID, roomID: roomData.id ?? "")
+                                            .frame(width: screenWidth*0.5)
+                                            .background(Color("MediumBlue"))
 
-        }.onAppear {
-            userInfo = viewModel.populateUserInfo(memberID: roomData.members)
+                                    }.buttonStyle(.plain)
+
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+                NavigationLink {
+                    BillCreateView(roomData: $roomData, memberAmount: Array(repeating: 0.0, count: roomData.members.count))
+                } label: {
+                    Text("Add Bill").buttonStyle()
+                }.buttonStyle(.plain)
+                    .padding(.bottom, 30)
+
+            }.onAppear {
+                userInfo = viewModel.populateUserInfo(memberID: roomData.members)
+        }
         }
     }
 }

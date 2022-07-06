@@ -25,11 +25,9 @@ struct RoomView: View {
             if isShowingSideMenu {
                 SideMenuView(isShowing: $isShowingSideMenu, roomData: $roomData, show: $isShowingSideMenu)
             }
-            ZStack {
+            
                 ScrollView {
                     VStack  {
-                        
-                        
                         LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                             ForEach($roomData.newItems) { item in
                                 VStack{
@@ -106,7 +104,7 @@ struct RoomView: View {
                         
                     }
                 }
-            }
+            
             .cornerRadius(isShowingSideMenu ? 20 : 10)
             .offset(x: isShowingSideMenu ? screenWidth*0.8 : 0, y: isShowingSideMenu ? screenHeight*0.05 : 0)
             .scaleEffect(isShowingSideMenu ? 0.8 : 1)

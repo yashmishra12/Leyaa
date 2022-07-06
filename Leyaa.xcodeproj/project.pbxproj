@@ -59,6 +59,9 @@
 		CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */; };
 		CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416B285FC1F6000B3FE7 /* ItemView.swift */; };
 		CCBA417028601E53000B3FE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416F28601E53000B3FE7 /* Item.swift */; };
+		CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */; };
+		CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8142874C4C200D78CE1 /* BillManager.swift */; };
+		CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC816287502C000D78CE1 /* DetailedBillView.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
@@ -128,6 +131,9 @@
 		CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		CCBA416B285FC1F6000B3FE7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CCBA416F28601E53000B3FE7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContributorView.swift; sourceTree = "<group>"; };
+		CCBEC8142874C4C200D78CE1 /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
+		CCBEC816287502C000D78CE1 /* DetailedBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillView.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
 		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -161,6 +167,9 @@
 				CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */,
 				CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */,
 				CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */,
+				CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */,
+				CCBEC8142874C4C200D78CE1 /* BillManager.swift */,
+				CCBEC816287502C000D78CE1 /* DetailedBillView.swift */,
 			);
 			path = "Split Bill";
 			sourceTree = "<group>";
@@ -529,10 +538,13 @@
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
+				CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */,
+				CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
+				CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */,
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
 				CC0CC87F28735677009C90C0 /* Bill.swift in Sources */,

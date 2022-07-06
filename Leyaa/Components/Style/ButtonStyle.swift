@@ -18,4 +18,5 @@ extension View {
             .background(Color("MediumBlue"))
             .clipShape(Capsule())
     }
+
 }
