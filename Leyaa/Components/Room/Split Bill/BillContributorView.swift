@@ -12,9 +12,6 @@ struct BillContributorView: View {
     @State var memberID: String
     @State var roomID: String
     
-    @State var toPayAmount: Double = 0
-    @State var toGetAmount: Double = 0
-    
     @State var avatar = "ketchup"
     @State var name = "Default Name"
     
@@ -39,6 +36,9 @@ struct BillContributorView: View {
                     .font(.footnote).foregroundColor(.white)
                 
                 Text("Get: $\(String(format: "%.2f", billManager.toGetAmount))")
+                    .font(.footnote).foregroundColor(.white)
+                
+                Text("Net: $\(String(format: "%.2f", billManager.totalAmount))")
                     .font(.footnote).foregroundColor(.white)
             }.padding()
             
