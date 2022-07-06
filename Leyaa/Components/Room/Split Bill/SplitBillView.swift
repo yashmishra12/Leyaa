@@ -42,7 +42,7 @@ struct SplitBillView: View {
                 
                 
                 NavigationLink {
-                    BillCreateView(roomData: $roomData, memberAmount: Array(repeating: 0.0, count: roomData.members.count))
+                    BillCreateView(roomData: $roomData, memberAmount: Array(repeating: Double(100)/Double(roomData.members.count), count: roomData.members.count))
                 } label: {
                     Text("Add Bill").buttonStyle()
                 }.buttonStyle(.plain)
