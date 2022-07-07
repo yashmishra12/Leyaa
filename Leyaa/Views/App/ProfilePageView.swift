@@ -71,11 +71,8 @@ struct ProfilePageView: View {
                             Button {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
                             } label: {
-                                Text("Save")
-                                    .foregroundColor (.white)
-                                    .frame (width: screenWidth * 0.25, height: 35)
-                                    .background(Color("MediumBlue"))
-                                    .clipShape(Capsule())
+                                Text("Save").buttonStyle()
+                                   
                             }.buttonStyle(.plain)
                         }
                     

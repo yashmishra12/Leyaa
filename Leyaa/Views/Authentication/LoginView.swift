@@ -87,14 +87,9 @@ struct LoginView: View {
                         Button {
                             viewModel.login(withEmail: email, password: password)
                         } label: {
-                            Text ("Sign In")
-                                .font (.headline)
-                                .foregroundColor (.white)
-                                .frame (width: screenWidth * 0.8, height: 40)
-                                .background(Color("MediumBlue"))
-                                .clipShape(Capsule())
-                                .padding ()
+                            Text ("Sign In").buttonStyle()
                         }.disabled(isValidEmail(email)==false)
+                            .buttonStyle(.plain)
 
                         .padding(.top, 10)
                         .buttonStyle(.plain)
@@ -186,11 +181,9 @@ struct LoginView: View {
                                     }
                                 }
                             )
-                            .signInWithAppleButtonStyle(.whiteOutline)
-                            .clipShape(Capsule())
+                            .cornerRadius(25)
         
                         }.frame(width:  screenWidth * 0.8, height: 40)
-//                            .clipShape(Capsule())
                             .padding(.horizontal, 32)
                             .padding(.top, 15)
 

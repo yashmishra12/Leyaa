@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		CC07DB892865644B0000265C /* SanitizeItemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC07DB882865644B0000265C /* SanitizeItemName.swift */; };
 		CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */; };
+		CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */; };
+		CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */; };
+		CC0CC87F28735677009C90C0 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87E28735677009C90C0 /* Bill.swift */; };
+		CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */; };
 		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
@@ -55,6 +59,10 @@
 		CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */; };
 		CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416B285FC1F6000B3FE7 /* ItemView.swift */; };
 		CCBA417028601E53000B3FE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416F28601E53000B3FE7 /* Item.swift */; };
+		CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */; };
+		CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8142874C4C200D78CE1 /* BillManager.swift */; };
+		CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC816287502C000D78CE1 /* DetailedBillView.swift */; };
+		CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC81828750E1600D78CE1 /* UnitBill.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
@@ -79,6 +87,10 @@
 /* Begin PBXFileReference section */
 		CC07DB882865644B0000265C /* SanitizeItemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanitizeItemName.swift; sourceTree = "<group>"; };
 		CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
+		CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCreateView.swift; sourceTree = "<group>"; };
+		CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPaymentSliderView.swift; sourceTree = "<group>"; };
+		CC0CC87E28735677009C90C0 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
@@ -120,6 +132,10 @@
 		CCB4C3BF28598C2500105C5C /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		CCBA416B285FC1F6000B3FE7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CCBA416F28601E53000B3FE7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContributorView.swift; sourceTree = "<group>"; };
+		CCBEC8142874C4C200D78CE1 /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
+		CCBEC816287502C000D78CE1 /* DetailedBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillView.swift; sourceTree = "<group>"; };
+		CCBEC81828750E1600D78CE1 /* UnitBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBill.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
 		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -151,8 +167,45 @@
 			isa = PBXGroup;
 			children = (
 				CC0CC8772872F8F4009C90C0 /* SplitBillView.swift */,
+				CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */,
+				CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */,
+				CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */,
+				CCBEC8142874C4C200D78CE1 /* BillManager.swift */,
+				CCBEC816287502C000D78CE1 /* DetailedBillView.swift */,
+				CCBEC81828750E1600D78CE1 /* UnitBill.swift */,
 			);
 			path = "Split Bill";
+			sourceTree = "<group>";
+		};
+		CC0CC88028748234009C90C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CC0CC8812874ACC1009C90C0 /* FreshnessCheck */ = {
+			isa = PBXGroup;
+			children = (
+				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
+			);
+			path = FreshnessCheck;
+			sourceTree = "<group>";
+		};
+		CC0CC8822874ACD3009C90C0 /* Room Chat */ = {
+			isa = PBXGroup;
+			children = (
+				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
+			);
+			path = "Room Chat";
+			sourceTree = "<group>";
+		};
+		CC0CC8832874ACF5009C90C0 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		CC14C73B285AFE5B0077510E /* Room */ = {
@@ -161,7 +214,7 @@
 				CC9FA7AC285EB90800EF896D /* RoomView.swift */,
 				CC71D7232865AE6200E62F5B /* RoomJoinRequest */,
 				CC6C0D822869E53F00F2011A /* Room List */,
-				CC5D2656286BBEA40068800E /* RoomChatView.swift */,
+				CC0CC8822874ACD3009C90C0 /* Room Chat */,
 				CC0CC8792872F8F9009C90C0 /* Split Bill */,
 			);
 			path = Room;
@@ -276,6 +329,7 @@
 			children = (
 				CCB4C3A028597A3200105C5C /* Leyaa */,
 				CCB4C39F28597A3200105C5C /* Products */,
+				CC0CC88028748234009C90C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,12 +380,13 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CC0CC8832874ACF5009C90C0 /* Style */,
 				CC5D2658286BC0BF0068800E /* Chat */,
 				CC20BAA328692C230071B7A6 /* Sidebar Menu */,
 				CCBA416A285FC1E0000B3FE7 /* Items */,
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
 				CC14C73B285AFE5B0077510E /* Room */,
-				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
+				CC0CC8812874ACC1009C90C0 /* FreshnessCheck */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -382,6 +437,7 @@
 				CC541009286589060026CA76 /* RoomRequest.swift */,
 				CC6B5133286811ED00531303 /* AssetName.swift */,
 				CC5D2659286BC11F0068800E /* Message.swift */,
+				CC0CC87E28735677009C90C0 /* Bill.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,17 +534,24 @@
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
+				CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */,
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
+				CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
+				CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */,
+				CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */,
+				CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
+				CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */,
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
+				CC0CC87F28735677009C90C0 /* Bill.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
 				CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
@@ -499,6 +562,7 @@
 				CCFFA4CD286FE31A005332E1 /* PushNotificationService.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
 				CC5D265E286BD4780068800E /* MessageField.swift in Sources */,
+				CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */,
 				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
 				CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */,
 				CC5D2660286BDDBB0068800E /* MessageManager.swift in Sources */,
@@ -559,6 +623,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -573,6 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -619,6 +686,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -627,6 +696,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -663,6 +733,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -697,6 +768,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -52,13 +52,7 @@ struct RegistrationView: View {
                                            password: password,
                                            fullname: fullname)
                     } label: {
-                        Text ("Sign Up")
-                            .font (.headline)
-                            .foregroundColor (.white)
-                            .frame (width: screenWidth * 0.8, height: 40)
-                            .background(Color("MediumBlue"))
-                            .clipShape(Capsule())
-                            .padding ()
+                        Text ("Sign Up").buttonStyle()
                     }.disabled(isValidEmail(email)==false)
                     .padding(.top, 10)
                     .buttonStyle(.plain)
