@@ -459,7 +459,9 @@ class AuthViewModel: ObservableObject {
         let collectionName = "\(roomID)_BILLS"
         DispatchQueue.main.async {
             self.db.collection(collectionName).document(docID).delete()
+            self.hapticFeedback.notificationOccurred(.success)
         }
+       
     }
     
     
