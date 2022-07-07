@@ -136,7 +136,7 @@ struct WalkThroughScreen: View {
 
 struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
-            ContentView().environmentObject(AuthViewModel())
+            ContentView().environmentObject(AuthViewModel()).preferredColorScheme(.light)
         }
     }
     

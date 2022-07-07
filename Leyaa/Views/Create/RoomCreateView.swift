@@ -32,17 +32,14 @@ struct RoomCreateView: View {
                 viewModel.addRoom(room: newRoom)
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Create Room")                .font (.headline)
-                    .foregroundColor (.white)
-                    .frame (width: screenWidth * 0.35, height: 40)
-                    .background(Color("MediumBlue"))
-                    .clipShape(Capsule())
-                    .padding ()
+                Text("Create Room").buttonStyle()
                     
             }.buttonStyle(.plain)
+                .disabled(roomName.isEmpty)
+
 
             
-        }
+        }.navigationBarTitleDisplayMode(.inline)
         
     }
 }

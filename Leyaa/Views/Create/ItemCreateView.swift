@@ -36,15 +36,9 @@ struct ItemCreateView: View {
                 
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("Add Item")
-                    .font (.headline)
-                    .foregroundColor (.white)
-                    .frame (width: screenWidth * 0.3, height: 40)
-                    .background(Color("MediumBlue"))
-                    .clipShape(Capsule())
-                    .padding ()
+                Text("Add Item").buttonStyle()
             }.buttonStyle(.plain)
-        }
+        }.navigationBarTitleDisplayMode(.inline)
         
     }
 }

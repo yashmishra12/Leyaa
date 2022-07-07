@@ -8,10 +8,10 @@
 
 import SwiftUI
 import Firebase
-import FirebaseService
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
+import FirebaseService
 
 class AuthViewModel: ObservableObject {
     
@@ -27,6 +27,12 @@ class AuthViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     private let service = UserService()
+    
+    
+     @Published var toGetbills = [Bill]()
+     @Published var toGetAmount: Double = 0
+     @Published var toPaybills =  [Bill]()
+     @Published var toPayAmount: Double = 0
     
     let hapticFeedback = UINotificationFeedbackGenerator()
     init(){
@@ -265,9 +271,6 @@ class AuthViewModel: ObservableObject {
                 print("Document does not exist")
             }
         }
-        
-        
-        
     }
     
     
@@ -399,6 +402,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    
     func getDeviceToken(userID: String, completion: @escaping (String) -> Void) {
         var deviceToken: String = ""
         let docRef = db.collection("users").document(userID)
@@ -415,8 +419,6 @@ class AuthViewModel: ObservableObject {
     
     
     func updateAvatar(userID: String, newAvatar: String) {
-
-        
         db.collection("users").document(userID).setData([
             "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
             "avatar" :  newAvatar,
@@ -430,6 +432,36 @@ class AuthViewModel: ObservableObject {
         
         fetchUser()
         
+    }
+    
+    
+    //MARK: - Populate UserInfo
+    
+    func populateUserInfo (memberID: [String]) -> [[String]] {
+        return [[""]]
+    }
+    
+    
+    //MARK: - Bill
+    
+    func addNewBill(bill: Bill, roomID: String) {
+        do {
+            let collectionName = "\(roomID)_BILLS"
+            let _ = try db.collection(collectionName).addDocument(from: bill)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    
+    func deleteBill(roomID: String, docID: String) {
+        let collectionName = "\(roomID)_BILLS"
+        DispatchQueue.main.async {
+            self.db.collection(collectionName).document(docID).delete()
+            self.hapticFeedback.notificationOccurred(.success)
+        }
+       
     }
     
     

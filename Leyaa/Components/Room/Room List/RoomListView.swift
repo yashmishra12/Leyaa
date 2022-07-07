@@ -37,13 +37,8 @@ struct RoomListView: View {
                                 NavigationLink {
                                     RoomCreateView()
                                 } label: {
-                                    Text("Create Room")
-                                }.padding(.horizontal, 16)
-                                    .padding(.vertical, 10)
-                                    .foregroundColor(.white)
-                                    .background(Color("MediumBlue"))
-                                    .clipShape(Capsule())
-                                    .buttonStyle(.plain)
+                                    Text("Create Room").buttonStyle()
+                                }                                  .buttonStyle(.plain)
                             }.padding(.vertical, 30)
                             
                         }
