@@ -63,7 +63,7 @@ struct DetailedBillView: View {
                 VStack {
                     if billManager.toPaybills.count > 0 {
                         HStack {
-                            Text("To Pay: ").font(.body).fontWeight(.semibold)
+                            Text("Pay: ").font(.body).fontWeight(.semibold)
                                 .padding()
                             
                             // To Pay Chevron
@@ -83,7 +83,7 @@ struct DetailedBillView: View {
                             
                             // Name and Notification
                             HStack {
-                                Text(memberName).font(.caption2).padding(.trailing, 15)
+//                                Text(memberName).font(.caption2).padding(.trailing, 15)
                                 
                                 //Notification Button
                                 Button {
@@ -126,7 +126,7 @@ struct DetailedBillView: View {
                     if billManager.toGetbills.count > 0 {
                         HStack{
                             
-                            Text("To Get: ").font(.body).fontWeight(.semibold).padding()
+                            Text("Get: ").font(.body).fontWeight(.semibold).padding()
                             Button {
                                 withAnimation(.easeInOut) {
                                     isShowingGet.toggle()
@@ -141,7 +141,7 @@ struct DetailedBillView: View {
                             
                             Spacer()
                             
-                            Text(memberName).font(.caption2).padding(.trailing, 15)
+//                            Text(memberName).font(.caption2).padding(.trailing, 15)
                             
                             Button {
                                 viewModel.getDeviceToken(userID: memberID) { token in
@@ -178,6 +178,7 @@ struct DetailedBillView: View {
                 }
             }
         }
+        .navigationTitle(memberName)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             viewModel.getProfileName(userID: memberID) { name in self.memberName = name }
