@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseService
 import FirebaseFirestoreSwift
+import NotificationBannerSwift
 
 struct RoomChatView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -66,6 +67,13 @@ struct RoomChatView: View {
             ToolbarItem {
                 Button {
                     inviteAllForChat()
+                    let banner = StatusBarNotificationBanner(title: "Notification Sent", style: .success)
+                    banner.show()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        banner.dismiss()
+                    }
+                    
                 } label: {
                     Image(systemName: "hand.wave.fill").imageScale(.large)
                 }.buttonStyle(.plain)
