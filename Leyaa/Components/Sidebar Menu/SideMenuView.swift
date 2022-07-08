@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseService
 import FirebaseFirestoreSwift
-
+import NotificationBannerSwift
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
@@ -20,7 +20,8 @@ struct SideMenuView: View {
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
     var db = Firestore.firestore()
-
+    let banner = NotificationBanner(title: "Notification Sent", style: .success)
+   
     
     @Binding var show: Bool
     
@@ -129,6 +130,11 @@ struct SideMenuView: View {
                                     withAnimation(.spring()) {
                                         show.toggle()
                                     }
+                                    banner.show()
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
+                                    }
                                 } label: {
                                     HStack {
                                         Image(systemName: "cart.fill")
@@ -148,6 +154,10 @@ struct SideMenuView: View {
                                     goingForLaundry(roomData: roomData, viewModel: viewModel)
                                     withAnimation(.spring()) {
                                         show.toggle()
+                                    }
+                                    banner.show()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
                                     }
                                 } label: {
                                     HStack {
@@ -169,6 +179,10 @@ struct SideMenuView: View {
                                     withAnimation(.spring()) {
                                         show.toggle()
                                     }
+                                    banner.show()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
+                                    }
                                 } label: {
                                     HStack {
                                         
@@ -188,6 +202,10 @@ struct SideMenuView: View {
                                     cleanHouse(roomData: roomData, viewModel: viewModel)
                                     withAnimation(.spring()) {
                                         show.toggle()
+                                    }
+                                    banner.show()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
                                     }
                                 } label: {
                                     HStack {
@@ -269,6 +287,7 @@ struct SideMenuView: View {
             
             
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

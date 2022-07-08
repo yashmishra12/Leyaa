@@ -64,6 +64,7 @@
 		CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC816287502C000D78CE1 /* DetailedBillView.swift */; };
 		CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC81828750E1600D78CE1 /* UnitBill.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
+		CCDBC6DC2877740500DC83B5 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCDBC6DB2877740500DC83B5 /* NotificationBannerSwift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
@@ -156,6 +157,7 @@
 				CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */,
 				CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */,
 				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
+				CCDBC6DC2877740500DC83B5 /* NotificationBannerSwift in Frameworks */,
 				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +470,7 @@
 				CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */,
 				CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */,
 				CC7E44AA2870E91A00B8A795 /* FirebaseService */,
+				CCDBC6DB2877740500DC83B5 /* NotificationBannerSwift */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -502,6 +505,7 @@
 				CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */,
 				CCA3FA63286DA1B40052F6B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CC7E44A92870E91A00B8A795 /* XCRemoteSwiftPackageReference "FirebaseService" */,
+				CCDBC6DA2877740500DC83B5 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -715,7 +719,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
@@ -738,7 +742,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -750,7 +754,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
@@ -773,7 +777,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -833,6 +837,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CCDBC6DA2877740500DC83B5 /* XCRemoteSwiftPackageReference "NotificationBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Daltron/NotificationBanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -875,6 +887,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		CCDBC6DB2877740500DC83B5 /* NotificationBannerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCDBC6DA2877740500DC83B5 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
+			productName = NotificationBannerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

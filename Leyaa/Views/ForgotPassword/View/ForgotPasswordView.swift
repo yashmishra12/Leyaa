@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NotificationBannerSwift
 
 struct ForgotPasswordView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -24,6 +25,7 @@ struct ForgotPasswordView: View {
                     } label: {
                         Image(systemName: "x.circle.fill").resizable().frame(width: 20, height: 20)
                     }.frame(width: 25, height: 25)
+                        .buttonStyle(.plain)
 
                 }.padding()
                 Spacer()
@@ -38,6 +40,13 @@ struct ForgotPasswordView: View {
                         Button {
                             viewModel.sendPasswordResetRequest()
                             presentationMode.wrappedValue.dismiss()
+                            
+                            let banner = NotificationBanner(title: "Link Sent", subtitle: "Check your Inbox and Spam", style: .success)
+                            banner.show()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                banner.dismiss()
+                            }
+
                         } label: {
                             Text("Send Reset Request").buttonStyle()
                         }.disabled(isValidEmail($viewModel.email.wrappedValue)==false)

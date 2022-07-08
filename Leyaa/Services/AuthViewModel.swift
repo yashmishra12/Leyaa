@@ -28,11 +28,7 @@ class AuthViewModel: ObservableObject {
     
     private let service = UserService()
     
-    
-     @Published var toGetbills = [Bill]()
-     @Published var toGetAmount: Double = 0
-     @Published var toPaybills =  [Bill]()
-     @Published var toPayAmount: Double = 0
+
     
     let hapticFeedback = UINotificationFeedbackGenerator()
     init(){
@@ -465,6 +461,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
+
     
     //MARK: - END
     

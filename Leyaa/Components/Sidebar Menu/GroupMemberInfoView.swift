@@ -24,8 +24,7 @@ struct GroupMemberInfoView: View {
                         VStack{
                             Image(avatar).resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .clipped()
-                                .frame(width: 50, height: 50).clipShape(Circle())
+                                .frame(width: 50, height: 50)
                         }
                         
                         VStack{

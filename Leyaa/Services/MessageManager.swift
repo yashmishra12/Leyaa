@@ -18,6 +18,7 @@ class MessageManager: ObservableObject {
     @Published private(set) var lastMessageID = ""
     
     let db = Firestore.firestore()
+    let hapticFeedback = UINotificationFeedbackGenerator()
     
     init(name: String? = nil) {
         if let name = name {
@@ -69,9 +70,10 @@ class MessageManager: ObservableObject {
     //MARK: - Send Message
     func sendMessage (text: String, senderID: String) {
         do {
-            let newMessage = Message(id: UUID().uuidString, text: text, senderID: senderID, timestamp: Date())
+            let messageID = db.collection(self.roomID).document().documentID
+            let newMessage = Message(id: messageID, text: text, senderID: senderID, timestamp: Date())
             
-            try db.collection(self.roomID).document().setData(from: newMessage)
+            try db.collection(self.roomID).document(messageID).setData(from: newMessage)
             
             if let id = self.messages.last?.id {
                 self.lastMessageID = id
@@ -80,4 +82,17 @@ class MessageManager: ObservableObject {
             print("Error writing message in FireStore: \(error)")
         }
     }
+    
+    //MARK: - Messages
+    
+    func deleteMessage(room: String, messageID: String) {
+        self.db.collection(room).document(messageID).delete() { err in
+            if let err = err {
+                print("Error in Deleting message: \(err)")
+            }
+        }
+        
+        hapticFeedback.notificationOccurred(.success)
+    }
+    
 }

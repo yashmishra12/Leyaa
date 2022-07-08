@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UserNotifications
+import NotificationBannerSwift
 
 struct FreshCheckReminder: View {
     @State private var itemName: String = ""
@@ -39,7 +40,15 @@ struct FreshCheckReminder: View {
                     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
                     
                     UNUserNotificationCenter.current().add(request)
+                    let banner = NotificationBanner(title: "Reminder Saved", style: .success)
+                    
+                    banner.show()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                               banner.dismiss()
+                                           }
                     presentationMode.wrappedValue.dismiss()
+                    
+                    
                     
                 } label: {
                     Text("Save").buttonStyle()

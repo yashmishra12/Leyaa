@@ -9,10 +9,12 @@ import SwiftUI
 
 struct MessageBubbleView: View {
     @State var message: Message
+    @State var roomID: String
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var showTime: Bool = false
     @State var avatar = "ketchup"
     @State var name = ""
+    
     
     var body: some View {
 
