@@ -67,11 +67,11 @@ struct LoginView: View {
                         } label: {
                             Text("Forgot Password?").font(.caption)
                                 .fontWeight(.light)
-//                                .foregroundColor(Color.white)
                                 .multilineTextAlignment(.trailing)
                                 .padding(.horizontal, 32)
                                 .padding(.top, 15)
                                 .padding(.bottom, 25)
+                                
                             
                         }.buttonStyle(.plain)
                             .sheet(isPresented: $showForgotPassword) {
@@ -171,7 +171,6 @@ struct LoginView: View {
                                                 
                                             }
 
-                                            print("\(String(describing: Auth.auth().currentUser?.uid))")
                                         default:
                                             break
 
@@ -181,11 +180,14 @@ struct LoginView: View {
                                     }
                                 }
                             )
-                            .cornerRadius(25)
+                            .appleBorder(.black, width: 1, cornerRadius: 25)
+                            .signInWithAppleButtonStyle(.white)
+                            .clipShape(Capsule())
+
         
                         }.frame(width:  screenWidth * 0.8, height: 40)
                             .padding(.horizontal, 32)
-                            .padding(.top, 15)
+                            .padding(.top, 35)
 
                     }
                     
@@ -226,7 +228,11 @@ struct LoginView: View {
 
 }
 
-
+extension View {
+    func appleBorder(_ color: Color, width: CGFloat, cornerRadius: CGFloat) -> some View {
+        overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(color, lineWidth: width))
+    }
+}
 
 
 

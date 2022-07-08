@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import NotificationBannerSwift
 
 let formatterAmount: NumberFormatter = {
        let formatter = NumberFormatter()
@@ -179,6 +179,13 @@ struct BillCreateView: View {
                         }
                         
                         presentationMode.wrappedValue.dismiss()
+                        
+                        let banner = StatusBarNotificationBanner(title: "Bill Created", style: .success)
+                        banner.show()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            banner.dismiss()
+                        }
+                        
                         
                     } label: {
                         Text("Save").buttonStyle()

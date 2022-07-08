@@ -109,6 +109,7 @@ struct RoomView: View {
             .offset(x: isShowingSideMenu ? screenWidth*0.8 : 0, y: isShowingSideMenu ? screenHeight*0.05 : 0)
             .scaleEffect(isShowingSideMenu ? 0.8 : 1)
         }
+        .navigationBarTitleDisplayMode(.automatic)
         .onAppear {
             isShowingSideMenu = false
         }

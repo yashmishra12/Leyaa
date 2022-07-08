@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import Combine
 import FirebaseService
+import NotificationBannerSwift
 
 struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -37,7 +37,7 @@ struct ProfilePageView: View {
                             HStack {
                                 Text(viewModel.currentUser?.email ?? "").font(.caption).fontWeight(.light)
                             }
-                        }.padding(.top, -90)
+                        }.padding(.top, -70)
                         
                         Spacer()
                     }
@@ -64,12 +64,18 @@ struct ProfilePageView: View {
                             Text("Choose a new Avatar").font(.headline)
                         }.tint(Color.blue)
                             
-                    }
+                    }.padding(.top, -15)
       
                     HStack{
                         if (isExpanded && selectedAvatar != viewModel.currentUser?.avatar) {
                             Button {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
+                                
+                                let banner = NotificationBanner(title: "Avatar Saved", style: .success)
+                                                        banner.show()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                                            banner.dismiss()
+                                                        }
                             } label: {
                                 Text("Save").buttonStyle()
                                    

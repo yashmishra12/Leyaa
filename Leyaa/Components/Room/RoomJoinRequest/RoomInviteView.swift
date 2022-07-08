@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseService
 import FirebaseFirestoreSwift
+import NotificationBannerSwift
 
 struct RoomInviteView: View {
     @Binding var roomData: Room
@@ -44,6 +45,12 @@ struct RoomInviteView: View {
                 }
                 
                 presentationMode.wrappedValue.dismiss()
+                
+                let banner = NotificationBanner(title: "Invitation Sent", style: .success)
+                banner.show()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    banner.dismiss()
+                }
             } label: {
                 Text("Send Invite").buttonStyle()
             }

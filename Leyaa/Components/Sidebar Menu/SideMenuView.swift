@@ -20,7 +20,7 @@ struct SideMenuView: View {
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
     var db = Firestore.firestore()
-    let banner = StatusBarNotificationBanner(title: "Notification Sent", style: .success)
+    let banner = NotificationBanner(title: "Notification Sent", style: .success)
    
     
     @Binding var show: Bool
@@ -287,6 +287,7 @@ struct SideMenuView: View {
             
             
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
