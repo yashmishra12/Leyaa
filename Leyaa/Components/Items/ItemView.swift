@@ -34,7 +34,7 @@ struct ItemView: View {
                         
                     } label: {
                         if offset.width != 0 {
-                            Image("editItemBack").resizable().frame(width: 195, height: 195)
+                            Image("editItemBack").resizable().frame(width: cardWidth, height: 195)
                         }
                     }.buttonStyle(.plain)
                     
@@ -71,14 +71,13 @@ struct ItemView: View {
 
  
                 }
-                .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 195, idealHeight: 195, maxHeight: 195 )
+                .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
                 .background(Color("MediumBlue"))
                 .onLongPressGesture(perform: {
                     lastDeleted.append(item)
                     withAnimation (.spring()) {
                         isShowing.toggle()
                     }
-                    print("From Item View: \(lastDeleted)")
                     hapticFeedback.notificationOccurred(.success)
                     DispatchQueue.main.async {
                         viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
@@ -121,7 +120,7 @@ struct ItemView: View {
                 
                 
             }
-            .frame(minWidth: 195, idealWidth: 195, maxWidth: 195, minHeight: 195, idealHeight: 195, maxHeight: 195 )
+            .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
 
         }
       

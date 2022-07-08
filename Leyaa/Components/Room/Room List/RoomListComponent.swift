@@ -27,7 +27,7 @@ struct RoomListComponent: View {
                              .foregroundColor(Color.white)
                              .multilineTextAlignment(.leading)
                          Spacer()
-                     }
+                     }.padding(.horizontal)
                 }.padding()
                 
                 Spacer()

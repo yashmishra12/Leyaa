@@ -6,6 +6,29 @@
 //
 
 import SwiftUI
+import Focuser
+
+enum FormFieldsCreate {
+    case name, quantity, description
+}
+
+
+extension FormFieldsCreate: FocusStateCompliant {
+
+    static var last: FormFieldsCreate {
+        .description
+    }
+
+    var next: FormFieldsCreate? {
+        switch self {
+        case .name:
+            return .quantity
+        case .quantity:
+            return .description
+        default: return nil
+        }
+    }
+}
 
 struct ItemCreateView: View {
     @State var name: String
@@ -17,15 +40,20 @@ struct ItemCreateView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
+    @FocusStateLegacy var focusedField: FormFieldsCreate?
+    
     var body: some View {
         VStack {
             Image("addItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             VStack {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
+                    .focusedLegacy($focusedField, equals: .name)
                 
                 CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()
+                    .focusedLegacy($focusedField, equals: .quantity)
                 
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
+                    .focusedLegacy($focusedField, equals: .description)
                 
             }
             

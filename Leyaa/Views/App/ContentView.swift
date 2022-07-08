@@ -46,7 +46,6 @@ struct ContentView: View {
                 }
                 .onChange(of: scenePhase) { newPhase in
                                 if newPhase == .active {
-                                    print("Active")
                                 } else if newPhase == .inactive {
 
                                       UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
@@ -78,30 +77,37 @@ struct WalkThroughScreen: View {
         ZStack {
             
             if currentPage == 1{
-                ScreenView(image: "relax4",
+                ScreenView(image: "createRoom",
                            title: "Create Rooms",
                            detail: "Create rooms and add members in them from the sidebar.")
                 .transition(.identity)
                 
             }
             if currentPage == 2 {
-                ScreenView(image: "relax3",
+                ScreenView(image: "addItem",
                            title: "Add Items",
                            detail: "Add items, edit them by sliding right, and long press to delete").transition(.identity)
             }
 
             
             if currentPage == 3 {
-                ScreenView(image: "relax2",
+                ScreenView(image: "notify",
                            title: "Tell your Friends",
                            detail: "Tell them when you go shopping so they can add items.").transition(.identity)
             }
             
             if currentPage == 4 {
                 
-                ScreenView(image: "relax1",
-                           title: "Notify your Friends",
-                           detail: "Message them on the Message Wall and hit the 👋 icon to notify them.").transition(.identity)
+                ScreenView(image: "messageWall",
+                           title: "Talk to Friends",
+                           detail: "Post on the Message Wall and hit the 👋 icon to notify.\n \n Long press your avatar to delete your message.").transition(.identity)
+            }
+            
+            if currentPage == 5 {
+                
+                ScreenView(image: "billSplit",
+                           title: "Bill Split",
+                           detail: "Split the bill and enjoy peace of mind.").transition(.identity)
             }
     
             
@@ -191,7 +197,7 @@ struct ScreenView: View {
                 .padding(.top)
             
             Text(detail)
-                .fontWeight(.medium)
+                .font(.body)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
@@ -202,4 +208,4 @@ struct ScreenView: View {
     }
 }
 
-var totalPages = 4
+var totalPages = 5

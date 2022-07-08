@@ -8,13 +8,33 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
-
+import NotificationBannerSwift
 
 struct SplitBillView: View {
+    
+
+    
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var userInfo: [[String]]
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    
+    func notifyAboutNewBill() {
+
+        let userName = viewModel.currentUser?.fullname
+        let roomName = roomData.title
+
+        for member in roomData.members where member != viewModel.currentUser?.id {
+            fetchDeviceToken(withUid: member) { token in
+                let notifPayload: [String: Any] = ["to": token ,"notification": ["title": "Room: \(roomName)",
+                                                                                 "body":  "\(userName ?? "") posted a new bill.",
+                                                                                 "sound": "default"]]
+                sendPushNotification(payloadDict: notifPayload)
+            }
+        }
+    }
+    
     
     var body: some View {
         ZStack {
@@ -52,8 +72,27 @@ struct SplitBillView: View {
                 userInfo = viewModel.populateUserInfo(memberID: roomData.members)
         }
         }.navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+                ToolbarItem {
+                    Button {
+                        notifyAboutNewBill()
+                        let banner = NotificationBanner(title: "New Bill Notification Sent to All", style: .success)
+                        banner.show()
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            banner.dismiss()
+                        }
+                        
+                    } label: {
+                        Image(systemName: "hand.wave.fill").imageScale(.large)
+                    }.buttonStyle(.plain)
+                }
+            })
     }
 }
+
+
+
 
 struct SplitBillView_Previews: PreviewProvider {
     static var previews: some View {

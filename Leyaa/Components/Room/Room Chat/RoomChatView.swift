@@ -42,11 +42,23 @@ struct RoomChatView: View {
                 ScrollViewReader { proxy in
                     ScrollView{
                         ForEach(messageManager.messages, id: \.id) { message in
-                            MessageBubbleView(message: message)
+                            MessageBubbleView(message: message, roomID: roomData.id ?? "").onLongPressGesture {
+                                withAnimation(.easeInOut) {
+                                    messageManager.deleteMessage(room: roomData.id ?? "", messageID: message.id)
+                                }
+                                
+                                let banner = StatusBarNotificationBanner(title: "Message Deleted", style: .info)
+                                banner.show()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    banner.dismiss()
+                                }
+                            }
                         }
                     }
                     .onChange(of: messageManager.lastMessageID) { id in
-                        withAnimation { proxy.scrollTo(id, anchor: .bottom) }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            withAnimation { proxy.scrollTo(id, anchor: .bottom) }
+                        }
                     }
                     .onAppear(perform: {
                         proxy.scrollTo(messageManager.lastMessageID, anchor: .bottom)
@@ -67,7 +79,7 @@ struct RoomChatView: View {
             ToolbarItem {
                 Button {
                     inviteAllForChat()
-                    let banner = StatusBarNotificationBanner(title: "Notification Sent", style: .success)
+                    let banner = NotificationBanner(title: "New Post Notification Sent To All", style: .success)
                     banner.show()
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {

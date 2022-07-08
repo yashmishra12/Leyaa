@@ -21,7 +21,7 @@ struct UnitBill: View {
             Text("$: \(String(format: "%.2f", billAmount))").font(.body)
             Text("\(timestamp.formatted(.dateTime.day().month().hour().minute()))").fontWeight(.light).font(.caption).padding()
         }.padding()
-            .frame(width: 195, height: 195, alignment: .center)
+            .frame(width: cardWidth, height: 195, alignment: .center)
             .onLongPressGesture {
                 withAnimation {
                     viewModel.deleteBill(roomID: roomID, docID: id)

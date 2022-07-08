@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NotificationBannerSwift
 
 struct DetailedBillView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -18,7 +19,7 @@ struct DetailedBillView: View {
     @State var isShowingPay: Bool = true
     @State var memberName: String
     
-    
+    let banner = NotificationBanner(title: "Notification Sent", style: .success)
     
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -95,6 +96,11 @@ struct DetailedBillView: View {
                                         
                                         sendPushNotification(payloadDict: notifPayload)
                                     }
+                                    
+                                    banner.show()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
+                                    }
                                 } label: {
                                     HStack{
                                         Image(systemName: "bell.square.fill").imageScale(.large)
@@ -141,7 +147,7 @@ struct DetailedBillView: View {
                             
                             Spacer()
                             
-//                            Text(memberName).font(.caption2).padding(.trailing, 15)
+
                             
                             Button {
                                 viewModel.getDeviceToken(userID: memberID) { token in
@@ -152,6 +158,12 @@ struct DetailedBillView: View {
                                     
                                     sendPushNotification(payloadDict: notifPayload)
                                 }
+                                
+                                banner.show()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    banner.dismiss()
+                                }
+                                
                             } label: {
                                 HStack{
                                     Image(systemName: "bell.square.fill").imageScale(.large)
