@@ -178,11 +178,21 @@ struct BillCreateView: View {
                             }
                         }
                         
-                        presentationMode.wrappedValue.dismiss()
+                        // Resetting Values
+                        priceIsFocused = false
+                        nameIsFocused = false
+                        isEditing = false
+                        
+                        billAmount = 0.0
+                        itemName = ""
+                        for index in 0..<memberAmount.count {
+                            memberAmount[index] = 0.0
+                        }
+
                         
                         let banner = StatusBarNotificationBanner(title: "Bill Created", style: .success)
                         banner.show()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             banner.dismiss()
                         }
                         
