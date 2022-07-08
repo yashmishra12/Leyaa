@@ -35,7 +35,7 @@ struct ItemEditView: View {
     @State var item: Item
     
     @EnvironmentObject var viewModel: AuthViewModel
-    @FocusStateLegacy var focusedField: FormFields?
+    @FocusStateLegacy var focusedFieldEdit: FormFields?
     
     @State var name: String
     @State var desc: String
@@ -53,14 +53,14 @@ struct ItemEditView: View {
             
             VStack (spacing: 20) {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Name", isSecureField: false, text: $name)
-                    .focusedLegacy($focusedField, equals: .name)
+                    .focusedLegacy($focusedFieldEdit, equals: .name)
                 
                 CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty)
-                    .focusedLegacy($focusedField, equals: .quantity)
+                    .focusedLegacy($focusedFieldEdit, equals: .quantity)
             
                 
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc)
-                    .focusedLegacy($focusedField, equals: .description)
+                    .focusedLegacy($focusedFieldEdit, equals: .description)
                 
             }.padding()
             
