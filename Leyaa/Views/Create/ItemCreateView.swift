@@ -66,6 +66,7 @@ struct ItemCreateView: View {
             } label: {
                 Text("Add Item").buttonStyle()
             }.buttonStyle(.plain)
+                .disabled(name.isEmpty)
         }.navigationBarTitleDisplayMode(.inline)
         
     }

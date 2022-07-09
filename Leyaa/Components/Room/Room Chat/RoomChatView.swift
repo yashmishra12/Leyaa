@@ -43,14 +43,17 @@ struct RoomChatView: View {
                     ScrollView{
                         ForEach(messageManager.messages, id: \.id) { message in
                             MessageBubbleView(message: message, roomID: roomData.id ?? "").onLongPressGesture {
-                                withAnimation(.easeInOut) {
-                                    messageManager.deleteMessage(room: roomData.id ?? "", messageID: message.id)
-                                }
-                                
-                                let banner = StatusBarNotificationBanner(title: "Message Deleted", style: .info)
-                                banner.show()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    banner.dismiss()
+                                if message.senderID == viewModel.currentUser?.id {
+                                    
+                                    withAnimation(.easeInOut) {
+                                        messageManager.deleteMessage(room: roomData.id ?? "", messageID: message.id)
+                                    }
+                                    
+                                    let banner = StatusBarNotificationBanner(title: "Message Deleted", style: .info)
+                                    banner.show()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        banner.dismiss()
+                                    }
                                 }
                             }
                         }
@@ -63,16 +66,12 @@ struct RoomChatView: View {
                     .onAppear(perform: {
                         proxy.scrollTo(messageManager.lastMessageID, anchor: .bottom)
                     })
-                    
                     .frame(width: screenWidth)
-
-
                 }
             }.frame(width: screenWidth)
 
             MessageField(senderID: viewModel.currentUser?.id ?? "", roomData: $roomData)
                 .environmentObject(messageManager)
-
         }
         .navigationTitle(roomData.title)
         .toolbar(content: {

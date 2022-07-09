@@ -19,12 +19,25 @@ struct RoomInviteView: View {
     @State private var fullname = ""
     @Environment (\.presentationMode) var presentationMode
     
+    func actionSheet() {
+        guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
+        let activityVC = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        
+        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }.first {$0.isKeyWindow}?.rootViewController?
+            .present(activityVC, animated: true, completion: {
+            print("Shared")
+        })
+
+    }
+    
+ 
     var body: some View {
         VStack {
             
             Image("addMember").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             
-            VStack{
+            VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                 CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
             }.padding()
@@ -56,15 +69,25 @@ struct RoomInviteView: View {
             }
             .disabled(isValidEmail(email)==false)
             .buttonStyle(.plain)
+            .padding(.bottom)
+            
+            
+            Button {
+                actionSheet()
+            } label: {
+                HStack {
+                    Image(systemName: "square.and.arrow.up").imageScale(.small)
+                    Text("Share App").font(.footnote)
+                    
+                }
+            }.buttonStyle()
+            .buttonStyle(.plain)
+            .padding(.top)
+
 
         }.navigationBarTitleDisplayMode(.inline)
         
     }
 }
 
-//
-//struct RoomInviteView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RoomInviteView(roomData: .constant(Room(title: "Avent Ferry", newItems: [], members: []))).environmentObject(AuthViewModel())
-//    }
-//}
+

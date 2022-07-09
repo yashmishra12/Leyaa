@@ -51,6 +51,8 @@ struct MemberPaymentSliderView: View {
                     .autocapitalization(.none)
                     .foregroundColor(.blue)
                     .frame(minWidth: 50)
+                
+                Image(systemName: "pencil").resizable().frame(width: 10, height: 10).foregroundColor(.blue)
             }
                
         }

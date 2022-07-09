@@ -47,7 +47,7 @@ struct BillCreateView: View {
                                 .padding(.trailing, 15)
                             
                             
-                            TextField("Item Name", text: $itemName)
+                            TextField("Item Name is required", text: $itemName)
                                 .autocapitalization(.none)
                                 .focused($nameIsFocused)
                                 .disableAutocorrection(true)
@@ -62,9 +62,7 @@ struct BillCreateView: View {
                     .padding(.horizontal)
                     .padding(.top)
                     
-                    
-                    
-                    
+
                     //MARK: - Item Price
                     VStack {
                         HStack{
@@ -76,7 +74,7 @@ struct BillCreateView: View {
                                 .padding(.trailing, 15)
                             
 
-                            TextField("Bill Amount", value: $billAmount, formatter: formatterAmount)
+                            TextField("$ is needed. Hit Done on keypad.", value: $billAmount, formatter: formatterAmount)
                                                                 .focused($priceIsFocused)
                                                                 .keyboardType(.decimalPad)
                                                                 .autocapitalization(.none)
@@ -132,9 +130,19 @@ struct BillCreateView: View {
                 }
                
             //MARK: - Remaining Balance Info
-            Text("Remaining Balance: \(String(format: "%.2f", (billAmount )-memberAmount.reduce(0, +)))")
-                .font(.caption)
-                .padding(.top, 15)
+            
+            if abs( (billAmount)-memberAmount.reduce(0, +)) < 0.09 {
+                
+                Text("Remaining Balance: 0.00")
+                    .font(.caption)
+                    .padding(.top, 15)
+            }
+            
+            else {
+                Text("Remaining Balance: \(String(format: "%.2f", (billAmount)-memberAmount.reduce(0, +)))")
+                    .font(.caption)
+                    .padding(.top, 15)
+            }
             
             
                 Divider().padding()
@@ -151,7 +159,7 @@ struct BillCreateView: View {
                     }
                 }
                 
-            if (memberAmount.reduce(0, +)==billAmount && itemName.isEmpty) {
+            if (itemName.isEmpty) {
                 Text("Item Name not set.").font(.caption2)
             }
             
@@ -185,6 +193,7 @@ struct BillCreateView: View {
                         
                         billAmount = 0.0
                         itemName = ""
+                        
                         for index in 0..<memberAmount.count {
                             memberAmount[index] = 0.0
                         }
@@ -200,11 +209,17 @@ struct BillCreateView: View {
                     } label: {
                         Text("Save").buttonStyle()
                     }
-                    .disabled(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty || memberAmount.reduce(0, +) == 0)
-                    .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty ? 0.5 : 1.0)
+                    .disabled( (abs(billAmount - memberAmount.reduce(0, +)) > 0.09) ||
+                               (abs(memberAmount.reduce(0, +) - billAmount) > 0.09) ||
+                               itemName.isEmpty ||
+                               memberAmount.reduce(0, +) == 0)
+                    
+//                    .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty || (abs(billAmount - memberAmount.reduce(0, +)) > 0.09) ||
+//                             (abs(memberAmount.reduce(0, +) - billAmount) > 0.09) ? 0.5 : 1.0)
         
                     .padding(.bottom, 15)
                     .buttonStyle(.plain)
+                    
                     
                     
                 }

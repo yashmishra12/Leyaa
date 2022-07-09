@@ -31,6 +31,7 @@ class AuthViewModel: ObservableObject {
 
     
     let hapticFeedback = UINotificationFeedbackGenerator()
+    
     init(){
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
@@ -128,6 +129,7 @@ class AuthViewModel: ObservableObject {
         
         service.fetchUser(withUid: uid) { user in
             self.currentUser = user
+            self.writeUserData()
         }
     }
     
@@ -209,6 +211,7 @@ class AuthViewModel: ObservableObject {
     func addRoom(room: Room) {
         do {
             let _ = try db.collection("rooms").addDocument(from: room)
+            self.writeUserData()
         }
         catch {
             print(error)
@@ -350,6 +353,13 @@ class AuthViewModel: ObservableObject {
     }
     
     
+    func editRoomName(newName: String,  roomID: String) {
+        db.collection("rooms").document(roomID).updateData(["title" : newName]) { err in
+            if let err = err {
+                print("Error in editing room name: \(err)")
+            }
+        }
+    }
     
     
     //MARK: -  Get Profile Info

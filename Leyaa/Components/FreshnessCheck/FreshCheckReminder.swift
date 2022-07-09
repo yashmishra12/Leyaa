@@ -46,9 +46,8 @@ struct FreshCheckReminder: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                                banner.dismiss()
                                            }
+                    
                     presentationMode.wrappedValue.dismiss()
-                    
-                    
                     
                 } label: {
                     Text("Save").buttonStyle()
