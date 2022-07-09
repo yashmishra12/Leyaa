@@ -224,6 +224,29 @@ struct SideMenuView: View {
                         }.padding(.leading, 20)
                     }
                    
+                    
+                    // Edit Room Name
+                    HStack {
+                        NavigationLink {
+                            
+                            RoomNameEditView(name: roomData.title, roomData: roomData)
+                            
+                        } label: {
+                            HStack {
+                                
+                                Image(systemName: "square.and.pencil")
+                                
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                
+                                Text("Edit Room Name").padding()
+                            }
+                        }.buttonStyle(.plain)
+                        
+                        Spacer()
+                    }
+                    
+                    
  
                     // LEAVE ROOM
                     HStack{
@@ -284,9 +307,10 @@ struct SideMenuView: View {
                 }
                 
             }
-            
+
             
         }
+        
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -18,9 +18,11 @@ struct MessageField: View {
             CustomTextField(placeholder: Text("Type...").foregroundColor(.blue), text: $message).disableAutocorrection(true)
             
             Button {
-                messagesManager.sendMessage(text: message, senderID: senderID)
-                message = ""
-                
+                if message.isEmpty == false {
+                    messagesManager.sendMessage(text: message, senderID: senderID)
+                    message = ""
+                }
+         
                 messagesManager.getMessages(roomID: roomData.id)
                
             } label: {

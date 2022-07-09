@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Focuser
+import NotificationBannerSwift
 
 enum FormFields {
     case name, quantity, description
@@ -67,6 +68,14 @@ struct ItemEditView: View {
             VStack{
                 Button {
                     viewModel.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
+                    
+                    let banner = StatusBarNotificationBanner(title: "Edited", style: .info)
+                    banner.show()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { 
+                        banner.dismiss()
+                    }
+                    
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save").buttonStyle()

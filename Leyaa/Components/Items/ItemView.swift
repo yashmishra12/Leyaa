@@ -27,6 +27,8 @@ struct ItemView: View {
   
         if isShowing {
             ZStack {
+                
+                // Edit Image
                 HStack{
                    
                     NavigationLink{
@@ -38,11 +40,13 @@ struct ItemView: View {
                         }
                     }.buttonStyle(.plain)
                     
-                }.onTapGesture {
+                }
+                .onTapGesture {
                     withAnimation(.spring()) {
                         offset.width = 0
                     }
             }
+                
                 
                 VStack{
 
@@ -117,6 +121,7 @@ struct ItemView: View {
                             }
                         })
                     )
+
                 
                 
             }

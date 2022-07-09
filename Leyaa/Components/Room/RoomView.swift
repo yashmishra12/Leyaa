@@ -26,6 +26,15 @@ struct RoomView: View {
                 SideMenuView(isShowing: $isShowingSideMenu, roomData: $roomData, show: $isShowingSideMenu)
             }
             
+            VStack {
+                if roomData.newItems.count==0 {
+                    Text("Right Slide Items to Edit.\n\nLong Press on Items to Delete.")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+                
+
+            }
                 ScrollView {
                     VStack  {
                         LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
@@ -38,26 +47,26 @@ struct RoomView: View {
                         }
                         
                         
-                        HStack{
-                            if (isShowingSideMenu == false) {
-                                NavigationLink {
-                                    ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
-                                } label: {
-                                    Image(systemName: "text.magnifyingglass").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
-                                }.padding()
-                                    .buttonStyle(.plain)
-                                
-                                Spacer()
-                                
-                                NavigationLink {
-                                    ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
-                                } label: {
-                                    Image(systemName: "plus.app.fill").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
-                                }.padding()
-                                    .buttonStyle(.plain)
-                            }
-                            
-                        }
+//                        HStack{
+//                            if (isShowingSideMenu == false) {
+//                                NavigationLink {
+//                                    ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
+//                                } label: {
+//                                    Image(systemName: "text.magnifyingglass").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
+//                                }.padding()
+//                                    .buttonStyle(.plain)
+//
+//                                Spacer()
+//
+//                                NavigationLink {
+//                                    ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
+//                                } label: {
+//                                    Image(systemName: "plus.app.fill").resizable().frame(width: 35, height: 35).padding(.horizontal, 5)
+//                                }.padding()
+//                                    .buttonStyle(.plain)
+//                            }
+//
+//                        }
     
                     }
                 }
@@ -65,30 +74,51 @@ struct RoomView: View {
                 
                 .toolbar {
                     
-                    //QuickSearch
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
-                        } label: {
-                            Image(systemName: "text.magnifyingglass").imageScale(.large)
-                                .padding(.horizontal, 10)
-                        }.buttonStyle(.plain)
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
                         
+                        if isShowingSideMenu == false {
+                            
+                            //Quick Add
+                            
+                            NavigationLink {
+                                RoomInviteView(roomData: $roomData)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "person.fill.badge.plus")
+                                        .imageScale(.large)
+                                        .padding(.horizontal, 10)
+                                    
+                                }
+                            }.buttonStyle(.plain)
+                            
+                            
+                            //QuickSearch
+                            
+                            NavigationLink {
+                                ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
+                            } label: {
+                                Image(systemName: "text.magnifyingglass").imageScale(.large)
+                                    .padding(.horizontal, 10)
+                            }.buttonStyle(.plain)
+                            
+                            
+                            
+                            
+                            //Add
+                            
+                            NavigationLink {
+                                ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
+                            } label: {
+                                Image(systemName: "plus.app.fill").imageScale(.large)
+                            }.padding(.horizontal, 10)
+                                .buttonStyle(.plain)
+                                
+                        }
+                    
+                    
+                    
                     }
-                    
-                    
-                    //Add
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink {
-                            ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
-                        } label: {
-                            Image(systemName: "plus.app.fill").imageScale(.large)
-                        }.padding(.horizontal, 10)
-                            .buttonStyle(.plain)
                         
-                    }
-                    
-                    
                     
                     
                     //Hamburger
@@ -100,7 +130,6 @@ struct RoomView: View {
                         } label: {
                             Image(systemName: "line.3.horizontal").imageScale(.large)
                         }.buttonStyle(.plain)
-                            .padding(.leading, 30)
                         
                     }
                 }
@@ -110,10 +139,6 @@ struct RoomView: View {
             .scaleEffect(isShowingSideMenu ? 0.8 : 1)
         }
         .navigationBarTitleDisplayMode(.automatic)
-        .onAppear {
-            isShowingSideMenu = false
-        }
-        
     }
 }
 
