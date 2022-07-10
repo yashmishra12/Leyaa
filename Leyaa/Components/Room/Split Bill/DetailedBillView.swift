@@ -151,10 +151,14 @@ struct DetailedBillView: View {
                             
                             Button {
                                 viewModel.getDeviceToken(userID: memberID) { token in
-                                    let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                                     "body":"\(viewModel.currentUser?.fullname ?? "") has paid.",
-                                                                                                     "badge": 1,
-                                                                                                     "sound":"default"]]
+                                    let notifPayload: [String: Any] = ["to": token ,"notification":
+                                                                        [
+                                                                            "title":"Room: \(roomName)",
+                                                                            "body":"\(viewModel.currentUser?.fullname ?? "") has paid.",
+                                                                            "badge": 1,
+                                                                            "sound": "default"
+                                                                        ]
+                                    ]
                                     
                                     sendPushNotification(payloadDict: notifPayload)
                                 }
@@ -170,7 +174,7 @@ struct DetailedBillView: View {
                                     Text("Ask").font(.caption2).padding(.trailing, 10)
                                 }
                             }.buttonStyle(.plain)
-                            
+
                         }
                        
                         if isShowingGet {

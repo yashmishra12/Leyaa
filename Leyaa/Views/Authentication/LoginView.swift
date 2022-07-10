@@ -12,6 +12,29 @@ import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
 import Firebase
+import Focuser
+
+
+enum LoginFormFields {
+    case email, password
+}
+
+
+extension LoginFormFields: FocusStateCompliant {
+
+    static var last: LoginFormFields {
+        .password
+    }
+
+    var next: LoginFormFields? {
+        switch self {
+        case .email:
+            return .password
+        default: return nil
+        }
+    }
+}
+
 
 
 struct LoginView: View {
@@ -25,7 +48,7 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var currentNonce: String?
 
-        
+    @FocusStateLegacy var focusedFieldLogin: RegistrationFormFields?
     
     var body: some View {
         
@@ -46,12 +69,14 @@ struct LoginView: View {
                     VStack(spacing: 40) {
                         
                         CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                            .focusedLegacy($focusedFieldLogin, equals: .email)
                         
                         
                         CustomInputField(imageName: "key",
                                          placeholderText: "Password",
                                          isSecureField: true,
                                          text: $password)
+                        .focusedLegacy($focusedFieldLogin, equals: .password)
                         
                     }
                     .padding(.horizontal, 32)

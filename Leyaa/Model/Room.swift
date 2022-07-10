@@ -14,5 +14,6 @@ struct Room: Codable, Identifiable, Hashable {
     var title: String
     var newItems: [Item]
     var members: [String]
+    var lastItemID: String?
 }
 

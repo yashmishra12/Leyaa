@@ -6,13 +6,42 @@
 //
 
 import SwiftUI
+import Focuser
+import UIKit
+
+enum RegistrationFormFields {
+    case email, fullName, password
+}
+
+
+extension RegistrationFormFields: FocusStateCompliant {
+
+    static var last: RegistrationFormFields {
+        .password
+    }
+
+    var next: RegistrationFormFields? {
+        switch self {
+        case .email:
+            return .fullName
+        case .fullName:
+            return .password
+        default: return nil
+        }
+    }
+}
+
+
 
 struct RegistrationView: View {
     @State private var email = ""
     @State private var fullname = ""
     @State private var password = ""
+    
+    @FocusStateLegacy var focusedFieldRegister: RegistrationFormFields?
     @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
+    
     
     var body: some View {
         
@@ -29,7 +58,6 @@ struct RegistrationView: View {
                 //MARK: - HEADER
                 VStack {
                     AuthHeaderView(title1: "Get Started.").padding(.top)
-//                        .frame(height: screenHeight * 0.15)
                 }
 
         
@@ -37,8 +65,13 @@ struct RegistrationView: View {
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                        .focusedLegacy($focusedFieldRegister, equals: .email)
+                    
                     CustomInputField(imageName: "person", placeholderText: "Full Name", text: $fullname)
+                        .focusedLegacy($focusedFieldRegister, equals: .fullName)
+                    
                     CustomInputField(imageName: "key", placeholderText: "Password", isSecureField: true, text: $password)
+                        .focusedLegacy($focusedFieldRegister, equals: .password)
                     
                     
                 }
@@ -97,3 +130,15 @@ struct RegistrationView_Previews: PreviewProvider {
 }
 
 
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                         action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
+}
