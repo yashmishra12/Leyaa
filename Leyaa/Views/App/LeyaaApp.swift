@@ -11,6 +11,7 @@ import UserNotifications
 import FirebaseService
 import FirebaseMessaging
 
+
 @main
 struct LeyaaApp: App {
     
@@ -31,8 +32,7 @@ var body: some Scene {
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     let gcmMessageIDKey = "gcm.message_id"
-
-
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -80,10 +80,6 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         
       let deviceToken:[String: String] = ["token": fcmToken ?? ""]
-//        print("------------------------------------------------------------------------------------------")
-//        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
-//        print("------------------------------------------------------------------------------------------")
-
         UserDefaults.standard.set(deviceToken["token"], forKey: deviceTokenStorage)
        
     }

@@ -16,9 +16,23 @@ struct ProfilePageView: View {
     @State var selectedAvatar: String
     @Environment(\.presentationMode) var presentationMode
     
+    
+    func actionSheet() {
+        guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
+        let activityVC = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+        
+        UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }.first {$0.isKeyWindow}?.rootViewController?
+            .present(activityVC, animated: true, completion: {
+            print("Shared")
+        })
+
+    }
+    
     var fiveColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     var threeRowGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         
         ZStack {
@@ -106,6 +120,16 @@ struct ProfilePageView: View {
                           Text("Sad to see you leave.")
                         }
                     }
+                    
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            actionSheet()
+                        } label: {
+                            Text("Share App").font(.caption2)
+                        }.buttonStyle(.plain)
+
+                    }
+                  
                 }
             }.navigationBarBackButtonHidden(true)
         }
