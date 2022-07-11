@@ -235,6 +235,13 @@
 			path = "Sidebar Menu";
 			sourceTree = "<group>";
 		};
+		CC325627287B8B3800191AF0 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = gif;
+			sourceTree = "<group>";
+		};
 		CC54100628657CDF0026CA76 /* Create */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +356,7 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
+				CC325627287B8B3800191AF0 /* gif */,
 				CCA3FA68286DA2DA0052F6B3 /* Info.plist */,
 				CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */,
 				CC6013142863199200535994 /* Services */,
@@ -740,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -775,7 +783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";

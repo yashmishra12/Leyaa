@@ -11,53 +11,82 @@ import NotificationBannerSwift
 
 struct FreshCheckReminder: View {
     @State private var itemName: String = ""
-    @State private var timeToCheck: Int = 1
     @Binding var roomName: String 
     @Environment(\.presentationMode) var presentationMode
+    @State private var isShowingCal: Bool = false
+    @State private var selectedDate = Date()
+    @State private var notificationPermitted: Bool = false
+
+    
+    func checkPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.getNotificationSettings { (settings) in
+
+            if(settings.authorizationStatus == .authorized) {
+                self.notificationPermitted = true
+            } else {
+                self.notificationPermitted = false
+            }
+        }
+    }
+    
+    func CalendarTriggeredNotification(givenDate: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = "Freshness Check."
+        content.subtitle = "Room: \(roomName). Check on \(itemName)"
+        content.sound = UNNotificationSound.default
+        
+        let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: givenDate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request)
+        
+        let banner = NotificationBanner(title: "Reminder Saved", style: .success)
+        
+        banner.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                   banner.dismiss()
+                               }
+        
+        presentationMode.wrappedValue.dismiss()
+    }
     
     var body: some View {
         
         VStack{
-            Image("reminder").resizable().aspectRatio(contentMode: .fit).padding(.top, -20)
+            Image("reminder").resizable().aspectRatio(contentMode: .fit)
             
-           
             VStack{
-                
                 CustomInputField(imageName: "hourglass", placeholderText: "Item Name", isSecureField: false, text: $itemName)
                     .padding()
 
-                Stepper("\(timeToCheck) day", value: $timeToCheck, in: 1...365).padding()
-                    .frame (width: screenWidth * 0.5)
                 
-                Button {
-                    let content = UNMutableNotificationContent()
-                    content.title = "Freshness Check."
-                    content.subtitle = "Room: \(roomName). Check on \(itemName)"
-                    content.sound = UNNotificationSound.default
+                    DatePicker("Remind Me On:", selection: $selectedDate, in: Date()...).datePickerStyle(.compact)
+                    .buttonStyle(.plain)
+                    .padding(.bottom)
                     
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(timeToCheck)*86400.0, repeats: false)
-                    
-                    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-                    
-                    UNUserNotificationCenter.current().add(request)
-                    let banner = NotificationBanner(title: "Reminder Saved", style: .success)
-                    
-                    banner.show()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                               banner.dismiss()
-                                           }
-                    
-                    presentationMode.wrappedValue.dismiss()
-                    
-                } label: {
-                    Text("Save").buttonStyle()
-                }.disabled(itemName.isEmpty)
-                .buttonStyle(.plain)
+                    Button {
+                            CalendarTriggeredNotification(givenDate: selectedDate)
+                    } label: {
+                        Text("Save").buttonStyle()
+                    }.disabled(itemName.isEmpty || notificationPermitted == false)
+                    .buttonStyle(.plain)
+                    .padding(.top)
+                
+                if notificationPermitted == false {
+                    Text("Notification is disabled").font(.caption)
+                }
+ 
             }.padding()
             
             Spacer()
 
         }
+        .onAppear(perform: {
+            checkPermission()
+        })
         .navigationBarTitleDisplayMode(.inline)
         
     }
@@ -69,3 +98,4 @@ struct FreshCheckReminder_Previews: PreviewProvider {
         FreshCheckReminder(roomName: .constant("Avent Ferry"))
     }
 }
+

@@ -16,8 +16,8 @@ struct ItemView: View {
     
     @Binding var lastDeleted: [Item]
     
-    @Binding var item: Item
-    @Binding var roomData: Room
+    @State var item: Item
+    @State var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var isShowing: Bool = true
     @State var isEditing: Bool = false
@@ -32,7 +32,7 @@ struct ItemView: View {
                 HStack{
                    
                     NavigationLink{
-                        ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "", offset: $offset  )
+                        ItemEditView(item: item, name: item.name, desc: item.desc, qty: item.qty, roomID: roomData.id ?? "", offset: $offset  ).hideKeyboardWhenTappedAround()
                         
                     } label: {
                         if offset.width != 0 {

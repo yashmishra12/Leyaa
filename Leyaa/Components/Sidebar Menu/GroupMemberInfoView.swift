@@ -29,7 +29,7 @@ struct GroupMemberInfoView: View {
                         
                         VStack{
                             HStack {
-                                Text(name).font(.system(size: 24, weight: .semibold) )
+                                Text(name).font(.body).fontWeight(.semibold)
                                 Spacer()
                             }
                             

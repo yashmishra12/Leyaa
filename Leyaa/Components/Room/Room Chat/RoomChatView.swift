@@ -63,6 +63,7 @@ struct RoomChatView: View {
                             withAnimation { proxy.scrollTo(id, anchor: .bottom) }
                         }
                     }
+                    
                     .onAppear(perform: {
                         proxy.scrollTo(messageManager.lastMessageID, anchor: .bottom)
                     })

@@ -62,7 +62,9 @@ struct LoginView: View {
                     //MARK: - HEADER
                     VStack{
                         AuthHeaderView(title1: "Hello There")
-                            .frame(height: screenHeight * 0.15)
+                            .padding(.top)
+                    }.onTapGesture {
+                        self.endTextEditing()
                     }
                     
                     //MARK: - FORM
@@ -79,8 +81,11 @@ struct LoginView: View {
                         .focusedLegacy($focusedFieldLogin, equals: .password)
                         
                     }
+                    .onTapGesture {
+                        self.endTextEditing()
+                    }
                     .padding(.horizontal, 32)
-                    .padding(.top, screenHeight*0.1)
+                    .padding(.top)
 
                     
                     //MARK: - FORGOT PASSWORD
@@ -104,6 +109,8 @@ struct LoginView: View {
                             }
 
                         
+                    }.onTapGesture {
+                        self.endTextEditing()
                     }
                     
                     
@@ -121,6 +128,8 @@ struct LoginView: View {
                         .alert(isPresented: self.$viewModel.errorOccurred) {
                             Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
                         }
+                    }.onTapGesture {
+                        self.endTextEditing()
                     }
                     
  
@@ -225,22 +234,26 @@ struct LoginView: View {
                     
                     //MARK: - SIGN UP
                     
-                    
-                    NavigationLink(destination: RegistrationView() ) {
-                        HStack{
-                            Text("Don't have an account?")
-                                .font (.footnote)
-        
+                    VStack {
+                        NavigationLink(destination: RegistrationView().hideKeyboardWhenTappedAround() ) {
+                            HStack{
+                                Text("Don't have an account?")
+                                    .font (.footnote)
+            
+                                
+                                Text("Sign Up")
+                                    .font (.callout)
+                                    .fontWeight (.semibold)
+                                    .foregroundColor(Color("MediumBlue"))
+                            }
                             
-                            Text("Sign Up")
-                                .font (.callout)
-                                .fontWeight (.semibold)
-                                .foregroundColor(Color("MediumBlue"))
-                        }
-                        
-                    }.buttonStyle(.plain)
+                        }.buttonStyle(.plain)
+                    }.padding(.bottom, 30)
+                    
+                    
                     
                 }
+                .ignoresSafeArea()
 
                 
             }
