@@ -9,15 +9,22 @@ import SwiftUI
 import FirebaseFirestoreSwift
 import Firebase
 
+
 struct RoomView: View {
     @Binding var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
     @State var recentDeletedItems: [Item]
-    
+
     @State private var isShowingSideMenu: Bool = false
     
     
+    @State var lastItemID: String = ""
+    
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    func updateLastItemID(newID: String) {
+        self.lastItemID = newID
+    }
     
     var body: some View {
         
@@ -28,7 +35,10 @@ struct RoomView: View {
             
             VStack {
                 if roomData.newItems.count==0 && isShowingSideMenu==false {
-                    Text("Right Slide Items to Edit.\n\nLong Press on Items to Delete.")
+
+                    Image("slideRight").resizable().frame(width: 102, height: 80).cornerRadius(15)
+                    
+                    Text("Right Slide Items to Edit.\n\nLong Press Items to Delete.")
                         .multilineTextAlignment(.center)
                         .padding()
                 }
@@ -36,24 +46,36 @@ struct RoomView: View {
                 
             }
             
-            ScrollView {
-                VStack  {
-                    LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
-                        ForEach($roomData.newItems) { item in
-                            VStack{
-                                ItemView(lastDeleted: $recentDeletedItems, item: item, roomData: $roomData)
+            VStack {
+                ScrollViewReader { proxy in
+                    
+                    ScrollView {
+                        VStack  {
+                            LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
+                                ForEach(roomData.newItems, id: \.id) { item in
+                                    
+                                    VStack{
+                                        ItemView(lastDeleted: $recentDeletedItems, item: item, roomData: roomData)
+                                    }.id(item.id)
+                                    
+                                }
                             }
-                            
                         }
                     }
-                    
-                    
+                    .onChange(of: roomData.lastItemID) { id in
+                       
+                        withAnimation(.easeInOut) { proxy.scrollTo(id, anchor: .bottom) }
+                    }
+                    .onAppear(perform: {
+                        withAnimation(.easeInOut) {
+                            proxy.scrollTo(roomData.lastItemID, anchor: .bottom)
+                        }
+                    })
                     
                 }
             }
-    
-            
 
+            
             
             .toolbar {
                 
@@ -61,10 +83,10 @@ struct RoomView: View {
                     
                     if isShowingSideMenu == false {
                         
-                        //Quick Add
+                        //Member Add
                         
                         NavigationLink {
-                            RoomInviteView(roomData: $roomData)
+                            RoomInviteView(roomData: $roomData).hideKeyboardWhenTappedAround()
                         } label: {
                             HStack {
                                 Image(systemName: "person.fill.badge.plus")
@@ -90,7 +112,7 @@ struct RoomView: View {
                         //Add
                         
                         NavigationLink {
-                            ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData)
+                            ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData).hideKeyboardWhenTappedAround()
                         } label: {
                             Image(systemName: "plus.app.fill").imageScale(.large)
                         }.padding(.horizontal, 10)
@@ -110,8 +132,14 @@ struct RoomView: View {
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal").imageScale(.large)
+                            .padding(.leading)
+                            .padding(.top)
+                            .padding(.bottom)
+                            
+                            
                     }.buttonStyle(.plain)
-                    
+                   
+                   
                 }
             }
             
@@ -132,10 +160,4 @@ struct RoomView_Previews: PreviewProvider {
     }
 }
 
-extension UIScrollView {
-    func scrollToBottom(animated: Bool) {
-        if self.contentSize.height < self.bounds.size.height { return }
-        let bottomOffset = CGPoint(x: 0, y: self.contentSize.height - self.bounds.size.height)
-        self.setContentOffset(bottomOffset, animated: animated)
-    }
-}
+

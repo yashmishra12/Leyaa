@@ -52,7 +52,7 @@ class AuthViewModel: ObservableObject {
             if let error = error {
                 print("WRITE USER DATA ERROR Error updating document: \(error)")
             } else {
-                print("Document successfully updated!")
+//                print("Document successfully updated!")
             }
         }
     }
@@ -97,14 +97,14 @@ class AuthViewModel: ObservableObject {
             self.userSession = user
           
             
-            let data = ["email": email,
+            let userData = ["email": email,
                         "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
                         "avatar": assetName.randomElement()?.sanitiseItemName() ?? "egg",
                         "fullname": fullname,
                         "uid": user.uid] as [String : Any]
             
             
-            self.db.collection("users").document(user.uid).setData(data) { _ in
+            self.db.collection("users").document(user.uid).setData(userData) { _ in
                 self.didAuthenticateUser = true
                 self.fetchUser()
                 self.writeUserData()
@@ -140,13 +140,23 @@ class AuthViewModel: ObservableObject {
         
         db.collection("rooms").document(roomID).updateData(
             ["newItems" : Firebase.FieldValue.arrayUnion([item])]
-        ){ err in
-            if let err = err {
-                print("Error in adding item: \(err)")
-            }
+        ) { err in
+            if let err = err {  print("Error in adding item: \(err)") }
         }
+        
+        updateLastItemID(lastItemID: item["id"] ?? "", roomID: roomID)
+        
     }
     
+    
+    func updateLastItemID(lastItemID: String, roomID: String) {
+        db.collection("rooms").document(roomID).updateData(["lastItemID" : lastItemID]) { err in
+            if let err = err {
+                print("Error in updating last item id: \(err)")
+            }
+            
+        }
+    }
     
     func deleteItem(del: Item, roomID: String) {
         let itemDel: [String: String] = [

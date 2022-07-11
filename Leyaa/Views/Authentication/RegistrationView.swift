@@ -76,7 +76,7 @@ struct RegistrationView: View {
                     
                 }
                 .padding(.horizontal, 32)
-                .padding(.top, screenHeight*0.2)
+                .padding(.top)
                 
                 //MARK: - SIGN UP BUTTON
                 VStack{
@@ -118,6 +118,8 @@ struct RegistrationView: View {
             }
             .ignoresSafeArea()
             .navigationBarHidden(true)
+        }.onTapGesture {
+            self.endTextEditing()
         }
 
     }
@@ -131,14 +133,9 @@ struct RegistrationView_Previews: PreviewProvider {
 
 
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tapGesture = UITapGestureRecognizer(target: self,
-                         action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tapGesture)
-    }
-
-    @objc func hideKeyboard() {
-        view.endEditing(true)
-    }
+extension View {
+  func endTextEditing() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil)
+  }
 }

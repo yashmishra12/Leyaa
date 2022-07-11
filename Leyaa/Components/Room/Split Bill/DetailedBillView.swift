@@ -89,10 +89,11 @@ struct DetailedBillView: View {
                                 //Notification Button
                                 Button {
                                     viewModel.getDeviceToken(userID: memberID) { token in
-                                        let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                                         "body":"\(viewModel.currentUser?.fullname ?? "") has paid.",
-                                                                                                         "badge": 1,
-                                                                                                         "sound":"default"]]
+                                        let notifPayload: [String: Any] = ["to": token ,"notification":
+                                                                            ["title":"Room: \(roomName)",
+                                                                             "body":"\(viewModel.currentUser?.fullname ?? "") has paid pending bills.",
+                                                                             "badge": 1,
+                                                                             "sound":"default"]]
                                         
                                         sendPushNotification(payloadDict: notifPayload)
                                     }
@@ -154,7 +155,7 @@ struct DetailedBillView: View {
                                     let notifPayload: [String: Any] = ["to": token ,"notification":
                                                                         [
                                                                             "title":"Room: \(roomName)",
-                                                                            "body":"\(viewModel.currentUser?.fullname ?? "") has paid.",
+                                                                            "body":"\(viewModel.currentUser?.fullname ?? "") requested for bill payment.",
                                                                             "badge": 1,
                                                                             "sound": "default"
                                                                         ]

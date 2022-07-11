@@ -7,6 +7,10 @@
 
 import SwiftUI
 import NotificationBannerSwift
+import Focuser
+
+
+
 
 let formatterAmount: NumberFormatter = {
        let formatter = NumberFormatter()
@@ -30,6 +34,8 @@ struct BillCreateView: View {
     @FocusState private var isEditing: Bool
     @Environment(\.presentationMode) var presentationMode
     
+    
+    
     var body: some View {
         VStack  {
                
@@ -51,6 +57,7 @@ struct BillCreateView: View {
                                 .autocapitalization(.none)
                                 .focused($nameIsFocused)
                                 .disableAutocorrection(true)
+                                
                             
                         }
                       
@@ -75,6 +82,7 @@ struct BillCreateView: View {
                             
 
                             TextField("$ is needed. Hit Done on keypad.", value: $billAmount, formatter: formatterAmount)
+                                
                                                                 .focused($priceIsFocused)
                                                                 .keyboardType(.decimalPad)
                                                                 .autocapitalization(.none)
@@ -225,6 +233,8 @@ struct BillCreateView: View {
                 }
             
         }
+        .navigationBarTitle("Bills You Paid")
+        .navigationBarTitleDisplayMode(.inline)
         
     }
 }

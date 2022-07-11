@@ -10,6 +10,29 @@ import Firebase
 import FirebaseService
 import FirebaseFirestoreSwift
 import NotificationBannerSwift
+import Focuser
+
+enum FormFieldsInvite {
+    case email, message
+}
+
+
+extension FormFieldsInvite: FocusStateCompliant {
+
+    static var last: FormFieldsInvite {
+        .message
+    }
+
+    var next: FormFieldsInvite? {
+        switch self {
+        case .email:
+            return .message
+        default: return nil
+        }
+    }
+}
+
+
 
 struct RoomInviteView: View {
     @Binding var roomData: Room
@@ -18,6 +41,8 @@ struct RoomInviteView: View {
     @State private var message = ""
     @State private var fullname = ""
     @Environment (\.presentationMode) var presentationMode
+    
+    @FocusStateLegacy var focusedFieldInvite: FormFieldsInvite?
     
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
@@ -39,7 +64,10 @@ struct RoomInviteView: View {
             
             VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                    .focusedLegacy($focusedFieldInvite, equals: .email)
                 CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
+                    .focusedLegacy($focusedFieldInvite, equals: .message)
+                
             }.padding()
             
 
