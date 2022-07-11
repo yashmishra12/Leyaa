@@ -20,7 +20,7 @@ struct SideMenuView: View {
     @State private var leavingRoom: Bool = false
     @EnvironmentObject var viewModel: AuthViewModel
     var db = Firestore.firestore()
-    let banner = NotificationBanner(title: "Notification Sent", style: .success)
+   
    
     
     @Binding var show: Bool
@@ -160,11 +160,9 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            banner.show()
+                                         
+                                            successNB(title: "Notification Sent")
                                             
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                banner.dismiss()
-                                            }
                                         } label: {
                                             HStack {
                                                 Image(systemName: "cart.fill")
@@ -185,10 +183,9 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            banner.show()
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                banner.dismiss()
-                                            }
+                                           
+                                            successNB(title: "Notification Sent")
+                                            
                                         } label: {
                                             HStack {
                                                 
@@ -209,10 +206,7 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            banner.show()
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                banner.dismiss()
-                                            }
+                                            successNB(title: "Notification Sent")
                                         } label: {
                                             HStack {
                                                 
@@ -233,10 +227,7 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            banner.show()
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                banner.dismiss()
-                                            }
+                                            successNB(title: "Notification Sent")
                                         } label: {
                                             HStack {
                                                 

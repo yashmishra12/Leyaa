@@ -75,6 +75,7 @@ class MessageManager: ObservableObject {
             
             try db.collection(self.roomID).document(messageID).setData(from: newMessage)
             
+            
             if let id = self.messages.last?.id {
                 self.lastMessageID = id
             }

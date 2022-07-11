@@ -15,27 +15,6 @@ import Firebase
 import Focuser
 
 
-enum LoginFormFields {
-    case email, password
-}
-
-
-extension LoginFormFields: FocusStateCompliant {
-
-    static var last: LoginFormFields {
-        .password
-    }
-
-    var next: LoginFormFields? {
-        switch self {
-        case .email:
-            return .password
-        default: return nil
-        }
-    }
-}
-
-
 
 struct LoginView: View {
     

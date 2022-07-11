@@ -8,28 +8,6 @@
 import SwiftUI
 import Focuser
 
-enum FormFieldsCreate {
-    case name, quantity, description
-}
-
-
-extension FormFieldsCreate: FocusStateCompliant {
-
-    static var last: FormFieldsCreate {
-        .description
-    }
-
-    var next: FormFieldsCreate? {
-        switch self {
-        case .name:
-            return .quantity
-        case .quantity:
-            return .description
-        default: return nil
-        }
-    }
-}
-
 struct ItemCreateView: View {
     @State var name: String
     @State var qty: String 
