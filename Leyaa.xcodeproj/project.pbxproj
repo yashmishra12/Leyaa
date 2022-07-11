@@ -262,10 +262,8 @@
 		CC6013142863199200535994 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
-				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
-				CC6B51312867F5D800531303 /* UserService.swift */,
-				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
+				CCE5295F287BF01C005C173C /* Managers */,
+				CCE52960287BF028005C173C /* Massage Item Name */,
 				CCE52957287BDEEB005C173C /* Notification */,
 				CCE5295A287BE74D005C173C /* Apple Login */,
 			);
@@ -469,6 +467,24 @@
 				CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */,
 			);
 			path = "Apple Login";
+			sourceTree = "<group>";
+		};
+		CCE5295F287BF01C005C173C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */,
+				CC6B51312867F5D800531303 /* UserService.swift */,
+				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CCE52960287BF028005C173C /* Massage Item Name */ = {
+			isa = PBXGroup;
+			children = (
+				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
+			);
+			path = "Massage Item Name";
 			sourceTree = "<group>";
 		};
 		CCFA96B5285A68C70083D925 /* InputField */ = {
