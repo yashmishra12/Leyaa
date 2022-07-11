@@ -9,27 +9,6 @@ import SwiftUI
 import Focuser
 import UIKit
 
-enum RegistrationFormFields {
-    case email, fullName, password
-}
-
-
-extension RegistrationFormFields: FocusStateCompliant {
-
-    static var last: RegistrationFormFields {
-        .password
-    }
-
-    var next: RegistrationFormFields? {
-        switch self {
-        case .email:
-            return .fullName
-        case .fullName:
-            return .password
-        default: return nil
-        }
-    }
-}
 
 
 

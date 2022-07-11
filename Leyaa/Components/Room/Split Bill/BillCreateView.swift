@@ -207,11 +207,7 @@ struct BillCreateView: View {
                         }
 
                         
-                        let banner = StatusBarNotificationBanner(title: "Bill Created", style: .success)
-                        banner.show()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            banner.dismiss()
-                        }
+                        successSB(title: "Bill Created")
                         
                         
                     } label: {
@@ -222,8 +218,6 @@ struct BillCreateView: View {
                                itemName.isEmpty ||
                                memberAmount.reduce(0, +) == 0)
                     
-//                    .opacity(memberAmount.reduce(0, +) != billAmount || itemName.isEmpty || (abs(billAmount - memberAmount.reduce(0, +)) > 0.09) ||
-//                             (abs(memberAmount.reduce(0, +) - billAmount) > 0.09) ? 0.5 : 1.0)
         
                     .padding(.bottom, 15)
                     .buttonStyle(.plain)

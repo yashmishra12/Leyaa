@@ -26,12 +26,8 @@ struct RoomNameEditView: View {
             VStack{
                 Button {
                     viewModel.editRoomName(newName: name, roomID: roomData.id ?? "")
-                    let banner = StatusBarNotificationBanner(title: "Name Changed", style: .success)
-                    banner.show()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
-                        banner.dismiss()
-                    }
+                   
+                    successSB(title: "Name Changed")
                     
                     presentationMode.wrappedValue.dismiss()
                 } label: {

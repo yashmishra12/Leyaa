@@ -19,7 +19,7 @@ struct DetailedBillView: View {
     @State var isShowingPay: Bool = true
     @State var memberName: String
     
-    let banner = NotificationBanner(title: "Notification Sent", style: .success)
+    
     
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -84,24 +84,15 @@ struct DetailedBillView: View {
                             
                             // Name and Notification
                             HStack {
-//                                Text(memberName).font(.caption2).padding(.trailing, 15)
+
                                 
                                 //Notification Button
                                 Button {
                                     viewModel.getDeviceToken(userID: memberID) { token in
-                                        let notifPayload: [String: Any] = ["to": token ,"notification":
-                                                                            ["title":"Room: \(roomName)",
-                                                                             "body":"\(viewModel.currentUser?.fullname ?? "") has paid pending bills.",
-                                                                             "badge": 1,
-                                                                             "sound":"default"]]
-                                        
-                                        sendPushNotification(payloadDict: notifPayload)
+                                        sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") has paid pending bills.")
                                     }
                                     
-                                    banner.show()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        banner.dismiss()
-                                    }
+                                    successNB(title: "Notification Sent")
                                 } label: {
                                     HStack{
                                         Image(systemName: "bell.square.fill").imageScale(.large)
@@ -152,22 +143,10 @@ struct DetailedBillView: View {
                             
                             Button {
                                 viewModel.getDeviceToken(userID: memberID) { token in
-                                    let notifPayload: [String: Any] = ["to": token ,"notification":
-                                                                        [
-                                                                            "title":"Room: \(roomName)",
-                                                                            "body":"\(viewModel.currentUser?.fullname ?? "") requested for bill payment.",
-                                                                            "badge": 1,
-                                                                            "sound": "default"
-                                                                        ]
-                                    ]
-                                    
-                                    sendPushNotification(payloadDict: notifPayload)
+                                    sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") requested for bill payment.")
                                 }
                                 
-                                banner.show()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    banner.dismiss()
-                                }
+                                successNB(title: "Notification Sent")
                                 
                             } label: {
                                 HStack{

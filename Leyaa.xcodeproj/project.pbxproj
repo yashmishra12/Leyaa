@@ -67,6 +67,9 @@
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
 		CCDBC6DC2877740500DC83B5 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCDBC6DB2877740500DC83B5 /* NotificationBannerSwift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
+		CCE52956287BD8BB005C173C /* FocuserEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52955287BD8BB005C173C /* FocuserEnum.swift */; };
+		CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52958287BDF31005C173C /* NotificationBanner.swift */; };
+		CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5295B287BE93E005C173C /* payloadNotification.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
@@ -141,6 +144,9 @@
 		CCBEC81828750E1600D78CE1 /* UnitBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBill.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
 		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
+		CCE52955287BD8BB005C173C /* FocuserEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocuserEnum.swift; sourceTree = "<group>"; };
+		CCE52958287BDF31005C173C /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
+		CCE5295B287BE93E005C173C /* payloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payloadNotification.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -235,13 +241,6 @@
 			path = "Sidebar Menu";
 			sourceTree = "<group>";
 		};
-		CC325627287B8B3800191AF0 /* gif */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = gif;
-			sourceTree = "<group>";
-		};
 		CC54100628657CDF0026CA76 /* Create */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,8 +266,8 @@
 				CC07DB882865644B0000265C /* SanitizeItemName.swift */,
 				CC6B51312867F5D800531303 /* UserService.swift */,
 				CC5D265F286BDDBB0068800E /* MessageManager.swift */,
-				CCFFA4CC286FE31A005332E1 /* PushNotificationService.swift */,
-				CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */,
+				CCE52957287BDEEB005C173C /* Notification */,
+				CCE5295A287BE74D005C173C /* Apple Login */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -356,7 +355,6 @@
 		CCB4C3A028597A3200105C5C /* Leyaa */ = {
 			isa = PBXGroup;
 			children = (
-				CC325627287B8B3800191AF0 /* gif */,
 				CCA3FA68286DA2DA0052F6B3 /* Info.plist */,
 				CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */,
 				CC6013142863199200535994 /* Services */,
@@ -433,6 +431,46 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
+		CCE52953287BD883005C173C /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA96B7285A6B790083D925 /* User.swift */,
+				CC9FA7AA285E9E9A00EF896D /* Room.swift */,
+				CCBA416F28601E53000B3FE7 /* Item.swift */,
+				CC541009286589060026CA76 /* RoomRequest.swift */,
+				CC6B5133286811ED00531303 /* AssetName.swift */,
+				CC5D2659286BC11F0068800E /* Message.swift */,
+				CC0CC87E28735677009C90C0 /* Bill.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		CCE52954287BD898005C173C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CCE52955287BD8BB005C173C /* FocuserEnum.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		CCE52957287BDEEB005C173C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				CCFFA4CC286FE31A005332E1 /* PushNotificationService.swift */,
+				CCE52958287BDF31005C173C /* NotificationBanner.swift */,
+				CCE5295B287BE93E005C173C /* payloadNotification.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		CCE5295A287BE74D005C173C /* Apple Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */,
+			);
+			path = "Apple Login";
+			sourceTree = "<group>";
+		};
 		CCFA96B5285A68C70083D925 /* InputField */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,13 +482,8 @@
 		CCFA96B6285A6B6E0083D925 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CCFA96B7285A6B790083D925 /* User.swift */,
-				CC9FA7AA285E9E9A00EF896D /* Room.swift */,
-				CCBA416F28601E53000B3FE7 /* Item.swift */,
-				CC541009286589060026CA76 /* RoomRequest.swift */,
-				CC6B5133286811ED00531303 /* AssetName.swift */,
-				CC5D2659286BC11F0068800E /* Message.swift */,
-				CC0CC87E28735677009C90C0 /* Bill.swift */,
+				CCE52954287BD898005C173C /* Enums */,
+				CCE52953287BD883005C173C /* Data Model */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -573,6 +606,8 @@
 				CC30AD8E2870685700355C1A /* AppleLoginHashing.swift in Sources */,
 				CCFA96B8285A6B790083D925 /* User.swift in Sources */,
 				CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */,
+				CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */,
+				CCE52956287BD8BB005C173C /* FocuserEnum.swift in Sources */,
 				CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */,
 				CCFFA4CD286FE31A005332E1 /* PushNotificationService.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
@@ -595,6 +630,7 @@
 				CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */,
 				CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */,
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
+				CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
 				CCB4C3B528597B8C00105C5C /* RegistrationView.swift in Sources */,
 			);

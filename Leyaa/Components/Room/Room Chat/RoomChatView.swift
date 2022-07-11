@@ -26,10 +26,7 @@ struct RoomChatView: View {
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                      "body":"\(userName ?? "") posted a new message.",
-                                                                                      "sound":"default"]]
-                sendPushNotification(payloadDict: notifPayload)
+                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") posted a new message.")
             }
         }
     }
@@ -49,19 +46,13 @@ struct RoomChatView: View {
                                         messageManager.deleteMessage(room: roomData.id ?? "", messageID: message.id)
                                     }
                                     
-                                    let banner = StatusBarNotificationBanner(title: "Message Deleted", style: .info)
-                                    banner.show()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                        banner.dismiss()
-                                    }
+                                    infoSB(title: "Message Deleted")
                                 }
                             }
                         }
                     }
                     .onChange(of: messageManager.lastMessageID) { id in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                             withAnimation { proxy.scrollTo(id, anchor: .bottom) }
-                        }
                     }
                     
                     .onAppear(perform: {
@@ -79,12 +70,8 @@ struct RoomChatView: View {
             ToolbarItem {
                 Button {
                     inviteAllForChat()
-                    let banner = NotificationBanner(title: "New Post Notification Sent To All", style: .success)
-                    banner.show()
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        banner.dismiss()
-                    }
+                 
+                    successNB(title: "New Post Notification Sent To All")
                     
                 } label: {
                     Image(systemName: "hand.wave.fill").imageScale(.large)

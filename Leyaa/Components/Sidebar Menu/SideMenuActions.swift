@@ -15,15 +15,8 @@ import SwiftUI
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,
-                                                   "notification": [
-                                                    "title":"Room: \(roomName)",
-                                                    "body":"\(userName ?? "") is going for shopping.",
-                                                    "badge": 1,
-                                                    "sound":"default"]
-                ]
+                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") is going for shopping.")
                 
-                sendPushNotification(payloadDict: notifPayload)
             }
         }
     }
@@ -34,11 +27,7 @@ import SwiftUI
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                 "body":"\(userName ?? "") is doing laundry.",
-                                                                                 "badge": 1,
-                                                                                 "sound":"default"]]
-                sendPushNotification(payloadDict: notifPayload)
+                    sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") is doing laundry.")
             }
         }
     }
@@ -49,11 +38,7 @@ import SwiftUI
         for member in roomData.members where member != viewModel.currentUser?.id {
             
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                 "body":"Fridge is full. Please look into it.",
-                                                                                 "badge": 1,
-                                                                                 "sound":"default"]]
-                sendPushNotification(payloadDict: notifPayload)
+                sendPayloadPush(token: token, roomName: roomName, body: "\"Fridge is full. Please look into it.")
             }
         }
         
@@ -67,11 +52,7 @@ import SwiftUI
             
             
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title":"Room: \(roomName)",
-                                                                                 "body":"\(userName ?? "") feels it's time to clean the house.",
-                                                                                 "badge": 1,
-                                                                                 "sound":"default"]]
-                sendPushNotification(payloadDict: notifPayload)
+                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") feels it's time to clean the house.")
             }
         }
         

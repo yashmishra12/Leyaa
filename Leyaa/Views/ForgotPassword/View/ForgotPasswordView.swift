@@ -41,11 +41,7 @@ struct ForgotPasswordView: View {
                             viewModel.sendPasswordResetRequest()
                             presentationMode.wrappedValue.dismiss()
                             
-                            let banner = NotificationBanner(title: "Link Sent", subtitle: "Check your Inbox and Spam", style: .success)
-                            banner.show()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                banner.dismiss()
-                            }
+                          forgotPasswordNB()
 
                         } label: {
                             Text("Send Reset Request").buttonStyle()

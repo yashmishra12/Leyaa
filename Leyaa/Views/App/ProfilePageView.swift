@@ -85,11 +85,8 @@ struct ProfilePageView: View {
                             Button {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
                                 
-                                let banner = NotificationBanner(title: "Avatar Saved", style: .success)
-                                                        banner.show()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                                            banner.dismiss()
-                                                        }
+                               successNB(title: "Avatar Changed")
+                                
                             } label: {
                                 Text("Save").buttonStyle()
                                    

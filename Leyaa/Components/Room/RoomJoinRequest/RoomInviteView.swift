@@ -12,26 +12,6 @@ import FirebaseFirestoreSwift
 import NotificationBannerSwift
 import Focuser
 
-enum FormFieldsInvite {
-    case email, message
-}
-
-
-extension FormFieldsInvite: FocusStateCompliant {
-
-    static var last: FormFieldsInvite {
-        .message
-    }
-
-    var next: FormFieldsInvite? {
-        switch self {
-        case .email:
-            return .message
-        default: return nil
-        }
-    }
-}
-
 
 
 struct RoomInviteView: View {
@@ -65,6 +45,7 @@ struct RoomInviteView: View {
             VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     .focusedLegacy($focusedFieldInvite, equals: .email)
+                
                 CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
                     .focusedLegacy($focusedFieldInvite, equals: .message)
                 
@@ -75,23 +56,13 @@ struct RoomInviteView: View {
                 viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
                 
                 fetchDeviceTokenFromEmail(email: email) { token in
-                    let notifPayload: [String: Any] = [ "to": token ,
-                                                        "notification": [
-                                                            "title":"Room Join Request",
-                                                            "body":"\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)",
-                                                            "sound":"default" ]
-                                                      ]
-                    
-                    sendPushNotification(payloadDict: notifPayload)
+                    roomJoinRequestPayload(token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
                 }
                 
                 presentationMode.wrappedValue.dismiss()
                 
-                let banner = NotificationBanner(title: "Invitation Sent", style: .success)
-                banner.show()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    banner.dismiss()
-                }
+               successNB(title: "Invitation Sent")
+                
             } label: {
                 Text("Send Invite").buttonStyle()
             }

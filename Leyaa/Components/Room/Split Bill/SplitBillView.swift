@@ -27,10 +27,7 @@ struct SplitBillView: View {
 
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                let notifPayload: [String: Any] = ["to": token ,"notification": ["title": "Room: \(roomName)",
-                                                                                 "body":  "\(userName ?? "") posted a new bill.",
-                                                                                 "sound": "default"]]
-                sendPushNotification(payloadDict: notifPayload)
+                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") posted a new bill.")
             }
         }
     }
@@ -77,12 +74,7 @@ struct SplitBillView: View {
                 ToolbarItem {
                     Button {
                         notifyAboutNewBill()
-                        let banner = NotificationBanner(title: "New Bill Notification Sent to All", style: .success)
-                        banner.show()
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                            banner.dismiss()
-                        }
+                        successNB(title: "New Bill Notification Sent to all")
                         
                     } label: {
                         Image(systemName: "hand.wave.fill").imageScale(.large)

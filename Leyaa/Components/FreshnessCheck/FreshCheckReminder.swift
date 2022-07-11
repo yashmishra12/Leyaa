@@ -43,12 +43,7 @@ struct FreshCheckReminder: View {
         
         UNUserNotificationCenter.current().add(request)
         
-        let banner = NotificationBanner(title: "Reminder Saved", style: .success)
-        
-        banner.show()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                   banner.dismiss()
-                               }
+        successNB(title: "Reminder Saved")
         
         presentationMode.wrappedValue.dismiss()
     }
