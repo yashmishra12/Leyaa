@@ -8,9 +8,10 @@
 import Foundation
 import UserNotifications
 
+@MainActor
 class PRManager: ObservableObject {
         
-    @Published private(set) var prArray: [PendingReminder] = []
+    @Published var prArray: [PendingReminder] = []
     @Published var roomName: String = ""
     
     init(name: String? = nil) {
@@ -22,8 +23,9 @@ class PRManager: ObservableObject {
     }
     
     func updateArray() {
-        DispatchQueue.main.async {
+        Task { @MainActor in
             UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+
                 for request in requests {
                     if request.content.title == "Freshness Check." && request.content.subtitle == self.roomName {
                         var pr = PendingReminder(id: request.identifier,
@@ -42,15 +44,23 @@ class PRManager: ObservableObject {
                             
                             let formattedDate = dateFormatter.string(from: date)
                             
-                            pr.timestamp = formattedDate
+                           
                             
-                            self.prArray.append(pr)
+                            DispatchQueue.main.async {
+                                pr.timestamp = formattedDate
+                                self.prArray.append(pr)
+                            }
+                            
+                                
+                            
                         }
                         
                     }
                     
                 }
-            }
+
+        }
+           
         }
     }
     

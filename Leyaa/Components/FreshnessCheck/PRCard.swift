@@ -13,6 +13,8 @@ struct PRCard: View {
     @State var timeStamp: String
     @State var id: String
     @State private var isDeleted: Bool = false
+    
+    
     var body: some View {
         VStack {
            

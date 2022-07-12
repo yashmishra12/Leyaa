@@ -13,6 +13,7 @@ struct PendingReminderView: View {
     @StateObject var prManager = PRManager()
     @State var roomName: String
     
+    
     var body: some View {
         ScrollView {
             
@@ -41,8 +42,9 @@ struct PendingReminderView: View {
                           }
             }
         }.onAppear {
-            prManager.roomName = roomName
-            prManager.updateArray()
+                prManager.roomName = roomName
+                prManager.updateArray()
+    
             }
         }
 

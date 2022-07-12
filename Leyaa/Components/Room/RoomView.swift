@@ -38,7 +38,7 @@ struct RoomView: View {
 
                     Image("slideRight").resizable().frame(width: 102, height: 80).cornerRadius(15)
                     
-                    Text("Right Slide Items to Edit.\n\nLong Press Items to Delete.")
+                    Text("Swipe Right to Edit.\n\nLong Press to Delete.")
                         .multilineTextAlignment(.center)
                         .padding()
                 }
