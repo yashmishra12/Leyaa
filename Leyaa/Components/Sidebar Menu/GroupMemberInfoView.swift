@@ -12,7 +12,7 @@ struct GroupMemberInfoView: View {
     @State var avatar = "ketchup"
     @State var name = "Default Name"
     @State var email = "Default Mail"
-
+    private let pasteBoard = UIPasteboard.general
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -34,7 +34,16 @@ struct GroupMemberInfoView: View {
                             }
                             
                             HStack {
-                                Text(email).font(.caption)
+                                Text(email).font(.caption2).onTapGesture {
+                                    pasteBoard.string = email
+                                    successSB(title: "Copied")
+                                }
+                                Button {
+                                    pasteBoard.string = email
+                                    successSB(title: "Copied")
+                                } label: {
+                                    Image(systemName: "doc.on.doc").resizable().frame(width: 12, height: 16)
+                                }.buttonStyle(.plain)
                                 Spacer()
                             }
                         }.onAppear(perform: {
