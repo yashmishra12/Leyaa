@@ -52,12 +52,19 @@ class AuthViewModel: ObservableObject {
             if let error = error {
                 print("WRITE USER DATA ERROR Error updating document: \(error)")
             } else {
-//                print("Document successfully updated!")
             }
         }
     }
     
 
+    func resetDeviceToken() {
+        db.collection("users").document(Auth.auth().currentUser?.uid ?? "").updateData(["deviceToken": "" ]){ error in
+            if let error = error {
+                print("Reset DeviceToken Error: \(error)")
+            } else {
+            }
+        }
+    }
     
     //MARK: - Authentication
     func login(withEmail email: String, password: String) {
@@ -118,6 +125,8 @@ class AuthViewModel: ObservableObject {
         // sets user session to nil so we show login view
         userSession = nil
         didAuthenticateUser = false
+        
+        resetDeviceToken()
         
         // signs user out on server
         try? Auth.auth().signOut()
@@ -199,18 +208,21 @@ class AuthViewModel: ObservableObject {
         
         let docRef = db.collection("rooms").document(roomID)
         
-        docRef.updateData(["newItems" : Firebase.FieldValue.arrayRemove([itemDel])]){ err in
-            if let err = err {
-                print("Error in delete item with EDIT: \(err)")
+        DispatchQueue.main.async {
+            docRef.updateData(["newItems" : Firebase.FieldValue.arrayRemove([itemDel])]){ err in
+                if let err = err {
+                    print("Error in delete item with EDIT: \(err)")
+                }
+            }
+            
+            docRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([itemUpdate])]){ err in
+                if let err = err {
+                    print("Error in ADDING item with EDIT: \(err)")
+                }
             }
         }
         
-        docRef.updateData(["newItems" : Firebase.FieldValue.arrayUnion([itemUpdate])]){ err in
-            if let err = err {
-                print("Error in ADDING item with EDIT: \(err)")
-            }
-        }
-        
+        updateLastItemID(lastItemID: itemUpdate["id"] ?? "", roomID: roomID)
         
         
     }
@@ -220,8 +232,10 @@ class AuthViewModel: ObservableObject {
     
     func addRoom(room: Room) {
         do {
-            let _ = try db.collection("rooms").addDocument(from: room)
-            self.writeUserData()
+            
+                let _ = try db.collection("rooms").addDocument(from: room)
+                self.writeUserData()
+            
         }
         catch {
             print(error)
@@ -364,9 +378,11 @@ class AuthViewModel: ObservableObject {
     
     
     func editRoomName(newName: String,  roomID: String) {
-        db.collection("rooms").document(roomID).updateData(["title" : newName]) { err in
-            if let err = err {
-                print("Error in editing room name: \(err)")
+        DispatchQueue.main.async {
+            self.db.collection("rooms").document(roomID).updateData(["title" : newName]) { err in
+                if let err = err {
+                    print("Error in editing room name: \(err)")
+                }
             }
         }
     }
@@ -378,12 +394,14 @@ class AuthViewModel: ObservableObject {
         var profilePic: String = ""
         let docRef = db.collection("users").document(userID)
         
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                profilePic = document.get("avatar") as! String
-                completion(profilePic)
-            } else {
-                print("Document does not exist")
+        DispatchQueue.main.async {
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    profilePic = document.get("avatar") as! String
+                    completion(profilePic)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
     }
@@ -393,12 +411,14 @@ class AuthViewModel: ObservableObject {
         var profileName: String = ""
         let docRef = db.collection("users").document(userID)
         
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                profileName = document.get("fullname") as! String
-                completion(profileName)
-            } else {
-                print("Document does not exist")
+        DispatchQueue.main.async {
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    profileName = document.get("fullname") as! String
+                    completion(profileName)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
     }
@@ -408,12 +428,14 @@ class AuthViewModel: ObservableObject {
         var profileEmail: String = ""
         let docRef = db.collection("users").document(userID)
         
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                profileEmail = document.get("email") as! String
-                completion(profileEmail)
-            } else {
-                print("Document does not exist")
+        DispatchQueue.main.async {
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    profileEmail = document.get("email") as! String
+                    completion(profileEmail)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
     }
@@ -423,12 +445,14 @@ class AuthViewModel: ObservableObject {
         var deviceToken: String = ""
         let docRef = db.collection("users").document(userID)
         
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                deviceToken = document.get("deviceToken") as! String
-                completion(deviceToken)
-            } else {
-                print("Document does not exist")
+        DispatchQueue.main.async {
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    deviceToken = document.get("deviceToken") as! String
+                    completion(deviceToken)
+                } else {
+                    print("Document does not exist")
+                }
             }
         }
     }

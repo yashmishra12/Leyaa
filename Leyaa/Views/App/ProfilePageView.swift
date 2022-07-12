@@ -106,7 +106,7 @@ struct ProfilePageView: View {
                         Button(action: {
                             wantToSignOut.toggle()
                         }, label: {
-                            Text("Sign Out").font(.caption2)
+                            Text("Sign Out").font(.footnote)
                         }).buttonStyle(.plain)
                         .confirmationDialog("Are you sure?",
                           isPresented: $wantToSignOut) {
@@ -122,13 +122,19 @@ struct ProfilePageView: View {
                         Button {
                             actionSheet()
                         } label: {
-                            Text("Share App").font(.caption2)
+                            HStack{
+                                Image(systemName: "square.and.arrow.up.fill")
+                                    .resizable()
+                                    .padding(.leading)
+                            }
                         }.buttonStyle(.plain)
 
                     }
                   
                 }
-            }.navigationBarBackButtonHidden(true)
+            }
+            .navigationViewStyle(.stack)
+            .navigationBarBackButtonHidden(true)
         }
        
         

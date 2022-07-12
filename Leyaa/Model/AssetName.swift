@@ -17,3 +17,9 @@ let defaultAvatar = "coffee"
 let deviceTokenStorage = "com.yashmisra12.Leyaa.kDeviceToken"
 
 let cardWidth = screenWidth * 0.5
+
+let minLPD = 0.2
+
+var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+
+let relaxPic: [String] = ["relax1", "relax2", "relax3", "relax4"]

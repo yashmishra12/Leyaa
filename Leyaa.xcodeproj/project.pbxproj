@@ -13,7 +13,6 @@
 		CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */; };
 		CC0CC87F28735677009C90C0 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87E28735677009C90C0 /* Bill.swift */; };
 		CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */; };
-		CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = CC20BAA12869114B0071B7A6 /* Focuser */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
 		CC30AD8E2870685700355C1A /* AppleLoginHashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */; };
@@ -67,9 +66,13 @@
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
 		CCDBC6DC2877740500DC83B5 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCDBC6DB2877740500DC83B5 /* NotificationBannerSwift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
-		CCE52956287BD8BB005C173C /* FocuserEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52955287BD8BB005C173C /* FocuserEnum.swift */; };
 		CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52958287BDF31005C173C /* NotificationBanner.swift */; };
 		CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5295B287BE93E005C173C /* payloadNotification.swift */; };
+		CCE52962287D041F005C173C /* secretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52961287D041F005C173C /* secretKey.swift */; };
+		CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52963287D2916005C173C /* PendingReminderView.swift */; };
+		CCE52966287D2AB9005C173C /* PendingReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52965287D2AB9005C173C /* PendingReminder.swift */; };
+		CCE52968287D4818005C173C /* PRCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52967287D4818005C173C /* PRCard.swift */; };
+		CCE5296A287D53CE005C173C /* PRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52969287D53CE005C173C /* PRManager.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
@@ -144,9 +147,13 @@
 		CCBEC81828750E1600D78CE1 /* UnitBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBill.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
 		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
-		CCE52955287BD8BB005C173C /* FocuserEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocuserEnum.swift; sourceTree = "<group>"; };
 		CCE52958287BDF31005C173C /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		CCE5295B287BE93E005C173C /* payloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payloadNotification.swift; sourceTree = "<group>"; };
+		CCE52961287D041F005C173C /* secretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secretKey.swift; sourceTree = "<group>"; };
+		CCE52963287D2916005C173C /* PendingReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReminderView.swift; sourceTree = "<group>"; };
+		CCE52965287D2AB9005C173C /* PendingReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingReminder.swift; sourceTree = "<group>"; };
+		CCE52967287D4818005C173C /* PRCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRCard.swift; sourceTree = "<group>"; };
+		CCE52969287D53CE005C173C /* PRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRManager.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -163,7 +170,6 @@
 				CCA3FA65286DA1B40052F6B3 /* FirebaseAnalytics in Frameworks */,
 				CC6E15512859A00300C29C45 /* FirebaseAuth in Frameworks */,
 				CC6E15572859A00300C29C45 /* FirebaseStorage in Frameworks */,
-				CC20BAA22869114B0071B7A6 /* Focuser in Frameworks */,
 				CC6E15532859A00300C29C45 /* FirebaseFirestore in Frameworks */,
 				CCDBC6DC2877740500DC83B5 /* NotificationBannerSwift in Frameworks */,
 				CC6E15552859A00300C29C45 /* FirebaseFirestoreSwift in Frameworks */,
@@ -198,6 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				CCE4E81C286E91670026265E /* FreshCheckReminder.swift */,
+				CCE52963287D2916005C173C /* PendingReminderView.swift */,
+				CCE52967287D4818005C173C /* PRCard.swift */,
+				CCE52969287D53CE005C173C /* PRManager.swift */,
 			);
 			path = FreshnessCheck;
 			sourceTree = "<group>";
@@ -436,19 +445,20 @@
 				CC9FA7AA285E9E9A00EF896D /* Room.swift */,
 				CCBA416F28601E53000B3FE7 /* Item.swift */,
 				CC541009286589060026CA76 /* RoomRequest.swift */,
-				CC6B5133286811ED00531303 /* AssetName.swift */,
 				CC5D2659286BC11F0068800E /* Message.swift */,
 				CC0CC87E28735677009C90C0 /* Bill.swift */,
+				CCE52965287D2AB9005C173C /* PendingReminder.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
 		};
-		CCE52954287BD898005C173C /* Enums */ = {
+		CCE52954287BD898005C173C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				CCE52955287BD8BB005C173C /* FocuserEnum.swift */,
+				CC6B5133286811ED00531303 /* AssetName.swift */,
+				CCE52961287D041F005C173C /* secretKey.swift */,
 			);
-			name = Enums;
+			name = Constants;
 			sourceTree = "<group>";
 		};
 		CCE52957287BDEEB005C173C /* Notification */ = {
@@ -498,7 +508,7 @@
 		CCFA96B6285A6B6E0083D925 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CCE52954287BD898005C173C /* Enums */,
+				CCE52954287BD898005C173C /* Constants */,
 				CCE52953287BD883005C173C /* Data Model */,
 			);
 			path = Model;
@@ -526,7 +536,6 @@
 				CC6E15522859A00300C29C45 /* FirebaseFirestore */,
 				CC6E15542859A00300C29C45 /* FirebaseFirestoreSwift */,
 				CC6E15562859A00300C29C45 /* FirebaseStorage */,
-				CC20BAA12869114B0071B7A6 /* Focuser */,
 				CCA3FA64286DA1B40052F6B3 /* FirebaseAnalytics */,
 				CCA3FA66286DA1B40052F6B3 /* FirebaseMessaging */,
 				CC7E44AA2870E91A00B8A795 /* FirebaseService */,
@@ -602,6 +611,8 @@
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
+				CCE52962287D041F005C173C /* secretKey.swift in Sources */,
+				CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
@@ -623,12 +634,12 @@
 				CCFA96B8285A6B790083D925 /* User.swift in Sources */,
 				CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */,
 				CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */,
-				CCE52956287BD8BB005C173C /* FocuserEnum.swift in Sources */,
 				CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */,
 				CCFFA4CD286FE31A005332E1 /* PushNotificationService.swift in Sources */,
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
 				CC5D265E286BD4780068800E /* MessageField.swift in Sources */,
 				CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */,
+				CCE52968287D4818005C173C /* PRCard.swift in Sources */,
 				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
 				CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */,
 				CC5D2660286BDDBB0068800E /* MessageManager.swift in Sources */,
@@ -642,9 +653,11 @@
 				CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
 				CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */,
+				CCE5296A287D53CE005C173C /* PRManager.swift in Sources */,
 				CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */,
 				CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */,
 				CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */,
+				CCE52966287D2AB9005C173C /* PendingReminder.swift in Sources */,
 				CC6B51302867E84700531303 /* RoomInviteView.swift in Sources */,
 				CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */,
 				CC54100A286589060026CA76 /* RoomRequest.swift in Sources */,
@@ -800,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -835,7 +848,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -912,11 +925,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CC20BAA12869114B0071B7A6 /* Focuser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CC20BAA02869114B0071B7A6 /* XCRemoteSwiftPackageReference "swift-focuser" */;
-			productName = Focuser;
-		};
 		CC6E15502859A00300C29C45 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC6E154F2859A00300C29C45 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

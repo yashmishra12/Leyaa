@@ -20,7 +20,7 @@ struct RoomView: View {
     
     @State var lastItemID: String = ""
     
-    var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
     
     func updateLastItemID(newID: String) {
         self.lastItemID = newID
@@ -56,6 +56,11 @@ struct RoomView: View {
                                     
                                     VStack{
                                         ItemView(lastDeleted: $recentDeletedItems, item: item, roomData: roomData)
+                                            .onTapGesture {
+                                                withAnimation {
+                                                    isShowingSideMenu = false
+                                                }
+                                        }
                                     }.id(item.id)
                                     
                                 }
@@ -74,9 +79,12 @@ struct RoomView: View {
                     
                 }
             }
+            .onTapGesture {
+                withAnimation (.spring()) {
+                    isShowingSideMenu = false
+                }
+            }
 
-            
-            
             .toolbar {
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -147,6 +155,9 @@ struct RoomView: View {
             .offset(x: isShowingSideMenu ? screenWidth*0.8 : 0, y: isShowingSideMenu ? screenHeight*0.05 : 0)
             .scaleEffect(isShowingSideMenu ? 0.8 : 1)
         }
+        .onAppear(perform: {
+            lastItemID = roomData.lastItemID ?? ""
+        })
         .navigationTitle(Text(roomData.title))
         .navigationBarTitleDisplayMode(.automatic)
     }

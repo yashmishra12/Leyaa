@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import UserNotifications
 import NotificationBannerSwift
 
 struct FreshCheckReminder: View {
     @State private var itemName: String = ""
-    @Binding var roomName: String 
-    @Environment(\.presentationMode) var presentationMode
+    @State var roomName: String
+    
     @State private var isShowingCal: Bool = false
     @State private var selectedDate = Date()
     @State private var notificationPermitted: Bool = false
@@ -30,28 +29,14 @@ struct FreshCheckReminder: View {
         }
     }
     
-    func CalendarTriggeredNotification(givenDate: Date) {
-        let content = UNMutableNotificationContent()
-        content.title = "Freshness Check."
-        content.subtitle = "Room: \(roomName). Check on \(itemName)"
-        content.sound = UNNotificationSound.default
-        
-        let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: givenDate)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request)
-        
-        successNB(title: "Reminder Saved")
-        
-        presentationMode.wrappedValue.dismiss()
-    }
+    
     
     var body: some View {
+
         
         VStack{
             Image("reminder").resizable().aspectRatio(contentMode: .fit)
+
             
             VStack{
                 CustomInputField(imageName: "hourglass", placeholderText: "Item Name", isSecureField: false, text: $itemName)
@@ -63,7 +48,8 @@ struct FreshCheckReminder: View {
                     .padding(.bottom)
                     
                     Button {
-                            CalendarTriggeredNotification(givenDate: selectedDate)
+                        CalendarTriggeredNotification(givenDate: selectedDate, roomName: roomName, itemName: itemName)
+                        
                     } label: {
                         Text("Save").buttonStyle()
                     }.disabled(itemName.isEmpty || notificationPermitted == false)
@@ -83,14 +69,21 @@ struct FreshCheckReminder: View {
             checkPermission()
         })
         .navigationBarTitleDisplayMode(.inline)
-        
+        .toolbar {
+            NavigationLink {
+                PendingReminderView(roomName: roomName)
+            } label: {
+                Image(systemName: "square.and.pencil").imageScale(.large)
+            }.buttonStyle(.plain)
+
+        }
     }
 }
 
 
 struct FreshCheckReminder_Previews: PreviewProvider {
     static var previews: some View {
-        FreshCheckReminder(roomName: .constant("Avent Ferry"))
+        FreshCheckReminder(roomName: "Avent Ferry")
     }
 }
 

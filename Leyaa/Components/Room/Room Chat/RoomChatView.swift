@@ -11,6 +11,7 @@ import FirebaseService
 import FirebaseFirestoreSwift
 import NotificationBannerSwift
 
+
 struct RoomChatView: View {
     @EnvironmentObject var viewModel: AuthViewModel
 
@@ -26,7 +27,7 @@ struct RoomChatView: View {
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") posted a new message.")
+                sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") sent a new post.")
             }
         }
     }
@@ -65,24 +66,39 @@ struct RoomChatView: View {
             MessageField(senderID: viewModel.currentUser?.id ?? "", roomData: $roomData)
                 .environmentObject(messageManager)
         }
-        .navigationTitle(roomData.title)
-        .toolbar(content: {
-            ToolbarItem {
-                Button {
-                    inviteAllForChat()
-                 
-                    successNB(title: "New Post Notification Sent To All")
-                    
-                } label: {
-                    Image(systemName: "hand.wave.fill").imageScale(.large)
-                }.buttonStyle(.plain)
-            }
-        })
         .frame(width: screenWidth)
         .onAppear {
                 messageManager.updateRoomID(name: roomData.id ?? "")
                 messageManager.getMessages(roomID: roomData.id ?? "")
             }
+        
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    inviteAllForChat()
+                    successNB(title: "New Post Notification Sent To All")
+                    
+                } label: {
+                    HStack {
+                        Text("Notify All").font(.caption)
+                        Image(systemName: "hand.wave.fill").imageScale(.large)
+                    }.padding()
+                        .padding(.trailing)
+                }.buttonStyle(.plain)
+                
+                
+                
+                Button {
+                    messageChatInfo()
+                    
+                } label: {
+                    Image(systemName: "questionmark.square.fill").imageScale(.large)
+                }.buttonStyle(.plain)
+
+            }
+
+            
+        }
     }
 }
 

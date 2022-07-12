@@ -15,7 +15,9 @@ struct MessageField: View {
     
     var body: some View {
         HStack {
-            CustomTextField(placeholder: Text("Type...").foregroundColor(.blue), text: $message).disableAutocorrection(true)
+            CustomTextField(placeholder: Text("Type..."),
+                            text: $message)
+            .disableAutocorrection(true)
             
             Button {
                 if message.isEmpty == false {
@@ -36,7 +38,7 @@ struct MessageField: View {
         }
         .padding(.horizontal)
                 .padding(.vertical, 5)
-                .background(Color("LightBlue"))
+                .background(Color("grayChat"))
                 .cornerRadius(50)
                 .padding()
         
@@ -62,7 +64,9 @@ struct CustomTextField: View {
             if text.isEmpty {
                 placeholder.opacity(0.5)
             }
-            TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit).foregroundColor(.black).accentColor(.black)
+            TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
+                .foregroundColor(.white)
+                .accentColor(.white)
         }
     }
 }

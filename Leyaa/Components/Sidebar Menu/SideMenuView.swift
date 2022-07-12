@@ -31,7 +31,7 @@ struct SideMenuView: View {
         
         ZStack {
 
-            
+            ScrollView(showsIndicators: false){
           
                 VStack(alignment: .leading) {
                     
@@ -87,8 +87,9 @@ struct SideMenuView: View {
                             // Fresh Check
                             HStack {
                                 NavigationLink {
-                                    FreshCheckReminder(roomName: $roomData.title).hideKeyboardWhenTappedAround()
-                                } label: {
+                                    FreshCheckReminder(roomName: roomData.title).hideKeyboardWhenTappedAround()
+                                }
+                            label: {
                                     HStack {
                                         
                                         Image(systemName: "leaf.fill")
@@ -98,7 +99,9 @@ struct SideMenuView: View {
                                         
                                         Text("Freshness Reminder").padding()
                                     }
-                                }.buttonStyle(.plain)
+                                }
+                            .isDetailLink(false)
+                            .buttonStyle(.plain)
                                 Spacer()
                             }
                             
@@ -324,13 +327,15 @@ struct SideMenuView: View {
                     
                     
                     //Room Members
-                    ScrollView{
+                    
                         ForEach(roomData.members, id: \.self) { userID in
                             GroupMemberInfoView(userID: userID)
                         }
                     }
                     
-                }
+            }
+            
+            
                 Spacer()
                 
  
@@ -343,7 +348,10 @@ struct SideMenuView: View {
             }
         }
         
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Menu")
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(true)
+        
     }
 }
 

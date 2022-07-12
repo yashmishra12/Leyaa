@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 import FirebaseService
 import FirebaseFirestoreSwift
+import UserNotifications
 
 func sendPushNotification(payloadDict: [String: Any]) {
-    let serverKey: String = "AAAAWl5yGoA:APA91bF3eAohb9tcD5tk1a4sxjwJvk8kn0N0b6ETi-ShuUod73bmM2uWOlSQgLn9x-4kUJTtJ9kDvYdwzM42Ehxuw12aGXUmjF8zAsNez13eidYvItMN23afUvbrC0JIpXacJndMc7kw"
     let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -58,5 +58,63 @@ func fetchDeviceTokenFromEmail(email: String, completion: @escaping(String) -> V
              } else {
                  print("no data returned")
              }
+    }
+}
+
+// Freshness Reminder
+
+func CalendarTriggeredNotification(givenDate: Date, roomName: String, itemName: String) {
+    let content = UNMutableNotificationContent()
+    content.title = "Freshness Check."
+    content.subtitle = "\(roomName)"
+    
+    content.body = "\(itemName)"
+    
+    content.sound = UNNotificationSound.default
+    
+    let dateComponent = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: givenDate)
+    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+    
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+    
+    UNUserNotificationCenter.current().add(request)
+    
+  
+    
+    successSB(title: "Reminder Saved")
+}
+
+func printLocal() {
+    
+    UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+        for request in requests {
+            print(request.identifier)
+            print(request.content.title)
+            print(request.content.body)
+            print(request.content.subtitle)
+            
+            let givenDate = request.trigger?.value(forKey: "dateComponents")
+            if let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian),
+               let date = gregorianCalendar.date(from: givenDate as! DateComponents) {
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                
+                
+                let formattedDate = dateFormatter.string(from: date)
+                print(formattedDate)
+            }
+            
+        }
+    }
+    
+//    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["A2B23FA0-4640-48A6-B4E9-B712BBCF90F5"])
+    
+}
+
+extension Date {
+    init(date: NSDate) {
+        self.init(timeIntervalSinceReferenceDate: date.timeIntervalSinceReferenceDate)
     }
 }

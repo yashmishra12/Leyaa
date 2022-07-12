@@ -29,7 +29,16 @@ func successSB(title: String) {
 
 }
 
-//MARK: - Ingo Status Bar Banner
+func successSBItemAdded(title: String) {
+    let banner = StatusBarNotificationBanner(title: "\(title)", style: .success)
+    banner.show()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                banner.dismiss()
+                            }
+
+}
+
+//MARK: - Info Status Bar Banner
 
 func infoSB(title: String) {
     let banner = StatusBarNotificationBanner(title: "\(title)", style: .info)
@@ -47,6 +56,24 @@ func forgotPasswordNB() {
     let banner = NotificationBanner(title: "Link Sent", subtitle: "Check your Inbox and Spam", style: .success)
     banner.show()
     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        banner.dismiss()
+    }
+}
+
+func messageChatInfo() {
+    let banner = GrowingNotificationBanner(title: "Message wall", subtitle: "1. Long press on your avatar to delete message.\n\n2 Tap on avatars to get post's timestamp.\n\n3. Hit the 'Notify All' Button if you want to send notifications to everyone. Wall Messages is meant for important posts and not conversation.", style: .info)
+    banner.show()
+    banner.haptic = .medium
+    banner.autoDismiss = false
+    
+    banner.onTap = {
+        banner.dismiss()
+    }
+    banner.onSwipeUp = {
+        banner.dismiss()
+    }
+    
+    DispatchQueue.main.asyncAfter(deadline: .now()+15) {
         banner.dismiss()
     }
 }
