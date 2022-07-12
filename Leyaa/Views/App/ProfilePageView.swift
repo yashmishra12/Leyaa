@@ -16,6 +16,7 @@ struct ProfilePageView: View {
     @State var selectedAvatar: String
     @Environment(\.presentationMode) var presentationMode
     
+    private let pasteBoard = UIPasteboard.general
     
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
@@ -28,10 +29,7 @@ struct ProfilePageView: View {
         })
 
     }
-    
-    var fiveColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    
-    var threeRowGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+
     
     var body: some View {
         
@@ -39,18 +37,25 @@ struct ProfilePageView: View {
             NavigationView {
                 VStack {
 
-                    VStack{
+                    VStack (spacing: 2){
                         HStack {
                             Image(selectedAvatar).resizable().frame(width: 300, height: 300).padding(.top, 40).padding(.bottom, -60)
                         }.ignoresSafeArea()
                     
-                        VStack {
+                        VStack (spacing: 1) {
                             HStack{
                                 Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold)
                             }
                             HStack {
                                 Text(viewModel.currentUser?.email ?? "").font(.caption).fontWeight(.light)
-                            }
+                                Button {
+                                    pasteBoard.string = viewModel.currentUser?.email ?? ""
+                                    successSB(title: "Copied")
+                                } label: {
+                                    Image(systemName: "doc.on.doc").resizable().frame(width: 15, height: 20)
+                                }.buttonStyle(.plain)
+
+                            }.padding(.bottom)
                         }.padding(.top, -70)
                         
                         Spacer()
