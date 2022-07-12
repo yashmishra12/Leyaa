@@ -13,7 +13,24 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     @AppStorage("currentPage") var currentPage = 1
     
+    @State private var roomList = UUID()
+    @State private var tabSelected = 1
+    @State private var tappedTwice: Bool = false
+    
+    var handler: Binding<Int> { Binding(
+                        get: { self.tabSelected },
+                        set: {
+                            if $0 == self.tabSelected {
+                                // Lands here if user tapped more than once
+                                tappedTwice = true
+                            }
+                            self.tabSelected = $0
+                        }
+                )}
+    
     var body: some View {
+        
+     
             
         if currentPage > totalPages {
             ZStack(alignment: .topLeading) {
@@ -22,23 +39,34 @@ struct ContentView: View {
                         LoginView().environmentObject(viewModel)
                            
                     } else {
-                        TabView{
-                            RoomListView(myRoom: $viewModel.rooms)
+                        TabView(selection: handler){
+                            RoomListView(myRoom: $viewModel.rooms).id(roomList)
+                                .onChange(of: tappedTwice, perform: { tappedTwice in
+                                                                           guard tappedTwice else { return }
+                                                                             roomList = UUID()
+                                    self.tappedTwice = false
+                                                                   })
                                 .onAppear {
                                     viewModel.populateRoomList()
                                     viewModel.roomJoinRequestUpdate()
                                 }
-                               .tabItem {Label("Rooms", systemImage: "house.fill")}
+                                .tabItem {Label("Rooms", systemImage: "house.fill")}
+                               .tag(1)
+                               
+                             
+                           
                             
                             
                             RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {
                                 Label("Invitation", systemImage: "bell.square.fill")
                             }
                             .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
+                            .tag(2)
                             
                             ProfilePageView(selectedAvatar: defaultAvatar).tabItem {
                                 Label("Profile", systemImage: "person.crop.square.fill")
                             }
+                            .tag(3)
 
                         }
                         
@@ -46,13 +74,11 @@ struct ContentView: View {
                     }
                 }
                 .onChange(of: scenePhase) { newPhase in
-                                if newPhase == .active {
-                                } else if newPhase == .inactive {
-
+                                if newPhase == .active {}
+                                    else if newPhase == .inactive {
                                       UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
-                                    
-                                } else if newPhase == .background {
-
+                                }
+                                 else if newPhase == .background {
                                       UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
                                 }
                             }

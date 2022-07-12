@@ -17,10 +17,12 @@ struct RegistrationView: View {
     @State private var fullname = ""
     @State private var password = ""
     
-    @FocusStateLegacy var focusedFieldRegister: RegistrationFormFields?
     @Environment (\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
     
+    @FocusState private var emailFocus: Bool
+    @FocusState private var nameFocus: Bool
+    @FocusState private var passFocus: Bool
     
     var body: some View {
         
@@ -44,13 +46,26 @@ struct RegistrationView: View {
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                        .focusedLegacy($focusedFieldRegister, equals: .email)
+                        .focused($nameFocus)
+                        .onSubmit {
+                            nameFocus = true
+                        }
+                        .submitLabel(.next)
+                        
                     
                     CustomInputField(imageName: "person", placeholderText: "Full Name", text: $fullname)
-                        .focusedLegacy($focusedFieldRegister, equals: .fullName)
+                        .focused($nameFocus)
+                        .onSubmit {
+                            passFocus = true
+                        }
+                        .submitLabel(.next)
                     
                     CustomInputField(imageName: "key", placeholderText: "Password", isSecureField: true, text: $password)
-                        .focusedLegacy($focusedFieldRegister, equals: .password)
+                        .focused($passFocus)
+                        .onSubmit {
+                            passFocus = false
+                        }
+                        .submitLabel(.done)
                     
                     
                 }

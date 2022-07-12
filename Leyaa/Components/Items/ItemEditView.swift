@@ -14,7 +14,10 @@ struct ItemEditView: View {
     @State var item: Item
     
     @EnvironmentObject var viewModel: AuthViewModel
-    @FocusStateLegacy var focusedFieldEdit: FormFields?
+    
+    @FocusState private var nameIsFocused: Bool
+    @FocusState private var qtyIsFocused: Bool
+    @FocusState private var descIsFocused: Bool
     
     @State var name: String
     @State var desc: String
@@ -28,28 +31,54 @@ struct ItemEditView: View {
     var body: some View {
         
         VStack{
-            Image("editItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -20)
+            Image(name.sanitiseItemName()).resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 200, alignment: .center)
+                .shadow(color: .blue, radius: 1, x: 0, y: 0)
             
             VStack (spacing: 20) {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Name", isSecureField: false, text: $name)
-                    .focusedLegacy($focusedFieldEdit, equals: .name)
+                    .focused($nameIsFocused)
+                    .onSubmit {
+                        qtyIsFocused = true
+                    }
+                    .submitLabel(.next)
+
                 
                 CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty)
-                    .focusedLegacy($focusedFieldEdit, equals: .quantity)
+                    .focused($qtyIsFocused)
+                    .onSubmit {
+                        descIsFocused = true
+                    }.submitLabel(.next)
+
             
                 
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc)
-                    .focusedLegacy($focusedFieldEdit, equals: .description)
+                    .focused($descIsFocused)
+                    .onSubmit {
+                        descIsFocused = false
+                    }
+                    .submitLabel(.done)
+
                 
             }.padding()
+                .padding(.top)
             
             VStack{
+
                 Button {
+                    descIsFocused = false
+                    nameIsFocused = false
+                    qtyIsFocused = false
+                    
                     viewModel.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
                     
                     infoSB(title: "Edited")
                     
-                    presentationMode.wrappedValue.dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    
+                        
+                    
                 } label: {
                     Text("Save").buttonStyle()
                 }.buttonStyle(.plain)

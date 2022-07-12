@@ -22,7 +22,8 @@ struct RoomInviteView: View {
     @State private var fullname = ""
     @Environment (\.presentationMode) var presentationMode
     
-    @FocusStateLegacy var focusedFieldInvite: FormFieldsInvite?
+    @FocusState private var emailFocus: Bool
+    @FocusState private var messageFocus: Bool
     
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
@@ -44,15 +45,26 @@ struct RoomInviteView: View {
             
             VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                    .focusedLegacy($focusedFieldInvite, equals: .email)
+                    .focused($emailFocus)
+                    .onSubmit {
+                        messageFocus = true
+                    }
+                    .submitLabel(.next)
+
                 
                 CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
-                    .focusedLegacy($focusedFieldInvite, equals: .message)
+                    .focused($messageFocus)
+                    .onSubmit {
+                        messageFocus = false
+                    }
+                    .submitLabel(.done)
                 
             }.padding()
             
 
             Button {
+                messageFocus = false
+                
                 viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
                 
                 fetchDeviceTokenFromEmail(email: email) { token in

@@ -14,24 +14,41 @@ struct ItemCreateView: View {
     @State var desc: String
 
     @Binding var roomData: Room
+    @FocusState private var nameFocus: Bool
+    @FocusState private var qtyFocus: Bool
+    @FocusState private var descFocus: Bool
     
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    @FocusStateLegacy var focusedField: FormFieldsCreate?
+    
     
     var body: some View {
         VStack {
             Image("addItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             VStack {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
-                    .focusedLegacy($focusedField, equals: .name)
+                    .focused($nameFocus)
+                    .onSubmit {
+                        qtyFocus = true
+                    }
+                    .submitLabel(.next)
+
                 
                 CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()
-                    .focusedLegacy($focusedField, equals: .quantity)
+                    .focused($qtyFocus)
+                    .onSubmit {
+                        descFocus = true
+                    }
+                    .submitLabel(.next)
                 
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
-                    .focusedLegacy($focusedField, equals: .description)
+                    .focused($descFocus)
+                    .onSubmit {
+                        descFocus = false
+                    }
+                    .submitLabel(.done)
+
                 
             }
             

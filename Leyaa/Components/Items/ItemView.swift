@@ -52,6 +52,7 @@ struct ItemView: View {
 
                         VStack{
                             Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .leading)
+                            
                            
                             HStack{
                                 Text(item.name.capitalized).font(.headline).foregroundColor(.white).fontWeight(.bold)
@@ -77,7 +78,7 @@ struct ItemView: View {
                 }
                 .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
                 .background(Color("MediumBlue"))
-                .onLongPressGesture(perform: {
+                .onLongPressGesture(minimumDuration: minLPD ,perform: {
                     lastDeleted.append(item)
                     withAnimation (.spring()) {
                         isShowing.toggle()
@@ -86,10 +87,6 @@ struct ItemView: View {
                     DispatchQueue.main.async {
                         viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
                     }
-                    
-                    
-                    
-   
                 })
                 .onTapGesture {
                         withAnimation(.spring()) {

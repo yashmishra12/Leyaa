@@ -51,10 +51,10 @@ struct RoomJoinRequestView: View {
             }
            
         }
+        .navigationViewStyle(.stack)
         .onChange(of: scenePhase) { newPhase in
                         if newPhase == .active {
-                            let imagePicker: [String] = ["relax1", "relax2", "relax3", "relax4"]
-                            relaxedPhoto = imagePicker.randomElement() ?? "relax1"
+                            relaxedPhoto = relaxPic.randomElement() ?? "relax1"
                         }
         }
     }

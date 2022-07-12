@@ -27,7 +27,8 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var currentNonce: String?
 
-    @FocusStateLegacy var focusedFieldLogin: RegistrationFormFields?
+    @FocusState private var emailFocus: Bool
+    @FocusState private var passFocus: Bool
     
     var body: some View {
         
@@ -50,14 +51,23 @@ struct LoginView: View {
                     VStack(spacing: 40) {
                         
                         CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
-                            .focusedLegacy($focusedFieldLogin, equals: .email)
+                            .focused($emailFocus)
+                            .onSubmit {
+                                passFocus = true
+                            }
+                            .submitLabel(.next)
+                            
                         
                         
                         CustomInputField(imageName: "key",
                                          placeholderText: "Password",
                                          isSecureField: true,
                                          text: $password)
-                        .focusedLegacy($focusedFieldLogin, equals: .password)
+                        .focused($passFocus)
+                        .onSubmit {
+                            passFocus = false
+                        }
+                        .submitLabel(.done)
                         
                     }
                     .onTapGesture {
@@ -238,7 +248,9 @@ struct LoginView: View {
             }
                 .navigationBarHidden(true)
                 
-        }.navigationBarBackButtonHidden(true)
+        }
+        .navigationViewStyle(.stack)
+        .navigationBarBackButtonHidden(true)
            
     }
  

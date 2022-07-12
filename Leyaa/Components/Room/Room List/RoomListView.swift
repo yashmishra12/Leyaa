@@ -16,37 +16,65 @@ struct RoomListView: View {
     
 
     var body: some View {
-        
+       
         
         ZStack {
+           
+
             NavigationView {
+                
                 ScrollView {
-                    VStack{
+                    
+                    if myRoom.count>0 {
+                        
                         VStack{
-                            ForEach($myRoom) { room in
-                                NavigationLink(destination: RoomView(roomData: room, recentDeletedItems: [])) {
-                                    RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
-                                }.buttonStyle(.plain)
+                            VStack{
+                                ForEach($myRoom) { room in
+                                    NavigationLink(destination: RoomView(roomData: room, recentDeletedItems: [])) {
+                                        RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
+                                    }.buttonStyle(.plain)
+                                }
+                                
+                                
+                                Spacer()
+                                
+                                
+                 
+                                
                             }
-                            
-                            
-                            Spacer()
-                            
-                            
-                            VStack {
-                                NavigationLink {
-                                    RoomCreateView()
-                                } label: {
-                                    Text("Create Room").buttonStyle()
-                                }                                  .buttonStyle(.plain)
-                            }.padding(.vertical, 30)
-                            
                         }
+                     }
+                    else {
+                        
+                        Image("noRoom").resizable().aspectRatio(contentMode: .fit)
                     }
                 }
+                
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        
+                        
+                        NavigationLink {
+                            RoomCreateView().hideKeyboardWhenTappedAround()
+                        } label: {
+                           
+                            ZStack {
+                                Image(systemName: "house.fill").imageScale(.large)
+                                Image(systemName: "plus.circle.fill").imageScale(.small).offset(x: 16, y: 10)
+                            }
+                                .padding(.horizontal, 10)
+                        }.buttonStyle(.plain)
+                        
+                
+                    
+
+                    }
+                })
                     .navigationTitle("Rooms")
                 
-            }.navigationBarBackButtonHidden(true)
+            }
+            .navigationViewStyle(.stack)
+            .navigationBarBackButtonHidden(true)
         }
         
     }

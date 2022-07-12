@@ -27,6 +27,9 @@ struct ItemSearchView: View {
                         Button {
                             viewModel.addItem(item: ["id":UUID().uuidString, "name": item, "desc":"", "qty": ""],
                                               roomID: room.id ?? "")
+                            
+
+                            successSBItemAdded(title: "Item Added")
                         } label: {
                             Text(item)
                         }
@@ -44,11 +47,11 @@ struct ItemSearchView: View {
                     if recentlyDeleted.count>0 {
                         VStack{
                             Divider()
-                            Text("Undo Delete an Item").font(.title2).foregroundColor(.blue).padding(.top)
+                            Text("Undo Delete").font(.title2).foregroundColor(.blue).padding(.top)
                             HStack {
                                 ForEach(recentlyDeleted.suffix(5), id: \.self) { item in
                                     VStack {
-                                        Image(item.name.sanitiseItemName()).resizable().frame(width: 50, height: 50).shadow(color: .white, radius: 1)
+                                        Image(item.name.sanitiseItemName()).resizable().frame(width: 50, height: 50).shadow(color: .blue, radius: 1)
                                         Text(item.name).font(.footnote).padding(.bottom, 10)
                                     }
                                         .onTapGesture {
