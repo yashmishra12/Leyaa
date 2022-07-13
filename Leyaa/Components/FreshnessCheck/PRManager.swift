@@ -27,7 +27,7 @@ class PRManager: ObservableObject {
             UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
 
                 for request in requests {
-                    if request.content.title == "Freshness Check." && request.content.subtitle == self.roomName {
+                    if request.content.title == "Freshness Check." {
                         var pr = PendingReminder(id: request.identifier,
                                                  body: request.content.body,
                                                  subtitle: request.content.subtitle,
