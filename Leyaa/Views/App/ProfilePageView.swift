@@ -90,7 +90,7 @@ struct ProfilePageView: View {
                             Button {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
                                 
-                               successNB(title: "Avatar Changed")
+                               successSB(title: "Avatar Changed")
                                 
                             } label: {
                                 Text("Save").buttonStyle()

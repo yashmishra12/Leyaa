@@ -16,24 +16,46 @@ struct PRCard: View {
     
     
     var body: some View {
-        VStack {
-           
+        ZStack {
+        
+            
+            VStack{
+                
             if isDeleted == false {
                 Text(roomName).font(.callout).fontWeight(.semibold)
                 Text(itemName).font(.body).fontWeight(.semibold).padding()
                 Text(timeStamp).font(.caption)
-                Text("Long Press to Delete").font(.caption).fontWeight(.ultraLight).padding()
             }
+
             else {
                 Text("Deleted").font(.title2).foregroundColor(.white)
             }
-            
-        }.frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
-            .background(isDeleted == false ? Color("MediumBlue") : Color("reject"))
-            .onLongPressGesture {
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.id])
-                isDeleted = true
+                
             }
+            
+            if isDeleted == false {
+               
+                VStack{
+                    HStack{
+                        Spacer()
+                        Button {
+                            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.id])
+                            isDeleted = true
+                        } label: {
+                            Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).padding()
+                        }.buttonStyle(.plain)
+                    }
+                    Spacer()
+                }
+                
+            }
+        
+
+        }
+        .foregroundColor(.white)
+        .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
+        .background(isDeleted == false ? Color("MediumBlue") : Color("reject"))
+        
     }
 }
 

@@ -23,7 +23,7 @@ struct ItemEditView: View {
     @State var desc: String
     @State var qty: String
     @State var roomID: String
-    @Binding var offset: CGSize
+    
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -73,22 +73,17 @@ struct ItemEditView: View {
                     
                     infoSB(title: "Edited")
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    
-                        
-                    
+                    presentationMode.wrappedValue.dismiss()
+                
                 } label: {
                     Text("Save").buttonStyle()
                 }.buttonStyle(.plain)
             }
             
-        }.onAppear {
-            offset.width = 0
         }
-        
-       
+        .onAppear {
+            nameIsFocused = true
+        }
 
     }
 }

@@ -35,12 +35,12 @@ struct RoomView: View {
             
             VStack {
                 if roomData.newItems.count==0 && isShowingSideMenu==false {
-
-                    Image("slideRight").resizable().frame(width: 102, height: 80).cornerRadius(15)
-                    
-                    Text("Swipe Right to Edit.\n\nLong Press to Delete.")
-                        .multilineTextAlignment(.center)
-                        .padding()
+//
+//                    Image("slideRight").resizable().frame(width: 102, height: 80).cornerRadius(15)
+//
+//                    Text("Swipe Right to Edit.\n\nLong Press to Delete.")
+//                        .multilineTextAlignment(.center)
+//                        .padding()
                 }
                 
                 

@@ -74,7 +74,7 @@ struct SplitBillView: View {
                 ToolbarItem {
                     Button {
                         notifyAboutNewBill()
-                        successNB(title: "New Bill Notification Sent to all")
+                        successSB(title: "New Bill Notification Sent to all")
                         
                     } label: {
                         Image(systemName: "hand.wave.fill").imageScale(.large)

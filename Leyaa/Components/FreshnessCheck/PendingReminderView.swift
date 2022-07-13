@@ -17,17 +17,14 @@ struct PendingReminderView: View {
     var body: some View {
         ZStack {
             VStack {
-                ScrollViewReader { proxy in
                     ScrollView {
                         
                         if prManager.prArray.isEmpty == false {
                         LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                             
                             ForEach(prManager.prArray, id: \.id) { item in
-//                                VStack{
-                                    PRCard(itemName: item.body, roomName: item.subtitle, timeStamp: item.timestamp, id: item.id)
 
-//                                    }.id(item.id)
+                                    PRCard(itemName: item.body, roomName: item.subtitle, timeStamp: item.timestamp, id: item.id)
                                 }
                             }
                         }
@@ -46,7 +43,7 @@ struct PendingReminderView: View {
                         }
                     }
                     
-                }
+                
             }.onAppear {
                 prManager.roomName = roomName
                 prManager.updateArray()

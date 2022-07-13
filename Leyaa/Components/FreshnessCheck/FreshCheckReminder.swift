@@ -49,6 +49,7 @@ struct FreshCheckReminder: View {
                     
                     Button {
                         CalendarTriggeredNotification(givenDate: selectedDate, roomName: roomName, itemName: itemName)
+                        itemName = ""
                         
                     } label: {
                         Text("Save").buttonStyle()
