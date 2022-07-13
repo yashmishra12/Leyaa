@@ -84,26 +84,7 @@ struct SideMenuView: View {
                             }
                             
                             
-                            // Fresh Check
-                            HStack {
-                                NavigationLink {
-                                    FreshCheckReminder(roomName: roomData.title).hideKeyboardWhenTappedAround()
-                                }
-                            label: {
-                                    HStack {
-                                        
-                                        Image(systemName: "leaf.fill")
-                                        
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                        
-                                        Text("Freshness Reminder").padding()
-                                    }
-                                }
-                            .isDetailLink(false)
-                            .buttonStyle(.plain)
-                                Spacer()
-                            }
+
                             
                             
                             // Bill Split
@@ -254,7 +235,8 @@ struct SideMenuView: View {
                             HStack {
                                 NavigationLink {
                                     
-                                    RoomNameEditView(name: roomData.title, roomData: roomData).hideKeyboardWhenTappedAround()
+                                    RoomNameEditView(name: roomData.title, roomData: roomData, isShowingSideMenu: $isShowing)
+                                        .hideKeyboardWhenTappedAround()
                                     
                                 } label: {
                                     HStack {
@@ -350,7 +332,9 @@ struct SideMenuView: View {
         }
         
         .navigationTitle("Menu")
-        .navigationBarTitleDisplayMode(.large)
+        
+        .navigationBarTitleDisplayMode(.inline)
+        
         .navigationBarBackButtonHidden(true)
         
     }

@@ -12,6 +12,8 @@ struct RoomNameEditView: View {
     @State var name: String
     @State var roomData: Room
     @EnvironmentObject var viewModel: AuthViewModel
+    @FocusState var nameIsFocused: Bool
+    @Binding var isShowingSideMenu: Bool
     
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
@@ -19,9 +21,14 @@ struct RoomNameEditView: View {
             Image("editItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -20)
             
             VStack (spacing: 20) {
-                CustomInputField(imageName: "circle.hexagonpath", placeholderText: "New Name", isSecureField: false, text: $name)
+                CustomInputField(imageName: "circle.hexagonpath",
+                                 placeholderText: "New Name",
+                                 isSecureField: false,
+                                 text: $name)
+                    .focused($nameIsFocused)
                 
             }.padding()
+               
             
             VStack{
                 Button {
@@ -29,11 +36,17 @@ struct RoomNameEditView: View {
                    
                     successSB(title: "Name Changed")
                     
+                    isShowingSideMenu.toggle()
+                    
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save").buttonStyle()
                 }.buttonStyle(.plain)
                 
+            }.onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.8) {
+                    self.nameIsFocused = true
+                }
             }
             
         }

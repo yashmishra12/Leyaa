@@ -17,6 +17,7 @@ struct MessageField: View {
         HStack {
             CustomTextField(placeholder: Text("Type..."),
                             text: $message)
+
             .disableAutocorrection(true)
             
             Button {
@@ -31,7 +32,7 @@ struct MessageField: View {
                 Image(systemName: "paperplane.fill")
                     .foregroundColor(.white)
                     .padding(10)
-                    .background(Color.black)
+                    .background(Color("planeColor"))
                     .cornerRadius(50)
             }.buttonStyle(.plain)
 
@@ -47,11 +48,7 @@ struct MessageField: View {
     }
 }
 
-//struct MessageField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MessageField(senderID: senderID ).environmentObject(MessageManager())
-//    }
-//}
+
 
 struct CustomTextField: View {
     var placeholder: Text
@@ -65,8 +62,8 @@ struct CustomTextField: View {
                 placeholder.opacity(0.5)
             }
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
-                .foregroundColor(.white)
-                .accentColor(.white)
+                .foregroundColor(Color("sendMsgFont"))
+                .accentColor(Color("sendMsgFont"))
         }
     }
 }

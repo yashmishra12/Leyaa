@@ -65,7 +65,12 @@ struct MessageBubbleView: View {
             }.frame(width: screenWidth, alignment: message.senderID == viewModel.currentUser?.id ? .trailing : .leading)
                 .onAppear {
                     viewModel.getProfileAvatar(userID: message.senderID) { res in avatar = res }
-                    viewModel.getProfileName(userID: message.senderID) { res in name = res  }
+                    if message.senderID == viewModel.currentUser?.id {
+                        name = "You"
+                    }
+                    else {
+                        viewModel.getProfileName(userID: message.senderID) { res in name = res  }
+                    }
             }
         
             

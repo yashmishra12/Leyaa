@@ -24,7 +24,10 @@ struct PendingReminderView: View {
                             
                             ForEach(prManager.prArray, id: \.id) { item in
 
-                                    PRCard(itemName: item.body, roomName: item.subtitle, timeStamp: item.timestamp, id: item.id)
+                                    PRCard(itemName: item.body,
+                                           timeStamp: item.timestamp,
+                                           id: item.id,
+                                           prManager: prManager)
                                 }
                             }
                         }
@@ -45,9 +48,7 @@ struct PendingReminderView: View {
                     
                 
             }.onAppear {
-                prManager.roomName = roomName
-                prManager.updateArray()
-
+                prManager.updateArray(isDeleting: false)
             }
 
         }
