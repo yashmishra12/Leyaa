@@ -22,7 +22,7 @@ let minLPD = 0.2
 
 var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
 
-let relaxPic: [String] = ["relax1", "relax2", "relax3", "relax4"]
+let relaxPic: [String] = ["relax1", "relax2", "relax3", "relax4", "relax5", "relax6", "relax7"]
 
 
 var fiveColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]

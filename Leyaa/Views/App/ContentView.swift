@@ -127,7 +127,7 @@ struct WalkThroughScreen: View {
                 
                 ScreenView(image: "messageWall",
                            title: "Talk to Friends",
-                           detail: "Post on the Message Wall and hit the 👋 icon to notify.\n \n Long press your avatar to delete your message.").transition(.identity)
+                           detail: "Post on the Message Wall and notify all.").transition(.identity)
             }
             
             if currentPage == 5 {
