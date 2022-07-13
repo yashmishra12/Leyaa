@@ -27,7 +27,7 @@ import SwiftUI
         
         for member in roomData.members where member != viewModel.currentUser?.id {
             fetchDeviceToken(withUid: member) { token in
-                    sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") is doing laundry.")
+                    sendPayloadPush(token: token, roomName: roomName, body: "\(userName ?? "") is going to do laundry.")
             }
         }
     }
@@ -38,7 +38,7 @@ import SwiftUI
         for member in roomData.members where member != viewModel.currentUser?.id {
             
             fetchDeviceToken(withUid: member) { token in
-                sendPayloadPush(token: token, roomName: roomName, body: "\"Fridge is full. Please look into it.")
+                sendPayloadPush(token: token, roomName: roomName, body: "Fridge is full. Please look into it.")
             }
         }
         

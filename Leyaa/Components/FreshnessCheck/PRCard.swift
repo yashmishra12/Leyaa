@@ -9,38 +9,34 @@ import SwiftUI
 
 struct PRCard: View {
     @State var itemName: String
-    @State var roomName: String
     @State var timeStamp: String
     @State var id: String
-    @State private var isDeleted: Bool = false
-    
+    @ObservedObject var prManager: PRManager
     
     var body: some View {
         ZStack {
         
             
-            VStack{
+            VStack (spacing: 0){
                 
-            if isDeleted == false {
-                Text(roomName).font(.callout).fontWeight(.semibold)
-                Text(itemName).font(.body).fontWeight(.semibold).padding()
-                Text(timeStamp).font(.caption)
-            }
 
-            else {
-                Text("Deleted").font(.title2).foregroundColor(.white)
-            }
+                Image(itemName.sanitiseItemName()).resizable().frame(width: 60, height: 60)
+                Text(itemName.capitalized).font(.body).fontWeight(.semibold).padding()
+                Text(timeStamp).font(.caption)
+
                 
             }
             
-            if isDeleted == false {
-               
+
+               // Delete Button
                 VStack{
                     HStack{
                         Spacer()
                         Button {
                             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.id])
-                            isDeleted = true
+                            prManager.updateArray(isDeleting: true)
+                            prManager.prArray = prManager.prArray.filter { $0.id != self.id }
+
                         } label: {
                             Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).padding()
                         }.buttonStyle(.plain)
@@ -48,19 +44,19 @@ struct PRCard: View {
                     Spacer()
                 }
                 
-            }
+            
         
 
         }
         .foregroundColor(.white)
-        .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 195, idealHeight: 195, maxHeight: 195 )
-        .background(isDeleted == false ? Color("MediumBlue") : Color("reject"))
+        .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 150, idealHeight: 150, maxHeight: 200 )
+        .background(Color("MediumBlue"))
         
     }
 }
 
 struct PRCard_Previews: PreviewProvider {
     static var previews: some View {
-        PRCard(itemName: "Coffee", roomName: "Room name", timeStamp: "Jul 12, 2022 at 12:23 PM", id: "asdasd")
+        PRCard(itemName: "Coffee", timeStamp: "Jul 12, 2022 at 12:23 PM", id: "asdasd", prManager: PRManager())
     }
 }
