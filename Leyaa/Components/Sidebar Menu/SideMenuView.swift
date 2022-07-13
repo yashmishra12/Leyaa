@@ -164,7 +164,8 @@ struct SideMenuView: View {
                                                 show.toggle()
                                             }
                                          
-                                            successNB(title: "Notification Sent")
+                                            successSB(title: "Notification Sent")
+                                            
                                             
                                         } label: {
                                             HStack {
@@ -187,7 +188,7 @@ struct SideMenuView: View {
                                                 show.toggle()
                                             }
                                            
-                                            successNB(title: "Notification Sent")
+                                            successSB(title: "Notification Sent")
                                             
                                         } label: {
                                             HStack {
@@ -209,7 +210,7 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            successNB(title: "Notification Sent")
+                                            successSB(title: "Notification Sent")
                                         } label: {
                                             HStack {
                                                 
@@ -230,7 +231,7 @@ struct SideMenuView: View {
                                             withAnimation(.spring()) {
                                                 show.toggle()
                                             }
-                                            successNB(title: "Notification Sent")
+                                            successSB(title: "Notification Sent")
                                         } label: {
                                             HStack {
                                                 

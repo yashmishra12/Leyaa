@@ -92,7 +92,7 @@ struct DetailedBillView: View {
                                         sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") has paid pending bills.")
                                     }
                                     
-                                    successNB(title: "Notification Sent")
+                                    successSB(title: "Notification Sent")
                                 } label: {
                                     HStack{
                                         Image(systemName: "bell.square.fill").imageScale(.large)
@@ -146,7 +146,7 @@ struct DetailedBillView: View {
                                     sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") requested for bill payment.")
                                 }
                                 
-                                successNB(title: "Notification Sent")
+                                successSB(title: "Notification Sent")
                                 
                             } label: {
                                 HStack{

@@ -73,7 +73,7 @@ struct RoomInviteView: View {
                 
                 presentationMode.wrappedValue.dismiss()
                 
-               successNB(title: "Invitation Sent")
+               successSB(title: "Invitation Sent")
                 
             } label: {
                 Text("Send Invite").buttonStyle()

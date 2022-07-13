@@ -76,7 +76,7 @@ struct RoomChatView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button {
                     inviteAllForChat()
-                    successNB(title: "New Post Notification Sent To All")
+                    successSB(title: "New Post Notification Sent To All")
                     
                 } label: {
                     HStack {
