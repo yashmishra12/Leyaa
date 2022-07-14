@@ -7,7 +7,6 @@
 
 import Foundation
 import Firebase
-import FirebaseService
 import FirebaseFirestoreSwift
 import UserNotifications
 

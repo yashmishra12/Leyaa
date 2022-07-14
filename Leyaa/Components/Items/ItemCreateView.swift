@@ -13,6 +13,8 @@ struct ItemCreateView: View {
     @State var qty: String 
     @State var desc: String
 
+    let itemManager = ItemManager()
+    
     @Binding var roomData: Room
     @FocusState private var nameFocus: Bool
     @FocusState private var qtyFocus: Bool
@@ -60,7 +62,7 @@ struct ItemCreateView: View {
             
             Button {
                 let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
-                viewModel.addItem(item: item, roomID: roomData.id ?? "")
+                itemManager.addItem(item: item, roomID: roomData.id ?? "")
                 
                 name = ""
                 qty = ""

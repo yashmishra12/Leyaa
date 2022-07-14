@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import FirebaseService
 import CryptoKit
 import AuthenticationServices
 import FirebaseAuth

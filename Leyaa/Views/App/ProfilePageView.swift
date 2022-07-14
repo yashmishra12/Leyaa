@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import FirebaseService
 import NotificationBannerSwift
 
 struct ProfilePageView: View {

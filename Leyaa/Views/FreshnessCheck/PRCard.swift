@@ -39,6 +39,7 @@ struct PRCard: View {
 
                         } label: {
                             Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).padding()
+                                .foregroundColor(Color("cardEdit"))
                         }.buttonStyle(.plain)
                     }
                     Spacer()

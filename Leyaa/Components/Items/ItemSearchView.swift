@@ -14,6 +14,8 @@ struct ItemSearchView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var room: Room
     
+    let itemManager = ItemManager()
+    
     var body: some View {
         ZStack {
             
@@ -25,7 +27,7 @@ struct ItemSearchView: View {
                 List {
                     ForEach(searchResults, id:\.self) { item in
                         Button {
-                            viewModel.addItem(item: ["id":UUID().uuidString, "name": item, "desc":"", "qty": ""],
+                            itemManager.addItem(item: ["id":UUID().uuidString, "name": item, "desc":"", "qty": ""],
                                               roomID: room.id ?? "")
                             
 
@@ -62,7 +64,7 @@ struct ItemSearchView: View {
                                                 "qty": item.qty
                                             ]
                                             
-                                            viewModel.addItem(item: newItem, roomID: room.id ?? "")
+                                            itemManager.addItem(item: newItem, roomID: room.id ?? "")
                                             recentlyDeleted = recentlyDeleted.filter { $0 != item }
                                         }
                                 }

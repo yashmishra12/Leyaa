@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import FirebaseService
 import FirebaseFirestoreSwift
 import NotificationBannerSwift
 

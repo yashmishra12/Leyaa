@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
-import FirebaseService
+
 
 class MessageManager: ObservableObject {
     @Published private(set) var messages: [Message] = []

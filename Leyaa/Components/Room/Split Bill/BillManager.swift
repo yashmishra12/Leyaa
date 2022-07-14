@@ -10,7 +10,6 @@ import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import SwiftUI
-import FirebaseService
 
 class BillManager: ObservableObject {
 

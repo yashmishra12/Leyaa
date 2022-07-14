@@ -11,9 +11,6 @@ import SwiftUI
 
 struct ItemView: View {
     
-    
-    
-    
     @Binding var lastDeleted: [Item]
     
     @State var item: Item
@@ -21,21 +18,15 @@ struct ItemView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     let hapticFeedback = UINotificationFeedbackGenerator()
-    
+    let itemManager = ItemManager()
     var body: some View {
         
         
         ZStack
         {
             VStack{
-            
-
                 HStack {
-                    
                     Image(item.name.sanitiseItemName()).resizable().frame(width: 100, height: 100, alignment: .center)
-                    
-                    
-           
                 }
                 
                 
@@ -72,7 +63,7 @@ struct ItemView: View {
                         
                     }
                     label: {
-                            Image(systemName: "pencil.circle").resizable().frame(width: 20, height: 20).foregroundColor(.white)
+                            Image(systemName: "pencil.circle").resizable().frame(width: 20, height: 20).foregroundColor(Color("cardEdit"))
                         }.buttonStyle(.plain)
                         .padding()
                     
@@ -83,10 +74,10 @@ struct ItemView: View {
                         
                         hapticFeedback.notificationOccurred(.success)
                         
-                        viewModel.deleteItem(del: item, roomID: roomData.id ?? "")
+                        itemManager.deleteItem(del: item, roomID: roomData.id ?? "")
                         
                     } label: {
-                        Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).foregroundColor(.white)
+                        Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).foregroundColor(Color("cardEdit"))
                     }.buttonStyle(.plain)
                         .padding()
                 }

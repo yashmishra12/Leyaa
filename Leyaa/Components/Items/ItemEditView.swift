@@ -23,7 +23,7 @@ struct ItemEditView: View {
     @State var desc: String
     @State var qty: String
     @State var roomID: String
-    
+    let itemManager = ItemManager()
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -69,7 +69,7 @@ struct ItemEditView: View {
                     nameIsFocused = false
                     qtyIsFocused = false
                     
-                    viewModel.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
+                    itemManager.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
                     
                     infoSB(title: "Edited")
                     
