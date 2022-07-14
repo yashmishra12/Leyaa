@@ -10,12 +10,13 @@ import NotificationBannerSwift
 
 struct FreshCheckReminder: View {
     @State private var itemName: String = ""
-    @State var roomName: String
     
     @State private var isShowingCal: Bool = false
     @State private var selectedDate = Date()
     @State private var notificationPermitted: Bool = false
 
+    @StateObject var prManager = PRManager()
+    @FocusState private var itemNameIsFocused: Bool
     
     func checkPermission() {
         let center = UNUserNotificationCenter.current()
@@ -34,12 +35,14 @@ struct FreshCheckReminder: View {
     var body: some View {
 
         
-        VStack{
-            Image("reminder").resizable().aspectRatio(contentMode: .fit)
-
+    VStack{
             
             VStack{
-                CustomInputField(imageName: "hourglass", placeholderText: "Item Name", isSecureField: false, text: $itemName)
+                Text("Set Reminder for Item Expiry").font(.callout).fontWeight(.medium).multilineTextAlignment(.center)
+                
+                CustomInputField(imageName: "leaf.fill", placeholderText: "Item Name", isSecureField: false, text: $itemName)
+                    .submitLabel(.done)
+                    .focused($itemNameIsFocused)
                     .padding()
 
                 
@@ -48,7 +51,10 @@ struct FreshCheckReminder: View {
                     .padding(.bottom)
                     
                     Button {
-                        CalendarTriggeredNotification(givenDate: selectedDate, roomName: roomName, itemName: itemName)
+                        CalendarTriggeredNotification(givenDate: selectedDate, itemName: itemName)
+                        itemName = ""
+                        prManager.updateArray(isDeleting: false)
+                        selectedDate = Date()
                         
                     } label: {
                         Text("Save").buttonStyle()
@@ -62,28 +68,56 @@ struct FreshCheckReminder: View {
  
             }.padding()
             
-            Spacer()
+            Divider().padding(.bottom)
+            
+            VStack {
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        
+                        LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
+                            
+                            ForEach(prManager.prArray, id: \.id) { item in
 
+                                VStack {
+                                    PRCard(itemName: item.body,
+                                           timeStamp: item.timestamp,
+                                           id: item.id,
+                                           prManager: prManager)
+                                    .padding(.bottom, -3)
+                                    }.id(item.id)
+                                }
+                            }
+                        }
+                    .onChange(of: prManager.lastItemID) { id in
+                        withAnimation(.easeInOut) { proxy.scrollTo(id, anchor: .bottom) }
+                    }
+                    .onAppear(perform: {
+                        withAnimation(.easeInOut) {
+                            proxy.scrollTo( prManager.lastItemID, anchor: .bottom)
+                        }
+                    })
+                }
+  
+                    }
+   
         }
         .onAppear(perform: {
             checkPermission()
+            prManager.updateArray(isDeleting: false)
         })
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            NavigationLink {
-                PendingReminderView(roomName: roomName)
-            } label: {
-                Image(systemName: "square.and.pencil").imageScale(.large)
-            }.buttonStyle(.plain)
+        .padding(.bottom)
+            
+            
 
-        }
+        } //END of Body
+   
     }
-}
+
 
 
 struct FreshCheckReminder_Previews: PreviewProvider {
     static var previews: some View {
-        FreshCheckReminder(roomName: "Avent Ferry")
+        FreshCheckReminder()
     }
 }
 

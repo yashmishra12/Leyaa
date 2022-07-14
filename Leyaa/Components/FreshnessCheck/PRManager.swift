@@ -12,22 +12,15 @@ import UserNotifications
 class PRManager: ObservableObject {
         
     @Published var prArray: [PendingReminder] = []
-    @Published var roomName: String = ""
+    @Published var lastItemID: String = ""
     
-    init(name: String? = nil) {
-        if let name = name {
-            roomName = name
-        } else {
-            roomName = ""
-        }
-    }
-    
-    func updateArray() {
+    func updateArray(isDeleting: Bool) {
+        prArray = []
         Task { @MainActor in
             UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
 
                 for request in requests {
-                    if request.content.title == "Freshness Check." && request.content.subtitle == self.roomName {
+                    if request.content.title == "Freshness Check" {
                         var pr = PendingReminder(id: request.identifier,
                                                  body: request.content.body,
                                                  subtitle: request.content.subtitle,
@@ -37,18 +30,20 @@ class PRManager: ObservableObject {
                         if let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian),
                            let date = gregorianCalendar.date(from: givenDate as! DateComponents) {
                             let dateFormatter = DateFormatter()
-                            
+
                             dateFormatter.dateStyle = .medium
                             dateFormatter.timeStyle = .short
-                            
-                            
+
+
                             let formattedDate = dateFormatter.string(from: date)
-                            
-                           
+
                             
                             DispatchQueue.main.async {
                                 pr.timestamp = formattedDate
                                 self.prArray.append(pr)
+                                if isDeleting == false {
+                                    self.lastItemID = pr.id
+                                }
                             }
                             
                                 
@@ -62,7 +57,15 @@ class PRManager: ObservableObject {
         }
            
         }
+        
+    
     }
+    
+    
+    
+    
+   
+    
     
 
 }

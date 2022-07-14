@@ -39,7 +39,7 @@ struct ContentView: View {
                         LoginView().environmentObject(viewModel)
                            
                     } else {
-                        TabView(selection: handler){
+                        TabView(selection: handler) {
                             RoomListView(myRoom: $viewModel.rooms).id(roomList)
                                 .onChange(of: tappedTwice, perform: { tappedTwice in
                                                                            guard tappedTwice else { return }
@@ -54,19 +54,21 @@ struct ContentView: View {
                                .tag(1)
                                
                              
-                           
+                            FreshCheckReminder().hideKeyboardWhenTappedAround()
+                                .tabItem {Label("Reminder", systemImage: "hourglass")}
+                                .tag(2)
                             
                             
                             RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {
                                 Label("Invitation", systemImage: "bell.square.fill")
                             }
                             .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
-                            .tag(2)
+                            .tag(3)
                             
                             ProfilePageView(selectedAvatar: defaultAvatar).tabItem {
                                 Label("Profile", systemImage: "person.crop.square.fill")
                             }
-                            .tag(3)
+                            .tag(4)
 
                         }
                         
@@ -127,7 +129,7 @@ struct WalkThroughScreen: View {
                 
                 ScreenView(image: "messageWall",
                            title: "Talk to Friends",
-                           detail: "Post on the Message Wall and hit the 👋 icon to notify.\n \n Long press your avatar to delete your message.").transition(.identity)
+                           detail: "Post on the Message Wall and notify all.").transition(.identity)
             }
             
             if currentPage == 5 {

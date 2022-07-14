@@ -63,10 +63,9 @@ func fetchDeviceTokenFromEmail(email: String, completion: @escaping(String) -> V
 
 // Freshness Reminder
 
-func CalendarTriggeredNotification(givenDate: Date, roomName: String, itemName: String) {
+func CalendarTriggeredNotification(givenDate: Date, itemName: String) {
     let content = UNMutableNotificationContent()
-    content.title = "Freshness Check."
-    content.subtitle = "\(roomName)"
+    content.title = "Freshness Check"
     
     content.body = "\(itemName)"
     
@@ -84,37 +83,6 @@ func CalendarTriggeredNotification(givenDate: Date, roomName: String, itemName: 
     successSB(title: "Reminder Saved")
 }
 
-func printLocal() {
-    
-    UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-        for request in requests {
-            print(request.identifier)
-            print(request.content.title)
-            print(request.content.body)
-            print(request.content.subtitle)
-            
-            let givenDate = request.trigger?.value(forKey: "dateComponents")
-            if let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian),
-               let date = gregorianCalendar.date(from: givenDate as! DateComponents) {
-                let dateFormatter = DateFormatter()
-                
-                dateFormatter.dateStyle = .medium
-                dateFormatter.timeStyle = .short
-                
-                
-                let formattedDate = dateFormatter.string(from: date)
-                print(formattedDate)
-            }
-            
-        }
-    }
-    
-//    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["A2B23FA0-4640-48A6-B4E9-B712BBCF90F5"])
-    
-}
 
-extension Date {
-    init(date: NSDate) {
-        self.init(timeIntervalSinceReferenceDate: date.timeIntervalSinceReferenceDate)
-    }
-}
+
+

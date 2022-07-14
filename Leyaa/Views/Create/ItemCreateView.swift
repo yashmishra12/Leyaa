@@ -21,11 +21,16 @@ struct ItemCreateView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
+    let hapticFeedback = UINotificationFeedbackGenerator()
     
     
     var body: some View {
         VStack {
-            Image("addItem").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
+            if name.isEmpty { Image("addItem").resizable().frame(width: 200, height: 200) }
+            else {
+                Image(name.sanitiseItemName()).resizable().frame(width: 200, height: 200).shadow(color: .blue, radius: 1, x: 0, y: 0)
+            }
+            
             VStack {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Item Name", isSecureField: false, text: $name).padding()
                     .focused($nameFocus)
@@ -57,7 +62,16 @@ struct ItemCreateView: View {
                 let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
                 viewModel.addItem(item: item, roomID: roomData.id ?? "")
                 
-                presentationMode.wrappedValue.dismiss()
+                name = ""
+                qty = ""
+                desc = ""
+                
+                nameFocus = true
+                
+                successSB(title: "Added")
+                
+                hapticFeedback.notificationOccurred(.success)
+                
             } label: {
                 Text("Add Item").buttonStyle()
             }.buttonStyle(.plain)

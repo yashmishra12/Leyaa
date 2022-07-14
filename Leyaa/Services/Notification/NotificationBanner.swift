@@ -8,15 +8,8 @@
 import Foundation
 import NotificationBannerSwift
 
-//MARK: - Success Notification Banner
-func successNB(title: String) {
-    let banner = NotificationBanner(title: "\(title)", style: .success)
-    banner.show()
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                banner.dismiss()
-                            }
 
-}
+
 
 //MARK: - Success Status Bar Banner
 
