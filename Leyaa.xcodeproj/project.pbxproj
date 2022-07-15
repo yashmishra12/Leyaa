@@ -51,6 +51,7 @@
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
 		CCAF4203287A2DAA00ADAE99 /* RoomNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF4202287A2DAA00ADAE99 /* RoomNameEditView.swift */; };
 		CCB3D46528812EA8000AAEAD /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB3D46428812EA8000AAEAD /* BillManager.swift */; };
+		CCB3D46728815275000AAEAD /* UserInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB3D46628815275000AAEAD /* UserInfoProvider.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -132,6 +133,7 @@
 		CCA3FA68286DA2DA0052F6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CCAF4202287A2DAA00ADAE99 /* RoomNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomNameEditView.swift; sourceTree = "<group>"; };
 		CCB3D46428812EA8000AAEAD /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
+		CCB3D46628815275000AAEAD /* UserInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoProvider.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				CCE52960287BF028005C173C /* Massage Item Name */,
 				CCE52957287BDEEB005C173C /* Notification */,
 				CCE5295A287BE74D005C173C /* Apple Login */,
+				CCB3D468288154A9000AAEAD /* User Info Provider */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -342,6 +345,14 @@
 				CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CCB3D468288154A9000AAEAD /* User Info Provider */ = {
+			isa = PBXGroup;
+			children = (
+				CCB3D46628815275000AAEAD /* UserInfoProvider.swift */,
+			);
+			path = "User Info Provider";
 			sourceTree = "<group>";
 		};
 		CCB4C39528597A3200105C5C = {
@@ -619,6 +630,7 @@
 				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
+				CCB3D46728815275000AAEAD /* UserInfoProvider.swift in Sources */,
 				CCE52962287D041F005C173C /* secretKey.swift in Sources */,
 				CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
@@ -842,7 +854,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
@@ -859,7 +871,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -877,7 +889,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Leyaa/Preview Content\"";
 				DEVELOPMENT_TEAM = HVX3RPDRJ7;
 				ENABLE_PREVIEWS = YES;
@@ -894,7 +906,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.1;
+				MARKETING_VERSION = 2.0.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";

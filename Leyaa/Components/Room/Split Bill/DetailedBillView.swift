@@ -19,7 +19,7 @@ struct DetailedBillView: View {
     @State var isShowingPay: Bool = true
     @State var memberName: String
     
-    
+    let userInfoProvider = UserInfoProvider()
     
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -88,7 +88,7 @@ struct DetailedBillView: View {
                                 
                                 //Notification Button
                                 Button {
-                                    viewModel.getDeviceToken(userID: memberID) { token in
+                                    userInfoProvider.getDeviceToken(userID: memberID) { token in
                                         sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") has paid pending bills.")
                                     }
                                     
@@ -142,7 +142,7 @@ struct DetailedBillView: View {
 
                             
                             Button {
-                                viewModel.getDeviceToken(userID: memberID) { token in
+                                userInfoProvider.getDeviceToken(userID: memberID) { token in
                                     sendPayloadPush(token: token, roomName: roomName, body: "\(viewModel.currentUser?.fullname ?? "") requested for bill payment.")
                                 }
                                 
@@ -177,7 +177,7 @@ struct DetailedBillView: View {
         .navigationTitle(memberName)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            viewModel.getProfileName(userID: memberID) { name in self.memberName = name }
+            userInfoProvider.getProfileName(userID: memberID) { name in self.memberName = name }
             billManager.updateRoomID(name: roomID)
             billManager.updateToGet(contributorID: memberID)
             billManager.updateToPay(contributorID: memberID)

@@ -16,7 +16,7 @@ struct BillContributorView: View {
     @State var name = "Default Name"
     
     @StateObject private var billManager = BillManager()
-    
+    let userInfoProvider = UserInfoProvider()
     
     var body: some View {
         VStack {
@@ -47,9 +47,8 @@ struct BillContributorView: View {
             
         }
         .onAppear(perform: {
-            viewModel.getProfileAvatar(userID: memberID) { res in self.avatar = res }
-            
-            viewModel.getProfileName(userID: memberID) { res in self.name = res }
+            userInfoProvider.getProfileAvatar(userID: memberID) { res in self.avatar = res }
+            userInfoProvider.getProfileName(userID: memberID) { res in self.name = res }
             
             
             billManager.updateRoomID(name: roomID)

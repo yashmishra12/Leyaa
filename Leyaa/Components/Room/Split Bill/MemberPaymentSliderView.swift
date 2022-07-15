@@ -23,6 +23,8 @@ struct MemberPaymentSliderView: View {
     
     var isEditing: FocusState<Bool>.Binding
     
+    let userInfoProvider = UserInfoProvider()
+    
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         
@@ -59,12 +61,12 @@ struct MemberPaymentSliderView: View {
         .padding(.horizontal, 15)
         
         .onAppear(perform: {
-            viewModel.getProfileAvatar(userID: userID) { res in self.avatar = res }
+            userInfoProvider.getProfileAvatar(userID: userID) { res in self.avatar = res }
            
             if userID == viewModel.currentUser?.id {
                 self.name = "You"
             } else {
-                viewModel.getProfileName(userID: userID) { res in self.name = res }
+                userInfoProvider.getProfileName(userID: userID) { res in self.name = res }
             }
           
         })

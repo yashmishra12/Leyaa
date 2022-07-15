@@ -13,6 +13,7 @@ struct GroupMemberInfoView: View {
     @State var name = "Default Name"
     @State var email = "Default Mail"
     private let pasteBoard = UIPasteboard.general
+    let userInfoProvider = UserInfoProvider()
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -47,9 +48,9 @@ struct GroupMemberInfoView: View {
                                 Spacer()
                             }
                         }.onAppear(perform: {
-                            viewModel.getProfileAvatar(userID: userID) { res in self.avatar = res }
-                            viewModel.getProfileName(userID: userID) { res in self.name = res }
-                            viewModel.getProfileEmail(userID: userID) { res in self.email = res }
+                            userInfoProvider.getProfileAvatar(userID: userID) { res in self.avatar = res }
+                            userInfoProvider.getProfileName(userID: userID) { res in self.name = res }
+                            userInfoProvider.getProfileEmail(userID: userID) { res in self.email = res }
                         })
                     }
 
