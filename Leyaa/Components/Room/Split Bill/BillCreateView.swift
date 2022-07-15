@@ -34,7 +34,7 @@ struct BillCreateView: View {
     @FocusState private var isEditing: Bool
     @Environment(\.presentationMode) var presentationMode
     
-    
+    let billManager = BillManager()
     
     var body: some View {
         VStack  {
@@ -190,7 +190,8 @@ struct BillCreateView: View {
                             if contributorID != viewModel.currentUser?.id && contributionAmount != 0 {
                                 let newBill = Bill(itemName: itemName, itemPrice: contributionAmount, payer: viewModel.currentUser?.id ?? "", contributor: contributorID, timestamp: Date())
                                 
-                                viewModel.addNewBill(bill: newBill, roomID: roomData.id ?? "")
+                                billManager.addNewBill(bill: newBill, roomID: roomData.id ?? "")
+                                
                             }
                         }
                         

@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct UnitBill: View {
-    @EnvironmentObject var viewModel: AuthViewModel
+
     @State var billTitle: String
     @State var billAmount: Double
     @State var timestamp: Date
     @State var id: String
     @State var roomID: String
+    let billManager = BillManager()
     
     var body: some View {
         VStack{
@@ -24,7 +25,7 @@ struct UnitBill: View {
             .frame(width: cardWidth, height: 195, alignment: .center)
             .onLongPressGesture {
                 withAnimation {
-                    viewModel.deleteBill(roomID: roomID, docID: id)
+                    billManager.deleteBill(roomID: roomID, docID: id)
                 }
             }
     }

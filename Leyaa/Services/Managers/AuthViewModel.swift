@@ -314,7 +314,7 @@ class AuthViewModel: ObservableObject {
         DispatchQueue.main.async {
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    profilePic = document.get("avatar") as! String
+                    profilePic = document.get("avatar") as? String ?? ""
                     completion(profilePic)
                 } else {
                     print("Document does not exist")
@@ -331,7 +331,7 @@ class AuthViewModel: ObservableObject {
         DispatchQueue.main.async {
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    profileName = document.get("fullname") as! String
+                    profileName = document.get("fullname") as? String ?? ""
                     completion(profileName)
                 } else {
                     print("Document does not exist")
@@ -345,16 +345,19 @@ class AuthViewModel: ObservableObject {
         var profileEmail: String = ""
         let docRef = db.collection("users").document(userID)
         
-        DispatchQueue.main.async {
             docRef.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    profileEmail = document.get("email") as! String
-                    completion(profileEmail)
+               
+                    DispatchQueue.main.async {
+                        profileEmail = document.get("email") as? String ?? ""
+                        completion(profileEmail)
+                    }
+                    
                 } else {
                     print("Document does not exist")
                 }
             }
-        }
+        
     }
     
     
@@ -399,28 +402,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    //MARK: - Bill
-    
-    func addNewBill(bill: Bill, roomID: String) {
-        do {
-            let collectionName = "\(roomID)_BILLS"
-            let _ = try db.collection(collectionName).addDocument(from: bill)
-        }
-        catch {
-            print(error)
-        }
-    }
-    
-    
-    func deleteBill(roomID: String, docID: String) {
-        let collectionName = "\(roomID)_BILLS"
-        DispatchQueue.main.async {
-            self.db.collection(collectionName).document(docID).delete()
-            self.hapticFeedback.notificationOccurred(.success)
-        }
-       
-    }
-    
+
     
 
     

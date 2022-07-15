@@ -22,6 +22,7 @@ class BillManager: ObservableObject {
     @Published private(set) var toPaybills: [Bill] = []
     @Published var toPayAmount: Double = 0
     
+    let hapticFeedback = UINotificationFeedbackGenerator()
     
     
     init(name: String? = nil) {
@@ -119,6 +120,27 @@ class BillManager: ObservableObject {
     
     
 
+    //MARK: - Bill
+    
+    func addNewBill(bill: Bill, roomID: String) {
+        do {
+            let collectionName = "\(roomID)_BILLS"
+            let _ = try db.collection(collectionName).addDocument(from: bill)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    
+    func deleteBill(roomID: String, docID: String) {
+        let collectionName = "\(roomID)_BILLS"
+        DispatchQueue.main.async {
+            self.db.collection(collectionName).document(docID).delete()
+            self.hapticFeedback.notificationOccurred(.success)
+        }
+       
+    }
     
 
     

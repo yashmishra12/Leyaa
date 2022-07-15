@@ -50,6 +50,7 @@
 		CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */; };
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
 		CCAF4203287A2DAA00ADAE99 /* RoomNameEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCAF4202287A2DAA00ADAE99 /* RoomNameEditView.swift */; };
+		CCB3D46528812EA8000AAEAD /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB3D46428812EA8000AAEAD /* BillManager.swift */; };
 		CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A128597A3200105C5C /* LeyaaApp.swift */; };
 		CCB4C3A428597A3200105C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB4C3A328597A3200105C5C /* ContentView.swift */; };
 		CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCB4C3A528597A3400105C5C /* Assets.xcassets */; };
@@ -62,7 +63,6 @@
 		CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416B285FC1F6000B3FE7 /* ItemView.swift */; };
 		CCBA417028601E53000B3FE7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBA416F28601E53000B3FE7 /* Item.swift */; };
 		CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */; };
-		CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC8142874C4C200D78CE1 /* BillManager.swift */; };
 		CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC816287502C000D78CE1 /* DetailedBillView.swift */; };
 		CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC81828750E1600D78CE1 /* UnitBill.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
@@ -131,6 +131,7 @@
 		CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		CCA3FA68286DA2DA0052F6B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CCAF4202287A2DAA00ADAE99 /* RoomNameEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomNameEditView.swift; sourceTree = "<group>"; };
+		CCB3D46428812EA8000AAEAD /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
 		CCB4C39E28597A3200105C5C /* Leyaa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Leyaa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB4C3A128597A3200105C5C /* LeyaaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeyaaApp.swift; sourceTree = "<group>"; };
 		CCB4C3A328597A3200105C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		CCBA416B285FC1F6000B3FE7 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		CCBA416F28601E53000B3FE7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillContributorView.swift; sourceTree = "<group>"; };
-		CCBEC8142874C4C200D78CE1 /* BillManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillManager.swift; sourceTree = "<group>"; };
 		CCBEC816287502C000D78CE1 /* DetailedBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillView.swift; sourceTree = "<group>"; };
 		CCBEC81828750E1600D78CE1 /* UnitBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBill.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
@@ -188,9 +188,9 @@
 				CC0CC87A2872FE13009C90C0 /* BillCreateView.swift */,
 				CC0CC87C287310CF009C90C0 /* MemberPaymentSliderView.swift */,
 				CCBEC8122874BA6200D78CE1 /* BillContributorView.swift */,
-				CCBEC8142874C4C200D78CE1 /* BillManager.swift */,
 				CCBEC816287502C000D78CE1 /* DetailedBillView.swift */,
 				CCBEC81828750E1600D78CE1 /* UnitBill.swift */,
+				CCB3D46428812EA8000AAEAD /* BillManager.swift */,
 			);
 			path = "Split Bill";
 			sourceTree = "<group>";
@@ -625,7 +625,6 @@
 				CC655B5D287FF0C8002B08E0 /* ItemManager.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
-				CCBEC8152874C4C200D78CE1 /* BillManager.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
 				CCB4C3B92859804C00105C5C /* RoundedShape.swift in Sources */,
 				CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */,
@@ -636,6 +635,7 @@
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,
 				CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */,
 				CC0CC87F28735677009C90C0 /* Bill.swift in Sources */,
+				CCB3D46528812EA8000AAEAD /* BillManager.swift in Sources */,
 				CCBA416C285FC1F6000B3FE7 /* ItemView.swift in Sources */,
 				CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */,
 				CCB4C3C028598C2500105C5C /* AuthHeaderView.swift in Sources */,
@@ -859,7 +859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -894,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
