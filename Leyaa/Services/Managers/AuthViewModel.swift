@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
-import AVFoundation
+import FirebaseService
 
 
 class AuthViewModel: ObservableObject {
@@ -49,6 +49,8 @@ class AuthViewModel: ObservableObject {
     
     //MARK: - Maintains a fresh copy of Device Token
     func writeUserData(){
+        if self.currentUser == nil {return}
+        
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").updateData(["deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "" ]){ error in
             if let error = error {
                 print("WRITE USER DATA ERROR Error updating document: \(error)")
@@ -143,6 +145,16 @@ class AuthViewModel: ObservableObject {
             self.currentUser = user
             self.writeUserData()
         }
+    }
+    
+    
+    func nameChange(newName: String) {
+        db.collection("users").document(currentUser?.id ?? "").updateData(["fullname" : newName]) {err in
+            if let err = err {
+                print("Error in name change: \(err)")
+            }
+        }
+        currentUser?.fullname = newName
     }
     
     

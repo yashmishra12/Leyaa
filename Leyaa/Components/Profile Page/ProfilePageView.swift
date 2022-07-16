@@ -1,8 +1,8 @@
 //
-//  SideMenuRoomListView.swift
+//  ProfilePageView.swift
 //  Leyaa
 //
-//  Created by Yash Mishra on 6/27/22.
+//  Created by Yash Mishra on 7/16/22.
 //
 
 import SwiftUI
@@ -11,9 +11,10 @@ import NotificationBannerSwift
 struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State var wantToSignOut: Bool = false
+    @State var wantToDeactivate: Bool = false
     @State private var isExpanded: Bool = false
     @State var selectedAvatar: String
-    @Environment(\.presentationMode) var presentationMode
+    
     
     private let pasteBoard = UIPasteboard.general
     
@@ -43,16 +44,30 @@ struct ProfilePageView: View {
                     
                         VStack (spacing: 1) {
                             HStack{
-                                Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold)
+                                
+                                NavigationLink  {
+                                    NameChangeView()
+                                } label: {
+                                    HStack {
+                                        Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold).padding(.trailing)
+                                        Image(systemName: "pencil").resizable().frame(width: 12, height: 12)
+                                    }
+                                }.padding(.leading, 10)
+
                             }
                             HStack {
-                                Text(viewModel.currentUser?.email ?? "").font(.caption).fontWeight(.light)
+                                
                                 Button {
                                     pasteBoard.string = viewModel.currentUser?.email ?? ""
                                     successSB(title: "Copied")
                                 } label: {
-                                    Image(systemName: "doc.on.doc").resizable().frame(width: 15, height: 20)
+                                    HStack {
+                                        Text(viewModel.currentUser?.email ?? "").font(.caption).fontWeight(.light).padding(.trailing)
+                                        Image(systemName: "doc.on.doc").resizable().frame(width: 12, height: 15)
+                                    }
+                                    
                                 }.buttonStyle(.plain)
+                                    .padding(.leading, 10)
 
                             }.padding(.bottom)
                         }.padding(.top, -70)
@@ -107,19 +122,46 @@ struct ProfilePageView: View {
                 .onAppear { selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar }
                 .toolbar {
                     ToolbarItem {
-                        Button(action: {
-                            wantToSignOut.toggle()
-                        }, label: {
-                            Text("Sign Out").font(.footnote)
-                        }).buttonStyle(.plain)
-                        .confirmationDialog("Are you sure?",
-                          isPresented: $wantToSignOut) {
-                          Button("Sign Out", role: .destructive) {
-                              viewModel.signOut()
-                          }
-                        } message: {
-                          Text("Sad to see you leave.")
+        
+                        Menu {
+   
+                           
+                            Button {
+                                wantToSignOut.toggle()
+                            } label: {
+                                Text("Sign Out").font(.footnote)
+                            }.buttonStyle(.plain)
+
+                            
+                            
+                            Button {
+                                wantToDeactivate.toggle()
+                            } label: {
+                                Text("Delete Account").font(.footnote)
+                            }.buttonStyle(.plain)
                         }
+                    
+                    label: {
+                            Image(systemName: "gear").resizable()
+                        }
+                    .confirmationDialog("Are you sure?",
+                                              isPresented: $wantToSignOut) {
+                                              Button("Sign Out", role: .destructive) {
+                                                  viewModel.signOut()
+                                              }
+                                            } message: {
+                                              Text("Sad to see you leave.")
+                                            }
+
+                    .confirmationDialog("Delete account permanently?",
+                                              isPresented: $wantToDeactivate) {
+                                              Button("Delete Account", role: .destructive) {
+                                                  viewModel.signOut()
+                                              }
+                                            } message: {
+                                              Text("This will permanently delete your account, remove you from rooms and delete your chats.")
+                                            }
+
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {

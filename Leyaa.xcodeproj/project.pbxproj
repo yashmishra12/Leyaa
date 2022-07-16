@@ -38,7 +38,6 @@
 		CC6B5134286811ED00531303 /* AssetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B5133286811ED00531303 /* AssetName.swift */; };
 		CC6B513628681C0100531303 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B513528681C0100531303 /* ItemEditView.swift */; };
 		CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */; };
-		CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D9E286A688900F2011A /* ProfilePageView.swift */; };
 		CC6E154E28599E3100C29C45 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */; };
 		CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */; };
 		CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */; };
@@ -67,6 +66,9 @@
 		CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC816287502C000D78CE1 /* DetailedBillView.swift */; };
 		CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBEC81828750E1600D78CE1 /* UnitBill.swift */; };
 		CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC655ED28605B24005D7D93 /* ItemSearchView.swift */; };
+		CCD372D52883132500C38CDE /* NameChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD372D42883132500C38CDE /* NameChangeView.swift */; };
+		CCD372D828831A2700C38CDE /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCD372D728831A2700C38CDE /* FirebaseService */; };
+		CCD372DA28831D5900C38CDE /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD372D928831D5900C38CDE /* ProfilePageView.swift */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52958287BDF31005C173C /* NotificationBanner.swift */; };
 		CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5295B287BE93E005C173C /* payloadNotification.swift */; };
@@ -118,7 +120,6 @@
 		CC6B5133286811ED00531303 /* AssetName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetName.swift; sourceTree = "<group>"; };
 		CC6B513528681C0100531303 /* ItemEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEditView.swift; sourceTree = "<group>"; };
 		CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberInfoView.swift; sourceTree = "<group>"; };
-		CC6C0D9E286A688900F2011A /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		CC6E154D28599E3100C29C45 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequestComponentView.swift; sourceTree = "<group>"; };
 		CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateView.swift; sourceTree = "<group>"; };
@@ -150,6 +151,8 @@
 		CCBEC816287502C000D78CE1 /* DetailedBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedBillView.swift; sourceTree = "<group>"; };
 		CCBEC81828750E1600D78CE1 /* UnitBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitBill.swift; sourceTree = "<group>"; };
 		CCC655ED28605B24005D7D93 /* ItemSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchView.swift; sourceTree = "<group>"; };
+		CCD372D42883132500C38CDE /* NameChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameChangeView.swift; sourceTree = "<group>"; };
+		CCD372D928831D5900C38CDE /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		CCE4E81C286E91670026265E /* FreshCheckReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshCheckReminder.swift; sourceTree = "<group>"; };
 		CCE52958287BDF31005C173C /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		CCE5295B287BE93E005C173C /* payloadNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payloadNotification.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 			files = (
 				CC655B47287FEEC0002B08E0 /* FirebaseMessaging in Frameworks */,
 				CC655B45287FEEC0002B08E0 /* FirebaseFirestoreSwift in Frameworks */,
+				CCD372D828831A2700C38CDE /* FirebaseService in Frameworks */,
 				CC655B3F287FEEC0002B08E0 /* FirebaseAnalytics in Frameworks */,
 				CC655B43287FEEC0002B08E0 /* FirebaseFirestore in Frameworks */,
 				CC655B5B287FEF06002B08E0 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -288,7 +292,6 @@
 			children = (
 				CCB4C3A128597A3200105C5C /* LeyaaApp.swift */,
 				CCB4C3A328597A3200105C5C /* ContentView.swift */,
-				CC6C0D9E286A688900F2011A /* ProfilePageView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CCD372D32883130000C38CDE /* Profile Page */,
 				CC0CC8832874ACF5009C90C0 /* Style */,
 				CC5D2658286BC0BF0068800E /* Chat */,
 				CC20BAA328692C230071B7A6 /* Sidebar Menu */,
@@ -450,6 +454,15 @@
 				CC655B5C287FF0C8002B08E0 /* ItemManager.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		CCD372D32883130000C38CDE /* Profile Page */ = {
+			isa = PBXGroup;
+			children = (
+				CCD372D928831D5900C38CDE /* ProfilePageView.swift */,
+				CCD372D42883132500C38CDE /* NameChangeView.swift */,
+			);
+			path = "Profile Page";
 			sourceTree = "<group>";
 		};
 		CCE52953287BD883005C173C /* Data Model */ = {
@@ -562,6 +575,7 @@
 				CC655B46287FEEC0002B08E0 /* FirebaseMessaging */,
 				CC655B48287FEEC0002B08E0 /* FirebaseStorage */,
 				CC655B5A287FEF06002B08E0 /* FirebaseAnalyticsSwift */,
+				CCD372D728831A2700C38CDE /* FirebaseService */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -594,6 +608,7 @@
 			packageReferences = (
 				CC655B3A287FEE33002B08E0 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -624,10 +639,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6B51322867F5D800531303 /* UserService.swift in Sources */,
+				CCD372D52883132500C38CDE /* NameChangeView.swift in Sources */,
 				CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */,
 				CCBA417028601E53000B3FE7 /* Item.swift in Sources */,
 				CC0CC87B2872FE13009C90C0 /* BillCreateView.swift in Sources */,
-				CC6C0D9F286A688900F2011A /* ProfilePageView.swift in Sources */,
 				CC0CC8782872F8F4009C90C0 /* SplitBillView.swift in Sources */,
 				CC5D265C286BC1E80068800E /* MessageBubbleView.swift in Sources */,
 				CCB3D46728815275000AAEAD /* UserInfoProvider.swift in Sources */,
@@ -635,6 +650,7 @@
 				CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CC655B5D287FF0C8002B08E0 /* ItemManager.swift in Sources */,
+				CCD372DA28831D5900C38CDE /* ProfilePageView.swift in Sources */,
 				CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */,
 				CC5D265A286BC11F0068800E /* Message.swift in Sources */,
 				CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */,
@@ -956,6 +972,14 @@
 				minimumVersion = 9.2.0;
 			};
 		};
+		CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/FirebaseService.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1038,6 +1062,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		CCD372D728831A2700C38CDE /* FirebaseService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */;
+			productName = FirebaseService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

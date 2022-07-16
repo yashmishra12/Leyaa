@@ -11,10 +11,10 @@ import UIKit
 
 struct User: Identifiable, Codable {
     @DocumentID var id: String?
-    let fullname: String
-    let email: String
-    let avatar: String
-    let deviceToken: String
+    var fullname: String
+    var email: String
+    var avatar: String
+    var deviceToken: String
     
     var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == id }
 }
