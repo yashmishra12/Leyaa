@@ -144,14 +144,40 @@ struct LoginView: View {
                                             guard let nonce = currentNonce else {
                                                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
                                             }
+                                            
                                             guard let appleIDToken = appleIDCredential.identityToken else {
                                                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
                                             }
+                                            
                                             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                                                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                                                 return
                                             }
 
+                                                                        
+                                            
+                                            // Add new code below
+                                            if let authorizationCode = appleIDCredential.authorizationCode,
+                                               let codeString = String(data: authorizationCode, encoding: .utf8) {
+                          
+                                                
+                                                  let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/getRefreshToken?code=\(codeString)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
+                                                        
+                                                    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                                                        
+                                                        if let data = data {
+                                                            let refreshToken = String(data: data, encoding: .utf8) ?? ""
+                                                            print("Refresh Token while Login: \(refreshToken)")
+                                                            UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
+                                                            UserDefaults.standard.synchronize()
+                                                        }
+                                                    }
+                                                  task.resume()
+                                                  
+                                              }
+
+          
+                                            
                                             let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString, rawNonce: nonce)
 
                                             Auth.auth().signIn(with: credential) { (authResult, error) in
@@ -159,6 +185,7 @@ struct LoginView: View {
                                                     print(error?.localizedDescription as Any)
                                                     return
                                                 }
+                                                
                                                 guard let user = authResult?.user else {return}
 
                                                 
@@ -178,7 +205,7 @@ struct LoginView: View {
                                                                 let data = ["email": user.email ?? "",
                                                                             "avatar": assetName.randomElement()?.sanitiseItemName() ?? "egg",
                                                                             "fullname": Auth.auth().currentUser?.displayName ?? "",
-                                                                            "deviceToken": UserDefaults.standard.string(forKey: "kDeviceToken") ?? "",
+                                                                            "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
                                                                             "uid": user.uid] as [String : Any]
                                                                 
                                                                 Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in

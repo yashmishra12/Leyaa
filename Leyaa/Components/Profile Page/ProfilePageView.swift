@@ -10,6 +10,7 @@ import NotificationBannerSwift
 
 struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    
     @State var wantToSignOut: Bool = false
     @State var wantToDeactivate: Bool = false
     @State private var isExpanded: Bool = false
@@ -53,7 +54,7 @@ struct ProfilePageView: View {
                                         Image(systemName: "pencil").resizable().frame(width: 12, height: 12)
                                     }
                                 }.padding(.leading, 10)
-
+                                    .buttonStyle(.plain)
                             }
                             HStack {
                                 
@@ -116,6 +117,23 @@ struct ProfilePageView: View {
                     .padding(.horizontal, 10)
                     .padding(.bottom, 30)
                     .padding(.top, 20)
+                    
+                    Button {
+                        print("Bundle : \(Bundle.main.bundleIdentifier!)" )
+                        
+                        let token = UserDefaults.standard.string(forKey: "refreshToken")
+                        print("Refresh Token: \(token ?? "--")")
+                        
+//               
+                        
+                        for room in viewModel.rooms {
+                            print("Room ID: \(room.id ?? "")")
+                        }
+                        
+                    } label: {
+                        Text("Apple ID")
+                    }
+
 
                 }
                 .padding(.horizontal, 20)
@@ -125,20 +143,25 @@ struct ProfilePageView: View {
         
                         Menu {
    
-                           
                             Button {
                                 wantToSignOut.toggle()
                             } label: {
                                 Text("Sign Out").font(.footnote)
                             }.buttonStyle(.plain)
 
-                            
-                            
-                            Button {
-                                wantToDeactivate.toggle()
+                            Menu {
+                                Button {
+                                    wantToDeactivate.toggle()
+                                } label: {
+                                    Text("Confirm").font(.footnote)
+                                }.buttonStyle(.plain)
+                                
                             } label: {
                                 Text("Delete Account").font(.footnote)
-                            }.buttonStyle(.plain)
+                            }
+
+                            
+                           
                         }
                     
                     label: {
@@ -156,7 +179,7 @@ struct ProfilePageView: View {
                     .confirmationDialog("Delete account permanently?",
                                               isPresented: $wantToDeactivate) {
                                               Button("Delete Account", role: .destructive) {
-                                                  viewModel.signOut()
+                                                  viewModel.removeAccount()
                                               }
                                             } message: {
                                               Text("This will permanently delete your account, remove you from rooms and delete your chats.")
@@ -182,10 +205,6 @@ struct ProfilePageView: View {
             .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }
-       
-        
-        
-        
             }
         }
         

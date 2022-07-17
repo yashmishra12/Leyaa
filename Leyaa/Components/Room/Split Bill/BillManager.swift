@@ -53,7 +53,7 @@ class BillManager: ObservableObject {
                 self.toGetAmount = 0
                     
                     guard let doc = snapshot?.documents else {
-                        print("No Doc Found")
+                        print("No Doc Found - Update To Get Bill")
                         return
                     }
                     
@@ -92,7 +92,7 @@ class BillManager: ObservableObject {
                 self.toPayAmount = 0
                 
                     guard let doc = snapshot?.documents else {
-                        print("No Doc Found")
+                        print("No Doc Found - Update to Pay Bill")
                         return
                     }
                     

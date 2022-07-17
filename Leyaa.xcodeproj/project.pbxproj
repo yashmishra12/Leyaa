@@ -69,6 +69,7 @@
 		CCD372D52883132500C38CDE /* NameChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD372D42883132500C38CDE /* NameChangeView.swift */; };
 		CCD372D828831A2700C38CDE /* FirebaseService in Frameworks */ = {isa = PBXBuildFile; productRef = CCD372D728831A2700C38CDE /* FirebaseService */; };
 		CCD372DA28831D5900C38CDE /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD372D928831D5900C38CDE /* ProfilePageView.swift */; };
+		CCD372DE28837A0A00C38CDE /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CCD372DD28837A0A00C38CDE /* FirebaseFunctions */; };
 		CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE4E81C286E91670026265E /* FreshCheckReminder.swift */; };
 		CCE52959287BDF31005C173C /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52958287BDF31005C173C /* NotificationBanner.swift */; };
 		CCE5295C287BE93E005C173C /* payloadNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE5295B287BE93E005C173C /* payloadNotification.swift */; };
@@ -179,6 +180,7 @@
 				CC655B43287FEEC0002B08E0 /* FirebaseFirestore in Frameworks */,
 				CC655B5B287FEF06002B08E0 /* FirebaseAnalyticsSwift in Frameworks */,
 				CC655B49287FEEC0002B08E0 /* FirebaseStorage in Frameworks */,
+				CCD372DE28837A0A00C38CDE /* FirebaseFunctions in Frameworks */,
 				CC655B41287FEEC0002B08E0 /* FirebaseAuth in Frameworks */,
 				CC655B3C287FEE33002B08E0 /* NotificationBannerSwift in Frameworks */,
 			);
@@ -556,6 +558,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CCD372E028837A1400C38CDE /* PBXTargetDependency */,
 				CC655B4B287FEEEF002B08E0 /* PBXTargetDependency */,
 				CC655B4D287FEEEF002B08E0 /* PBXTargetDependency */,
 				CC655B4F287FEEEF002B08E0 /* PBXTargetDependency */,
@@ -576,6 +579,7 @@
 				CC655B48287FEEC0002B08E0 /* FirebaseStorage */,
 				CC655B5A287FEF06002B08E0 /* FirebaseAnalyticsSwift */,
 				CCD372D728831A2700C38CDE /* FirebaseService */,
+				CCD372DD28837A0A00C38CDE /* FirebaseFunctions */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -736,6 +740,10 @@
 		CC655B59287FEEEF002B08E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = CC655B58287FEEEF002B08E0 /* FirebaseStorage */;
+		};
+		CCD372E028837A1400C38CDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = CCD372DF28837A1400C38CDE /* FirebaseFunctions */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1067,6 +1075,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */;
 			productName = FirebaseService;
+		};
+		CCD372DD28837A0A00C38CDE /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		CCD372DF28837A1400C38CDE /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

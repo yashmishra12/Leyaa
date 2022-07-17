@@ -40,7 +40,7 @@ class MessageManager: ObservableObject {
                 DispatchQueue.main.async {
                     
                     guard let doc = snapshot?.documents else {
-                        print("No Doc Found")
+                        print("No Doc Found - get Messages")
                         return
                     }
                     

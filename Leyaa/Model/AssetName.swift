@@ -20,6 +20,8 @@ let screenHeight = UIScreen.main.bounds.height
 
 let defaultAvatar = "coffee"
 let deviceTokenStorage = "com.yashmisra12.Leyaa.kDeviceToken"
+let clientSecretStorage = "com.yashmishra12.Leyaa.clientSecret"
+let idTokenStringStorage = "com.yashmishra12.Leyaa.idTokenString"
 
 let cardWidth = screenWidth * 0.5
 
