@@ -26,6 +26,8 @@ struct DeleteAccountData: View {
                                         isPresented: $wantToDelete) {
                                         Button("Yes, delete my account.", role: .destructive) {
                                             viewModel.deleteAccountData()
+                                            
+                                          
                                         }
                                       } message: {
                                         Text("It breaks my heart to see you leave.")

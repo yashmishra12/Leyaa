@@ -27,15 +27,15 @@ struct LoginView: View {
     
     @EnvironmentObject var viewModel: AuthViewModel
     @State var currentNonce: String?
-
+    
     @FocusState private var emailFocus: Bool
     @FocusState private var passFocus: Bool
     
-
+    
     var body: some View {
         
         NavigationView {
-        
+            
             ZStack {
                 
                 
@@ -58,7 +58,7 @@ struct LoginView: View {
                                 passFocus = true
                             }
                             .submitLabel(.next)
-                            
+                        
                         
                         
                         CustomInputField(imageName: "key",
@@ -77,7 +77,7 @@ struct LoginView: View {
                     }
                     .padding(.horizontal, 32)
                     .padding(.top)
-
+                    
                     
                     //MARK: - FORGOT PASSWORD
                     HStack{
@@ -92,13 +92,13 @@ struct LoginView: View {
                                 .padding(.horizontal, 32)
                                 .padding(.top, 15)
                                 .padding(.bottom, 25)
-                                
+                            
                             
                         }.buttonStyle(.plain)
                             .sheet(isPresented: $showForgotPassword) {
-                                    ForgotPasswordView()
+                                ForgotPasswordView()
                             }
-
+                        
                         
                     }.onTapGesture {
                         self.endTextEditing()
@@ -113,28 +113,28 @@ struct LoginView: View {
                             Text ("Sign In").buttonStyle()
                         }.disabled(isValidEmail(email)==false)
                             .buttonStyle(.plain)
-
-                        .padding(.top, 10)
-                        .buttonStyle(.plain)
-                        .alert(isPresented: self.$viewModel.errorOccurred) {
-                            Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
-                        }
+                        
+                            .padding(.top, 10)
+                            .buttonStyle(.plain)
+                            .alert(isPresented: self.$viewModel.errorOccurred) {
+                                Alert(title: Text("Invalid Credentials"), message: Text(self.viewModel.errorMessage), dismissButton: .default(Text("Ok")))
+                            }
                     }.onTapGesture {
                         self.endTextEditing()
                     }
                     
- 
+                    
                     
                     //MARK: - Sign In with Apple
                     
                     VStack {
-
+                        
                         VStack {
                             SignInWithAppleButton(
                                 onRequest: { request in
                                     let nonce = randomNonceString()
                                     currentNonce = nonce
-
+                                    
                                     request.requestedScopes = [.fullName, .email]
                                     request.nonce = sha256(nonce)
                                 },
@@ -143,7 +143,7 @@ struct LoginView: View {
                                     case .success(let authResults):
                                         switch authResults.credential {
                                         case let appleIDCredential as ASAuthorizationAppleIDCredential:
-
+                                            
                                             guard let nonce = currentNonce else {
                                                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
                                             }
@@ -160,7 +160,7 @@ struct LoginView: View {
                                             
                                             
                                             let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString, rawNonce: nonce)
-
+                                            
                                             Auth.auth().signIn(with: credential) { (authResult, error) in
                                                 if (error != nil) {
                                                     print(error?.localizedDescription as Any)
@@ -168,7 +168,7 @@ struct LoginView: View {
                                                 }
                                                 
                                                 guard let user = authResult?.user else {return}
-
+                                                
                                                 
                                                 let docRef = self.db.collection("users").document(user.uid)
                                                 
@@ -200,10 +200,10 @@ struct LoginView: View {
                                                 }
                                                 
                                             }
-
+                                            
                                         default:
                                             break
-
+                                            
                                         }
                                     default:
                                         break
@@ -213,15 +213,15 @@ struct LoginView: View {
                             .appleBorder(.black, width: 1, cornerRadius: 25)
                             .signInWithAppleButtonStyle(.white)
                             .clipShape(Capsule())
-
-        
+                            
+                            
                         }.frame(width:  screenWidth * 0.8, height: 40)
                             .padding(.horizontal, 32)
                             .padding(.top, 35)
-
+                        
                     }
                     
-                
+                    
                     
                     
                     Spacer()
@@ -235,7 +235,7 @@ struct LoginView: View {
                             HStack{
                                 Text("Don't have an account?")
                                     .font (.footnote)
-            
+                                
                                 
                                 Text("Sign Up")
                                     .font (.callout)
@@ -250,18 +250,18 @@ struct LoginView: View {
                     
                 }
                 .ignoresSafeArea()
-
+                
                 
             }
-                .navigationBarHidden(true)
-                
+            .navigationBarHidden(true)
+            
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
-           
+        
     }
- 
-
+    
+    
 }
 
 extension View {

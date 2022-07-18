@@ -369,6 +369,7 @@ class AuthViewModel: ObservableObject {
     func removeAccount() {
         let token = UserDefaults.standard.string(forKey: "refreshToken")
         
+        
         if let token = token {
             
             let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken?refresh_token=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
@@ -386,68 +387,69 @@ class AuthViewModel: ObservableObject {
     
     func deleteAccountData() {
         
-        //MARK: - Delete Messages
+        self.deleteLocalNotifications()
         
-        Task {
-            for room in rooms {
-                db.collection(room.id ?? "").whereField("senderID", isEqualTo: currentUser?.id ?? "").getDocuments() { (querySnapshot, err) in
-                  if let err = err {
-                    print("Error getting documents: \(err)")
-                  } else {
-                    for document in querySnapshot!.documents {
-                      document.reference.delete()
-                    }
-                  }
-                }
-            }
-            
-            
-            //MARK: - Remove Rooms
-            for room in rooms {
-                db.collection("rooms").document(room.id ?? "").updateData(["members" : Firebase.FieldValue.arrayRemove([currentUser?.id ?? ""])]){ err in
-                    if let err = err {
-                        print("Error in adding item: \(err)")
-                    }
-                }
-            }
-            
-
-            //MARK: - Delete Local Notifications
-            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-                for request in requests {
-                    if request.content.title == "Freshness Check" {
-                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
-                    }
-                }
-            }
-            
-            do {
-                DispatchQueue.main.async {
-                    self.clearUserInfoAfterDelete()
-                }
-                
-                try await Auth.auth().currentUser?.delete()
-                
-                
-            }
-            catch {
-                print("Something Caught")
-            }
-     
-            
-            
+        DispatchQueue.main.async {
+            self.deleteRoomsAndMessages()
+            self.clearUserInfoAfterDelete()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
+            UserDefaults.standard.set("", forKey: "refreshToken")
+            UserDefaults.standard.set("", forKey: deviceTokenStorage)
+            self.userSession = nil
+            self.didAuthenticateUser = false
         }
         
     }// END DELETE ACCOUNT FUNCTION
     
+    
+    
+    func deleteRoomsAndMessages() {
+        for room in rooms {
+            db.collection(room.id ?? "").whereField("senderID", isEqualTo: currentUser?.id ?? "").getDocuments() { (querySnapshot, err) in
+              if let err = err {
+                print("Error getting documents: \(err)")
+              } else {
+                for document in querySnapshot!.documents {
+                  document.reference.delete()
+                }
+              }
+            }
+            
+            db.collection("rooms").document(room.id ?? "").updateData(["members" : Firebase.FieldValue.arrayRemove([currentUser?.id ?? ""])]){ err in
+                if let err = err {
+                    print("Error in adding item: \(err)")
+                }
+            }
+
+        }
+    }
+    
+    
+    func deleteLocalNotifications() {
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            for request in requests {
+                if request.content.title == "Freshness Check" {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                }
+            }
+        }
+    }
 
     func clearUserInfoAfterDelete() {
-        Task {@MainActor in
+        
             let userID = currentUser?.id ?? ""
-            try await db.collection("users").document(userID).delete()
-            userSession = nil
-            didAuthenticateUser = false
+        
+            userSession?.delete()
+            
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+            self.userSession = nil
+            self.didAuthenticateUser = false
+            self.db.collection("users").document(userID).delete()
+            self.signOut()
         }
+          
     }
 
 //MARK: - END
