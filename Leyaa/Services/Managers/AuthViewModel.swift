@@ -22,6 +22,7 @@ class AuthViewModel: ObservableObject {
     @Published var pendingReqest = [RoomRequest]()
     @Published var currentUser: User?
     
+
     
     
     @Published var isAppleAuthRevoked: Bool = false
@@ -33,7 +34,7 @@ class AuthViewModel: ObservableObject {
     
     private let service = UserService()
     
-
+    
     @Published private(set) var messagesToDelete: [Message] = []
     
     let hapticFeedback = UINotificationFeedbackGenerator()
@@ -42,8 +43,8 @@ class AuthViewModel: ObservableObject {
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
     }
-
-
+    
+    
     func revoked() {
         DispatchQueue.main.async {
             self.isAppleAuthRevoked = true
@@ -59,7 +60,7 @@ class AuthViewModel: ObservableObject {
         self.writeUserData()
     }
     
-   
+    
     
     //MARK: - Maintains a fresh copy of Device Token
     func writeUserData() {
@@ -73,10 +74,10 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-
+    
     func resetDeviceToken() {
         if self.currentUser == nil {return}
-            
+        
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").updateData(["deviceToken": "" ]){ error in
             if let error = error {
                 print("Reset DeviceToken Error: \(error)")
@@ -104,7 +105,7 @@ class AuthViewModel: ObservableObject {
             self.writeUserData()
         }
         
-    
+        
     }
     
     
@@ -121,13 +122,13 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
-          
+            
             
             let userData = ["email": email,
-                        "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
-                        "avatar": assetName.randomElement()?.sanitiseItemName() ?? "egg",
-                        "fullname": fullname,
-                        "uid": user.uid] as [String : Any]
+                            "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
+                            "avatar": assetName.randomElement()?.sanitiseItemName() ?? "egg",
+                            "fullname": fullname,
+                            "uid": user.uid] as [String : Any]
             
             
             self.db.collection("users").document(user.uid).setData(userData) { _ in
@@ -144,7 +145,7 @@ class AuthViewModel: ObservableObject {
         // sets user session to nil so we show login view
         userSession = nil
         didAuthenticateUser = false
-   
+        
         resetDeviceToken()
         
         // signs user out on server
@@ -173,15 +174,15 @@ class AuthViewModel: ObservableObject {
     }
     
     
-
+    
     
     //MARK: - ROOMS
     
     func addRoom(room: Room) {
         do {
             
-                let _ = try db.collection("rooms").addDocument(from: room)
-                self.writeUserData()
+            let _ = try db.collection("rooms").addDocument(from: room)
+            self.writeUserData()
             
         }
         catch {
@@ -192,27 +193,27 @@ class AuthViewModel: ObservableObject {
     
     func populateRoomList () {
         
-        self.db.collection("rooms")
+      self.db.collection("rooms")
             .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
+                
+                guard let doc = snapshot?.documents else {
+                    print("No Doc Found - Populate Room List")
+                    return
+                }
+                
+                self.rooms = doc.compactMap { queryDocumentSnapshot in
+                    let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
                     
-                    guard let doc = snapshot?.documents else {
-                        print("No Doc Found - Populate Room List")
-                        return
-                    }
-                    
-                    self.rooms = doc.compactMap { queryDocumentSnapshot in
-                        let result = Result { try queryDocumentSnapshot.data(as: Room.self) }
+                    switch result {
+                    case .success(let room):
+                        return room
                         
-                        switch result {
-                        case .success(let room):
-                            return room
-                            
-                        case .failure( _):
-                            print("Failure Room Populate")
-                            return nil
-                        }
+                    case .failure( _):
+                        print("Failure Room Populate")
+                        return nil
                     }
+                }
                 
             }
     }
@@ -336,7 +337,7 @@ class AuthViewModel: ObservableObject {
     
     
     //MARK: -  Get Profile Info
-   
+    
     
     func updateAvatar(userID: String, newAvatar: String) {
         db.collection("users").document(userID).setData([
@@ -362,178 +363,93 @@ class AuthViewModel: ObservableObject {
     }
     
     
-
+    
     //MARK: - Account Deactivation
     
     func removeAccount() {
-      let token = UserDefaults.standard.string(forKey: "refreshToken")
-
-      if let token = token {
-          
-          let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken?refresh_token=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
-                
-          let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard data != nil else { return }
-          }
-                
-          task.resume()
-          
-      }
-      
-      //Delete other information from the database...
-//      signOut()
-    }
-    
-    
-    
-    // POST request to revoke user's Apple token from Barfix app
-    func deactivateAccount(completion: (([String: Any]?, Error?) -> Void)? = nil) {
-
-//        let paramString: [String : Any] = [
-//            "client_id": Bundle.main.bundleIdentifier ?? "com.yashmishra12.Leyaa",
-//            "client_secret": UserDefaults.standard.string(forKey: clientSecretStorage) ?? "",
-//            "token": UserDefaults.standard.string(forKey: idTokenStringStorage) ?? "",
-//            "token_type_hint": "access_token"
-//        ]
-//
-//        let url = URL(string: "https://appleid.apple.com/auth/revoke")!
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//
-//        do {
-//            request.httpBody = try JSONSerialization.data(withJSONObject: paramString, options: .prettyPrinted)
-//        }
-//        catch let error {
-//            print(error.localizedDescription)
-//            completion?(nil, error)
-//        }
-//
-//        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//
-//        let task =  URLSession.shared.dataTask(with: request as URLRequest)  { (data, response, error) in
-//            guard let response = response as? HTTPURLResponse, error == nil else {
-//                print("error", error ?? URLError(.badServerResponse))
-//                return
-//            }
-//
-//            guard (200 ... 299) ~= response.statusCode else {
-//                print("statusCode should be 2xx, but is \(response.statusCode)")
-//                print("response = \(response)")
-//                return
-//            }
-//
-//
-//            if let error = error {
-//                print(error)
-//            }
-//            else {
-//                print("Account Deleted")
-//            }
-//        }
-//        task.resume()
-//
-//
-        
-//        db.collection("users").document(currentUser?.id ?? "").delete()
-//
-//            removeFromRooms()
-//            deleteMessages()
-//
-//        Auth.auth().currentUser?.delete()
-//
-        removeAccount()
-        signOut()
-        
-        
-        
-    }
-    
-    func removeAccount2() {
         let token = UserDefaults.standard.string(forKey: "refreshToken")
         
-        print("Remove Account token: \(token ?? "-")")
-
         if let token = token {
-          
-            let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
-                  
+            
+            let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken?refresh_token=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
+            
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-              guard data != nil else { return }
+                guard data != nil else { return }
             }
-                  
+            
             task.resume()
             
         }
-    
-//                db.collection("users").document(currentUser?.id ?? "").delete()
-//                removeFromRooms()
-//                deleteMessages()
-    
-//            Auth.auth().currentUser?.delete()
-        
-        signOut()
-        
-      }
-
-    
-  
-
-    func removeFromRooms(){
-        
-        for room in rooms {
-            db.collection("rooms").document(room.id ?? "").updateData(["members" : Firebase.FieldValue.arrayRemove([currentUser?.id ?? ""])]){ err in
-                if let err = err {
-                    print("Error in adding item: \(err)")
-                }
-            }
-        }
         
     }
     
-    func deleteMessages() {
-        for room in rooms {
-            getMessages(roomID: room.id)
+    
+    func deleteAccountData() {
+        
+        //MARK: - Delete Messages
+        
+        Task {
+            for room in rooms {
+                db.collection(room.id ?? "").whereField("senderID", isEqualTo: currentUser?.id ?? "").getDocuments() { (querySnapshot, err) in
+                  if let err = err {
+                    print("Error getting documents: \(err)")
+                  } else {
+                    for document in querySnapshot!.documents {
+                      document.reference.delete()
+                    }
+                  }
+                }
+            }
             
-            for msg in messagesToDelete {
-                db.collection(room.id ?? "").document(msg.id).delete()
-            }
-        }
-    }
-    
-    
-    
-    func getMessages (roomID rid: String? ) {
-        
-        self.db.collection(rid ?? "")
-            .addSnapshotListener { snapshot, error in
-                DispatchQueue.main.async {
-                    
-                    guard let doc = snapshot?.documents else {
-                        print("No Doc Found - Get Messages")
-                        return
+            
+            //MARK: - Remove Rooms
+            for room in rooms {
+                db.collection("rooms").document(room.id ?? "").updateData(["members" : Firebase.FieldValue.arrayRemove([currentUser?.id ?? ""])]){ err in
+                    if let err = err {
+                        print("Error in adding item: \(err)")
                     }
-                    
-                    self.messagesToDelete = doc.compactMap { queryDocumentSnapshot -> Message? in
-                        
-                        let result = Result { try queryDocumentSnapshot.data(as: Message.self) }
-                        
-                        switch result {
-                        case .success(let msg):
-                            return msg
-                            
-                        case .failure( _):
-                            print("Failure Room Populate Messenger")
-                            return nil
-                        }
-                    }
-                    
                 }
             }
+            
+
+            //MARK: - Delete Local Notifications
+            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+                for request in requests {
+                    if request.content.title == "Freshness Check" {
+                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [request.identifier])
+                    }
+                }
+            }
+            
+            do {
+                DispatchQueue.main.async {
+                    self.clearUserInfoAfterDelete()
+                }
+                
+                try await Auth.auth().currentUser?.delete()
+                
+                
+            }
+            catch {
+                print("Something Caught")
+            }
+     
+            
+            
+        }
+        
+    }// END DELETE ACCOUNT FUNCTION
+    
+
+    func clearUserInfoAfterDelete() {
+        Task {@MainActor in
+            let userID = currentUser?.id ?? ""
+            try await db.collection("users").document(userID).delete()
+            userSession = nil
+            didAuthenticateUser = false
+        }
     }
-    
-    
-    
-    //MARK: - END
-    
+
+//MARK: - END
+
 }

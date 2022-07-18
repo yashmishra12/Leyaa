@@ -12,8 +12,8 @@ struct BillContributorView: View {
     @State var memberID: String
     @State var roomID: String
     
-    @State var avatar = "ketchup"
-    @State var name = "Default Name"
+    @State var avatar = "Ketchup"
+    @State var name = "Account Deleted"
     
     @StateObject private var billManager = BillManager()
     let userInfoProvider = UserInfoProvider()
@@ -22,7 +22,7 @@ struct BillContributorView: View {
         VStack {
             
 
-            Image(avatar).resizable().frame(width: 100, height: 100)
+            Image(avatar.sanitiseItemName()).resizable().frame(width: 100, height: 100)
 
 
             Text(name).font(.body)

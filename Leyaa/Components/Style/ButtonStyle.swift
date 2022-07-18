@@ -19,6 +19,14 @@ extension View {
             .clipShape(Capsule())
     }
     
+    func DeleteAccountStyle() -> some View {
+        self.padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .foregroundColor(.white)
+            .background(Color("deleteAccount"))
+            .clipShape(Capsule())
+    }
+    
     func payTabStyle() -> some View {
         self.padding(.horizontal, 20)
             .padding(.vertical, 8)

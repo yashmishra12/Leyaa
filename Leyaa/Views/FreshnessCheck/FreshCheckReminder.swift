@@ -18,6 +18,8 @@ struct FreshCheckReminder: View {
     @StateObject var prManager = PRManager()
     @FocusState private var itemNameIsFocused: Bool
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     func checkPermission() {
         let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
@@ -67,6 +69,7 @@ struct FreshCheckReminder: View {
                 }
  
             }.padding()
+ 
             
             Divider().padding(.bottom)
             

@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct DeleteAccountData: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    @State private var wantToDelete: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("This will permanently delete your account. You will lose all your rooms, messages and item expiry reminders.\nTap on Confirm to continue.").padding()
+            
+            Button {
+                wantToDelete.toggle()
+            } label: {
+                Text("Confirm")
+            }
+            .DeleteAccountStyle()
+            .buttonStyle(.plain)
+
+        }           .confirmationDialog("Are you sure?",
+                                        isPresented: $wantToDelete) {
+                                        Button("Yes, delete my account.", role: .destructive) {
+                                            viewModel.deleteAccountData()
+                                        }
+                                      } message: {
+                                        Text("It breaks my heart to see you leave.")
+                                      }
     }
 }
 

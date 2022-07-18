@@ -38,9 +38,7 @@ struct RoomListView: View {
                                 
                                 Spacer()
                                 
-                                
-                 
-                                
+                       
                             }
                         }
                      }
@@ -69,20 +67,6 @@ struct RoomListView: View {
                     .navigationTitle("Rooms")
                 
             }
-            .onAppear(perform: {
-                NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
-
-                object: nil,
-
-                queue: nil,
-
-                using: { notification in
-                
-                    print("----------------------REVOKED: ROOM LIST VIEW ----------------------")
-                    viewModel.revoked()
-                    
-                })
-            })
             .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }

@@ -88,8 +88,7 @@ struct RoomChatView: View {
                 
                 
                 Button {
-                    messageChatInfo()
-                    
+                    messageChatInfo()                    
                 } label: {
                     Image(systemName: "questionmark.square.fill").imageScale(.large)
                 }.buttonStyle(.plain)

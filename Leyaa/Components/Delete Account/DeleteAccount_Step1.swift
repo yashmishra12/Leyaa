@@ -115,7 +115,6 @@ struct DeleteAccount_Step1: View {
                 }.frame(width:  screenWidth * 0.8, height: 40)
                     .padding(.horizontal, 32)
                     .padding(.top, 35)
-
             }
             
     

@@ -10,8 +10,8 @@ import SwiftUI
 struct GroupMemberInfoView: View {
     @State var userID: String
     @State var avatar = "ketchup"
-    @State var name = "Default Name"
-    @State var email = "Default Mail"
+    @State var name = "Account Deleted"
+    @State var email = "Account Deleted"
     private let pasteBoard = UIPasteboard.general
     let userInfoProvider = UserInfoProvider()
     
