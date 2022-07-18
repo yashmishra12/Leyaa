@@ -173,22 +173,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    //MARK: - TOKEN REVOCATION
-    func checkRevocation() {
-        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
 
-        object: nil,
-
-        queue: nil,
-
-        using: { notification in
-
-            print("------------REVOKED FROM VIEWMODEL FUNCTION-------------------")
-            self.isAppleAuthRevoked = true
-
-        })
-    }
-   
     
     //MARK: - ROOMS
     
@@ -380,6 +365,25 @@ class AuthViewModel: ObservableObject {
 
     //MARK: - Account Deactivation
     
+    func removeAccount() {
+      let token = UserDefaults.standard.string(forKey: "refreshToken")
+
+      if let token = token {
+          
+          let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken?refresh_token=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
+                
+          let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard data != nil else { return }
+          }
+                
+          task.resume()
+          
+      }
+      
+      //Delete other information from the database...
+//      signOut()
+    }
+    
     
     
     // POST request to revoke user's Apple token from Barfix app
@@ -445,7 +449,7 @@ class AuthViewModel: ObservableObject {
         
     }
     
-    func removeAccount() {
+    func removeAccount2() {
         let token = UserDefaults.standard.string(forKey: "refreshToken")
         
         print("Remove Account token: \(token ?? "-")")

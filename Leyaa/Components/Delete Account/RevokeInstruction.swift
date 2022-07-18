@@ -33,30 +33,7 @@ struct RevokeInstruction: View {
                     .font(.footnote)
                     .padding()
                     .multilineTextAlignment(.center)
-                
-                Button {
-                    let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
-                    ASAuthorizationAppleIDProvider().getCredentialState(forUserID: userID) { state, error in
-                        guard error != nil else {
-                        print("Error on getting user's credential.")
-                        return
-                      }
-                      switch state {
-                      case .authorized:
-                        print("User has authorized and app can run smoothly.")
-                      case .revoked:
-                          self.isRevoked = true
-                          print("REVOKED WORKING FROM USER DEFAULT --> \(userID)")
-                      case .notFound, .transferred:
-                       print("There is a problem on the user's authorization. Action has to be taken")
-                      @unknown default:
-                          print("Unknown Dfault")
-                      }
-                    }
-                } label: {
-                    Text("Hit Me")
-                }.buttonStyle(.plain)
-                    .buttonStyle()
+
                 
                 NavigationLink {
                     DeleteAccountData()
@@ -67,26 +44,7 @@ struct RevokeInstruction: View {
                     .disabled(accountDeleteManager.isAppleAuthRevoked == false)
                
             }
-            .onAppear {
-                let userID = UserDefaults.standard.string(forKey: "userID") ?? ""
-                ASAuthorizationAppleIDProvider().getCredentialState(forUserID: userID) { state, error in
-                    guard error != nil else {
-                    print("Error on getting user's credential.")
-                    return
-                  }
-                  switch state {
-                  case .authorized:
-                    print("User has authorized and app can run smoothly.")
-                  case .revoked:
-                      self.isRevoked = true
-                      print("REVOKED WORKING FROM USER DEFAULT --> \(userID)")
-                  case .notFound, .transferred:
-                   print("There is a problem on the user's authorization. Action has to be taken")
-                  @unknown default:
-                      print("Unknown Dfault")
-                  }
-                }
-            }
+
        
     }
 }
