@@ -15,9 +15,11 @@ import Firebase
 
 
 
+
 struct LoginView: View {
     
     private var db = Firestore.firestore()
+    
     
     @State private var email = ""
     @State private var password = ""
@@ -29,6 +31,7 @@ struct LoginView: View {
     @FocusState private var emailFocus: Bool
     @FocusState private var passFocus: Bool
     
+
     var body: some View {
         
         NavigationView {
@@ -149,34 +152,57 @@ struct LoginView: View {
                                                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
                                             }
                                             
+                                            print("USER ID----> \(appleIDCredential.user)")
+                                            UserDefaults.standard.set(appleIDCredential.user, forKey: "userID")
+
+                                            
                                             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                                                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                                                 return
                                             }
 
-                                                                        
+
+//                                            NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
+//                                            object: nil,
+//                                            queue: nil,
+//                                            using: { notification in
+//                                                print("----------------------REVOKED: LOGIN VIEW----------------------")
+//                                                viewModel.revoked()
+//                                            })
+//
+                                            
+//
+//                                            NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
+//                                            object: nil,
+//                                            queue: nil,
+//                                            using: { notification in
+//
+//                                                viewModel.revoked()
+//
+//                                            })
+
                                             
                                             // Add new code below
-                                            if let authorizationCode = appleIDCredential.authorizationCode,
-                                               let codeString = String(data: authorizationCode, encoding: .utf8) {
-                          
-                                                
-                                                  let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/getRefreshToken?code=\(codeString)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
-                                                        
-                                                    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-                                                        
-                                                        if let data = data {
-                                                            let refreshToken = String(data: data, encoding: .utf8) ?? ""
-                                                            print("Refresh Token while Login: \(refreshToken)")
-                                                            UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
-                                                            UserDefaults.standard.synchronize()
-                                                        }
-                                                    }
-                                                  task.resume()
-                                                  
-                                              }
-
-          
+//                                            if let authorizationCode = appleIDCredential.authorizationCode,
+//                                               let codeString = String(data: authorizationCode, encoding: .utf8) {
+//
+//
+//                                                  let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/getRefreshToken?code=\(codeString)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
+//
+//                                                    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+//
+//                                                        if let data = data {
+//                                                            let refreshToken = String(data: data, encoding: .utf8) ?? ""
+//                                                            print("Refresh Token while Login: \(refreshToken)")
+//                                                            UserDefaults.standard.set(refreshToken, forKey: "refreshToken")
+//                                                            UserDefaults.standard.synchronize()
+//                                                        }
+//                                                    }
+//                                                  task.resume()
+//
+//                                              }
+//
+//
                                             
                                             let credential = OAuthProvider.credential(withProviderID: "apple.com",idToken: idTokenString, rawNonce: nonce)
 

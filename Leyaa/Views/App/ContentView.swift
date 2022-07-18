@@ -65,7 +65,8 @@ struct ContentView: View {
                             .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
                             .tag(3)
                             
-                            ProfilePageView(selectedAvatar: defaultAvatar).tabItem {
+                            ProfilePageView(selectedAvatar: defaultAvatar).environmentObject(viewModel)
+                                .tabItem {
                                 Label("Profile", systemImage: "person.crop.square.fill")
                             }
                             .tag(4)

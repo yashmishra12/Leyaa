@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseService
-
+import AuthenticationServices
 
 class AuthViewModel: ObservableObject {
     
@@ -22,6 +22,10 @@ class AuthViewModel: ObservableObject {
     @Published var pendingReqest = [RoomRequest]()
     @Published var currentUser: User?
     
+    
+    
+    @Published var isAppleAuthRevoked: Bool = false
+    
     @Published var errorOccurred: Bool = false
     @Published var errorMessage: String = ""
     
@@ -29,15 +33,21 @@ class AuthViewModel: ObservableObject {
     
     private let service = UserService()
     
-    @Published var clientSecret = ""
-    @Published var IDToken = ""
+
     @Published private(set) var messagesToDelete: [Message] = []
     
     let hapticFeedback = UINotificationFeedbackGenerator()
     
-    init(){
+    init() {
         self.userSession = Auth.auth().currentUser
         self.fetchUser()
+    }
+
+
+    func revoked() {
+        DispatchQueue.main.async {
+            self.isAppleAuthRevoked = true
+        }
     }
     
     //MARK: - Authenticate with Apple
@@ -52,8 +62,8 @@ class AuthViewModel: ObservableObject {
    
     
     //MARK: - Maintains a fresh copy of Device Token
-    func writeUserData(){
-        if self.currentUser == nil {return}
+    func writeUserData() {
+        if self.currentUser == nil { return }
         
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").updateData(["deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "" ]){ error in
             if let error = error {
@@ -134,7 +144,7 @@ class AuthViewModel: ObservableObject {
         // sets user session to nil so we show login view
         userSession = nil
         didAuthenticateUser = false
-        
+   
         resetDeviceToken()
         
         // signs user out on server
@@ -163,6 +173,21 @@ class AuthViewModel: ObservableObject {
     }
     
     
+    //MARK: - TOKEN REVOCATION
+    func checkRevocation() {
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
+
+        object: nil,
+
+        queue: nil,
+
+        using: { notification in
+
+            print("------------REVOKED FROM VIEWMODEL FUNCTION-------------------")
+            self.isAppleAuthRevoked = true
+
+        })
+    }
    
     
     //MARK: - ROOMS

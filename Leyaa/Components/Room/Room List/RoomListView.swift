@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct RoomListView: View {
     
@@ -20,7 +21,6 @@ struct RoomListView: View {
         
         ZStack {
            
-
             NavigationView {
                 
                 ScrollView {
@@ -53,7 +53,6 @@ struct RoomListView: View {
                 .toolbar(content: {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         
-                        
                         NavigationLink {
                             RoomCreateView().hideKeyboardWhenTappedAround()
                         } label: {
@@ -65,14 +64,25 @@ struct RoomListView: View {
                                 .padding(.horizontal, 10)
                         }.buttonStyle(.plain)
                         
-                
-                    
-
                     }
                 })
                     .navigationTitle("Rooms")
                 
             }
+            .onAppear(perform: {
+                NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification,
+
+                object: nil,
+
+                queue: nil,
+
+                using: { notification in
+                
+                    print("----------------------REVOKED: ROOM LIST VIEW ----------------------")
+                    viewModel.revoked()
+                    
+                })
+            })
             .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
         }

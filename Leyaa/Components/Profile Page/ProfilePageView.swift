@@ -8,6 +8,7 @@
 import SwiftUI
 import NotificationBannerSwift
 
+
 struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
@@ -18,6 +19,7 @@ struct ProfilePageView: View {
     
     
     private let pasteBoard = UIPasteboard.general
+
     
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
@@ -35,12 +37,20 @@ struct ProfilePageView: View {
     var body: some View {
         
         ZStack {
-            NavigationView {
-                VStack {
 
+            NavigationView {
+               
+                VStack {
+         
                     VStack (spacing: 2){
                         HStack {
-                            Image(selectedAvatar).resizable().frame(width: 300, height: 300).padding(.top, 40).padding(.bottom, -60)
+                            ZStack {
+                                NavigationLink(destination: DeleteAccount_Step1(),
+                                               isActive: $wantToDeactivate,
+                                               label: { }).buttonStyle(.plain)
+                                
+                                Image(selectedAvatar).resizable().frame(width: 300, height: 300).padding(.top, 40).padding(.bottom, -60)
+                            }
                         }.ignoresSafeArea()
                     
                         VStack (spacing: 1) {
@@ -117,22 +127,7 @@ struct ProfilePageView: View {
                     .padding(.horizontal, 10)
                     .padding(.bottom, 30)
                     .padding(.top, 20)
-                    
-                    Button {
-                        print("Bundle : \(Bundle.main.bundleIdentifier!)" )
-                        
-                        let token = UserDefaults.standard.string(forKey: "refreshToken")
-                        print("Refresh Token: \(token ?? "--")")
-                        
-//               
-                        
-                        for room in viewModel.rooms {
-                            print("Room ID: \(room.id ?? "")")
-                        }
-                        
-                    } label: {
-                        Text("Apple ID")
-                    }
+
 
 
                 }
@@ -176,14 +171,14 @@ struct ProfilePageView: View {
                                               Text("Sad to see you leave.")
                                             }
 
-                    .confirmationDialog("Delete account permanently?",
-                                              isPresented: $wantToDeactivate) {
-                                              Button("Delete Account", role: .destructive) {
-                                                  viewModel.removeAccount()
-                                              }
-                                            } message: {
-                                              Text("This will permanently delete your account, remove you from rooms and delete your chats.")
-                                            }
+//                    .confirmationDialog("Delete account permanently?",
+//                                              isPresented: $wantToDeactivate) {
+//                                              Button("Delete Account", role: .destructive) {
+//                                                  viewModel.removeAccount()
+//                                              }
+//                                            } message: {
+//                                              Text("This will permanently delete your account, remove you from rooms and delete your chats.")
+//                                            }
 
                     }
                     
