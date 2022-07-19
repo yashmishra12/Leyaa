@@ -12,7 +12,9 @@ struct DeleteAccountData: View {
     @State private var wantToDelete: Bool = false
     var body: some View {
         VStack {
-            Text("This will permanently delete your account. You will lose all your rooms, messages and item expiry reminders.\nTap on Confirm to continue.").padding()
+            Text("This will permanently delete your account. You will lose all your rooms, messages and item expiry reminders.\n\n\nTap on Confirm to continue.")
+                .multilineTextAlignment(.center)
+                .padding()
             
             Button {
                 wantToDelete.toggle()

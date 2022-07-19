@@ -14,7 +14,7 @@ struct RoomListView: View {
     @State var isShowingMenuBar: Bool = false
     @Binding var myRoom: [Room]
     @State var wantToSignOut: Bool = false
-    
+    @State private var showImage: Bool = false
 
     var body: some View {
        
@@ -44,7 +44,10 @@ struct RoomListView: View {
                      }
                     else {
                         
-                        Image("noRoom").resizable().aspectRatio(contentMode: .fit)
+                        
+                        if showImage {
+                            Image("noRoom").resizable().aspectRatio(contentMode: .fit)
+                        }
                     }
                 }
                 
@@ -69,6 +72,10 @@ struct RoomListView: View {
             }
             .navigationViewStyle(.stack)
             .navigationBarBackButtonHidden(true)
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                showImage.toggle()
+            }
         }
         
     }

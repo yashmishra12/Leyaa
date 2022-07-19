@@ -21,9 +21,21 @@ struct DeleteAccount_Step1: View {
     
     var body: some View {
         VStack {
-            Text("How did you create your account? ").font(.title2)
+            
+            Image("dontGo").resizable().aspectRatio(contentMode: .fit)
+                .padding()
+                .padding(.top, -30)
+            
+            Text("If you created your account with Apple, Sign-in again with Apple to revoke apple token and then you can remove your account and all its data.")
+                .multilineTextAlignment(.center)
+                .font(.footnote)
                 .padding()
             
+            Text("\nIf you haven't used Apple Sign-in, tap on 'Normal Sign-Up'").font(.footnote)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            Spacer()
             
             VStack {
 
@@ -118,8 +130,6 @@ struct DeleteAccount_Step1: View {
 
             }
             
-    
-                    
             
             NavigationLink {
                 DeleteAccountData()
@@ -134,8 +144,9 @@ struct DeleteAccount_Step1: View {
                            isActive: $goToInstructionPage,
                            label: { }).buttonStyle(.plain)
             
+            Spacer()
         
-    }
+        }
 }
                     }
 
