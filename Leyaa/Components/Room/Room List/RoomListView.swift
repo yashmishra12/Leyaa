@@ -74,7 +74,7 @@ struct RoomListView: View {
             .navigationBarBackButtonHidden(true)
         }.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-                showImage.toggle()
+                showImage = true
             }
         }
         
