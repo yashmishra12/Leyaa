@@ -24,6 +24,26 @@ struct RoomInviteView: View {
     @FocusState private var emailFocus: Bool
     @FocusState private var messageFocus: Bool
     
+    func invitationSent() {
+        if email.isEmpty==false {
+            messageFocus = false
+            
+            viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
+            
+            fetchDeviceTokenFromEmail(email: email) { token in
+                roomJoinRequestPayload(token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
+            }
+            
+            presentationMode.wrappedValue.dismiss()
+            
+           successSB(title: "Invitation Sent")
+        }
+        
+        else {
+            emailFocus = true
+        }
+    }
+    
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }
         let activityVC = UIActivityViewController(activityItems: [data], applicationActivities: nil)
@@ -45,6 +65,7 @@ struct RoomInviteView: View {
             VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     .focused($emailFocus)
+                    .keyboardType(.emailAddress)
                     .onSubmit {
                         messageFocus = true
                     }
@@ -54,28 +75,19 @@ struct RoomInviteView: View {
                 CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
                     .focused($messageFocus)
                     .onSubmit {
-                        messageFocus = false
+                        invitationSent()
                     }
-                    .submitLabel(.done)
+                    .submitLabel(.send)
+                
                 
             }.padding()
             
 
             Button {
-                messageFocus = false
-                
-                viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
-                
-                fetchDeviceTokenFromEmail(email: email) { token in
-                    roomJoinRequestPayload(token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
-                }
-                
-                presentationMode.wrappedValue.dismiss()
-                
-               successSB(title: "Invitation Sent")
+                invitationSent()
                 
             } label: {
-                Text("Send Invite").buttonStyle()
+                Text("Send Invite").buttonStyleBlue()
             }
             .disabled(isValidEmail(email)==false)
             .buttonStyle(.plain)
@@ -90,7 +102,7 @@ struct RoomInviteView: View {
                     Text("Share App").font(.footnote)
                     
                 }
-            }.buttonStyle()
+            }.buttonStyleBlue()
             .buttonStyle(.plain)
             .padding(.top)
 

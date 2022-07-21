@@ -117,7 +117,7 @@ struct BillCreateView: View {
                             memberAmount[index] = Double(billAmount ) / Double(roomData.members.count)
                         }
                     } label: {
-                        Text("Equal Split").buttonStyle()
+                        Text("Equal Split").buttonStyleBlue()
                                 
                     }
                     .buttonStyle(.plain)
@@ -130,7 +130,7 @@ struct BillCreateView: View {
                         }
                         
                     } label: {
-                        Text("Set All Zero").buttonStyle()
+                        Text("Set All Zero").buttonStyleBlue()
                     }
                     .buttonStyle(.plain)
                     .padding(.horizontal, 20)
@@ -212,7 +212,7 @@ struct BillCreateView: View {
                         
                         
                     } label: {
-                        Text("Save").buttonStyle()
+                        Text("Save").buttonStyleBlue()
                     }
                     .disabled( (abs(billAmount - memberAmount.reduce(0, +)) > 0.09) ||
                                (abs(memberAmount.reduce(0, +) - billAmount) > 0.09) ||

@@ -61,9 +61,11 @@ struct CustomTextField: View {
             if text.isEmpty {
                 placeholder.opacity(0.5)
             }
+            
             TextField("", text: $text, onEditingChanged: editingChanged, onCommit: commit)
                 .foregroundColor(Color("sendMsgFont"))
                 .accentColor(Color("sendMsgFont"))
+                
         }
     }
 }

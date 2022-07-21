@@ -118,7 +118,7 @@ struct ProfilePageView: View {
                                 successSB(title: "Avatar Changed")
                                 
                             } label: {
-                                Text("Save").buttonStyle()
+                                Text("Save").buttonStyleBlue()
                                 
                             }.buttonStyle(.plain)
                         }

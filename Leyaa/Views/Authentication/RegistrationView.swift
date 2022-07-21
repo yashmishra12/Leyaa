@@ -45,6 +45,7 @@ struct RegistrationView: View {
                 //MARK: - SIGNUP
                 VStack(spacing: 40){
                     CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                        .keyboardType(.emailAddress)
                         .focused($nameFocus)
                         .onSubmit {
                             nameFocus = true
@@ -78,7 +79,7 @@ struct RegistrationView: View {
                                            password: password,
                                            fullname: fullname)
                     } label: {
-                        Text ("Sign Up").buttonStyle()
+                        Text ("Sign Up").buttonStyleBlue()
                     }.disabled(isValidEmail(email)==false)
                     .padding(.top, 10)
                     .buttonStyle(.plain)

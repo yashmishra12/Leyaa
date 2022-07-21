@@ -14,6 +14,17 @@ struct RoomCreateView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
+    @FocusState var roomNameIsFocused: Bool
+    
+    func donePressed() {
+        if roomName.isEmpty == false {
+            let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "") + ""])
+        
+            viewModel.addRoom(room: newRoom)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
     var body: some View {
         
         VStack {
@@ -24,15 +35,17 @@ struct RoomCreateView: View {
             
             CustomInputField(imageName: "house.fill", placeholderText: "Room Name", isSecureField: false, text: $roomName)
                 .padding()
-
-            let newRoom = Room(title: roomName, newItems: [], members: [ (Auth.auth().currentUser?.uid ?? "") + ""])
+                .submitLabel(.done)
+                .focused($roomNameIsFocused)
+                .onSubmit {
+                   donePressed()
+                }
         
             
             Button {
-                viewModel.addRoom(room: newRoom)
-                presentationMode.wrappedValue.dismiss()
+                donePressed()
             } label: {
-                Text("Create Room").buttonStyle()
+                Text("Create Room").buttonStyleBlue()
                     
             }.buttonStyle(.plain)
                 .disabled(roomName.isEmpty)
@@ -40,6 +53,11 @@ struct RoomCreateView: View {
 
             
         }.navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
+                    self.roomNameIsFocused = true
+                }
+            }
         
     }
 }

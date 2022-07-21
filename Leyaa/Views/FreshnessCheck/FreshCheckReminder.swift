@@ -11,14 +11,22 @@ import NotificationBannerSwift
 struct FreshCheckReminder: View {
     @State private var itemName: String = ""
     
-    @State private var isShowingCal: Bool = false
-    @State private var selectedDate = Date()
+    @State private var selectedDate = Date()+60
     @State private var notificationPermitted: Bool = false
 
     @StateObject var prManager = PRManager()
     @FocusState private var itemNameIsFocused: Bool
     
     @EnvironmentObject var viewModel: AuthViewModel
+    
+    func donePressed() {
+        if itemName.isEmpty == false {
+            CalendarTriggeredNotification(givenDate: selectedDate, itemName: itemName)
+            itemName = ""
+            prManager.updateArray(isDeleting: false)
+            selectedDate = Date()+60
+        }
+    }
     
     func checkPermission() {
         let center = UNUserNotificationCenter.current()
@@ -45,21 +53,22 @@ struct FreshCheckReminder: View {
                 CustomInputField(imageName: "leaf.fill", placeholderText: "Item Name", isSecureField: false, text: $itemName)
                     .submitLabel(.done)
                     .focused($itemNameIsFocused)
+                    .onSubmit {
+                        donePressed()
+                    }
                     .padding()
+                
 
                 
-                    DatePicker("Remind Me On:", selection: $selectedDate, in: Date()...).datePickerStyle(.compact)
+                    DatePicker("Remind Me On:", selection: $selectedDate, in: (Date()+60)...).datePickerStyle(.compact)
                     .buttonStyle(.plain)
                     .padding(.bottom)
                     
                     Button {
-                        CalendarTriggeredNotification(givenDate: selectedDate, itemName: itemName)
-                        itemName = ""
-                        prManager.updateArray(isDeleting: false)
-                        selectedDate = Date()
+                       donePressed()
                         
                     } label: {
-                        Text("Save").buttonStyle()
+                        Text("Save").buttonStyleBlue()
                     }.disabled(itemName.isEmpty || notificationPermitted == false)
                     .buttonStyle(.plain)
                     .padding(.top)

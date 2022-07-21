@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroupMemberInfoView: View {
     @State var userID: String
-    @State var avatar = "ketchup"
+    @State var avatar = "blankImage"
     @State var name = "Account Deleted"
     @State var email = "Account Deleted"
     private let pasteBoard = UIPasteboard.general
@@ -48,9 +48,11 @@ struct GroupMemberInfoView: View {
                                 Spacer()
                             }
                         }.onAppear(perform: {
-                            userInfoProvider.getProfileAvatar(userID: userID) { res in self.avatar = res }
-                            userInfoProvider.getProfileName(userID: userID) { res in self.name = res }
-                            userInfoProvider.getProfileEmail(userID: userID) { res in self.email = res }
+                            DispatchQueue.main.async {
+                                userInfoProvider.getProfileAvatar(userID: userID) { res in self.avatar = res }
+                                userInfoProvider.getProfileName(userID: userID) { res in self.name = res }
+                                userInfoProvider.getProfileEmail(userID: userID) { res in self.email = res }
+                            }
                         })
                     }
 

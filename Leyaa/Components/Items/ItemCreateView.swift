@@ -25,10 +25,32 @@ struct ItemCreateView: View {
     
     let hapticFeedback = UINotificationFeedbackGenerator()
     
+    func donePressed() {
+        descFocus = false
+        let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
+        
+        if name.isEmpty==false {
+            itemManager.addItem(item: item, roomID: roomData.id ?? "")
+            name = ""
+            qty = ""
+            desc = ""
+            
+            nameFocus = true
+            
+            successSB(title: "Added")
+            
+            hapticFeedback.notificationOccurred(.success)
+        }
+        else {
+            nameFocus = true
+        }
+    }
     
     var body: some View {
         VStack {
-            if name.isEmpty { Image("addItem").resizable().frame(width: 200, height: 200) }
+            if name.isEmpty {
+                Image("addItem").resizable().frame(width: 200, height: 200)
+            }
             else {
                 Image(name.sanitiseItemName()).resizable().frame(width: 200, height: 200).shadow(color: .blue, radius: 1, x: 0, y: 0)
             }
@@ -49,33 +71,22 @@ struct ItemCreateView: View {
                     }
                     .submitLabel(.next)
                 
+                
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc).padding()
                     .focused($descFocus)
-                    .onSubmit {
-                        descFocus = false
-                    }
                     .submitLabel(.done)
-
-                
+                    .onSubmit {
+                        donePressed()
+                    }
+                                   
             }
             
             
             Button {
-                let item = ["id": UUID().uuidString ,"name": name, "desc": desc, "qty": qty]
-                itemManager.addItem(item: item, roomID: roomData.id ?? "")
-                
-                name = ""
-                qty = ""
-                desc = ""
-                
-                nameFocus = true
-                
-                successSB(title: "Added")
-                
-                hapticFeedback.notificationOccurred(.success)
+                donePressed()
                 
             } label: {
-                Text("Add Item").buttonStyle()
+                Text("Add Item").buttonStyleBlue()
             }.buttonStyle(.plain)
                 .disabled(name.isEmpty)
         }.navigationBarTitleDisplayMode(.inline)

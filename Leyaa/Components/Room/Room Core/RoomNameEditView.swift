@@ -15,6 +15,15 @@ struct RoomNameEditView: View {
     @FocusState var nameIsFocused: Bool
     @Binding var isShowingSideMenu: Bool
     
+    func donePressed() {
+        if name.isEmpty == false {
+            viewModel.editRoomName(newName: name, roomID: roomData.id ?? "")
+            successSB(title: "Name Changed")
+            isShowingSideMenu.toggle()
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack{
@@ -26,29 +35,27 @@ struct RoomNameEditView: View {
                                  isSecureField: false,
                                  text: $name)
                     .focused($nameIsFocused)
+                    .submitLabel(.done)
+                    .onSubmit {
+                        donePressed()
+                    }
                 
             }.padding()
                
             
             VStack{
                 Button {
-                    viewModel.editRoomName(newName: name, roomID: roomData.id ?? "")
-                   
-                    successSB(title: "Name Changed")
-                    
-                    isShowingSideMenu.toggle()
-                    
-                    presentationMode.wrappedValue.dismiss()
+                    donePressed()
                 } label: {
-                    Text("Save").buttonStyle()
+                    Text("Save").buttonStyleBlue()
                 }.buttonStyle(.plain)
+                    .disabled(name.isEmpty)
                 
             }.onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.8) {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
                     self.nameIsFocused = true
                 }
             }
-            
         }
     }
 }

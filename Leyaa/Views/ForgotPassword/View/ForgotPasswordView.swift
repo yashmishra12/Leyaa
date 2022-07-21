@@ -44,7 +44,7 @@ struct ForgotPasswordView: View {
                           forgotPasswordNB()
 
                         } label: {
-                            Text("Send Reset Request").buttonStyle()
+                            Text("Send Reset Request").buttonStyleBlue()
                         }.disabled(isValidEmail($viewModel.email.wrappedValue)==false)
                         .buttonStyle(.plain)
             

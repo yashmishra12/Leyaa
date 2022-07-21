@@ -83,8 +83,6 @@ struct SideMenuView: View {
                             }
                             
                             
-
-                            
                             
                             // Bill Split
                             HStack {
@@ -319,13 +317,10 @@ struct SideMenuView: View {
             
             
                 Spacer()
-                
- 
-            
-
+  
             
         }.onTapGesture {
-            withAnimation {
+            withAnimation(.easeInOut) {
                 isShowing.toggle()
             }
         }

@@ -16,9 +16,7 @@ struct DeleteAccount_Step1: View {
     @State var currentNonce: String?
     @EnvironmentObject var viewModel: AuthViewModel
     @State var goToInstructionPage: Bool = false
-    
-    @StateObject var accountDeleteManager = AccountDeleteManager()
-    
+        
     var body: some View {
         VStack {
             
@@ -135,7 +133,7 @@ struct DeleteAccount_Step1: View {
                 DeleteAccountData()
             } label: {
                 Text("Normal Sign-Up")
-            }.buttonStyle()
+            }.buttonStyleBlue()
                 .buttonStyle(.plain)
                 .padding()
             

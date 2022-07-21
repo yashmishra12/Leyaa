@@ -53,6 +53,7 @@ struct LoginView: View {
                     VStack(spacing: 40) {
                         
                         CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
+                            .keyboardType(.emailAddress)
                             .focused($emailFocus)
                             .onSubmit {
                                 passFocus = true
@@ -110,7 +111,7 @@ struct LoginView: View {
                         Button {
                             viewModel.login(withEmail: email, password: password)
                         } label: {
-                            Text ("Sign In").buttonStyle()
+                            Text ("Sign In").buttonStyleBlue()
                         }.disabled(isValidEmail(email)==false)
                             .buttonStyle(.plain)
                         

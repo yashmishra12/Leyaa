@@ -14,6 +14,15 @@ struct NameChangeView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
     
+    func donePressed() {
+        if newName.isEmpty == false {
+            viewModel.nameChange(newName: newName)
+            newName = ""
+            successSB(title: "Name Saved")
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
     var body: some View {
         VStack {
             Image("changeName").resizable().frame(width: 300, height: 300, alignment: .center).aspectRatio(contentMode: .fit)
@@ -21,18 +30,19 @@ struct NameChangeView: View {
             CustomInputField(imageName: "person.fill", placeholderText: "New Name", isSecureField: false, text: $newName)
                 .padding()
                 .focused($nameIsFocused)
+                .submitLabel(.done)
+                .onSubmit {
+                    donePressed()
+                }
             
 
             Button {
-                viewModel.nameChange(newName: newName)
-                newName = ""
-                successSB(title: "Name Saved")
-                presentationMode.wrappedValue.dismiss()
+                donePressed()
             } label: {
                 Text("Save")
             }
             .buttonStyle(.plain)
-            .buttonStyle()
+            .buttonStyleBlue()
             .disabled(newName.isEmpty)
 
             

@@ -56,6 +56,8 @@ struct RoomChatView: View {
                     }
                     
                     .onAppear(perform: {
+                        messageManager.updateRoomID(name: roomData.id ?? "")
+                        messageManager.getMessages(roomID: roomData.id ?? "")
                         proxy.scrollTo(messageManager.lastMessageID, anchor: .bottom)
                     })
                     .frame(width: screenWidth)
@@ -66,10 +68,6 @@ struct RoomChatView: View {
                 .environmentObject(messageManager)
         }
         .frame(width: screenWidth)
-        .onAppear {
-                messageManager.updateRoomID(name: roomData.id ?? "")
-                messageManager.getMessages(roomID: roomData.id ?? "")
-            }
         
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -11,7 +11,7 @@ import SwiftUI
 
 extension View {
 
-    func buttonStyle() -> some View {
+    func buttonStyleBlue() -> some View {
         self.padding(.horizontal, 16)
             .padding(.vertical, 10)
             .foregroundColor(.white)
@@ -19,7 +19,7 @@ extension View {
             .clipShape(Capsule())
     }
     
-    func DeleteAccountStyle() -> some View {
+    func deleteAccountStyle() -> some View {
         self.padding(.horizontal, 16)
             .padding(.vertical, 10)
             .foregroundColor(.white)

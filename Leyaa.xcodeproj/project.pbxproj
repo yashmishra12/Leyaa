@@ -79,10 +79,7 @@
 		CCE52968287D4818005C173C /* PRCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52967287D4818005C173C /* PRCard.swift */; };
 		CCE5296A287D53CE005C173C /* PRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE52969287D53CE005C173C /* PRManager.swift */; };
 		CCEBBCB628849EF200491623 /* DeleteAccount_Step1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBBCB528849EF200491623 /* DeleteAccount_Step1.swift */; };
-		CCEBBCB82884A72900491623 /* RevokeInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBBCB72884A72900491623 /* RevokeInstruction.swift */; };
 		CCEBBCBA2884A7F400491623 /* DeleteAccountData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBBCB92884A7F400491623 /* DeleteAccountData.swift */; };
-		CCEBBCBE2884B46A00491623 /* ActivateObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBBCBD2884B46A00491623 /* ActivateObserver.swift */; };
-		CCEBBCC02884F85600491623 /* AccountDeleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBBCBF2884F85600491623 /* AccountDeleteManager.swift */; };
 		CCFA96AA285A4EED0083D925 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */; };
 		CCFA96B2285A61130083D925 /* RoomListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B1285A61130083D925 /* RoomListComponent.swift */; };
 		CCFA96B8285A6B790083D925 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA96B7285A6B790083D925 /* User.swift */; };
@@ -168,10 +165,7 @@
 		CCE52967287D4818005C173C /* PRCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRCard.swift; sourceTree = "<group>"; };
 		CCE52969287D53CE005C173C /* PRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRManager.swift; sourceTree = "<group>"; };
 		CCEBBCB528849EF200491623 /* DeleteAccount_Step1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccount_Step1.swift; sourceTree = "<group>"; };
-		CCEBBCB72884A72900491623 /* RevokeInstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevokeInstruction.swift; sourceTree = "<group>"; };
 		CCEBBCB92884A7F400491623 /* DeleteAccountData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountData.swift; sourceTree = "<group>"; };
-		CCEBBCBD2884B46A00491623 /* ActivateObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivateObserver.swift; sourceTree = "<group>"; };
-		CCEBBCBF2884F85600491623 /* AccountDeleteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeleteManager.swift; sourceTree = "<group>"; };
 		CCFA96A9285A4EED0083D925 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CCFA96B1285A61130083D925 /* RoomListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListComponent.swift; sourceTree = "<group>"; };
 		CCFA96B7285A6B790083D925 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -541,10 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEBBCB528849EF200491623 /* DeleteAccount_Step1.swift */,
-				CCEBBCB72884A72900491623 /* RevokeInstruction.swift */,
 				CCEBBCB92884A7F400491623 /* DeleteAccountData.swift */,
-				CCEBBCBD2884B46A00491623 /* ActivateObserver.swift */,
-				CCEBBCBF2884F85600491623 /* AccountDeleteManager.swift */,
 			);
 			path = "Delete Account";
 			sourceTree = "<group>";
@@ -676,7 +667,6 @@
 				CCE52962287D041F005C173C /* secretKey.swift in Sources */,
 				CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
-				CCEBBCB82884A72900491623 /* RevokeInstruction.swift in Sources */,
 				CCEBBCBA2884A7F400491623 /* DeleteAccountData.swift in Sources */,
 				CC655B5D287FF0C8002B08E0 /* ItemManager.swift in Sources */,
 				CCD372DA28831D5900C38CDE /* ProfilePageView.swift in Sources */,
@@ -705,7 +695,6 @@
 				CCB4C3A228597A3200105C5C /* LeyaaApp.swift in Sources */,
 				CCEBBCB628849EF200491623 /* DeleteAccount_Step1.swift in Sources */,
 				CC5D265E286BD4780068800E /* MessageField.swift in Sources */,
-				CCEBBCC02884F85600491623 /* AccountDeleteManager.swift in Sources */,
 				CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */,
 				CCE52968287D4818005C173C /* PRCard.swift in Sources */,
 				CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */,
@@ -719,7 +708,6 @@
 				CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */,
 				CCAF4203287A2DAA00ADAE99 /* RoomNameEditView.swift in Sources */,
 				CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */,
-				CCEBBCBE2884B46A00491623 /* ActivateObserver.swift in Sources */,
 				CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */,
 				CCE4E81D286E91670026265E /* FreshCheckReminder.swift in Sources */,
 				CCE5296A287D53CE005C173C /* PRManager.swift in Sources */,
@@ -923,7 +911,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -958,7 +946,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";

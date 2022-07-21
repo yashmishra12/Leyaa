@@ -27,13 +27,25 @@ struct ItemEditView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    func donePressed() {
+        descIsFocused = false
+        nameIsFocused = false
+        qtyIsFocused = false
+        
+        itemManager.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
+        
+        infoSB(title: "Edited")
+        
+        presentationMode.wrappedValue.dismiss()
+    }
 
     var body: some View {
         
         VStack{
             Image(name.sanitiseItemName()).resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 200, alignment: .center)
                 .shadow(color: .blue, radius: 1, x: 0, y: 0)
-            
+                .padding(.top, -20)
+                
             VStack (spacing: 20) {
                 CustomInputField(imageName: "circle.hexagonpath", placeholderText: "Name", isSecureField: false, text: $name)
                     .focused($nameIsFocused)
@@ -54,7 +66,7 @@ struct ItemEditView: View {
                 CustomInputField(imageName: "text.quote", placeholderText: "Description", isSecureField: false, text: $desc)
                     .focused($descIsFocused)
                     .onSubmit {
-                        descIsFocused = false
+                       donePressed()
                     }
                     .submitLabel(.done)
 
@@ -62,28 +74,19 @@ struct ItemEditView: View {
             }.padding()
                 .padding(.top)
             
-            VStack{
+            
 
                 Button {
-                    descIsFocused = false
-                    nameIsFocused = false
-                    qtyIsFocused = false
-                    
-                    itemManager.editItem(item: item, name: name, qty: qty, desc: desc, roomID: roomID)
-                    
-                    infoSB(title: "Edited")
-                    
-                    presentationMode.wrappedValue.dismiss()
+                    donePressed()
                 
                 } label: {
-                    Text("Save").buttonStyle()
+                    Text("Save").buttonStyleBlue()
                 }.buttonStyle(.plain)
-            }
+            
+            Spacer()
             
         }
-        .onAppear {
-            nameIsFocused = true
-        }
+   
 
     }
 }

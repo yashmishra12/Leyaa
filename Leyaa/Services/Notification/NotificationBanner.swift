@@ -15,7 +15,10 @@ import NotificationBannerSwift
 
 func successSB(title: String) {
     let banner = StatusBarNotificationBanner(title: "\(title)", style: .success)
+    banner.dismiss()
     banner.show()
+    banner.dismissOnTap = true
+    banner.dismissOnSwipeUp = true
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 banner.dismiss()
                             }
@@ -24,7 +27,11 @@ func successSB(title: String) {
 
 func successSBItemAdded(title: String) {
     let banner = StatusBarNotificationBanner(title: "\(title)", style: .success)
+
+    banner.dismiss()
     banner.show()
+    banner.dismissOnTap = true
+    banner.dismissOnSwipeUp = true
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                                 banner.dismiss()
                             }
@@ -35,7 +42,10 @@ func successSBItemAdded(title: String) {
 
 func infoSB(title: String) {
     let banner = StatusBarNotificationBanner(title: "\(title)", style: .info)
+    banner.dismiss()
     banner.show()
+    banner.dismissOnTap = true
+    banner.dismissOnSwipeUp = true
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                                 banner.dismiss()
                             }
@@ -47,6 +57,7 @@ func infoSB(title: String) {
 
 func forgotPasswordNB() {
     let banner = NotificationBanner(title: "Link Sent", subtitle: "Check your Inbox and Spam", style: .success)
+    banner.dismiss()
     banner.show()
     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         banner.dismiss()
@@ -55,16 +66,14 @@ func forgotPasswordNB() {
 
 func messageChatInfo() {
     let banner = GrowingNotificationBanner(title: "Message wall", subtitle: "1. Long press on your avatar to delete message.\n\n2 Tap on avatars to get post's timestamp.\n\n3. Hit the 'Notify All' Button if you want to send notifications to everyone. Wall Messages is meant for important posts and not conversation.", style: .info)
+    banner.dismiss()
     banner.show()
     banner.haptic = .medium
     banner.autoDismiss = false
     
-    banner.onTap = {
-        banner.dismiss()
-    }
-    banner.onSwipeUp = {
-        banner.dismiss()
-    }
+    banner.dismissOnTap = true
+    banner.dismissOnSwipeUp = true
+
     
     DispatchQueue.main.asyncAfter(deadline: .now()+15) {
         banner.dismiss()

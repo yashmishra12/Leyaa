@@ -21,16 +21,15 @@ struct DeleteAccountData: View {
             } label: {
                 Text("Confirm")
             }
-            .DeleteAccountStyle()
+            .deleteAccountStyle()
             .buttonStyle(.plain)
-
-        }           .confirmationDialog("Are you sure?",
+        }
+        .confirmationDialog("Are you sure?",
                                         isPresented: $wantToDelete) {
                                         Button("Yes, delete my account.", role: .destructive) {
                                             viewModel.deleteAccountData()
-                                            
-                                          
                                         }
+            
                                       } message: {
                                         Text("It breaks my heart to see you leave.")
                                       }
