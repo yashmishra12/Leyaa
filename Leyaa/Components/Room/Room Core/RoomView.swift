@@ -157,6 +157,7 @@ struct RoomView: View {
             })
             .navigationTitle(Text(roomData.title))
             .navigationBarTitleDisplayMode(.automatic)
+           
         }
     }
     

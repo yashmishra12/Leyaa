@@ -1,9 +1,10 @@
 //
-//  UserInfoProvider.swift
+//  UserDataProvider.swift
 //  Leyaa
 //
-//  Created by Yash Mishra on 7/15/22.
+//  Created by Yash Mishra on 7/21/22.
 //
+
 
 import Foundation
 import Firebase
@@ -12,11 +13,37 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 @MainActor
-class UserInfoProvider: ObservableObject {
+class UserDataasdProvider: ObservableObject {
     
     private var db = Firestore.firestore()
     
-
+    @Published var avatarToShow: String = "Ketchup"
+    @Published var nameToShow: String = ""
+    @Published var emailToShow: String = ""
+    
+    @Published var userID: String
+    
+    init(id: String? = nil) {
+        if let id = id {
+            userID = id
+        } else {
+            userID = ""
+        }
+    }
+    
+    func updateData(id: String) {
+        getProfileName(userID: id) { newName in
+            self.nameToShow = newName
+        }
+        
+        getProfileAvatar(userID: id) { newAvatar in
+            self.avatarToShow = newAvatar
+        }
+        
+        getProfileEmail(userID: id) { newEmail in
+            self.emailToShow = newEmail
+        }
+    }
     
     @MainActor
     func getProfileAvatar(userID: String, completion: @escaping (String) -> Void) {

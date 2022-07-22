@@ -39,13 +39,14 @@ struct ContentView: View {
                         LoginView().environmentObject(viewModel)
                            
                     } else {
-                        TabView(selection: handler) {
+//                        TabView(selection: handler) {
+                        TabView {
                             RoomListView(myRoom: $viewModel.rooms).id(roomList)
-                                .onChange(of: tappedTwice, perform: { tappedTwice in
-                                                                           guard tappedTwice else { return }
-                                                                             roomList = UUID()
-                                    self.tappedTwice = false
-                                                                   })
+//                                .onChange(of: tappedTwice, perform: { tappedTwice in
+//                                                                           guard tappedTwice else { return }
+//                                                                             roomList = UUID()
+//                                    self.tappedTwice = false
+//                                                                   })
                                 .onAppear {
                                     viewModel.populateRoomList()
                                     viewModel.roomJoinRequestUpdate()

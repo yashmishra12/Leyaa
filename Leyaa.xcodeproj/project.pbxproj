@@ -45,6 +45,7 @@
 		CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AA285E9E9A00EF896D /* Room.swift */; };
 		CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AC285EB90800EF896D /* RoomView.swift */; };
 		CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */; };
+		CCA1C898288A3F0B00BBE548 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA1C897288A3F0B00BBE548 /* UserDataProvider.swift */; };
 		CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */; };
 		CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */; };
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
@@ -130,6 +131,7 @@
 		CC9FA7AA285E9E9A00EF896D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		CC9FA7AC285EB90800EF896D /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
 		CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCreateView.swift; sourceTree = "<group>"; };
+		CCA1C897288A3F0B00BBE548 /* UserDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataProvider.swift; sourceTree = "<group>"; };
 		CCA3FA56286D14030052F6B3 /* Leyaa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Leyaa.entitlements; sourceTree = "<group>"; };
 		CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				CCB3D46628815275000AAEAD /* UserInfoProvider.swift */,
+				CCA1C897288A3F0B00BBE548 /* UserDataProvider.swift */,
 			);
 			path = "User Info Provider";
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				CC0CC87D287310CF009C90C0 /* MemberPaymentSliderView.swift in Sources */,
 				CCBEC81928750E1600D78CE1 /* UnitBill.swift in Sources */,
 				CCBEC8132874BA6200D78CE1 /* BillContributorView.swift in Sources */,
+				CCA1C898288A3F0B00BBE548 /* UserDataProvider.swift in Sources */,
 				CCB4C3B328597B8100105C5C /* LoginView.swift in Sources */,
 				CCBEC817287502C000D78CE1 /* DetailedBillView.swift in Sources */,
 				CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */,

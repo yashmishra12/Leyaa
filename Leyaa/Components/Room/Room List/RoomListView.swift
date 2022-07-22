@@ -31,8 +31,12 @@ struct RoomListView: View {
                             VStack{
                                 ForEach($myRoom) { room in
                                     NavigationLink(destination: RoomView(roomData: room, recentDeletedItems: [])) {
-                                        RoomListComponent(title: room.title, newItems: room.newItems).background(Color("MediumBlue"))
-                                    }.buttonStyle(.plain)
+                                        RoomListComponent(title: room.title, newItems: room.newItems)
+                                            .background(Color("MediumBlue"))
+                                            
+                                    }.isDetailLink(false)
+                                    .buttonStyle(.plain)
+                                        
                                 }
                                 
                                 
@@ -71,6 +75,7 @@ struct RoomListView: View {
                 
             }
             .navigationViewStyle(.stack)
+            
             .navigationBarBackButtonHidden(true)
         }.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {

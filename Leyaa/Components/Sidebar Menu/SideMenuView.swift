@@ -99,7 +99,9 @@ struct SideMenuView: View {
                                         
                                         Text("Bill Split").padding()
                                     }
-                                }.buttonStyle(.plain)
+                                }
+                                .isDetailLink(false)
+                                .buttonStyle(.plain)
                                 Spacer()
                             }
                             
