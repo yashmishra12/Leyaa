@@ -57,6 +57,10 @@ struct BillCreateView: View {
                                 .autocapitalization(.none)
                                 .focused($nameIsFocused)
                                 .disableAutocorrection(true)
+                                .submitLabel(.next)
+                                .onSubmit {
+                                    priceIsFocused = true
+                                }
                                 
                             
                         }.onAppear {

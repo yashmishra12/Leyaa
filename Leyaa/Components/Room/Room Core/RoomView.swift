@@ -17,6 +17,7 @@ struct RoomView: View {
     
     @State private var isShowingSideMenu: Bool = false
     
+    @State var navTitle: String = ""
     
     @State var lastItemID: String = ""
     
@@ -25,6 +26,8 @@ struct RoomView: View {
     func updateLastItemID(newID: String) {
         self.lastItemID = newID
     }
+    
+
     
     var body: some View {
         
@@ -89,7 +92,6 @@ struct RoomView: View {
                         if isShowingSideMenu == false {
                             
                             //Member Add
-                            
                             NavigationLink {
                                 RoomInviteView(roomData: $roomData).hideKeyboardWhenTappedAround()
                             } label: {
@@ -97,17 +99,18 @@ struct RoomView: View {
                                     Image(systemName: "person.fill.badge.plus")
                                         .imageScale(.large)
                                         .padding(.horizontal, 10)
-                                    
                                 }
-                            }.buttonStyle(.plain)
+                            }
+                            .buttonStyle(.plain)
+                            
                             
                             
                             //QuickSearch
-                            
                             NavigationLink {
                                 ItemSearchView(recentlyDeleted: $recentDeletedItems, room: $roomData)
                             } label: {
-                                Image(systemName: "text.magnifyingglass").imageScale(.large)
+                                Image(systemName: "text.magnifyingglass")
+                                    .imageScale(.large)
                                     .padding(.horizontal, 10)
                             }.buttonStyle(.plain)
                             
@@ -115,19 +118,17 @@ struct RoomView: View {
                             
                             
                             //Add
-                            
                             NavigationLink {
                                 ItemCreateView(name: "", qty: "", desc: "",roomData: $roomData).hideKeyboardWhenTappedAround()
                             } label: {
-                                Image(systemName: "plus.app.fill").imageScale(.large)
-                            }.padding(.horizontal, 10)
+                                Image(systemName: "plus.app.fill")
+                                    .imageScale(.large)
+                                    .padding(.horizontal, 10)
+                            }
                                 .buttonStyle(.plain)
-                            
                         }
-                        
-                        
-                        
                     }
+                    
                     
                     //Hamburger
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -136,15 +137,13 @@ struct RoomView: View {
                                 isShowingSideMenu.toggle()
                             }
                         } label: {
-                            Image(systemName: "line.3.horizontal").imageScale(.large)
+                            Image(systemName: "line.3.horizontal")
+                                .imageScale(.large)
                                 .padding(.leading)
                                 .padding(.top)
                                 .padding(.bottom)
                             
-                            
                         }.buttonStyle(.plain)
-                        
-                        
                     }
                 }
                 
@@ -154,10 +153,14 @@ struct RoomView: View {
             }
             .onAppear(perform: {
                 lastItemID = roomData.lastItemID ?? ""
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
+                    withAnimation {
+                        self.navTitle = roomData.title
+                    }
+                }
             })
-            .navigationTitle(Text(roomData.title))
-            .navigationBarTitleDisplayMode(.automatic)
-           
+            
+            .navigationTitle(Text(navTitle))
         }
     }
     
