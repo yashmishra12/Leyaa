@@ -6,28 +6,16 @@
 //
 
 import SwiftUI
+import StatefulTabView
 
 struct ContentView: View {
 
+    @State var selectedIndex: Int = 0
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.scenePhase) var scenePhase
     @AppStorage("currentPage") var currentPage = 1
     
-    @State private var roomList = UUID()
-    @State private var tabSelected = 1
-    @State private var tappedTwice: Bool = false
-    
-    var handler: Binding<Int> { Binding(
-                        get: { self.tabSelected },
-                        set: {
-                            if $0 == self.tabSelected {
-                                // Lands here if user tapped more than once
-                                tappedTwice = true
-                            }
-                            self.tabSelected = $0
-                        }
-                )}
-    
+ 
     var body: some View {
         
      
@@ -39,41 +27,49 @@ struct ContentView: View {
                         LoginView().environmentObject(viewModel)
                            
                     } else {
-//                        TabView(selection: handler) {
-                        TabView {
-                            RoomListView(myRoom: $viewModel.rooms).id(roomList)
-//                                .onChange(of: tappedTwice, perform: { tappedTwice in
-//                                                                           guard tappedTwice else { return }
-//                                                                             roomList = UUID()
-//                                    self.tappedTwice = false
-//                                                                   })
-                                .onAppear {
-                                    viewModel.populateRoomList()
-                                    viewModel.roomJoinRequestUpdate()
-                                }
-                                .tabItem {Label("Rooms", systemImage: "house.fill")}
-                               .tag(1)
-                               
-                             
-                            FreshCheckReminder().hideKeyboardWhenTappedAround()
-                                .tabItem {Label("Reminder", systemImage: "hourglass")}
-                                .tag(2)
-                            
-                            
-                            RoomJoinRequestView(roomRequest: $viewModel.pendingReqest).tabItem {
-                                Label("Invitation", systemImage: "bell.square.fill")
-                            }
-                            .badge(viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil)
-                            .tag(3)
-                            
-                            ProfilePageView(selectedAvatar: defaultAvatar)
-                                .tabItem {
-                                Label("Profile", systemImage: "person.crop.square.fill")
-                            }
-                            .tag(4)
 
-                        }
                         
+                        StatefulTabView(selectedIndex: $selectedIndex) {
+                            
+                            //MARK: - Rooms Tab
+                            Tab(title: "Rooms", systemImageName: "house.fill") {
+                                    RoomListView(myRoom: $viewModel.rooms)
+                                        .onAppear {
+                                            viewModel.populateRoomList()
+                                            viewModel.roomJoinRequestUpdate()
+                                        }
+                            }.prefersLargeTitle(true)
+                            //ROOMS TAB END
+                            
+                            
+                            //MARK: - Freshness Check Tab
+                            Tab(title: "Reminder", systemImageName: "hourglass") {
+                                FreshCheckReminder().hideKeyboardWhenTappedAround()
+  
+                            } //Freshness Check End
+                            
+                            
+                            //MARK: - Invitation Tab
+                            Tab(title: "Invitation", systemImageName: "bell.square.fill", badgeValue: viewModel.pendingReqest.count > 0 ? "\(viewModel.pendingReqest.count)" : nil) {
+                                RoomJoinRequestView(roomRequest: $viewModel.pendingReqest)
+  
+                            } //Invitation End
+                            
+                            
+                            //MARK: - Profile Tab
+                            Tab(title: "Profile", systemImageName: "person.crop.square.fill") {
+                                ProfilePageView(selectedAvatar: defaultAvatar)
+  
+                            } //Profile End
+                            
+                            
+
+                            
+                        } // STATEFUL TAB VIEW END
+
+                        .barTintColor(.systemBlue)
+                        .barAppearanceConfiguration(.default)
+    
                         
                     }
                 }

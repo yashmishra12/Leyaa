@@ -46,6 +46,7 @@
 		CC9FA7AD285EB90800EF896D /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AC285EB90800EF896D /* RoomView.swift */; };
 		CC9FA7AF285ED09000EF896D /* RoomCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AE285ED09000EF896D /* RoomCreateView.swift */; };
 		CCA1C898288A3F0B00BBE548 /* UserDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA1C897288A3F0B00BBE548 /* UserDataProvider.swift */; };
+		CCA1C89B288A557700BBE548 /* StatefulTabView in Frameworks */ = {isa = PBXBuildFile; productRef = CCA1C89A288A557700BBE548 /* StatefulTabView */; };
 		CCA3FA5B286D6FC80052F6B3 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5A286D6FC80052F6B3 /* ForgotPasswordView.swift */; };
 		CCA3FA5E286D71790052F6B3 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA5D286D71790052F6B3 /* ForgotPasswordService.swift */; };
 		CCA3FA62286D71F50052F6B3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3FA61286D71F50052F6B3 /* ForgotPasswordViewModel.swift */; };
@@ -186,6 +187,7 @@
 				CC655B43287FEEC0002B08E0 /* FirebaseFirestore in Frameworks */,
 				CC655B5B287FEF06002B08E0 /* FirebaseAnalyticsSwift in Frameworks */,
 				CC655B49287FEEC0002B08E0 /* FirebaseStorage in Frameworks */,
+				CCA1C89B288A557700BBE548 /* StatefulTabView in Frameworks */,
 				CCD372DE28837A0A00C38CDE /* FirebaseFunctions in Frameworks */,
 				CC655B41287FEEC0002B08E0 /* FirebaseAuth in Frameworks */,
 				CC655B3C287FEE33002B08E0 /* NotificationBannerSwift in Frameworks */,
@@ -597,6 +599,7 @@
 				CC655B5A287FEF06002B08E0 /* FirebaseAnalyticsSwift */,
 				CCD372D728831A2700C38CDE /* FirebaseService */,
 				CCD372DD28837A0A00C38CDE /* FirebaseFunctions */,
+				CCA1C89A288A557700BBE548 /* StatefulTabView */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -630,6 +633,7 @@
 				CC655B3A287FEE33002B08E0 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */,
+				CCA1C899288A557700BBE548 /* XCRemoteSwiftPackageReference "StatefulTabView" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -1000,6 +1004,14 @@
 				minimumVersion = 9.2.0;
 			};
 		};
+		CCA1C899288A557700BBE548 /* XCRemoteSwiftPackageReference "StatefulTabView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NicholasBellucci/StatefulTabView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.9;
+			};
+		};
 		CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rebeloper/FirebaseService.git";
@@ -1090,6 +1102,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		CCA1C89A288A557700BBE548 /* StatefulTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCA1C899288A557700BBE548 /* XCRemoteSwiftPackageReference "StatefulTabView" */;
+			productName = StatefulTabView;
 		};
 		CCD372D728831A2700C38CDE /* FirebaseService */ = {
 			isa = XCSwiftPackageProductDependency;

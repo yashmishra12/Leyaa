@@ -145,6 +145,15 @@
       }
     },
     {
+      "identity" : "statefultabview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/NicholasBellucci/StatefulTabView.git",
+      "state" : {
+        "revision" : "0aba9e12f1c5f0fdf1ab54d4ff14968c930103ba",
+        "version" : "0.1.9"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
