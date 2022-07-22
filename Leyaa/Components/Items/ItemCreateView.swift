@@ -79,6 +79,10 @@ struct ItemCreateView: View {
                         donePressed()
                     }
                                    
+            }.onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
+                    nameFocus = true
+                }
             }
             
             

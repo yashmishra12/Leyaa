@@ -409,10 +409,7 @@
 		CCB4C3AF28597B5800105C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CC0CC8812874ACC1009C90C0 /* FreshnessCheck */,
-				CCA3FA59286D6FA60052F6B3 /* ForgotPassword */,
 				CC6E15592859A03F00C29C45 /* App */,
-				CCB4C3B128597B7500105C5C /* Authentication */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,6 +417,9 @@
 		CCB4C3B028597B6300105C5C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CCB4C3B128597B7500105C5C /* Authentication */,
+				CC0CC8812874ACC1009C90C0 /* FreshnessCheck */,
+				CCA3FA59286D6FA60052F6B3 /* ForgotPassword */,
 				CCEBBCB428849EC700491623 /* Delete Account */,
 				CCD372D32883130000C38CDE /* Profile Page */,
 				CC0CC8832874ACF5009C90C0 /* Style */,

@@ -59,6 +59,10 @@ struct BillCreateView: View {
                                 .disableAutocorrection(true)
                                 
                             
+                        }.onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
+                                nameIsFocused = true
+                            }
                         }
                       
                         
