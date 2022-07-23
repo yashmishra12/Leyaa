@@ -17,7 +17,7 @@ struct BillContributorView: View {
     
     @StateObject private var billManager = BillManager()
     @ObservedObject var userInfoProvider = UserInfoProvider()
-//    @ObservedObject var userDataProvider = UserDataProvider()
+
     
     var body: some View {
         VStack {

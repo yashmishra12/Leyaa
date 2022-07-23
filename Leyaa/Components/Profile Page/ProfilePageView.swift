@@ -13,6 +13,8 @@ struct ProfilePageView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     
     @State var wantToSignOut: Bool = false
+    @State var aboutPage: Bool = false
+    @State var startWantToDeactivate: Bool = false
     @State var wantToDeactivate: Bool = false
     @State private var isExpanded: Bool = false
     @State var selectedAvatar: String
@@ -45,8 +47,12 @@ struct ProfilePageView: View {
                     VStack (spacing: 2){
                         HStack {
                             ZStack {
+                                NavigationLink(destination: AboutView(),
+                                               isActive: $aboutPage,
+                                               label: { }).buttonStyle(.plain)
+                                
                                 NavigationLink(destination: DeleteAccount_Step1(),
-                                               isActive: $wantToDeactivate,
+                                               isActive: $startWantToDeactivate,
                                                label: { }).buttonStyle(.plain)
                                 
                                 Image(selectedAvatar).resizable().frame(width: 300, height: 300).padding(.top, 40).padding(.bottom, -60)
@@ -89,7 +95,7 @@ struct ProfilePageView: View {
                     
                     
                     
-                    ScrollView{
+                    ScrollView (showsIndicators: false) {
                         
                         DisclosureGroup(isExpanded: $isExpanded) {
                             VStack {
@@ -138,24 +144,27 @@ struct ProfilePageView: View {
                         
                         Menu {
                             
+                            
+                            Button {
+                                aboutPage.toggle()
+                            } label: {
+                                Text("About").font(.footnote)
+                            }.buttonStyle(.plain)
+
+                            
                             Button {
                                 wantToSignOut.toggle()
                             } label: {
                                 Text("Sign Out").font(.footnote)
                             }.buttonStyle(.plain)
                             
-                            Menu {
-                                Button {
-                                    wantToDeactivate.toggle()
-                                } label: {
-                                    Text("Confirm").font(.footnote)
-                                }.buttonStyle(.plain)
-                                
+                            
+                            Button {
+                                wantToDeactivate.toggle()
                             } label: {
                                 Text("Delete Account").font(.footnote)
-                            }
-                            
-                            
+                            }.buttonStyle(.plain)
+                               
                             
                         }
                         
@@ -171,6 +180,15 @@ struct ProfilePageView: View {
                         Text("Sad to see you leave.")
                     }
                         
+                    .confirmationDialog("Are you sure?",
+                                        isPresented: $wantToDeactivate) {
+                        
+                        Button("Start Account Delete", role: .destructive) {
+                            startWantToDeactivate.toggle()
+                        }
+                    } message: {
+                        Text("You will initiate permanent account deletion process.")
+                    }
                         
                         
                     }

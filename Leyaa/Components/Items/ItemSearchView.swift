@@ -32,14 +32,16 @@ struct ItemSearchView: View {
                             
 
                             successSBItemAdded(title: "Item Added")
-                        } label: {
-                            Text(item)
                         }
-                        
-                        
+                        label: {
+                                Text(item)
+                            }
                     }
                 }
-                .searchable(text:  $searchText)
+                .searchable(text:  $searchText,
+                            placement: .navigationBarDrawer(displayMode: .always)
+                )
+                
                 
                 
                 
