@@ -143,8 +143,6 @@ struct ProfilePageView: View {
                     ToolbarItem {
                         
                         Menu {
-                            
-                            
                             Button {
                                 aboutPage.toggle()
                             } label: {
@@ -164,8 +162,6 @@ struct ProfilePageView: View {
                             } label: {
                                 Text("Delete Account").font(.footnote)
                             }.buttonStyle(.plain)
-                               
-                            
                         }
                         
                     label: {
@@ -187,10 +183,8 @@ struct ProfilePageView: View {
                             startWantToDeactivate.toggle()
                         }
                     } message: {
-                        Text("You will initiate permanent account deletion process.")
-                    }
-                        
-                        
+                        Text("This will initiate permanent account deletion process.")
+                        }
                     }
                     
                     ToolbarItemGroup(placement: .navigationBarLeading) {
