@@ -199,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC048D08288DB1ED00A64563 /* About Page */ = {
+			isa = PBXGroup;
+			children = (
+				CCC3814B288BF68800A59E1E /* AboutView.swift */,
+			);
+			path = "About Page";
+			sourceTree = "<group>";
+		};
 		CC0CC8792872F8F9009C90C0 /* Split Bill */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,7 +443,7 @@
 				CCBA416A285FC1E0000B3FE7 /* Items */,
 				CCB4C3BC28598BF600105C5C /* Authentitcation */,
 				CC14C73B285AFE5B0077510E /* Room */,
-				CCC3814B288BF68800A59E1E /* AboutView.swift */,
+				CC048D08288DB1ED00A64563 /* About Page */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -923,7 +931,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -958,7 +966,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.0;
+				MARKETING_VERSION = 2.3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
