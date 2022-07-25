@@ -18,6 +18,7 @@ struct ProfilePageView: View {
     @State var wantToDeactivate: Bool = false
     @State private var isExpanded: Bool = false
     @State var selectedAvatar: String
+    @State var selectedAvatarReset: String = ""
     
     
     private let pasteBoard = UIPasteboard.general
@@ -118,14 +119,20 @@ struct ProfilePageView: View {
                     
                     HStack{
                         if (isExpanded && selectedAvatar != viewModel.currentUser?.avatar) {
+                            
+                            Button {
+                                selectedAvatar = selectedAvatarReset
+                            } label: {
+                                Text("Reset").buttonStyleBlue()
+                            }.buttonStyle(.plain)
+                                .padding(.horizontal)
+                            
                             Button {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
-                                
+                                selectedAvatarReset = selectedAvatar
                                 successSB(title: "Avatar Changed")
-                                
                             } label: {
                                 Text("Save").buttonStyleBlue()
-                                
                             }.buttonStyle(.plain)
                         }
                         
@@ -138,7 +145,10 @@ struct ProfilePageView: View {
                     
                 }
                 .padding(.horizontal, 20)
-                .onAppear { selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar }
+                .onAppear {
+                    selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar
+                    selectedAvatarReset = viewModel.currentUser?.avatar ?? defaultAvatar
+                }
                 .toolbar {
                     ToolbarItem {
                         

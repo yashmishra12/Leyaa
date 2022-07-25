@@ -26,17 +26,16 @@ struct RoomInviteView: View {
     
     func invitationSent() {
         if email.isEmpty==false {
+            
             messageFocus = false
-            
             viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
-            
+
             fetchDeviceTokenFromEmail(email: email) { token in
-                roomJoinRequestPayload(token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
+                roomJoinRequestPayload (token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
             }
             
             presentationMode.wrappedValue.dismiss()
-            
-           successSB(title: "Invitation Sent")
+            successSB(title: "Invitation Sent")
         }
         
         else {
@@ -62,6 +61,17 @@ struct RoomInviteView: View {
             
             Image("addMember").resizable().aspectRatio(contentMode: .fit).padding(.top, -100)
             
+            Button {
+                actionSheet()
+            } label: {
+                HStack {
+                    Image(systemName: "square.and.arrow.up").imageScale(.small)
+                    Text("Share App").font(.footnote)
+                    
+                }
+            }.buttonStyleBlue()
+            .buttonStyle(.plain)
+            
             VStack (spacing: 20) {
                 CustomInputField(imageName: "envelope", placeholderText: "Email", text: $email)
                     .focused($emailFocus)
@@ -72,7 +82,7 @@ struct RoomInviteView: View {
                     .submitLabel(.next)
 
                 
-                CustomInputField(imageName: "message.fill", placeholderText: "Message", text: $message)
+                CustomInputField(imageName: "message.fill", placeholderText: "Message (Optional)", text: $message)
                     .focused($messageFocus)
                     .onSubmit {
                         invitationSent()
@@ -93,21 +103,13 @@ struct RoomInviteView: View {
             .buttonStyle(.plain)
             .padding(.bottom)
             
-            
-            Button {
-                actionSheet()
-            } label: {
-                HStack {
-                    Image(systemName: "square.and.arrow.up").imageScale(.small)
-                    Text("Share App").font(.footnote)
-                    
-                }
-            }.buttonStyleBlue()
-            .buttonStyle(.plain)
-            .padding(.top)
-
-
-        }.navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear(perform: {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
+                self.emailFocus = true
+            }
+        })
+        .navigationBarTitleDisplayMode(.inline)
         
     }
 }
