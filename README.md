@@ -1,6 +1,6 @@
-
+<p style="text-align:center">
 <img src="assets/icon.png" width="200" style="display:block; margin-left: auto; margin-right: auto;"> 
-
+</p>
 
 # Leyaa
 
@@ -9,7 +9,14 @@ Leyaa helps people living under the same roof communicate better. Unorganized sh
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+<table>
+  <tr>
+    <td><img src="assets/screen_1.png" height="600">  </td>
+    <td><img src="assets/screen_2.png" height="600">  </td>
+    <td><img src="assets/screen_3.png" height="600">  </td>
+  </tr>
+ </table>
 
 
 ## Demo
