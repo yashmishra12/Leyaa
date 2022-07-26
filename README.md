@@ -10,18 +10,18 @@ Leyaa helps people living under the same roof communicate better. Unorganized sh
 ## Screenshots
 
 
-<table style = "margin-left: auto; margin-right: auto;">
-  <tr>
-    <td><img src="assets/screen_1.png" height="600">  </td>
-    <td><img src="assets/screen_2.png" height="600">  </td>
-    <td><img src="assets/screen_3.png" height="600">  </td>
-    <td><img src="assets/screen_4.png" height="600">  </td>
+<table style = "margin-left: auto; margin-right auto;">
+  <tr
+    <td><img src="assets/screen_1.png" height="500">  </td>
+    <td><img src="assets/screen_2.png" height="500">  </td>
+    <td><img src="assets/screen_3.png" height="500">  </td>
+    <td><img src="assets/screen_4.png" height="500">  </td>
   </tr>
     <tr>
-    <td><img src="assets/screen_5.png" height="600">  </td>
-    <td><img src="assets/screen_6.png" height="600">  </td>
-    <td><img src="assets/screen_7.png" height="600">  </td>
-    <td><img src="assets/screen_8.png" height="600">  </td>
+    <td><img src="assets/screen_5.png" height="500">  </td>
+    <td><img src="assets/screen_6.png" height="500">  </td>
+    <td><img src="assets/screen_7.png" height="500">  </td>
+    <td><img src="assets/screen_8.png" height="500">  </td>
   </tr>
  </table>
 
