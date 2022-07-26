@@ -1,5 +1,5 @@
 
-![Logo](<img src="assets/icon.png">)
+![Logo](img src="assets/icon.png")
 
 
 # Leyaa
