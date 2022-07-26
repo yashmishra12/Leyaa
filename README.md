@@ -1,5 +1,5 @@
 
-![Logo](assets/icon.png)
+![Logo](assets/icon.png=250x250)
 
 
 # Leyaa
