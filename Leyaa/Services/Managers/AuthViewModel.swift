@@ -280,8 +280,6 @@ class AuthViewModel: ObservableObject {
                               roomName: roomData.title ,
                               senderName: currentUser?.fullname ?? "",
                               receiverEmail: recieverEmail)
-        
-        
         do {
             let _ = try db.collection("roomRequest").addDocument(from: req)
         }
@@ -305,7 +303,6 @@ class AuthViewModel: ObservableObject {
     
     func acceptRoomRequest(reqData: RoomRequest) {
         let userToAdd: [String] = [currentUser?.id ?? ""]
-        let tokenToAdd: [String] = [UserDefaults.standard.string(forKey: deviceTokenStorage) ?? ""]
         
         self.db.collection("rooms").document(reqData.roomID)
             .updateData(["members" : Firebase.FieldValue.arrayUnion(userToAdd)]){ err in
@@ -313,14 +310,7 @@ class AuthViewModel: ObservableObject {
                     print("Error in adding item: \(err)")
                 }
             }
-        
-        self.db.collection("rooms").document(reqData.roomID)
-            .updateData(["deviceTokens" : Firebase.FieldValue.arrayUnion(tokenToAdd)]){ err in
-                if let err = err {
-                    print("Error in adding item: \(err)")
-                }
-            }
-        
+
         rejectRoomRequest(reqData: reqData)
     }
     

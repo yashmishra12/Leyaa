@@ -5,9 +5,9 @@
 //  Created by Yash Mishra on 6/15/22.
 //
 
+import Foundation
 import FirebaseFirestoreSwift
 import Firebase
-import UIKit
 
 struct User: Identifiable, Codable {
     @DocumentID var id: String?

@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
-import Firebase
 
 struct Message: Codable, Identifiable, Hashable {
     var id: String
