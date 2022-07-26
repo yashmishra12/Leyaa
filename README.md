@@ -1,5 +1,5 @@
 
-![Logo](assets/icon.png | width=100)
+![Logo](assets/icon.png)
 
 
 # Leyaa
