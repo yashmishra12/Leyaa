@@ -32,14 +32,14 @@ Leyaa helps people living under the same roof communicate better. Unorganized sh
   
  </table>
 
-
-
-
-
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Create Rooms and send an invitation request to existing Leyaa users.
+- Add items that the house for all to see.
+- Notify room members when you go shopping so that they can add items.
+- Set reminders to check on items that can go stale
+- Tell them when it's time to clean the house.
+- Easily split your bill and send important posts.
+
+
 
