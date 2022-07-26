@@ -1,9 +1,9 @@
 <span>
-<p style="text-align:center">
+<p style="text-align:center" float="left">
 <img src="assets/icon.png" width="200" style="display:block; margin-left: auto; margin-right: auto;"> 
 </p>
 
-<p style="text-align:center">
+<p style="text-align:center" float="right">
 <img src="assets/downloadOnAppStore.png" width="200" style="display:block; margin-left: auto; margin-right: auto;"> 
 </p>
 </span>
