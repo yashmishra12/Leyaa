@@ -1,5 +1,5 @@
 
-![Logo](assets/icon.png)
+![Logo](<img src="assets/icon.png" width="200" style="display:block; margin-left: auto; margin-right: auto;"> )
 
 
 # Leyaa
