@@ -55,13 +55,12 @@ Leyaa helps people living under the same roof communicate better. Unorganized sh
 - Set reminders to check on items that can go stale
 - Tell them when it's time to clean the house.
 - Easily split your bill and send important posts.
-
+  <br />  <br />
 
 <div style="display: inline; padding-top: 20px;">
 <footer style="background-color: #181818; padding: 20px">
 
   <a href="https://htmlpreview.github.io/?https://github.com/yashmishra12/Leyaa/blob/main/PrivacyPolicy.html" style="color:white; padding: 10px;">Privacy Policy</a>
-  
   <a href="https://docs.google.com/forms/d/e/1FAIpQLScu8qcUppE9WREnJJC-b05zrHe5wn72ue7JfFvDKT09BJ4pEg/viewform" style="color:white; padding: 10px;">App Support</a>
   <br />
    <a href="https://github.com/yashmishra12" style="color:white; padding: 10px; padding-left: 10px;">Copyright © Yash Mishra </a>
