@@ -56,7 +56,11 @@ struct ProfilePageView: View {
                                                isActive: $startWantToDeactivate,
                                                label: { }).buttonStyle(.plain)
                                 
-                                Image(selectedAvatar).resizable().frame(width: 300, height: 300).padding(.top, 40).padding(.bottom, -60)
+                                Image(selectedAvatar).resizable().frame(width: 300, height: 300)
+                                    .padding(.top, 40).padding(.bottom, -60)
+                                    .onAppear {
+                                        selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar
+                                    }
                             }
                         }.ignoresSafeArea()
                         
@@ -64,7 +68,7 @@ struct ProfilePageView: View {
                             HStack{
                                 
                                 NavigationLink  {
-                                    NameChangeView()
+                                    NameChangeView(newName: viewModel.currentUser?.fullname ?? "")
                                 } label: {
                                     HStack {
                                         Text(viewModel.currentUser?.fullname ?? "").font(.title).fontWeight(.bold).padding(.trailing)

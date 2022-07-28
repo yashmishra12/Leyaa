@@ -21,20 +21,13 @@ class AuthViewModel: ObservableObject {
     @Published var rooms = [Room]()
     @Published var pendingReqest = [RoomRequest]()
     @Published var currentUser: User?
-    
-
-    
-    
     @Published var isAppleAuthRevoked: Bool = false
-    
     @Published var errorOccurred: Bool = false
     @Published var errorMessage: String = ""
     
     private var db = Firestore.firestore()
-    
     private let service = UserService()
-    
-    
+
     @Published private(set) var messagesToDelete: [Message] = []
     
     let hapticFeedback = UINotificationFeedbackGenerator()
@@ -65,7 +58,6 @@ class AuthViewModel: ObservableObject {
     //MARK: - Maintains a fresh copy of Device Token
     func writeUserData() {
         if self.currentUser == nil { return }
-        
         db.collection("users").document(Auth.auth().currentUser?.uid ?? "").updateData(["deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "" ]){ error in
             if let error = error {
                 print("WRITE USER DATA ERROR Error updating document: \(error)")
@@ -87,6 +79,7 @@ class AuthViewModel: ObservableObject {
     }
     
     //MARK: - Authentication
+    
     func login(withEmail email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) {result, error in
             if let error = error {
@@ -104,8 +97,6 @@ class AuthViewModel: ObservableObject {
             self.fetchUser()
             self.writeUserData()
         }
-        
-        
     }
     
     
@@ -122,7 +113,6 @@ class AuthViewModel: ObservableObject {
             
             guard let user = result?.user else { return }
             self.userSession = user
-            
             
             let userData = ["email": email,
                             "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
@@ -216,7 +206,7 @@ class AuthViewModel: ObservableObject {
                 }
                 
             }
-    }
+     }
     
     
     func leaveRoom(roomData: Room) {
@@ -249,8 +239,6 @@ class AuthViewModel: ObservableObject {
         self.db.collection("roomRequest")
             .whereField("receiverEmail", isEqualTo: self.userSession?.email as Any)
             .addSnapshotListener { snapshot, error in
-                DispatchQueue.main.async {
-                    
                     guard let doc = snapshot?.documents else {
                         print("No Doc Found - Room Join Request")
                         return
@@ -268,13 +256,11 @@ class AuthViewModel: ObservableObject {
                             return nil
                         }
                     }
-                }
             }
     }
     
     
     func roomInvite(recieverEmail: String, message: String, roomData: Room) {
-        
         let req = RoomRequest(message: message,
                               roomID: roomData.id ?? "",
                               roomName: roomData.title ,
@@ -286,19 +272,19 @@ class AuthViewModel: ObservableObject {
         catch {
             print(error)
         }
-        
-        
     }
     
     
     func rejectRoomRequest(reqData: RoomRequest) {
-        
         self.db.collection("roomRequest").document(reqData.id ?? "").delete() { err in
             if let err = err {
                 print("Error in adding item: \(err)")
             }
         }
+        
+        self.writeUserData()
     }
+    
     
     
     func acceptRoomRequest(reqData: RoomRequest) {
@@ -313,6 +299,7 @@ class AuthViewModel: ObservableObject {
 
         rejectRoomRequest(reqData: reqData)
     }
+    
     
     
     func editRoomName(newName: String,  roomID: String) {
@@ -330,18 +317,24 @@ class AuthViewModel: ObservableObject {
     
     
     func updateAvatar(userID: String, newAvatar: String) {
-        db.collection("users").document(userID).setData([
-            "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
-            "avatar" :  newAvatar,
-            "email": currentUser?.email ?? "",
-            "fullname": currentUser?.fullname  ?? "",
-            "uid": currentUser?.id  ?? ""]) { err in
-                if let err = err {
-                    print("Error in adding item: \(err)")
+        DispatchQueue.global().async {
+            self.db.collection("users").document(userID).setData([
+                "deviceToken": UserDefaults.standard.string(forKey: deviceTokenStorage) ?? "",
+                "avatar" :  newAvatar,
+                "email": self.currentUser?.email ?? "",
+                "fullname": self.currentUser?.fullname  ?? "",
+                "uid": self.currentUser?.id  ?? ""]) { err in
+                    if let err = err {
+                        print("Error in adding item: \(err)")
+                    }
                 }
+            
+            DispatchQueue.main.async {
+                self.fetchUser()
             }
+        }
         
-        fetchUser()
+        
         
     }
     
@@ -359,19 +352,15 @@ class AuthViewModel: ObservableObject {
     func removeAccount() {
         let token = UserDefaults.standard.string(forKey: "refreshToken")
         
-        
         if let token = token {
-            
             let url = URL(string: "https://us-central1-leyaa-7b042.cloudfunctions.net/revokeToken?refresh_token=\(token)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "https://apple.com")!
             
             let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
                 guard data != nil else { return }
             }
-            
+
             task.resume()
-            
         }
-        
     }
     
     

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NameChangeView: View {
     @FocusState private var nameIsFocused: Bool
-    @State private var newName: String = ""
+    @State var newName: String
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var viewModel: AuthViewModel
     
@@ -34,7 +34,6 @@ struct NameChangeView: View {
                 .onSubmit {
                     donePressed()
                 }
-            
 
             Button {
                 donePressed()
@@ -44,11 +43,9 @@ struct NameChangeView: View {
             .buttonStyle(.plain)
             .buttonStyleBlue()
             .disabled(newName.isEmpty)
-
-            
         }.padding()
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                     self.nameIsFocused = true
                 }
             }
@@ -57,6 +54,6 @@ struct NameChangeView: View {
 
 struct NameChangeView_Previews: PreviewProvider {
     static var previews: some View {
-        NameChangeView()
+        NameChangeView(newName: "Yash")
     }
 }

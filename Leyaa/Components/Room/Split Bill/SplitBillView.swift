@@ -43,7 +43,10 @@ struct SplitBillView: View {
                             ForEach(roomData.members, id:\.self) { memberID in
                                 if memberID != viewModel.currentUser?.id {
                                     NavigationLink {
-                                        DetailedBillView(memberID: memberID, roomID: roomData.id ?? "", roomName: roomData.title, memberName: "")
+                                        DetailedBillView(memberID: memberID,
+                                                         roomID: roomData.id ?? "",
+                                                         roomName: roomData.title,
+                                                         memberName: "")
                                     } label: {
                                         BillContributorView(memberID: memberID, roomID: roomData.id ?? "")
                                             .frame(width: screenWidth*0.5)
