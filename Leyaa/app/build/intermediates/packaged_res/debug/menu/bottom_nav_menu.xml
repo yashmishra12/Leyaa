@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Rooms"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/rooms_nav"/>
+
+    <item android:title="Reminder"
+        android:icon="@drawable/ic_baseline_hourglass_bottom_24"
+        android:id="@+id/reminder_nav"/>
+
+    <item android:title="Invitation"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:id="@+id/invitation_nav"/>
+
+    <item android:title="Profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:id="@+id/profile_nav"/>
+</menu>

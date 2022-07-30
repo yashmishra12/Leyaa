@@ -12,6 +12,9 @@ struct RoomListComponent: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var title: String
     @Binding var newItems: [Item]
+    @State var itemShowCount  = 5
+    
+   
     
     var body: some View {
         ZStack {
@@ -34,27 +37,15 @@ struct RoomListComponent: View {
                
                 VStack{
                     HStack{
-                        if(newItems.count>5) {
+                        if(newItems.count>itemShowCount) {
                                 
-                            Image(newItems[0].name.sanitiseItemName()).resizable()
-                                    .scaledToFit()
-                                    .frame(width: 60, height: 60, alignment: .leading)
-                            
-                            Image(newItems[1].name.sanitiseItemName()).resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .leading)
-                            
-                            Image(newItems[2].name.sanitiseItemName()).resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .leading)
-                            
-                            Image(newItems[3].name.sanitiseItemName()).resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .leading)
-                            
-                            Image(newItems[4].name.sanitiseItemName()).resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60, alignment: .leading)
+                            ForEach( (0..<itemShowCount), id: \.self) {
+                                Image(newItems[$0].name.sanitiseItemName()).resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 60, alignment: .leading)
+                                Spacer()
+                            }
+
 
                             Image(systemName: "ellipsis").resizable().foregroundColor(.white)
                                 .scaledToFit()
@@ -77,6 +68,13 @@ struct RoomListComponent: View {
             
             
         }
+        .onAppear(perform: {
+            if (UIDevice.current.userInterfaceIdiom == .pad) {
+                itemShowCount = 10
+            } else if (UIDevice.current.userInterfaceIdiom == .mac ) {
+                itemShowCount = 20
+            }
+        })
         .padding(.horizontal, 5)
         .padding(.vertical, 5)
         

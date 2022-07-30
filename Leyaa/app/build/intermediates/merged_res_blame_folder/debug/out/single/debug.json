@@ -1,0 +1,210 @@
+[
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_inside_room.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/inside_room.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_room_list_manager.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_list_manager.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/menu_main.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/menu/main.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/menu_bottom_nav_menu.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_single_view.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/single_view.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_activity_view.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/activity_view.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_loginpage.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/loginpage.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_fragment_invitation.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_invitation.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_activity_main.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_menu_gallery.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_menu_gallery.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-pngs-44:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_side_nav_bar.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/side_nav_bar.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_baseline_hourglass_bottom_24.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_baseline_hourglass_bottom_24.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_fragment_reminder.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_reminder.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_add.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_inside_page.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/inside_page.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_btn.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/btn.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_baseline_person_24.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_baseline_person_24.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_search.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_search.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_room_list.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_list.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_fragment_profile.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/navigation_mobile_navigation.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/navigation/mobile_navigation.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_baseline_home_24.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_baseline_home_24.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_input_search.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/input_search.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_menu_camera.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_menu_camera.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_room_creation.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_creation.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_delete.png.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/delete.png"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_fragment_rooms.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_rooms.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_edit.png.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/edit.png"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_menu_slideshow.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "com.vijaykumawat.Leyaa.app-merged_res-49:/layout_room_create_manager.xml.flat",
+        "source": "com.vijaykumawat.Leyaa.app-main-51:/layout/room_create_manager.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_baseline_notifications_24.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_baseline_notifications_24.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_add.png.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/add.png"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/menu_activity_main_drawer.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/menu/activity_main_drawer.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_registration.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/registration.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/layout_room_create_manager.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_create_manager.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_ic_image.xml.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/ic_image.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_cross.png.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/cross.png"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-merged_res-49:/drawable_image.jpg.flat",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/drawable/image.jpg"
+    }
+]

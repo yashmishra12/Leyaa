@@ -1,0 +1,66 @@
+[
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/room_creation.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_creation.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/room_list.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_list.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/registration.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/registration.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/fragment_profile.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/room_create_manager.xml",
+        "source": "com.vijaykumawat.Leyaa.app-main-51:/layout/room_create_manager.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/inside_page.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/inside_page.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/fragment_rooms.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_rooms.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/fragment_invitation.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_invitation.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/loginpage.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/loginpage.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/inside_room.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/inside_room.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/activity_view.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/activity_view.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/fragment_reminder.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/fragment_reminder.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/room_list_manager.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_list_manager.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/single_view.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/single_view.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/activity_main.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-mergeDebugResources-48:/layout/room_create_manager.xml",
+        "source": "/Users/yashmishra12/.gradle/daemon/7.3.3/com.vijaykumawat.Leyaa.app-main-51:/layout/room_create_manager.xml"
+    }
+]
