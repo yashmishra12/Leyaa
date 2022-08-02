@@ -19,18 +19,17 @@ struct ItemSearchView: View {
     var body: some View {
         ZStack {
             
-        
             //MARK: - SEARCH LIST
-            
             VStack {
-                
                 List {
                     ForEach(searchResults, id:\.self) { item in
                         Button {
-                            itemManager.addItem(item: ["id":UUID().uuidString, "name": item, "desc":"", "qty": ""],
+                            itemManager.addItem(item: ["id":UUID().uuidString,
+                                                       "name": item,
+                                                       "desc":"",
+                                                       "qty": ""],
                                               roomID: room.id ?? "")
                             
-
                             successSBItemAdded(title: "Item Added")
                         }
                         label: {
@@ -42,11 +41,9 @@ struct ItemSearchView: View {
                             placement: .navigationBarDrawer(displayMode: .always)
                 )
                 
-                
-                
-                
                 Spacer()
                 
+               //MARK: - Undo Delete
                 VStack {
                     if recentlyDeleted.count>0 {
                         VStack{
@@ -74,12 +71,7 @@ struct ItemSearchView: View {
                         }
                     }
                 }
-                
             }
-            
-            
-            
-            
         }
         .navigationTitle("Items")
         .navigationBarTitleDisplayMode(.inline)
@@ -89,10 +81,18 @@ struct ItemSearchView: View {
         if searchText.isEmpty {
             return names
         } else {
-            return names.filter { $0.contains(searchText) }
+            if names.filter({ $0.contains(searchText) }).isEmpty {
+                return [searchText]
+            }
+            else
+                {
+                    return names.filter {$0.contains(searchText)}
+            }
         }
     }
+    
 }
+
 //
 //struct ItemSearchView_Previews: PreviewProvider {
 //    static var previews: some View {

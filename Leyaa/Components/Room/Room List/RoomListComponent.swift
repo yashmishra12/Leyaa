@@ -12,7 +12,7 @@ struct RoomListComponent: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Binding var title: String
     @Binding var newItems: [Item]
-    @State var itemShowCount  = 5
+    private let itemShowCount  = 5
     
    
     
@@ -68,13 +68,6 @@ struct RoomListComponent: View {
             
             
         }
-        .onAppear(perform: {
-            if (UIDevice.current.userInterfaceIdiom == .pad) {
-                itemShowCount = 10
-            } else if (UIDevice.current.userInterfaceIdiom == .mac ) {
-                itemShowCount = 20
-            }
-        })
         .padding(.horizontal, 5)
         .padding(.vertical, 5)
         
