@@ -142,6 +142,16 @@ class BillManager: ObservableObject {
        
     }
     
+    func editBill(roomID: String, billID: String, billTitle: String, billAmount: Double) {
+        let collectionName = "\(roomID)_BILLS"
+        
+        DispatchQueue.main.async {
+            self.db.collection(collectionName).document(billID).updateData(["itemName" : billTitle,
+                                                                            "itemPrice": billAmount])
+            self.hapticFeedback.notificationOccurred(.success)
+        }
+    }
+    
 
     
 

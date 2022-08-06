@@ -16,6 +16,7 @@
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
 		CC30AD8E2870685700355C1A /* AppleLoginHashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */; };
+		CC53B5BA289EC8070037C19C /* BillEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53B5B9289EC8070037C19C /* BillEditView.swift */; };
 		CC54100828657DE70026CA76 /* RoomJoinRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */; };
 		CC54100A286589060026CA76 /* RoomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC541009286589060026CA76 /* RoomRequest.swift */; };
 		CC5D2657286BBEA40068800E /* RoomChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D2656286BBEA40068800E /* RoomChatView.swift */; };
@@ -112,6 +113,7 @@
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
+		CC53B5B9289EC8070037C19C /* BillEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillEditView.swift; sourceTree = "<group>"; };
 		CC54100728657DE70026CA76 /* RoomJoinRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomJoinRequestView.swift; sourceTree = "<group>"; };
 		CC541009286589060026CA76 /* RoomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequest.swift; sourceTree = "<group>"; };
 		CC5D2656286BBEA40068800E /* RoomChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomChatView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				CCBEC816287502C000D78CE1 /* DetailedBillView.swift */,
 				CCBEC81828750E1600D78CE1 /* UnitBill.swift */,
 				CCB3D46428812EA8000AAEAD /* BillManager.swift */,
+				CC53B5B9289EC8070037C19C /* BillEditView.swift */,
 			);
 			path = "Split Bill";
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				CCB3D46728815275000AAEAD /* UserInfoProvider.swift in Sources */,
 				CCE52962287D041F005C173C /* secretKey.swift in Sources */,
 				CCE52964287D2916005C173C /* PendingReminderView.swift in Sources */,
+				CC53B5BA289EC8070037C19C /* BillEditView.swift in Sources */,
 				CCC655EE28605B24005D7D93 /* ItemSearchView.swift in Sources */,
 				CCEBBCBA2884A7F400491623 /* DeleteAccountData.swift in Sources */,
 				CC655B5D287FF0C8002B08E0 /* ItemManager.swift in Sources */,
@@ -933,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.5;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -971,7 +975,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3.5;
+				MARKETING_VERSION = 2.4.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yashmishra12.Leyaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";

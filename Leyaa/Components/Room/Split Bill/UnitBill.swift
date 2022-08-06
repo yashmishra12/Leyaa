@@ -28,7 +28,15 @@ struct UnitBill: View {
         
         VStack {
             HStack{
+                NavigationLink {
+                    BillEditView(billTitle: billTitle, billAmount: billAmount, id: id, roomID: roomID).hideKeyboardWhenTappedAround()
+                } label: {
+                    Image(systemName: "pencil.circle").resizable().frame(width: 20, height: 20).foregroundColor(Color("cardEdit"))
+                }.buttonStyle(.plain)
+                    .padding()
+
                 Spacer()
+
                 Button {
                     billManager.deleteBill(roomID: roomID, docID: id)
                 } label: {

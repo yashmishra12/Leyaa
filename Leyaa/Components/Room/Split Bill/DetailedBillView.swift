@@ -164,6 +164,7 @@ struct DetailedBillView: View {
                                              timestamp: bill.timestamp,
                                              id: bill.id ?? "",
                                              roomID: roomID)
+                                    
                                         .background(Color("MediumBlue"))
                                         .foregroundColor(.white)
                                 }
