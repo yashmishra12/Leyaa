@@ -16,24 +16,43 @@ struct UnitBill: View {
     @State var roomID: String
     let billManager = BillManager()
     
+ 
+    
     var body: some View {
-        VStack{
+    ZStack {
+        VStack {
             Text(billTitle).font(.headline).fontWeight(.semibold).padding()
             Text("$: \(String(format: "%.2f", billAmount))").font(.body)
             Text("\(timestamp.formatted(.dateTime.day().month().hour().minute()))").fontWeight(.light).font(.caption).padding()
-        }.padding()
-            .frame(width: cardWidth, height: 195, alignment: .center)
-            .onLongPressGesture {
-                withAnimation {
+        }
+        
+        VStack {
+            HStack{
+                Spacer()
+                Button {
                     billManager.deleteBill(roomID: roomID, docID: id)
-                }
+                } label: {
+                    Image(systemName: "x.circle").resizable().frame(width: 20, height: 20).foregroundColor(Color("cardEdit"))
+                }.buttonStyle(.plain)
+                    .padding()
             }
+            Spacer()
+            
+        }
+        
+    }
+            .frame(minWidth: cardWidth, idealWidth: cardWidth, maxWidth: cardWidth, minHeight: 200, idealHeight: 200, maxHeight: 200 )
+ 
     }
 }
 
 
 struct UnitBill_Previews: PreviewProvider {
     static var previews: some View {
-        UnitBill(billTitle: "", billAmount: 2, timestamp: Date(), id: "asdasd", roomID: "123")
+        UnitBill(billTitle: "",
+                 billAmount: 2,
+                 timestamp: Date(),
+                 id: "asdasd",
+                 roomID: "123")
     }
 }

@@ -54,9 +54,7 @@ struct DetailedBillView: View {
                     } label: {
                         Text("Get").payTabStyle()
                     }.buttonStyle(.plain)
-                    
-                    
-
+ 
                 }
                 
                 Spacer()
@@ -132,7 +130,7 @@ struct DetailedBillView: View {
                             } label: {
                                 if isShowingGet {
                                     Image(systemName: "chevron.down.circle").resizable().frame(width: 20, height: 20)
-                                }else {
+                                } else {
                                     Image(systemName: "chevron.up.circle").resizable().frame(width: 20, height: 20)
                                 }
                             }.buttonStyle(.plain)
@@ -160,6 +158,7 @@ struct DetailedBillView: View {
                         if isShowingGet {
                             LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                                 ForEach(billManager.toGetbills, id:\.self) { bill in
+                                    
                                     UnitBill(billTitle: bill.itemName,
                                              billAmount: bill.itemPrice,
                                              timestamp: bill.timestamp,

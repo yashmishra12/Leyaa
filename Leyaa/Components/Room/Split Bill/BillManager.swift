@@ -57,7 +57,7 @@ class BillManager: ObservableObject {
                         return
                     }
                     
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.toGetbills = doc.compactMap { queryDocumentSnapshot -> Bill? in
                         let result = Result { try queryDocumentSnapshot.data(as: Bill.self) }
                         
@@ -73,7 +73,7 @@ class BillManager: ObservableObject {
                         }
                         
                     }
-                }
+//                }
                 self.toGetbills.sort { $0.timestamp > $1.timestamp }
             }
 
@@ -96,7 +96,7 @@ class BillManager: ObservableObject {
                         return
                     }
                     
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.toPaybills = doc.compactMap { queryDocumentSnapshot in
                         let result = Result { try queryDocumentSnapshot.data(as: Bill.self) }
                         
@@ -111,7 +111,7 @@ class BillManager: ObservableObject {
                             return nil
                         }
                     }
-                }
+//                }
                 
                 self.toPaybills.sort { $0.timestamp > $1.timestamp }
             }

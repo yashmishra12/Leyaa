@@ -47,7 +47,9 @@ struct BillContributorView: View {
         .onAppear {
             userInfoProvider.getProfileAvatar(userID: memberID) { res in self.avatar = res }
             userInfoProvider.getProfileName(userID: memberID) { res in self.name = res }
-            
+            billManager.updateRoomID(name: roomID)
+            billManager.updateToGet(contributorID: memberID)
+            billManager.updateToPay(contributorID: memberID)
         }
 
 

@@ -52,8 +52,6 @@ struct ItemView: View {
 
             
         }
-            
-            
             VStack {
                
               
