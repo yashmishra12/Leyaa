@@ -24,24 +24,44 @@ struct RoomInviteView: View {
     @FocusState private var emailFocus: Bool
     @FocusState private var messageFocus: Bool
     
-    func invitationSent() {
-        if email.isEmpty==false {
-            
-            messageFocus = false
-            viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
 
-            fetchDeviceTokenFromEmail(email: email) { token in
-                roomJoinRequestPayload (token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
-            }
-            
-            presentationMode.wrappedValue.dismiss()
-            successSB(title: "Invitation Sent")
-        }
+    
+    func invitationSent() {
         
-        else {
-            emailFocus = true
+        viewModel.checkEmail(email: email) { bool in
+            if bool==true {
+                
+                if email.isEmpty==false {
+                    
+                    messageFocus = false
+                    viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
+
+                    fetchDeviceTokenFromEmail(email: email) { token in
+                        roomJoinRequestPayload (token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
+                    }
+                    
+                    presentationMode.wrappedValue.dismiss()
+                    successSB(title: "Invitation Sent")
+                }
+                
+                else {
+                    emailFocus = true
+                }
+            }
+            else if bool == false {
+                errorBanner(title: "Uh Oh!",
+                            subtitle: "It looks like the person you're trying to add isn't registered with us. Share the app with them")
+                email = ""
+                emailFocus = true
+                
+
+               
+            }
         }
+      
     }
+    
+    
     
     func actionSheet() {
         guard let data = URL(string: "https://apps.apple.com/us/app/leyaa/id1633689299") else { return }

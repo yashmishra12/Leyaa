@@ -25,6 +25,20 @@ func successSB(title: String) {
 
 }
 
+func errorBanner(title: String, subtitle: String) {
+    let banner = GrowingNotificationBanner(title: "\(title)", subtitle: "\(subtitle)", style: .danger)
+    
+    banner.dismiss()
+    banner.show()
+    banner.dismissOnTap = true
+    banner.dismissOnSwipeUp = true
+    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                banner.dismiss()
+                            }
+
+}
+
+
 func successSBItemAdded(title: String) {
     let banner = StatusBarNotificationBanner(title: "\(title)", style: .success)
 

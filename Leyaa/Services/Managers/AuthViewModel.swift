@@ -274,6 +274,27 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    func checkEmail(email: String, completion: @escaping (Bool) -> Void) {
+        
+        // Get your Firebase collection
+        let collectionRef = db.collection("users")
+        
+        // Get all the documents where the field username is equal to the String you pass, loop over all the documents.
+        collectionRef.whereField("email", isEqualTo: email).getDocuments { (snapshot, err) in
+            if let err = err {
+                print("Error getting document: \(err)")
+            } else if (snapshot?.isEmpty)! {
+                completion(false)
+            } else {
+                for document in (snapshot?.documents)! {
+                    if document.data()["email"] != nil {
+                        completion(true)
+                    }
+                }
+            }
+        }
+    }
+    
     
     func rejectRoomRequest(reqData: RoomRequest) {
         self.db.collection("roomRequest").document(reqData.id ?? "").delete() { err in
