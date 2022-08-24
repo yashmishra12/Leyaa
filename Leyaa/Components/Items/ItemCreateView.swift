@@ -62,6 +62,17 @@ struct ItemCreateView: View {
                         qtyFocus = true
                     }
                     .submitLabel(.next)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button {
+                                donePressed()
+                            } label: {
+                                Text("Save")
+                            }.buttonStyle(.plain)
+                            
+                        }
+                    }
 
                 
                 CustomInputField(imageName: "number", placeholderText: "Quantity", isSecureField: false, text: $qty).padding()

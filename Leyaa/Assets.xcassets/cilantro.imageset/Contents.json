@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "editItemBack.png",
+      "filename" : "cilantro.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "editItemBack@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "editItemBack@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

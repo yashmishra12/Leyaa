@@ -57,7 +57,7 @@ class BillManager: ObservableObject {
                         return
                     }
                     
-//                DispatchQueue.main.async {
+
                     self.toGetbills = doc.compactMap { queryDocumentSnapshot -> Bill? in
                         let result = Result { try queryDocumentSnapshot.data(as: Bill.self) }
                         
@@ -73,7 +73,7 @@ class BillManager: ObservableObject {
                         }
                         
                     }
-//                }
+
                 self.toGetbills.sort { $0.timestamp > $1.timestamp }
             }
 

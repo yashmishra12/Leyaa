@@ -135,6 +135,7 @@ struct ProfilePageView: View {
                                 viewModel.updateAvatar(userID: viewModel.currentUser?.id ?? "", newAvatar: selectedAvatar)
                                 selectedAvatarReset = selectedAvatar
                                 successSB(title: "Avatar Changed")
+                                UserDefaults.standard.set(selectedAvatar, forKey: profileKey)
                             } label: {
                                 Text("Save").buttonStyleBlue()
                             }.buttonStyle(.plain)

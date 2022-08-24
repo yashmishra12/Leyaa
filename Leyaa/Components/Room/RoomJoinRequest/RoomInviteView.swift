@@ -28,15 +28,15 @@ struct RoomInviteView: View {
     
     func invitationSent() {
         
-        viewModel.checkEmail(email: email) { bool in
+        viewModel.checkEmail(email: email.lowercased()) { bool in
             if bool==true {
                 
                 if email.isEmpty==false {
                     
                     messageFocus = false
-                    viewModel.roomInvite(recieverEmail: email, message: message, roomData: roomData)
+                    viewModel.roomInvite(recieverEmail: email.lowercased(), message: message, roomData: roomData)
 
-                    fetchDeviceTokenFromEmail(email: email) { token in
+                    fetchDeviceTokenFromEmail(email: email.lowercased()) { token in
                         roomJoinRequestPayload (token: token, body: "\(viewModel.currentUser?.fullname ?? "") invited you to join \(roomData.title)")
                     }
                     
