@@ -9,12 +9,14 @@ import Foundation
 
 func sendPayloadPush(token: String, roomName: String, body: String) {
     
-    let notifPayload: [String: Any] = ["to": token , "notification": [  "title":"Room: \(roomName)",
-                                                                        "body": body,
-                                                                        "badge": 1,
-                                                                        "sound":"default"]
+    let notifPayload: [String: Any] = ["to": token ,
+                                       "notification": [  "title":"Room: \(roomName)",
+                                                           "body": body,
+                                                           "badge": 1,
+                                                           "sound":"default"]
+
     ]
-    
+
     sendPushNotification(payloadDict: notifPayload)
 }
 
