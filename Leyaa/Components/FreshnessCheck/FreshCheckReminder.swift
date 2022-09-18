@@ -83,31 +83,38 @@ struct FreshCheckReminder: View {
             Divider().padding(.bottom)
             
             VStack {
-                ScrollViewReader { proxy in
-                    ScrollView {
-                        
-                        LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
+                if prManager.prArray.isEmpty==false {
+                    
+                    ScrollViewReader { proxy in
+                        ScrollView {
                             
-                            ForEach(prManager.prArray, id: \.id) { item in
+                            LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
+                                
+                                ForEach(prManager.prArray, id: \.id) { item in
 
-                                VStack {
-                                    PRCard(itemName: item.body,
-                                           timeStamp: item.timestamp,
-                                           id: item.id,
-                                           prManager: prManager)
-                                    .padding(.bottom, -3)
-                                    }.id(item.id)
+                                    VStack {
+                                        PRCard(itemName: item.body,
+                                               timeStamp: item.timestamp,
+                                               id: item.id,
+                                               prManager: prManager)
+                                        .padding(.bottom, -3)
+                                        }.id(item.id)
+                                    }
                                 }
                             }
+                        .onChange(of: prManager.lastItemID) { id in
+                            withAnimation(.easeInOut) { proxy.scrollTo(id, anchor: .bottom) }
                         }
-                    .onChange(of: prManager.lastItemID) { id in
-                        withAnimation(.easeInOut) { proxy.scrollTo(id, anchor: .bottom) }
+                        .onAppear(perform: {
+                            withAnimation(.easeInOut) {
+                                proxy.scrollTo( prManager.lastItemID, anchor: .bottom)
+                            }
+                        })
                     }
-                    .onAppear(perform: {
-                        withAnimation(.easeInOut) {
-                            proxy.scrollTo( prManager.lastItemID, anchor: .bottom)
-                        }
-                    })
+                    
+                }
+                else {
+                    Image("waiting").resizable().aspectRatio(contentMode: .fit).padding()
                 }
   
                     }

@@ -14,8 +14,7 @@ func sendPayloadPush(token: String, roomName: String, body: String) {
                                                            "body": body,
                                                            "badge": 1,
                                                            "sound":"default"]
-
-    ]
+                                        ]
 
     sendPushNotification(payloadDict: notifPayload)
 }

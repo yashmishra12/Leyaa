@@ -28,9 +28,6 @@ struct RoomJoinRequestView: View {
                         
                         Spacer()
 
-
-
-
                     }
                 }.navigationTitle("Room Request")
             }

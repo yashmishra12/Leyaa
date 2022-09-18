@@ -57,7 +57,7 @@ struct ProfilePageView: View {
                                                label: { }).buttonStyle(.plain)
                                 
                                 Image(selectedAvatar).resizable().frame(width: 300, height: 300)
-                                    .padding(.top, 40).padding(.bottom, -60)
+                                    .padding(.top, 40).padding(.bottom, -30)
                                     .onAppear {
                                         selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar
                                     }

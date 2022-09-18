@@ -24,6 +24,9 @@ class AuthViewModel: ObservableObject {
     @Published var isAppleAuthRevoked: Bool = false
     @Published var errorOccurred: Bool = false
     @Published var errorMessage: String = ""
+    var populateRoomListListener: ListenerRegistration!
+    var roomJoinListener: ListenerRegistration!
+    
     
     private var db = Firestore.firestore()
     private let service = UserService()
@@ -183,7 +186,7 @@ class AuthViewModel: ObservableObject {
     
     func populateRoomList () {
         
-      self.db.collection("rooms")
+        self.populateRoomListListener = self.db.collection("rooms")
             .whereField("members", arrayContains: self.userSession?.uid as Any)
             .addSnapshotListener { snapshot, error in
                 
@@ -206,6 +209,7 @@ class AuthViewModel: ObservableObject {
                 }
                 
             }
+  
      }
     
     
@@ -236,7 +240,7 @@ class AuthViewModel: ObservableObject {
     
     
     func roomJoinRequestUpdate() {
-        self.db.collection("roomRequest")
+        self.roomJoinListener = self.db.collection("roomRequest")
             .whereField("receiverEmail", isEqualTo: self.userSession?.email as Any)
             .addSnapshotListener { snapshot, error in
                     guard let doc = snapshot?.documents else {
@@ -257,6 +261,7 @@ class AuthViewModel: ObservableObject {
                         }
                     }
             }
+
     }
     
     
@@ -388,18 +393,17 @@ class AuthViewModel: ObservableObject {
     func deleteAccountData() {
         
         self.deleteLocalNotifications()
+        UserDefaults.standard.set("", forKey: "refreshToken")
+        UserDefaults.standard.set("", forKey: deviceTokenStorage)
         
         DispatchQueue.main.async {
+            self.populateRoomListListener.remove()
+            self.roomJoinListener.remove()
             self.deleteRoomsAndMessages()
             self.clearUserInfoAfterDelete()
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()+5) {
-            UserDefaults.standard.set("", forKey: "refreshToken")
-            UserDefaults.standard.set("", forKey: deviceTokenStorage)
-            self.userSession = nil
-            self.didAuthenticateUser = false
-        }
+
+
         
     }// END DELETE ACCOUNT FUNCTION
     
@@ -439,14 +443,11 @@ class AuthViewModel: ObservableObject {
 
     func clearUserInfoAfterDelete() {
         
-            let userID = currentUser?.id ?? ""
-        
-            userSession?.delete()
             
-        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-            self.userSession = nil
-            self.didAuthenticateUser = false
+        DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
+            let userID = self.currentUser?.id ?? ""
             self.db.collection("users").document(userID).delete()
+            self.userSession?.delete()
             self.signOut()
         }
           

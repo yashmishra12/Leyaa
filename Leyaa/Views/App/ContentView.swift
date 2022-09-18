@@ -14,12 +14,13 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.scenePhase) var scenePhase
     @AppStorage("currentPage") var currentPage = 1
+    @Environment(\.colorScheme) var colorScheme
+
     
  
     var body: some View {
         
      
-            
         if currentPage > totalPages {
             ZStack(alignment: .topLeading) {
                 Group {
@@ -59,23 +60,22 @@ struct ContentView: View {
                             //MARK: - Profile Tab
                             Tab(title: "Profile", systemImageName: "person.crop.square.fill") {
                                 ProfilePageView(selectedAvatar: defaultAvatar)
+                             
   
                             } //Profile End
                             
-                            
-
-                            
                         } // STATEFUL TAB VIEW END
-
+                        
                         .barTintColor(.systemBlue)
-                        .barAppearanceConfiguration(.default)
-    
+                        .barAppearanceConfiguration(.opaque)
+                        .barBackgroundColor(colorScheme == .dark ? .black : .white)
                         
                     }
                 }
+                .id(self.colorScheme)
                 .onChange(of: scenePhase) { newPhase in
                                 if newPhase == .active {}
-                                    else if newPhase == .inactive {
+                                else if newPhase == .inactive {
                                       UIApplication.shared.applicationIconBadgeNumber = viewModel.pendingReqest.count
                                 }
                                  else if newPhase == .background {
