@@ -13,7 +13,7 @@ struct MemberPaymentSliderView: View {
  
     @State var userID: String
     @State var avatar = "ketchup"
-    @State var name = "Account Deleted"
+    @State var name = "Loading..."
     @Binding var maxAmount: Double
     @Binding var memberAmount: [Double]
     
