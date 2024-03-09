@@ -40,29 +40,22 @@ struct ProfilePageView: View {
     var body: some View {
         
         ZStack {
-            
-            NavigationView {
-                
+            NavigationStack {
                 VStack {
-                    
                     VStack (spacing: 2){
                         HStack {
                             ZStack {
-                                NavigationLink(destination: AboutView(),
-                                               isActive: $aboutPage,
-                                               label: { }).buttonStyle(.plain)
-                                
-                                NavigationLink(destination: DeleteAccount_Step1(),
-                                               isActive: $startWantToDeactivate,
-                                               label: { }).buttonStyle(.plain)
-                                
                                 Image(selectedAvatar).resizable().frame(width: 300, height: 300)
                                     .padding(.top, 40).padding(.bottom, -30)
                                     .onAppear {
                                         selectedAvatar = viewModel.currentUser?.avatar ?? defaultAvatar
                                     }
                             }
-                        }.ignoresSafeArea()
+                            
+                        }
+                        .navigationDestination(isPresented: $aboutPage, destination: {AboutView()})
+                        .navigationDestination(isPresented: $startWantToDeactivate, destination: {DeleteAccount_Step1()})
+                        .ignoresSafeArea()
                         
                         VStack (spacing: 1) {
                             HStack{
