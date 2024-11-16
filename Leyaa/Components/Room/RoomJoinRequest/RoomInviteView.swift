@@ -19,7 +19,7 @@ struct RoomInviteView: View {
     @State private var email = ""
     @State private var message = ""
     @State private var fullname = ""
-    @Environment (\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode
     
     @FocusState private var emailFocus: Bool
     @FocusState private var messageFocus: Bool

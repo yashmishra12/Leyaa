@@ -14,6 +14,7 @@
 		CC0CC87F28735677009C90C0 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC87E28735677009C90C0 /* Bill.swift */; };
 		CC0CC8852874AD05009C90C0 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */; };
 		CC20BAA528692C320071B7A6 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC20BAA428692C320071B7A6 /* SideMenuView.swift */; };
+		CC2244AD2CE8662000AA03F6 /* leyaa-7b042-1fe484a10012.json in Resources */ = {isa = PBXBuildFile; fileRef = CC2244AC2CE8662000AA03F6 /* leyaa-7b042-1fe484a10012.json */; };
 		CC2D7E422872CF9D00D97641 /* SideMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */; };
 		CC30AD8E2870685700355C1A /* AppleLoginHashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */; };
 		CC53B5BA289EC8070037C19C /* BillEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC53B5B9289EC8070037C19C /* BillEditView.swift */; };
@@ -40,6 +41,7 @@
 		CC6B513628681C0100531303 /* ItemEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6B513528681C0100531303 /* ItemEditView.swift */; };
 		CC6C0D91286A159600F2011A /* GroupMemberInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C0D90286A159600F2011A /* GroupMemberInfoView.swift */; };
 		CC71D7272865AEEA00E62F5B /* RoomRequestComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71D7262865AEEA00E62F5B /* RoomRequestComponentView.swift */; };
+		CC77BC0B2CE8615200064CC9 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = CC77BC0A2CE8615200064CC9 /* SwiftJWT */; };
 		CC8782C428640DAA00CDEEAB /* ItemCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8782C328640DAA00CDEEAB /* ItemCreateView.swift */; };
 		CC9FA7A9285E9D7C00EF896D /* RoomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7A8285E9D7C00EF896D /* RoomListView.swift */; };
 		CC9FA7AB285E9E9A00EF896D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9FA7AA285E9E9A00EF896D /* Room.swift */; };
@@ -111,6 +113,7 @@
 		CC0CC87E28735677009C90C0 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		CC0CC8842874AD05009C90C0 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CC20BAA428692C320071B7A6 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		CC2244AC2CE8662000AA03F6 /* leyaa-7b042-1fe484a10012.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "leyaa-7b042-1fe484a10012.json"; sourceTree = "<group>"; };
 		CC2D7E412872CF9D00D97641 /* SideMenuActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuActions.swift; sourceTree = "<group>"; };
 		CC30AD8D2870685700355C1A /* AppleLoginHashing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginHashing.swift; sourceTree = "<group>"; };
 		CC53B5B9289EC8070037C19C /* BillEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillEditView.swift; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 				CC655B47287FEEC0002B08E0 /* FirebaseMessaging in Frameworks */,
 				CC655B45287FEEC0002B08E0 /* FirebaseFirestoreSwift in Frameworks */,
 				CCD372D828831A2700C38CDE /* FirebaseService in Frameworks */,
+				CC77BC0B2CE8615200064CC9 /* SwiftJWT in Frameworks */,
 				CC655B3F287FEEC0002B08E0 /* FirebaseAnalytics in Frameworks */,
 				CC655B43287FEEC0002B08E0 /* FirebaseFirestore in Frameworks */,
 				CC655B5B287FEF06002B08E0 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -518,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				CCFFA4CC286FE31A005332E1 /* PushNotificationService.swift */,
+				CC2244AC2CE8662000AA03F6 /* leyaa-7b042-1fe484a10012.json */,
 				CCE52958287BDF31005C173C /* NotificationBanner.swift */,
 				CCE5295B287BE93E005C173C /* payloadNotification.swift */,
 			);
@@ -614,6 +619,7 @@
 				CCD372D728831A2700C38CDE /* FirebaseService */,
 				CCD372DD28837A0A00C38CDE /* FirebaseFunctions */,
 				CCA1C89A288A557700BBE548 /* StatefulTabView */,
+				CC77BC0A2CE8615200064CC9 /* SwiftJWT */,
 			);
 			productName = Leyaa;
 			productReference = CCB4C39E28597A3200105C5C /* Leyaa.app */;
@@ -627,7 +633,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					CCB4C39D28597A3200105C5C = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -648,6 +654,7 @@
 				CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CCD372D628831A2700C38CDE /* XCRemoteSwiftPackageReference "FirebaseService" */,
 				CCA1C899288A557700BBE548 /* XCRemoteSwiftPackageReference "StatefulTabView" */,
+				CC77BC092CE8615200064CC9 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = CCB4C39F28597A3200105C5C /* Products */;
 			projectDirPath = "";
@@ -667,6 +674,7 @@
 				CCB4C3A628597A3400105C5C /* Assets.xcassets in Resources */,
 				CCD2C6A529AD478200EE9694 /* GoogleService-Info.plist in Resources */,
 				CC6B512E2867B94C00531303 /* Launch Screen.storyboard in Resources */,
+				CC2244AD2CE8662000AA03F6 /* leyaa-7b042-1fe484a10012.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,7 +925,6 @@
 		CCB4C3AD28597A3400105C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
@@ -948,6 +955,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -957,7 +965,6 @@
 		CCB4C3AE28597A3400105C5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Leyaa/Leyaa.entitlements;
@@ -988,6 +995,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1032,6 +1040,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.0.0;
+			};
+		};
+		CC77BC092CE8615200064CC9 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
 			};
 		};
 		CCA1C899288A557700BBE548 /* XCRemoteSwiftPackageReference "StatefulTabView" */ = {
@@ -1133,6 +1149,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC655B3D287FEEC0002B08E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		CC77BC0A2CE8615200064CC9 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC77BC092CE8615200064CC9 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
 		};
 		CCA1C89A288A557700BBE548 /* StatefulTabView */ = {
 			isa = XCSwiftPackageProductDependency;
