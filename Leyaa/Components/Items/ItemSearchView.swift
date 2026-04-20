@@ -30,6 +30,7 @@ struct ItemSearchView: View {
                                                        "qty": ""],
                                               roomID: room.id ?? "")
                             
+                            searchText = ""
                             successSBItemAdded(title: "Item Added")
                         }
                         label: {
@@ -75,6 +76,28 @@ struct ItemSearchView: View {
         }
         .navigationTitle("Items")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                focusSearchBar()
+            }
+        }
+    }
+    
+    private func focusSearchBar() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first(where: { $0.isKeyWindow }) else { return }
+        
+        func findSearchBar(in view: UIView) -> UISearchBar? {
+            if let searchBar = view as? UISearchBar { return searchBar }
+            for subview in view.subviews {
+                if let found = findSearchBar(in: subview) { return found }
+            }
+            return nil
+        }
+        
+        if let searchBar = findSearchBar(in: window) {
+            searchBar.becomeFirstResponder()
+        }
     }
     
     var searchResults: [String] {

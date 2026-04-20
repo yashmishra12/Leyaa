@@ -17,8 +17,6 @@ struct RoomView: View {
     
     @State private var isShowingSideMenu: Bool = false
     
-    @State var navTitle: String = ""
-    
     @State var lastItemID: String = ""
     
     
@@ -50,6 +48,12 @@ struct RoomView: View {
                     
                     ScrollView {
                         
+                            Text(roomData.title)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                            
                             LazyVGrid(columns: twoColumnGrid, alignment: .leading) {
                                 ForEach(roomData.newItems, id: \.id) { item in
                                     
@@ -84,6 +88,8 @@ struct RoomView: View {
                         isShowingSideMenu = false
                     }
                 }
+                
+                .navigationBarTitleDisplayMode(.inline)
                 
                 .toolbar {
                     
@@ -147,20 +153,13 @@ struct RoomView: View {
                     }
                 }
                 
-                .cornerRadius(isShowingSideMenu ? 20 : 10)
+                .cornerRadius(isShowingSideMenu ? 20 : 0)
                 .offset(x: isShowingSideMenu ? screenWidth*0.8 : 0, y: isShowingSideMenu ? screenHeight*0.05 : 0)
                 .scaleEffect(isShowingSideMenu ? 0.8 : 1)
             }
             .onAppear(perform: {
                 lastItemID = roomData.lastItemID ?? ""
-                DispatchQueue.main.asyncAfter(deadline: .now()+0.01) {
-                    withAnimation {
-                        self.navTitle = roomData.title
-                    }
-                }
             })
-            
-            .navigationTitle(Text(navTitle))
         }
     }
     
