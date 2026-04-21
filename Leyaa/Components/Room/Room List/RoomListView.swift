@@ -62,11 +62,14 @@ struct RoomListView: View {
                             RoomCreateView().hideKeyboardWhenTappedAround()
                         } label: {
                            
-                            ZStack {
-                                Image(systemName: "house.fill").imageScale(.large)
-                                Image(systemName: "plus.circle.fill").imageScale(.small).offset(x: 16, y: 10)
-                            }
-                                .padding(.horizontal, 10)
+                            Image(systemName: "house.fill")
+                                .imageScale(.large)
+                                .offset(x: -2.5, y: -2.5)
+                                .overlay(alignment: .bottomTrailing) {
+                                    Image(systemName: "plus.circle.fill")
+                                        .imageScale(.small)
+                                        .offset(x: 2)
+                                }
                         }.buttonStyle(.plain)
                         
                     }

@@ -173,7 +173,8 @@ struct ProfilePageView: View {
                         }
                         
                     label: {
-                        Image(systemName: "gear").resizable()
+                        Image(systemName: "gear")
+                            .imageScale(.large)
                     }
                     .confirmationDialog("Are you sure?",
                                         isPresented: $wantToSignOut) {
@@ -199,11 +200,8 @@ struct ProfilePageView: View {
                         Button {
                             actionSheet()
                         } label: {
-                            HStack{
-                                Image(systemName: "square.and.arrow.up.fill")
-                                    .resizable()
-                                    .padding(.leading)
-                            }
+                            Image(systemName: "square.and.arrow.up.fill")
+                                .imageScale(.large)
                         }.buttonStyle(.plain)
                         
                     }
